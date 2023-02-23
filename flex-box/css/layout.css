@@ -1,0 +1,39 @@
+#grid-containter {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'sidebar main main'
+    'footer footer footer';
+  grid-template-columns: fit-content(300px) 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+#grid-containter header {
+  grid-area: header;
+}
+
+#grid-containter aside {
+  grid-area: sidebar;
+}
+
+#grid-containter section {
+  grid-area: main;
+}
+
+#grid-containter footer {
+  grid-area: footer;
+}
+
+/* media */
+@media (max-width: 900px) {
+  #grid-containter {
+    grid-template-areas:
+      'header header header'
+      'main main main'
+      'footer footer footer';
+  }
+
+  #grid-containter aside {
+    display: none;
+  }
+}

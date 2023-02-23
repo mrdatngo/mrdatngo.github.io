@@ -4,9 +4,262 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>FlexBox</title>
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    Flex Box
+    <div id="grid-containter">
+      <header>
+        <h3>FlexBox Tutorial</h3>
+      </header>
+      <aside>
+        <ul class="sticky">
+          <li><a href="#what-is">What is flexbox?</a></li>
+          <li><a href="#parent-properties">Properties for the Parent</a></li>
+          <li>
+            <a href="#children-properties">Properties for the Children</a>
+          </li>
+        </ul>
+      </aside>
+      <section>
+        <article id="what-is">
+          <h3>What is flex-box?</h3>
+          <p>
+            Flexbox is a layout module in CSS (Cascading Style Sheets) that is
+            used to create flexible and responsive web page layouts. It provides
+            a more efficient way to arrange, distribute, and align items within
+            a container than traditional layout methods like using floats or
+            positioning. With Flexbox, you can easily create complex layouts
+            that are both responsive and adaptive to different screen sizes and
+            devices.
+          </p>
+          <div>
+            Key features of Grid Layout include:
+            <ol>
+              <li>
+                <p>
+                  <code>display:flex</code>: This property specifies that the
+                  container is a flex container.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <code>flex-direction</code>: This property sets the direction
+                  of the main axis of the flex container. It can be set to
+                  <code>row</code> (default), <code>column</code>,
+                  <code>row-reverse</code>, or <code>column-reverse</code>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <code>justify-content</code>: This property aligns the items
+                  along the main axis of the container. It can be set to
+                  <code>flex-start</code> (default), <code>flex-end</code>,
+                  <code>center</code>, <code>space-between</code>,
+                  <code>space-around</code>, or <code>space-evenly</code>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <code>align-items</code>: This property aligns the items along
+                  the cross axis of the container. It can be set to
+                  <code>stretch</code> (default), <code>flex-start</code>,
+                  <code>flex-end</code>, <code>center</code>, or
+                  <code>baseline</code>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <code>flex</code>: This property specifies the amount of space
+                  an item should take up within the container. It can be set to
+                  a number (which is a proportion of the available space) or
+                  <code>auto</code> (which means the item will take up its
+                  natural size).
+                </p>
+              </li>
+              <li>
+                <p>
+                  <code>flex-wrap</code>: This property specifies whether the
+                  items should wrap to a new line or not when they exceed the
+                  width of the container. It can be set to
+                  <code>nowrap</code> (default), <code>wrap</code>, or
+                  <code>wrap-reverse</code>.
+                </p>
+              </li>
+            </ol>
+          </div>
+          <p>
+            Overall, Grid Layout provides a powerful and flexible way to create
+            complex layouts that can adapt to different screen sizes and content
+            requirements.
+          </p>
+          <img src="./assets/images/gridlayout.png" alt="" />
+        </article>
+        <article id="parent-properties">
+          <h3>Properties for the Parent</h3>
+          <p><b>display</b></p>
+          <pre>
+            .container {
+              display: flex; /* or inline-flex */
+            }
+          </pre>
+          <p><b>flex-direction</b></p>
+          <pre>
+            .container {
+              flex-direction: row | row-reverse | column | column-reverse;
+            }
+          </pre>
+          <img width="500" src="images/flex-direction.svg" alt="" />
+
+          <p><b>flex-grap</b></p>
+          <pre>
+            .container {
+              flex-wrap: nowrap | wrap | wrap-reverse;
+            }
+          </pre>
+          <img width="400" src="images/flex-wrap.svg" alt="" />
+
+          <p>
+            <b>flex-flow</b> shorthand for the flex-direction and flex-wrap
+            properties
+          </p>
+          <pre>
+            .container {
+              flex-flow: column wrap;
+            }
+          </pre>
+
+          <p>
+            <b>justify-content</b>
+          </p>
+          <pre>
+            .container {
+              justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe;
+            }
+          </pre>
+          <img width="400" src="images/justify-content.svg" alt="" />
+
+          <p>
+            <b>align-items</b>
+          </p>
+          <pre>
+            .container {
+              align-items: stretch | flex-start | flex-end | center | baseline | first baseline | last baseline | start | end | self-start | self-end + ... safe | unsafe;
+            }
+          </pre>
+          <img width="400" src="images/align-items.svg" alt="" />
+
+          <p>
+            <b>align-content</b>
+          </p>
+          Note:
+          <i
+            >Note: This property only takes effect on multi-line flexible
+            containers, where flex-wrap is set to either wrap or wrap-reverse).
+            A single-line flexible container (i.e. where flex-wrap is set to its
+            default value, no-wrap) will not reflect align-content.</i
+          >
+          <pre>
+            .container {
+              align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch | start | end | baseline | first baseline | last baseline + ... safe | unsafe;
+            }
+          </pre>
+          <img width="400" src="images/align-content.svg" alt="" />
+
+          <p>
+            <b>gap, row-gap, column-gap</b>
+          </p>
+          <pre>
+            .container {
+              display: flex;
+              ...
+              gap: 10px;
+              gap: 10px 20px; /* row-gap column gap */
+              row-gap: 10px;
+              column-gap: 20px;
+            }
+          </pre>
+          <img width="400" src="images/gap.svg" alt="" />
+        </article>
+
+        <article id="children-properties">
+          <h3>Properties for the Children</h3>
+          <p><b>order</b></p>
+          <pre>
+            .item {
+              order: 5; /* default is 0 */
+            }
+          </pre>
+          <img width="500px" src="images/order.svg" alt="" />
+
+          <p>
+            <b>flex-grow </b> This defines the ability for a flex item to grow
+            if necessary (Negative numbers are invalid).
+          </p>
+          <pre>
+            .item {
+              flex-grow: 4; /* default 0 */
+            }
+          </pre>
+          <img width="500px" src="images/flex-grow.svg" alt="" />
+
+          <p>
+            <b>flex-shrink </b> the ability for a flex item to shrink if
+            necessary.
+          </p>
+          <pre>
+            .item {
+              flex-shrink: 3; /* default 1 */
+            }
+          </pre>
+
+          <p>
+            <b>flex-basis </b> the default size of an element before the
+            remaining space is distributed. It can be a length (e.g. 20%, 5rem,
+            etc.) or a keyword
+          </p>
+          <pre>
+            .item {
+              flex-grow: 4; /* default 0 */
+            }
+          </pre>
+
+          <p>
+            <b>flex </b> he shorthand for flex-grow, flex-shrink and flex-basis,
+            the default is <b>0 1 auto</b> combined Check out:
+            <a
+              href="https://css-tricks.com/understanding-flex-grow-flex-shrink-and-flex-basis/"
+              >flex-grow, flex-shrink and flex-basis</a
+            >
+            for more understand of <b>flex</b>
+          </p>
+          <pre>
+            .item {
+              flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+              flex: [flex-grow] [flex-shrink] [flex-basis];
+            }
+
+            .child {
+              flex: [max] [min] [ideal size];
+            }
+          </pre>
+
+          <p>
+            <b>align-self </b> he shorthand for flex-grow, flex-shrink and
+            flex-basis combined
+          </p>
+          <pre>
+            .item {
+              align-self: auto | flex-start | flex-end | center | baseline | stretch;
+            }
+          </pre>
+          <img width="500px" src="images/align-self.svg" alt="" />
+        </article>
+      </section>
+      <footer></footer>
+      <script src="js/try-grid-template-columns-rows.js"></script>
+    </div>
   </body>
 </html>
+1

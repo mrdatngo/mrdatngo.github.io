@@ -1,0 +1,41 @@
+.css-property {
+  color: red;
+}
+
+/* sidebar */
+ul.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 50px;
+  font-size: 20px;
+}
+
+/* counter in sidebar */
+#grid-containter aside {
+  counter-reset: step;
+}
+
+#grid-containter aside ul {
+  padding: 20px;
+}
+
+#grid-containter aside ul li a::before {
+  counter-increment: step;
+  content: 'Step ' counter(step) ': ';
+}
+
+#grid-containter aside ul li a {
+  color: grey;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px;
+}
+
+#grid-containter aside ul li a:hover {
+  color: blue;
+}
+
+#grid-containter aside ul li {
+  list-style: none;
+}
