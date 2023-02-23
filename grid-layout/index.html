@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Layout</title>
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/try-grid-template-columns-rows.css" />
+  </head>
+  <body>
+    <div id="grid-containter">
+      <header>
+        <h3>Grid Layout Tutorial</h3>
+      </header>
+      <aside>
+        <ul class="sticky">
+          <li><a href="#what-is">What is grid-layout?</a></li>
+          <li>
+            <a href="#compare-grid-flex">Grid Layout compare with Flex Box</a>
+          </li>
+          <li><a href="#template-column-row">Template columns and rows</a></li>
+          <li><a href="#auto-fix-fill">Auto fill, Auto fit</a></li>
+          <li>
+            <a href="#grid-column-row"
+              >grid-column(-start/end); grid-row(-start/end)</a
+            >
+          </li>
+          <li><a href="#grid-area">Grid Area</a></li>
+          <li><a href="#grid-template-area">Grid template area</a></li>
+          <li>
+            <a href="#responsive-grid-layout">Responsive with grid layout</a>
+          </li>
+        </ul>
+      </aside>
+      <section>
+        <article id="what-is">
+          <h3>What is grid-layout?</h3>
+          <p>
+            Grid Layout is a CSS module that provides a two-dimensional
+            grid-based layout system. It allows developers to create complex
+            layouts with ease by dividing a web page into rows and columns. This
+            module defines a set of properties that enable developers to create
+            grid structures on a web page, allowing them to position and size
+            items in relation to each other within the grid.
+          </p>
+          <div>
+            Some of the key features of Grid Layout include:
+            <ul>
+              <li>Grid container: The element that contains the grid items.</li>
+              <li>
+                Grid item: The element that is a child of the grid container and
+                placed within the grid.
+              </li>
+              <li>
+                Grid lines: The horizontal and vertical lines that make up the
+                grid structure. Grid tracks: The spaces between the grid lines.
+              </li>
+              <li>
+                Grid cells: The intersection of a grid row and a grid column.
+              </li>
+            </ul>
+          </div>
+          <p>
+            Overall, Grid Layout provides a powerful and flexible way to create
+            complex layouts that can adapt to different screen sizes and content
+            requirements.
+          </p>
+          <img src="./assets/images/gridlayout.png" alt="" />
+        </article>
+        <article id="compare-grid-flex">
+          <h3>Grid Layout compare with Flex Box</h3>
+          <ul>
+            <li>Grid Layout: layout for a page</li>
+            <li>Flex Box: layout for a box</li>
+          </ul>
+          <img width="500" src="./assets/images/flex-grid-compare.png" alt="" />
+        </article>
+        <article id="template-column-row">
+          <h3>Container: Template columns and rows</h3>
+          <pre>
+            <code>
+            <span class="token comment">/* Keyword value */</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> none<span class="css-punctuation">;</span>
+            
+            <span class="token comment">/* &lt;track-list&gt; values */</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> 100px 1fr<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> [linename] 100px<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> [linename1] 100px [linename2 linename3]<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> <span class="token function">minmax</span><span class="css-punctuation">(</span>100px<span class="css-punctuation">,</span> 1fr<span class="css-punctuation">)</span><span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> <span class="token function">fit-content</span><span class="css-punctuation">(</span>40%<span class="css-punctuation">)</span><span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> <span class="token function">repeat</span><span class="css-punctuation">(</span>3<span class="css-punctuation">,</span> 200px<span class="css-punctuation">)</span><span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> subgrid<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> masonry<span class="css-punctuation">;</span>
+            
+            <span class="token comment">/* &lt;auto-track-list&gt; values */</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> 200px <span class="token function">repeat</span><span class="css-punctuation">(</span>auto-fill<span class="css-punctuation">,</span> 100px<span class="css-punctuation">)</span> 300px<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span>
+              <span class="token function">minmax</span><span class="css-punctuation">(</span>100px<span class="css-punctuation">,</span> max-content<span class="css-punctuation">)</span>
+              <span class="token function">repeat</span><span class="css-punctuation">(</span>auto-fill<span class="css-punctuation">,</span> 200px<span class="css-punctuation">)</span> 20%<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span>
+              [linename1] 100px [linename2]
+              <span class="token function">repeat</span><span class="css-punctuation">(</span>auto-fit<span class="css-punctuation">,</span> [linename3 linename4] 300px<span class="css-punctuation">)</span>
+              100px<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span>
+              [linename1 linename2] 100px
+              <span class="token function">repeat</span><span class="css-punctuation">(</span>auto-fit<span class="css-punctuation">,</span> [linename1] 300px<span class="css-punctuation">)</span> [linename3]<span class="css-punctuation">;</span>
+            
+            <span class="token comment">/* Global values */</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> inherit<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> initial<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> revert<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> revert-layer<span class="css-punctuation">;</span>
+            <span class="css-property">grid-template-columns</span><span class="css-punctuation">:</span> unset<span class="css-punctuation">;</span>
+            </code>
+          </pre>
+          <hr />
+          <pre class="brush: css notranslate">
+              <code>
+              <span class="token comment">/* Keyword value */</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> none<span class="css-punctuation">;</span>
+              
+              <span class="token comment">/* &lt;track-list&gt; values */</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> 100px 1fr<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> [linename] 100px<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> [linename1] 100px [linename2 linename3]<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> <span class="token function">minmax</span><span class="css-punctuation">(</span>100px<span class="css-punctuation">,</span> 1fr<span class="css-punctuation">)</span><span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> <span class="token function">fit-content</span><span class="css-punctuation">(</span>40%<span class="css-punctuation">)</span><span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> <span class="token function">repeat</span><span class="css-punctuation">(</span>3<span class="css-punctuation">,</span> 200px<span class="css-punctuation">)</span><span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> subgrid<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> masonry<span class="css-punctuation">;</span>
+              
+              <span class="token comment">/* &lt;auto-track-list&gt; values */</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> 200px <span class="token function">repeat</span><span class="css-punctuation">(</span>auto-fill<span class="css-punctuation">,</span> 100px<span class="css-punctuation">)</span> 300px<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span>
+                <span class="token function">minmax</span><span class="css-punctuation">(</span>100px<span class="css-punctuation">,</span> max-content<span class="css-punctuation">)</span>
+                <span class="token function">repeat</span><span class="css-punctuation">(</span>auto-fill<span class="css-punctuation">,</span> 200px<span class="css-punctuation">)</span> 20%<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span>
+                [linename1] 100px [linename2]
+                <span class="token function">repeat</span><span class="css-punctuation">(</span>auto-fit<span class="css-punctuation">,</span> [linename3 linename4] 300px<span class="css-punctuation">)</span>
+                100px<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span>
+                [linename1 linename2] 100px
+                <span class="token function">repeat</span><span class="css-punctuation">(</span>auto-fit<span class="css-punctuation">,</span> [linename1] 300px<span class="css-punctuation">)</span> [linename3]<span class="css-punctuation">;</span>
+              
+              <span class="token comment">/* Global values */</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> inherit<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> initial<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> revert<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> revert-layer<span class="css-punctuation">;</span>
+              <span class="css-property">grid-template-rows</span><span class="css-punctuation">:</span> unset<span class="css-punctuation">;</span>
+              </code>
+          </pre>
+          Try:
+          <div>
+            <label for="">grid-template-columns</label>
+            <input type="text" id="grid-template-columns" value="1fr 1fr 1fr" />
+            <br />
+            <label for="">grid-template-rows</label>
+            <input type="text" id="grid-template-rows" value="1fr 1fr" />
+            <br />
+            <button onclick="tryGridTemplateColumnsRows()">View</button>
+            <div id="try-grid-template-columns-rows">
+              <div class="try-container">
+                <div class="item">Item1</div>
+                <div class="item">Item2</div>
+                <div class="item">Item3</div>
+                <div class="item">Item4</div>
+                <div class="item">Item5</div>
+                <div class="item">Item6</div>
+              </div>
+            </div>
+          </div>
+          Try example with:
+          <pre>
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 100px 200px 100px;
+            grid-auto-rows: 60px; // for each row fixed 60px
+            gird-auto-rows: minmax(60px, auto); // min height 60px, if content item > 60px, height expand
+            grid-template-columns: fix-content(40%);// fix-content([max-width]);
+          </pre>
+        </article>
+        <article id="auto-fix-fill">
+          <h3>AutoFill(auto-fill) and AutoFit(auto-fit)</h3>
+          <p>
+            Visit:
+            <a
+              href="https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/"
+              >here</a
+            >
+            to see more
+          </p>
+        </article>
+        <article id="grid-column-row">
+          <h3>Properties: grid-column(-start/end); grid-row(-start/end)</h3>
+          <img src="./assets/images/grid-colum(row).png" alt="" />
+        </article>
+        <article id="grid-area">
+          <h3>Grid Area</h3>
+          <p>Grid areas must be rectangles or squares</p>
+          <img src="./assets/images/a-grid-area.png" alt="" />
+        </article>
+        <article id="grid-template-area">
+          <h3>Grid template area</h3>
+          Define a layout:
+          <pre>
+              /* html */
+              <code style="color: blue">
+                &lt;div class="containter"&gt;
+                  &lt;header&gt;
+                    Header
+                  &lt;/header&gt;
+                  &lt;aside&gt;
+                    Sidebar
+                  &lt;/aside&gt;
+                  &lt;section class="main"&gt;
+                    Main
+                  &lt;/section&gt;
+                  &lt;footer&gt;
+                    footer
+                  &lt;/footer&gt;
+                &lt;/div&gt;
+              </code>
+              /* css */
+              <span style="color: darksalmon">
+              * {
+                border: 1px solid black;
+              }
+              .container {
+                display: grid;
+                grid-template-areas: 
+                'header header header'
+                'sidebar main main'
+                'footer footer footer';
+                column-gap: 5px;
+                row-gap: 5px;
+              }
+              header {
+                grid-area: header;
+              }
+              aside {
+                grid-area: sidebar;
+              }
+              section {
+                grid-area: main;
+              }
+              footer {
+                grid-area: footer;
+              }
+            </span>
+            </pre>
+          <img width="100%" src="./assets/images/gridarea.jpg" alt="" />
+        </article>
+        <article id="responsive-grid-layout">
+          <h3>Responsive with grid layout</h3>
+          <ol>
+            <li>Prepare</li>
+
+            <pre>
+              /* html */
+              <span style="color: blue">
+              &lt;div class="container"&gt;
+                &lt;header&gt;Header&lt;/header&gt;
+                &lt;aside&gt;Aside&lt;/aside&gt;
+                &lt;section class="article-container"&gt;
+                  &lt;article&gt;Article 1&lt;/article&gt;
+                  &lt;article&gt;Article 2&lt;/article&gt;
+                  &lt;article&gt;Article 3&lt;/article&gt;
+                  &lt;article&gt;Article 4&lt;/article&gt;
+                  &lt;article&gt;Article 5&lt;/article&gt;
+                  &lt;article&gt;Article 6&lt;/article&gt;
+                &lt;/section&gt;
+                &lt;footer&gt;Footer&lt;/footer&gt;
+              &lt;/div&gt;
+            </span>
+              /* css */
+              <span style="color: darksalmon">
+              * {
+                padding: 0px;
+                margin: 0px;
+                box-sizing: border-box;
+              }
+              
+              header {
+                background-color: wheat;
+                height: 100px;
+              }
+              
+              footer {
+                background-color: wheat;
+                height: 100px;
+              }
+              
+              article {
+                background-color: bisque;
+                height: 200px;
+                margin-bottom: 6px;
+              }
+              
+              aside {
+                background-color: antiquewhite;
+              }
+
+              header {
+                grid-area: header;
+              }
+              
+              aside {
+                grid-area: sidebar;
+              }
+              
+              footer {
+                grid-area: footer;
+              }
+              
+              section {
+                grid-area: section;
+              }
+
+              .container {
+                display: grid;
+                grid-template-areas:
+                  'header header header'
+                  'sidebar section section'
+                  'footer footer footer';
+                grid-template-columns: 200px 1fr 1fr;
+                row-gap: 10px;
+                column-gap: 10px;
+              }
+              /* responsive layout */
+              @media (max-width: 600px) {
+                .container {
+                  grid-template-areas:
+                    'header header header'
+                    'sidebar sidebar sidebar'
+                    'section section section'
+                    'footer footer footer';
+                }
+              }
+            </span>
+              /* target: tablet(900px) show 2 article in a row, moble(600px) show 1 article in a row*/
+              </pre>
+            <li>
+              Solutions for: tablet(900px) show 2 article in a row, moble(600px)
+              show 1 article in a row
+            </li>
+            <pre>
+              /* Solution1: using @media to responsive with grid */
+              <span style="color: darksalmon">
+              .article-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                row-gap: 5px;
+                column-gap: 5px;
+              }
+              @media (max-width: 900px) {
+                .article-container {
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                }
+              }
+              @media (max-width: 600px) {              
+                .article-container {
+                  display: grid;
+                  grid-template-columns: repeat(1, 1fr);
+                }
+              }
+              /* Solution 2: using grid provided properties: repeat(auto-fit, minmax(300px, 1fr);*/
+              .article-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                row-gap: 5px;
+                column-gap: 5px;
+              }
+
+              /* solution 3: flex-box */
+              article {
+                border: 1px solid black;
+              }
+
+              .article-container {
+                display: flex;
+                flex-wrap: wrap;
+              }
+
+              .article-container article {
+                flex-basis: 33%;
+              }
+
+              @media (max-width: 900px) {
+                .article-container article {
+                  flex-basis: 50%;
+                }
+              }
+
+              @media (max-width: 600px) {
+                .article-container article {
+                  flex-basis: 100%;
+                }
+              }
+            </span>
+            </pre>
+          </ol>
+        </article>
+      </section>
+      <footer>Footer</footer>
+      <script src="js/try-grid-template-columns-rows.js"></script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+#try-grid-template-columns-rows .try-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+#try-grid-template-columns-rows .try-container .item {
+  border: 1px solid black;
+}
