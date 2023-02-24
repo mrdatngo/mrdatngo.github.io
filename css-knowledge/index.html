@@ -4,9 +4,1196 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Css Tutorial</title>
+    <link rel="stylesheet" href="css/prism.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    Css Knowledge
+    <div id="grid-containter">
+      <header>
+        <h3>CSS Tutorial</h3>
+      </header>
+      <aside>
+        <ul class="sticky">
+          <li><a href="#what-is">What is CSS?</a></li>
+          <li>
+            <a href="#imbed-css-to-html">Imbed CSS to HTML</a>
+          </li>
+          <li><a href="#syntax">Syntax</a></li>
+          <li><a href="#selectors">Selectors</a></li>
+          <li>
+            <a href="#units-of-measurement">Units of measurement</a>
+          </li>
+          <li><a href="#colors">Colors</a></li>
+          <li><a href="#inheritance">Inheritance</a></li>
+          <li><a href="#font">Font</a></li>
+          <li>
+            <a href="#background">Background</a>
+          </li>
+          <li><a href="#display">Display</a></li>
+          <li><a href="#position">Position</a></li>
+          <li><a href="#overflow">Overflow</a></li>
+          <li><a href="#responsive">Media Responsive</a></li>
+          <li><a href="#2d-transform">2D Transform</a></li>
+          <li><a href="#animation">Animation</a></li>
+        </ul>
+      </aside>
+      <section>
+        <article id="what-is">
+          <h3>What is CSS?</h3>
+          <p>
+            CSS stands for Cascading Style Sheets. It is a style sheet language
+            used to describe the presentation of a document written in HTML or
+            XML (including XML dialects like SVG or XHTML). CSS is used to
+            define styles for web pages, including layout, colors, fonts, and
+            other visual elements.
+          </p>
+          <img width="400px" src="./images/css.jpg" alt="" />
+        </article>
+
+        <article id="imbed-css-to-html">
+          <h3>Imbed CSS to HTML: 3 ways</h3>
+          <ol>
+            <li>
+              <b>Inline style</b>: apply CSS to individual HTML elements by
+              using the "style" attribute
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-markup">
+    &lt;h1 style="color: red; font-size: 24px;"&gt;Hello World!&lt;/h1&gt;
+            </code></pre>
+            <li>
+              <b>Internal style sheet</b>: add CSS to an HTML file by using the
+              "style" tag within the head section of the HTML document
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-markup">
+    &lt;head&gt;
+      &lt;style&gt;
+        h1 {
+          color: red;
+          font-size: 24px;
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;/body&gt;
+            </code></pre>
+            <li>
+              <b>External style sheet</b>: link an external CSS file to your
+              HTML file by using the "link" tag within the head section of the
+              HTML document.
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-markup">
+    &lt;head&gt;
+      &lt;link rel="stylesheet" type="text/css" href="style.css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;/body&gt;
+            </code></pre>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-css">
+    /* style.css file */
+    h1 {
+      color: red;
+      font-size: 24px;
+    }
+            </code></pre>
+          </ol>
+        </article>
+
+        <article id="syntax">
+          <h3>Syntax: 3 elements</h3>
+          <ul style="list-style-type: none">
+            <li>
+              Selector: HTML element (or elements) that the rule applies to
+            </li>
+            <li>Property: the specific style property</li>
+            <li>Value: set for the property</li>
+          </ul>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 800px"
+          ><code class="language-css">
+    selector {
+      property: value; /* example: color, margin, border */
+      property: value; /* example:  red     10px   1px solid black */
+      /* more properties and values... */
+    }
+            </code></pre>
+        </article>
+
+        <article id="selectors">
+          <h3>Selectors</h3>
+          <div>
+            <div>
+              <p>
+                CSS provides a variety of selectors that allow you to target
+                specific HTML elements on a webpage and apply styles to them.
+                Here are some of the most common types of selectors in CSS:
+              </p>
+
+              <h4>Type of selectors</h4>
+              <ol>
+                <li>
+                  Element selectors: These target specific HTML elements on the
+                  page, such as "p" for paragraphs or "h1" for headings.
+                </li>
+              </ol>
+
+              <pre style="padding: 0px; font-size: 10px; width: 800px">
+                <code class="language-css">
+    /* Universal selectors (*) */: 
+    * {margin: 0; padding: 0}
+    p {
+        /* styles applied to all paragraphs */
+    }
+    h1 {
+        /* styles applied to all level 1 headings */
+    }
+                </code>
+              </pre>
+
+              <ol start="2">
+                <li>
+                  Class selectors: These target elements with a specific class
+                  attribute, using a period (.) followed by the class name.
+                </li>
+              </ol>
+              <pre style="padding: 0px; font-size: 10px; width: 800px">
+                <code class="language-css">
+    .my-class {
+      /* styles applied to all elements with class="my-class" */
+    }
+                </code>
+              </pre>
+
+              <ol start="3">
+                <li>
+                  ID selectors: These target elements with a specific ID
+                  attribute, using a pound sign (#) followed by the ID name.
+                </li>
+              </ol>
+              <pre style="padding: 0px; font-size: 10px; width: 800px">
+                <code class="language-css">
+    #my-id {
+      /* styles applied to the element with id="my-id" */
+    }
+                </code>
+              </pre>
+
+              <ol start="4">
+                <li>
+                  Attribute selectors: These target elements with a specific
+                  attribute value, using brackets [] and the attribute name and
+                  value.
+                </li>
+              </ol>
+              <pre style="padding: 0px; font-size: 10px; width: 800px">
+                <code class="language-css">
+    a[href="https://example.com"] {
+      /* styles applied to all links with href="https://example.com" */
+    }
+                </code>
+              </pre>
+              <h4>Combine Selectors</h4>
+              <ol start="1">
+                <li>
+                  Descendant selectors: These target elements that are
+                  descendants of another element, using a space between the
+                  selectors.
+                </li>
+              </ol>
+              <pre style="padding: 0px; font-size: 10px; width: 800px">
+                <code class="language-css">
+    ul li {
+      /* styles applied to all li elements that are descendants of a ul */
+    }
+                </code>
+              </pre>
+
+              <ol start="2">
+                <li>
+                  Child selectors: These target elements that are direct
+                  children of another element, using a greater than sign (&gt;).
+                </li>
+              </ol>
+              <pre style="padding: 0px; font-size: 10px; width: 800px">
+                <code class="language-css">
+    ul > li {
+      /* styles applied to all li elements that are direct children of a ul */
+    }
+                </code>
+              </pre>
+
+              <ol start="3">
+                <li>
+                  Adjacent sibling selectors: These target elements that come
+                  immediately after another element, using a plus sign (+).
+                </li>
+              </ol>
+              <pre style="padding: 0px; font-size: 10px; width: 800px">
+                <code class="language-css">
+    h1 + p {
+      /* styles applied to the first p element that comes immediately after an h1 */
+    }
+                </code>
+              </pre>
+
+              <ol start="4">
+                <li>
+                  General sibling selectors: These target elements that come
+                  after another element, using a tilde (~).
+                </li>
+              </ol>
+              <pre style="padding: 0px; font-size: 10px; width: 800px">
+                <code class="language-css">
+    h1 ~ p {
+      /* styles applied to all p elements that come after an h1 */
+    }
+                </code>
+              </pre>
+
+              <ol start="5">
+                <li>
+                  More than one selector have same style: using a tilde (,).
+                </li>
+              </ol>
+              <pre style="padding: 0px; font-size: 10px; width: 800px">
+                <code class="language-css">
+    h1, p {
+      /* styles all p and h elements to red */
+      color: red;
+    }
+                </code>
+              </pre>
+            </div>
+          </div>
+
+          <h4>Pseudo-selectors</h4>
+          <ol class="list-style-type-none">
+            <li>
+              <p>
+                :hover - is used to select an element when the mouse pointer is
+                over it.
+              </p>
+            </li>
+            <li>
+              <p>
+                :active - is used to select an element when it is being clicked.
+              </p>
+            </li>
+            <li>
+              <p>:focus - is used to select an element when it is focused.</p>
+            </li>
+            <li>
+              <p>
+                :first-child - is used to select the first child element of a
+                parent element.
+              </p>
+            </li>
+            <li>
+              <p>
+                :last-child - is used to select the last child element of a
+                parent element.
+              </p>
+            </li>
+            <li>
+              <p>
+                :nth-child(n) - is used to select the nth child element of a
+                parent element.
+              </p>
+            </li>
+            <li>
+              <p>
+                :nth-of-type(n) - is used to select the nth element of a
+                particular type within a parent element.
+              </p>
+            </li>
+            <li>
+              <p>
+                :not(selector) - is used to select all elements that do not
+                match the specified selector.
+              </p>
+            </li>
+          </ol>
+
+          <h4>pseudo elements</h4>
+          <ol class="list-style-type-none">
+            <li>
+              ::before - used to insert content before the content of an element
+            </li>
+            <li>
+              ::after - used to insert content after the content of an element
+            </li>
+            <li>
+              ::first-line - used to apply styles to the first line of text
+              within an element
+            </li>
+            <li>
+              ::first-letter - used to apply styles to the first letter of text
+              within an element
+            </li>
+            <li>
+              ::selection - used to apply styles to text that has been selected
+              by the user
+            </li>
+          </ol>
+        </article>
+
+        <article id="units-of-measurement">
+          <h3>Units of measurement</h3>
+          <p><b>The pixel (px)</b>: the standard unit of measurement</p>
+          <p>Others</p>
+          <ol class="list-style-type-none">
+            <li>
+              <p>
+                <b>Percentages (%)</b>: Used to specify relative measurements
+                relative to the size of the parent element.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>em</b>: Used to specify font sizes relative to the font-size
+                of the parent element.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>rem</b>: Similar to em, but the font-size is relative to the
+                root element instead of the parent element.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>vw</b> and <b>vh</b>: Used to specify sizes relative to the
+                viewport width and height, respectively.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>cm, mm, in, pt, and pc</b>: Used to specify physical units of
+                measurement like centimeters, millimeters, inches, points, and
+                picas.
+              </p>
+            </li>
+          </ol>
+        </article>
+        <article id="colors">
+          <h3>Colors</h3>
+          <table class="table-of-color">
+            <thead>
+              <tr>
+                <th>Color</th>
+                <th>HEX Value</th>
+                <th>RGB Value</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Black</td>
+                <td>#000000</td>
+                <td>rgb(0,0,0)</td>
+                <td>Black</td>
+              </tr>
+              <tr>
+                <td>White</td>
+                <td>#FFFFFF</td>
+                <td>rgb(255,255,255)</td>
+                <td>White</td>
+              </tr>
+              <tr>
+                <td>Red</td>
+                <td>#FF0000</td>
+                <td>rgb(255,0,0)</td>
+                <td>Red</td>
+              </tr>
+              <tr>
+                <td>Green</td>
+                <td>#00FF00</td>
+                <td>rgb(0,255,0)</td>
+                <td>Green</td>
+              </tr>
+              <tr>
+                <td>Blue</td>
+                <td>#0000FF</td>
+                <td>rgb(0,0,255)</td>
+                <td>Blue</td>
+              </tr>
+              <tr>
+                <td>Yellow</td>
+                <td>#FFFF00</td>
+                <td>rgb(255,255,0)</td>
+                <td>Yellow</td>
+              </tr>
+              <tr>
+                <td>Magenta</td>
+                <td>#FF00FF</td>
+                <td>rgb(255,0,255)</td>
+                <td>Magenta</td>
+              </tr>
+              <tr>
+                <td>Cyan</td>
+                <td>#00FFFF</td>
+                <td>rgb(0,255,255)</td>
+                <td>Cyan</td>
+              </tr>
+              <tr>
+                <td>Gray</td>
+                <td>#808080</td>
+                <td>rgb(128,128,128)</td>
+                <td>Gray</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article id="inheritance">
+          <h3>Inheritance</h3>
+          <p>
+            Refers to the way styles are passed down from a parent element to
+            its child elements.
+          </p>
+          <pre style="padding: 0px; font-size: 10px; width: 800px">
+            <code class="language-markup">
+    &lt;style&gt;
+      body {
+        font-size: 16px; /* this property will be inherited by all child elements */
+      }
+      .parent {
+        color: blue;
+      }
+      .child {
+        color: inherit; /* this will inherit the color from the parent element */
+      }
+    &lt;/style&gt;
+    
+    &lt;body&gt;
+      &lt;h1&gt;Welcome to my website!&lt;/h1&gt;
+      &lt;div class="parent"&gt;
+        &lt;p&gt;This text will be blue.&lt;/p&gt;
+        &lt;p class="child"&gt;This text will also be blue.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+            </code>
+          </pre>
+          <p>
+            <b>Inherited properties</b>: :active, color, background, cursor,
+            font, :focus, :hover, text-align, visited,...
+          </p>
+        </article>
+
+        <article id="font">
+          <h3>Font</h3>
+          <p>
+            CSS provides a range of properties that can be used to control the
+            font of text, including font-family, font-size, font-style,
+            font-weight, line-height, text-align, and text-decoration.
+          </p>
+          <pre style="padding: 0px; font-size: 10px; width: 800px">
+            <code class="language-css">
+    
+    body {
+      /* Set the font family to Arial and the font size to 14px */
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      /* Set the font style to italic */
+      font-style: italic;
+      /* Set the font weight to bold */
+      font-weight: bold;
+    }
+
+    /* Set the line height to 1.5 times the font size */
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Set the text alignment to center */
+    h1 {
+      text-align: center;
+    }
+
+    /* Add an underline to a link */
+    a {
+      text-decoration: underline;
+    }
+
+            </code>
+          </pre>
+          Checkout
+          <a href="https://fonts.google.com/"> Google font</a>
+          to looking for some awesome font.
+          <br />
+          <br />
+          <p><b>Others properties</b></p>
+          <table class="table-of-font">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Description</th>
+                <th>Possible Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>direction</code></td>
+                <td>Specifies the direction of the text</td>
+                <td>
+                  <code>ltr</code> (left-to-right)&lt;br&gt;<code>rtl</code>
+                  (right-to-left)
+                </td>
+              </tr>
+              <tr>
+                <td><code>letter-spacing</code></td>
+                <td>Specifies the space between characters in text</td>
+                <td>A length or percentage value</td>
+              </tr>
+              <tr>
+                <td><code>word-spacing</code></td>
+                <td>Specifies the space between words in text</td>
+                <td>A length or percentage value</td>
+              </tr>
+              <tr>
+                <td><code>text-indent</code></td>
+                <td>Specifies the indentation of the first line of text</td>
+                <td>A length or percentage value</td>
+              </tr>
+              <tr>
+                <td><code>text-align</code></td>
+                <td>Specifies the horizontal alignment of text</td>
+                <td>
+                  <code>left</code
+                  >&lt;br&gt;<code>right</code>&lt;br&gt;<code>center</code>&lt;br&gt;<code>justify</code>&lt;br&gt;<code>initial</code>&lt;br&gt;<code
+                    >inherit</code
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><code>text-transform</code></td>
+                <td>Specifies the capitalization of text</td>
+                <td>
+                  <code>none</code
+                  >&lt;br&gt;<code>capitalize</code>&lt;br&gt;<code>uppercase</code>&lt;br&gt;<code>lowercase</code>&lt;br&gt;<code>initial</code>&lt;br&gt;<code
+                    >inherit</code
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><code>white-space</code></td>
+                <td>Specifies how white space is handled in text</td>
+                <td>
+                  <code>normal</code
+                  >&lt;br&gt;<code>nowrap</code>&lt;br&gt;<code>pre</code>&lt;br&gt;<code>pre-wrap</code>&lt;br&gt;<code>pre-line</code>&lt;br&gt;<code>initial</code>&lt;br&gt;<code
+                    >inherit</code
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><code>text-shadow</code></td>
+                <td>Adds shadow to text</td>
+                <td>
+                  A shadow effect value (<code>&lt;color&gt;</code>
+                  <code>&lt;x-offset&gt;</code> <code>&lt;y-offset&gt;</code>
+                  <code>&lt;blur-radius&gt;</code
+                  >)&lt;br&gt;<code>none</code>&lt;br&gt;<code>initial</code>&lt;br&gt;<code
+                    >inherit</code
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article id="background">
+          <h3>Background</h3>
+          <table class="table-of-font">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Description</th>
+                <th>Possible Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>background-color</code></td>
+                <td>Specifies the background color of an element</td>
+                <td>
+                  <code>&lt;color&gt;</code> name, hex value, rgb, rgba, hsl,
+                  hsla values
+                </td>
+              </tr>
+              <tr>
+                <td><code>background-image</code></td>
+                <td>Specifies one or more background images for an element</td>
+                <td><code>none</code>&lt;br&gt;URL or image source</td>
+              </tr>
+              <tr>
+                <td><code>background-repeat</code></td>
+                <td>Specifies how a background image is repeated</td>
+                <td>
+                  <code>repeat</code
+                  >&lt;br&gt;<code>repeat-x</code>&lt;br&gt;<code>repeat-y</code>&lt;br&gt;<code>no-repeat</code>&lt;br&gt;<code>initial</code>&lt;br&gt;<code
+                    >inherit</code
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><code>background-position</code></td>
+                <td>
+                  Specifies the position of a background image within an element
+                </td>
+                <td>
+                  <code>&lt;position&gt;</code> can be a length, percentage or
+                  keyword values like center, left, right, top, bottom etc.
+                </td>
+              </tr>
+              <tr>
+                <td><code>background-attachment</code></td>
+                <td>
+                  Specifies whether a background image is fixed or scrolls with
+                  the element
+                </td>
+                <td>
+                  <code>scroll</code
+                  >&lt;br&gt;<code>fixed</code>&lt;br&gt;<code>local</code>&lt;br&gt;<code>initial</code>&lt;br&gt;<code
+                    >inherit</code
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article id="border-margin-padding">
+          <h3>Border, margin & padding</h3>
+          <table class="table-of-font">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Description</th>
+                <th>Possible Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>border</code></td>
+                <td>Specifies the border of an element</td>
+                <td>
+                  <code>&lt;border-width&gt;</code>
+                  <code>&lt;border-style&gt;</code> <code>&lt;color&gt;</code>
+                  Example: 1px solid black;
+                </td>
+              </tr>
+              <tr>
+                <td><code>margin</code></td>
+                <td>Specifies the outside margin of an element</td>
+                <td>A length value or percentage value. Example: 10px;</td>
+              </tr>
+              <tr>
+                <td><code>padding</code></td>
+                <td>Specifies the inside padding of an element</td>
+                <td>A length value or percentage value. Example: 10px;</td>
+              </tr>
+            </tbody>
+          </table>
+          <img src="images/boxdim.png" alt="" />
+        </article>
+
+        <article id="display">
+          <h3>Display(display)</h3>
+          <p><b>inline</b>: just wrap the content</p>
+          <p><b>block</b>: Take up all width as posible</p>
+          <p><b>inline-block</b>: Need to define width and height</p>
+          <br />
+          <table class="table-of-font">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Description</th>
+                <th>Examples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>display</code></td>
+                <td>
+                  Specifies whether an element is an inline or block-level
+                  element
+                </td>
+                <td>
+                  <code>display: block;</code><code>display: inline;</code
+                  ><code>display: inline-block;</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Appearance</td>
+                <td>
+                  By default, block-level elements start on a new line and take
+                  up the full width of their container, while inline-level
+                  elements do not start on a new line and take up only as much
+                  width as necessary for their content.
+                </td>
+                <td>
+                  <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>,
+                  <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>,
+                  <code>&lt;ul&gt;</code>,
+                  <code>&lt;li&gt;</code>&lt;br&gt;<code>&lt;span&gt;</code>,
+                  <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>,
+                  <code>&lt;em&gt;</code>, <code>&lt;img&gt;</code>,
+                  <code>&lt;input&gt;</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Nesting</td>
+                <td>
+                  Block-level elements can contain both block-level and
+                  inline-level elements, while inline-level elements can only
+                  contain other inline-level elements or text nodes.
+                </td>
+                <td>
+                  <code
+                    >&lt;div&gt;&lt;p&gt;&lt;a&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</code
+                  >&lt;br&gt;<code
+                    >&lt;span&gt;&lt;strong&gt;&lt;em&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/span&gt;</code
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article id="position">
+          <h3>Position: relative, absolute, fixed and static</h3>
+          <p>
+            the position property is used to specify how an element should be
+            positioned on a web page
+          </p>
+          <table class="table-of-font">
+            <thead>
+              <tr>
+                <th>Value</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>static</code></td>
+                <td>
+                  The default position value. Elements with
+                  <code>position: static</code> are positioned according to the
+                  normal flow of the document.
+                </td>
+              </tr>
+              <tr>
+                <td><code>relative</code></td>
+                <td>
+                  Allows an element to be positioned relative to its normal
+                  position. The element's position can be adjusted using the
+                  <code>top</code>, <code>right</code>, <code>bottom</code>, and
+                  <code>left</code> properties.
+                </td>
+              </tr>
+              <tr>
+                <td><code>absolute</code></td>
+                <td>
+                  Allows an element to be positioned relative to its nearest
+                  positioned ancestor (an ancestor with a
+                  <code>position</code> value other than <code>static</code>),
+                  or to the initial containing block if there is no such
+                  ancestor. The element's position can be adjusted using the
+                  <code>top</code>, <code>right</code>, <code>bottom</code>, and
+                  <code>left</code> properties.
+                </td>
+              </tr>
+              <tr>
+                <td><code>fixed</code></td>
+                <td>
+                  Positions an element relative to the viewport (the browser
+                  window), even if the page is scrolled. The element's position
+                  can be adjusted using the <code>top</code>,
+                  <code>right</code>, <code>bottom</code>, and
+                  <code>left</code> properties.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Example of relative</p>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 500px"
+          ><code class="language-css">
+    .my-element {
+      position: relative;
+      top: 20px;
+      left: 30px;
+    }
+            </code></pre>
+        </article>
+
+        <article id="overflow">
+          <h3>Overflow</h3>
+          <table class="table-of-font">
+            <thead>
+              <tr>
+                <th>Property Name</th>
+                <th>Possible Values</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>overflow</td>
+                <td>visible</td>
+                <td>
+                  Content overflows the element, showing outside the element's
+                  borders. This is the default value.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>hidden</td>
+                <td>
+                  Content that overflows the element is hidden, and the
+                  element's borders are used to clip the content.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>scroll</td>
+                <td>
+                  Content that overflows the element is displayed in a scrolling
+                  area, which appears if necessary.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>auto</td>
+                <td>
+                  Content that overflows the element is displayed in a scrolling
+                  area if necessary, but otherwise, it behaves as if the value
+                  is visible.
+                </td>
+              </tr>
+              <tr>
+                <td>overflow-x</td>
+                <td>visible</td>
+                <td>
+                  Same as overflow: visible; but only applies to horizontal
+                  overflow.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>hidden</td>
+                <td>
+                  Same as overflow: hidden; but only applies to horizontal
+                  overflow.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>scroll</td>
+                <td>
+                  Same as overflow: scroll; but only applies to horizontal
+                  overflow.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>auto</td>
+                <td>
+                  Same as overflow: auto; but only applies to horizontal
+                  overflow.
+                </td>
+              </tr>
+              <tr>
+                <td>overflow-y</td>
+                <td>visible</td>
+                <td>
+                  Same as overflow: visible; but only applies to vertical
+                  overflow.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>hidden</td>
+                <td>
+                  Same as overflow: hidden; but only applies to vertical
+                  overflow.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>scroll</td>
+                <td>
+                  Same as overflow: scroll; but only applies to vertical
+                  overflow.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>auto</td>
+                <td>
+                  Same as overflow: auto; but only applies to vertical overflow.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>text-overflow and word-wrap</h4>
+          <table class="table-of-font">
+            <thead>
+              <tr>
+                <th>Property Name</th>
+                <th>Possible Values</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>text-overflow</td>
+                <td>clip</td>
+                <td>
+                  Text that overflows the element is clipped, and the overflow
+                  is not visible. This is the default value.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>ellipsis</td>
+                <td>
+                  Text that overflows the element is clipped, and an ellipsis is
+                  displayed at the point of overflow.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>string</td>
+                <td>
+                  Text that overflows the element is clipped, and a custom
+                  string is displayed at the point of overflow.
+                </td>
+              </tr>
+              <tr>
+                <td>word-wrap</td>
+                <td>normal</td>
+                <td>
+                  Words are broken only at allowed break points, such as spaces
+                  or hyphens. This is the default value.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>break-word</td>
+                <td>
+                  Words are broken at any character, even if there are no
+                  allowed break points.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article id="responsive">
+          <h3>Media Responsive</h3>
+          <p>Media queries are used to create responsive designs in CSS</p>
+          <p>
+            Media queries use the @media rule in CSS to specify a set of styles
+            to apply when certain conditions are met, such as a minimum or
+            maximum screen width. Here's an example of how to write a media
+            query that applies to screens with a maximum width of 600 pixels:
+          </p>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 500px"
+          ><code class="language-css">
+    @media only screen and (max-width: 600px) {
+      /* CSS styles go here */
+    }
+
+    @media only all and (min-width: 320px) and (max-width: 374px){/* code */}
+
+    @media only screen and (min-width: 374px) and (max-width: 424px){/* code */}
+
+    @media only screen and (min-width: 425px) and (max-width: 767px){/* code */}
+
+    @media (min-width: 1024px) and (max-width: 1439px){/* code */}
+
+            </code></pre>
+        </article>
+
+        <article id="2d-transform">
+          <h3>2D Transform</h3>
+          <p>
+            Modify the appearance and position of HTML elements by transforming
+            their size, position, and orientation. Here are some common 2D
+            transforms in CSS
+          </p>
+          <ol>
+            <li>translate() - moves the element along the x and y-axis.</li>
+            <pre style="padding: 0px; font-size: 10px; width: 500px">
+            <code class="language-css">
+    transform: translate(x-value, y-value);
+            </code>
+            </pre>
+            <li>scale() - changes the size of the element.</li>
+            <pre style="padding: 0px; font-size: 10px; width: 500px">
+              <code class="language-css">
+    transform: scale(x-value, y-value);
+              </code>
+              </pre>
+            <li>rotate() - rotates the element clockwise around its center.</li>
+            <pre style="padding: 0px; font-size: 10px; width: 500px">
+              <code class="language-css">
+    transform: rotate(angle);
+              </code>
+              </pre>
+            <li>skew() - skews the element along the x and y-axis.</li>
+            <pre style="padding: 0px; font-size: 10px; width: 500px">
+              <code class="language-css">
+    transform: skew(x-angle, y-angle);
+              </code>
+              </pre>
+            <li>matrix() - combines multiple transforms into one.</li>
+            <pre style="padding: 0px; font-size: 10px; width: 500px">
+              <code class="language-css">
+    transform: matrix(scaleX, skewX, skewY, scaleY, translateX, translateY);
+              </code>
+              </pre>
+          </ol>
+          <b>Exmple</b>
+          <pre style="padding: 0px; font-size: 10px; width: 500px">
+            <code class="language-css">
+    .my-element {
+      transform: translate(50px, 50px) rotate(45deg) scale(2, 2);
+    }
+            </code>
+            </pre>
+        </article>
+
+        <article id="transaction">
+          <h3>Transaction</h3>
+          <p>
+            CSS transitions allow you to smoothly change the property values of
+            an element over a specified duration. With transitions, you can
+            create animations that make your website more interactive and
+            engaging.
+          </p>
+          <pre style="padding: 0px; font-size: 10px; width: 500px">
+            <code class="language-css">
+    .my-element {
+      /* property(bgc, width, heigt) , duration(1s),
+        timing-function(ease, ease-in, ease-out, ease-in-out, linear) */
+      transition: background-color 1s ease-in-out; 
+    }
+    /* or */
+    .my-element {
+      transition: background-color 1s ease-in-out, color 2s ease-out;
+    }
+            </code>
+            </pre>
+          <p>
+            To trigger the transition, you need to change the property value.
+            For example, if you want to change the background color of the
+            element, you can do it like this
+          </p>
+          <pre style="padding: 0px; font-size: 10px; width: 500px">
+          <code class="language-css">
+    .my-element:hover {
+      background-color: red;
+    }
+    /* or */
+    .my-element:focus {
+      width: 100px;
+    }
+          </code>
+          </pre>
+        </article>
+
+        <article id="animation">
+          <h3>Animation</h3>
+          <p>
+            CSS animations allow you to add motion and transitions to your web
+            page elements. Here is a basic example of how to create an animation
+            in CSS:
+          </p>
+
+          <pre style="padding: 0px; font-size: 10px; width: 500px">
+            <code class="language-css">
+    /* Define the animation */
+    @keyframes example {
+      from {background-color: red;}
+      to {background-color: yellow;}
+    }
+    
+    /* Apply the animation to an element: transition the background color of an element from red to yellow in 3s*/ 
+    div {
+      animation-name: example;
+      animation-duration: 3s;
+    }
+    /* full syntax: animation : [name] [duration] [timing] [delay] [interaction-count] [direction][play-state] */
+    
+            </code>
+            </pre>
+          <b>Properties</b>
+          <table class="table-of-font">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Description</th>
+                <th>Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>The name of the animation</td>
+                <td>Naming, example: slide-in</td>
+              </tr>
+              <tr>
+                <td>Duration</td>
+                <td>The length of time the animation lasts</td>
+                <td>1s</td>
+              </tr>
+              <tr>
+                <td>Timing Function</td>
+                <td>The rate of change of the animation over time</td>
+                <td>ease-in-out</td>
+              </tr>
+              <tr>
+                <td>Delay</td>
+                <td>
+                  The amount of time to wait before starting the animation
+                </td>
+                <td>0.5s</td>
+              </tr>
+              <tr>
+                <td>Interaction Count</td>
+                <td>The number of times the animation repeats</td>
+                <td>infinite</td>
+              </tr>
+              <tr>
+                <td>Direction</td>
+                <td>The direction of the animation on each iteration</td>
+                <td>alternate</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+      <footer>
+        <p>&copy; 2023 - Author: Mr Dat. All rights reserved.</p>
+      </footer>
+      <script src="js/prism.js"></script>
+      <script src="js/table-color.js"></script>
+    </div>
   </body>
 </html>
