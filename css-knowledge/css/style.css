@@ -29,3 +29,78 @@
   background-color: antiquewhite;
   text-align: center;
 }
+
+/* transform 2D */
+.transform-2d-block {
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+}
+
+.transform-2d-block.translate:hover {
+  transform: translate(400px, 0px);
+}
+
+.transform-2d-block.scale:hover {
+  transform: scale(2, 2);
+}
+
+.transform-2d-block.rotate:hover {
+  transform: rotate(45deg);
+}
+
+.transform-2d-block.skewX:hover {
+  transform: skew(60deg);
+}
+
+.transform-2d-block.skewY:hover {
+  transform: skew(60deg, 60deg);
+}
+
+.transform-2d-block.matrix:hover {
+  transform: matrix(2, 1.05, 1.05, 2, 100, 100);
+}
+
+/* transition */
+.transition-2d-block {
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+  transition: transform 2s ease-in-out;
+}
+
+.transition-2d-block.transition:hover {
+  transform: translate(400px, 0px);
+  transition: transform 2s ease-in-out;
+}
+
+/* animation */
+.animation-2d-block {
+  width: 50px;
+  height: 50px;
+  transition: transform 2s ease-in-out;
+}
+
+@keyframes go-around {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  25% {
+    transform: translate(0, 380px);
+  }
+  50% {
+    transform: translate(400px, 380px);
+  }
+  75% {
+    transform: translate(400px, 0);
+  }
+}
+
+.animation-2d-block.animation:hover {
+  animation: go-around 4s ease-in-out 0s infinite;
+}
+
+.animation-2d-block.animation .arrow {
+  color: red;
+  font-size: 40px;
+}

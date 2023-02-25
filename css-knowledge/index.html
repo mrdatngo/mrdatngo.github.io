@@ -387,6 +387,7 @@
             </li>
           </ol>
         </article>
+
         <article id="colors">
           <h3>Colors</h3>
           <table class="table-of-color">
@@ -1043,26 +1044,63 @@
             <pre style="padding: 0px; font-size: 10px; width: 500px">
             <code class="language-css">
     transform: translate(x-value, y-value);
+    /* example */
+    /* html */
+    &lt;div class="transform-2d-block"&gt;&lt;/div&gt;
+    /* css */
+    .transform-2d-block {
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+    }
+    
+    .transform-2d-block:hover {
+      transform: translate(400px, 0px);
+    }
             </code>
             </pre>
+            <div class="transform-2d-block translate"></div>
             <li>scale() - changes the size of the element.</li>
             <pre style="padding: 0px; font-size: 10px; width: 500px">
               <code class="language-css">
     transform: scale(x-value, y-value);
+    /* example */
+    .transform-2d-block:hover {
+      transform: scale(2, 2);
+    }
               </code>
               </pre>
+            <div class="transform-2d-block scale"></div>
+
             <li>rotate() - rotates the element clockwise around its center.</li>
             <pre style="padding: 0px; font-size: 10px; width: 500px">
               <code class="language-css">
     transform: rotate(angle);
+    /* example */
+    .transform-2d-block:hover {
+      transform: rotate(45deg);
+    }
               </code>
               </pre>
+            <div class="transform-2d-block rotate"></div>
+
             <li>skew() - skews the element along the x and y-axis.</li>
             <pre style="padding: 0px; font-size: 10px; width: 500px">
               <code class="language-css">
     transform: skew(x-angle, y-angle);
+    /* example */
+    .transform-2d-block:hover {
+      transform: skew(60deg);
+    }
+    .transform-2d-block:hover {
+      transform: skew(60, 60deg);
+    }
               </code>
               </pre>
+
+            <div class="transform-2d-block skewX"></div>
+            <br />
+            <div class="transform-2d-block skewY"></div>
             <li>matrix() - combines multiple transforms into one.</li>
             <pre style="padding: 0px; font-size: 10px; width: 500px">
               <code class="language-css">
@@ -1078,6 +1116,7 @@
     }
             </code>
             </pre>
+          <div class="transform-2d-block matrix"></div>
         </article>
 
         <article id="transition">
@@ -1117,6 +1156,23 @@
     }
           </code>
           </pre>
+          <b>Example: </b>
+          <pre style="padding: 0px; font-size: 10px; width: 500px">
+            <code class="language-css">
+    .transition-2d-block {
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      transition: transform 2s ease-in-out;
+    }
+    
+    .transition-2d-block:hover {
+      transform: translate(400px, 0px);
+      transition: transform 2s ease-in-out;
+    }
+            </code>
+            </pre>
+          <div class="transition-2d-block transition"></div>
         </article>
 
         <article id="animation">
@@ -1162,12 +1218,12 @@
               <tr>
                 <td>Duration</td>
                 <td>The length of time the animation lasts</td>
-                <td>1s</td>
+                <td>1s,2s,...</td>
               </tr>
               <tr>
                 <td>Timing Function</td>
                 <td>The rate of change of the animation over time</td>
-                <td>ease-in-out</td>
+                <td>linear, ease-in, ease-in-out,...</td>
               </tr>
               <tr>
                 <td>Delay</td>
@@ -1179,15 +1235,55 @@
               <tr>
                 <td>Interaction Count</td>
                 <td>The number of times the animation repeats</td>
-                <td>infinite</td>
+                <td>infinite or number(0, 1, 2,...)</td>
               </tr>
               <tr>
                 <td>Direction</td>
                 <td>The direction of the animation on each iteration</td>
-                <td>alternate</td>
+                <td>alternate, reverse, normal</td>
               </tr>
             </tbody>
           </table>
+
+          <div class="animation-2d-block animation">
+            <b class="arrow">*</b>
+          </div>
+          <b>Example: </b>
+          <pre style="padding: 0px; font-size: 10px; width: 500px">
+            <code class="language-css">
+    /* animation */
+    .animation-2d-block {
+      width: 50px;
+      height: 50px;
+      transition: transform 2s ease-in-out;
+    }
+    
+    @keyframes go-around {
+      0% {
+        transform: translate(0px, 0px);
+      }
+      25% {
+        transform: translate(0, -380px);
+      }
+      50% {
+        transform: translate(400px, -380px);
+      }
+      75% {
+        transform: translate(400px, 0);
+      }
+    }
+    
+    .animation-2d-block.animation:hover {
+      animation: go-around 4s ease-in-out 0s infinite;
+    }
+    
+    .animation-2d-block.animation .arrow {
+      color: red;
+      font-size: 40px;
+    }
+    
+            </code>
+            </pre>
         </article>
       </section>
       <footer>
