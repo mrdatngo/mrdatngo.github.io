@@ -1,0 +1,47 @@
+/* grid layout */
+.app-container {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'sidebar main sidebar2'
+    'footer footer footer';
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: 100px auto 100px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* applying to position */
+.app-header {
+  grid-area: header;
+  height: 100px;
+}
+
+.app-sidebar {
+  grid-area: sidebar;
+}
+
+.app-main {
+  grid-area: main;
+}
+
+.app-footer {
+  grid-area: footer;
+}
+
+.app-footer {
+  height: 100px;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .app-container {
+    grid-template-areas:
+      'header header header'
+      'main main main'
+      'footer footer footer';
+  }
+  .app-sidebar {
+    display: none;
+  }
+}

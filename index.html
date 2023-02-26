@@ -2,87 +2,161 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>My Landing Page</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-      }
-
-      .grid-container {
-        display: grid;
-        grid-template-areas:
-          'header header header'
-          'sidebar main main'
-          'footer footer footer';
-        grid-template-columns: 1fr 2fr 2fr;
-        grid-template-rows: auto 1fr auto;
-        height: 100vh;
-      }
-
-      header {
-        grid-area: header;
-        background-color: #333;
-        color: #fff;
-        padding: 20px;
-        text-align: center;
-      }
-
-      aside {
-        grid-area: sidebar;
-        background-color: #f9f9f9;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 0 10px #ccc;
-        border-radius: 5px;
-      }
-
-      main {
-        grid-area: main;
-        background-color: #fff;
-        padding: 20px;
-        box-shadow: 0 0 10px #ccc;
-        border-radius: 5px;
-      }
-
-      footer {
-        grid-area: footer;
-        background-color: #333;
-        color: #fff;
-        padding: 20px;
-        text-align: center;
-      }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechBlog</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <link rel="stylesheet" href="assets/css/components/components.css" />
   </head>
   <body>
-    <div class="grid-container">
-      <header>
-        <h1>Welcome to MrDat Page</h1>
+    <div class="app-container">
+      <header class="app-header">
+        <div class="search">
+          <div class="search-form">
+            <span class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-search"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                />
+              </svg>
+            </span>
+            <input type="text" placeholder="Search" class="input-search" />
+          </div>
+        </div>
+        <div class="logo"><a href="">TECHBLOG</a></div>
+        <nav class="menu">
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact</a></li>
+          </ul>
+        </nav>
       </header>
-      <aside>
-        <h2>Sidebar</h2>
-        <p>
-          Future menus
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, non? Qui necessitatibus iure rem quaerat, consequatur alias repellat blanditiis doloremque excepturi omnis numquam distinctio temporibus maxime quam ipsa. Voluptas, fugiat.
+      <aside class="app-sidebar"></aside>
+      <section class="app-main">
+        <div class="post-heading">
+          <h2 class="title">Trending</h2>
+          <div class="post-wrapper">
+            <div class="picture-wrapper">
+              <img src="assets/images/frontend.png" alt="Plant" />
+            </div>
+            <div class="infor">
+              <p>Tech is future - <span class="date">Feb 23 2023</span></p>
+              <h3 class="post-title">Earning skills to build your future</h3>
+              <p class="description">
+                In the huge cities, inside big building, developer who keep
+                adapting, studing, learning technical skills to prepare and
+                ready to welcome challenage future - the hard future but there
+                was opertunies to everyone.
+              </p>
+              <div class="author">
+                <b>Ngo Thuc Dat</b>
+                <p>Fullstack developer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="posts">
+          <div class="post">
+            <a href="/html-knowledge">
+              <div class="picture-wrapper">
+                <img src="assets/images/html_icon.png" alt="Plant" />
+              </div>
+              <div class="infor">
+                <p>Tech is future - <span class="date">Feb 23 2023</span></p>
+                <h3 class="post-title">HTML Knowlegde</h3>
+                <p class="description">Learning to build your own website</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="post">
+            <a href="/css-knowledge">
+              <div class="picture-wrapper">
+                <img src="assets/images/css_icon.png" alt="Plant" />
+              </div>
+              <div class="infor">
+                <p>Tech is future - <span class="date">Feb 23 2023</span></p>
+                <h3 class="post-title">CSS Knowlegde</h3>
+                <p class="description">Learning to build your own website</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="post">
+            <a href="/html-excercise">
+              <div class="picture-wrapper">
+                <img src="assets/images/html_icon.png" alt="Plant" />
+              </div>
+              <div class="infor">
+                <p>Tech is future - <span class="date">Feb 23 2023</span></p>
+                <h3 class="post-title">HTML fudamental excercise</h3>
+                <p class="description">Practice make the best</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="post">
+            <a href="/grid-layout">
+              <div class="picture-wrapper">
+                <img src="assets/images/grid_icon.png" alt="Plant" />
+              </div>
+              <div class="infor">
+                <p>Tech is future - <span class="date">Feb 23 2023</span></p>
+                <h3 class="post-title">Grid Layout overview</h3>
+                <p class="description">
+                  Learning to build your own website layout
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="post">
+            <a href="/flex-box">
+              <div class="picture-wrapper">
+                <img src="assets/images/flex_bog.png" alt="Plant" />
+              </div>
+              <div class="infor">
+                <p>Tech is future - <span class="date">Feb 23 2023</span></p>
+                <h3 class="post-title">Flexbox overview</h3>
+                <p class="description">
+                  Learning to build your own website layout
+                </p>
+              </div>
+            </a>
+          </div>
+
+          <div class="post">
+            <a href="/responsive-grid-layout">
+              <div class="picture-wrapper">
+                <img src="assets/images/grid_icon.png" alt="Plant" />
+              </div>
+              <div class="infor">
+                <p>Tech is future - <span class="date">Feb 23 2023</span></p>
+                <h3 class="post-title">Example responsive grid layout</h3>
+                <p class="description">
+                  Learning to build your own website layout
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <footer class="app-footer">
+        <p class="text-center">
+          Copyright ©2023 All rights reserved | This template is made with &lt;3
+          by MrDat
         </p>
-      </aside>
-      <main>
-        <h2>Main Content</h2>
-        <p>
-          <nav>
-            <ul>
-              <li><a href="/html-knowledge">Html</a></li>
-              <li><a href="/html-excercise">Html Excercise</a></li>
-              <li><a href="/css-knowledge">Css</a></li>
-              <li><a href="/grid-layout">Grid Layout</a></li>
-              <li><a href="/flex-box">Flex Box</a></li>
-            </ul>
-          </nav>
-        </p>
-      </main>
-      <footer>
-        <p>&copy; 2023 My Landing Page. All rights reserved.</p>
       </footer>
     </div>
   </body>

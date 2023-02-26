@@ -1,0 +1,53 @@
+.post-heading .title {
+  text-align: center;
+  padding: 30px;
+  font-size: 40px;
+  font-weight: 700;
+}
+.post-heading .post-wrapper {
+  display: flex;
+}
+
+.post-heading .post-wrapper .infor p {
+  margin-bottom: 20px;
+}
+
+.post-heading .post-wrapper .infor .date {
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.post-heading .post-wrapper .infor .post-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.post-heading .post-wrapper .picture-wrapper img {
+  width: 400px;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.post-heading .post-wrapper .infor .description {
+  color: #888;
+}
+
+.post-heading .post-wrapper .infor {
+  margin-left: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@media (max-width: 1000px) {
+  .post-heading .post-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .post-heading .post-wrapper div {
+    flex: 0 0 100%;
+  }
+
+  .post-heading .post-wrapper .picture-wrapper img {
+    width: 100%;
+  }
+}
