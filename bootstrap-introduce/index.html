@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Css Tutorial</title>
+    <link rel="stylesheet" href="../assets/css/prism.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div id="grid-containter">
+      <header>
+        <h3>Bootstrap Tutorial</h3>
+      </header>
+      <aside>
+        <ul class="sticky">
+          <li><a href="#what-is">What is Bootstrap?</a></li>
+          <li>
+            <a href="#apply-bootstrap">Apply bootstrap</a>
+          </li>
+          <li><a href="#bootstrap-grid">Bootstrap Grid</a></li>
+          <li><a href="#spacing">Spacing</a></li>
+          <li><a href="#example-landing-page">Example landing page</a></li>
+          <li><a href="#build-nav">Build Nav</a></li>
+          <li><a href="#build-headline-header">Build headine header</a></li>
+          <li><a href="#build-cards">Build Cards</a></li>
+          <li><a href="#build-footer">Build footer</a></li>
+          <li><a href="#awesome-component">Awesome components</a></li>
+        </ul>
+      </aside>
+      <section>
+        <article id="what-is">
+          <h3>What is Bootstrap?</h3>
+          <img width="100px" src="../assets/images/bootstrap_icon.png" alt="" />
+          <p>
+            Bootstrap refers to a front-end development framework that enables
+            developers to build responsive, mobile-first web applications. It
+            includes pre-designed HTML, CSS, and JavaScript components that can
+            be easily customized to create modern, visually appealing websites
+          </p>
+
+          <p>
+            Bootstrap was created by Twitter and is now maintained by a
+            community of developers. It provides a number of benefits to
+            developers, including:
+          </p>
+          <ol>
+            <li>
+              <p>
+                <b>Consistency</b>: Bootstrap ensures consistency in design and
+                functionality across different web pages and applications.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Responsiveness</b>: Bootstrap provides responsive design,
+                which means that web pages built with the framework will
+                automatically adjust to fit the screen size of the device they
+                are viewed on.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Customization</b>: Bootstrap's pre-designed components can be
+                easily customized to fit the unique needs of a particular web
+                application.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Accessibility</b>: Bootstrap includes accessibility features,
+                such as keyboard navigation, that make web applications usable
+                by people with disabilities.
+              </p>
+            </li>
+          </ol>
+        </article>
+
+        <article id="apply-bootstrap">
+          <h3>Apply bootstrap</h3>
+          <ol>
+            <li>
+              <b>Visiting</b>:
+              <a href="https://getbootstrap.com">https://getbootstrap.com</a> to
+              get css and js files
+            </li>
+            <li>
+              <b>Add Bootstrap to HTML</b> link to the Bootstrap CSS and
+              JavaScript files(link) in your HTML file
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-markup">
+    &lt;link rel="stylesheet" href="path/to/bootstrap.css"&gt;
+    &lt;script src="path/to/bootstrap.js"&gt;&lt;/script&gt;
+            </code></pre>
+            <li>
+              <b>Start building website</b>: Bootstrap provides a wide range of
+              pre-built components such as navigation bars, forms, buttons, and
+              modals
+            </li>
+            <li>
+              <b>Customize your website</b>: provides a wide range of
+              customization options to help you create a unique website. You can
+              modify the color scheme, typography, and layout of your website
+              using Bootstrap's classes and variables
+            </li>
+          </ol>
+        </article>
+
+        <article id="bootstrap-grid">
+          <h3>Bootstrap Grid</h3>
+          <p>
+            Visiting
+            <a href="https://getbootstrap.com/docs/5.3/layout/grid/"
+              >Bootstrap grid layout</a
+            >
+            to understand layout design in bootstrap
+          </p>
+        </article>
+
+        <article id="spacing">
+          <h3>Spacing</h3>
+          Visit:
+          <a href="https://getbootstrap.com/docs/5.3/utilities/spacing/#row-gap"
+            >spacing</a
+          >
+          to add space between components.
+        </article>
+
+        <article id="example-landing-page">
+          <h3>Example landing page</h3>
+          <p>
+            <b>Visit</b>
+            <a href="./example-landing-page">example landing page</a> to see
+            structure
+          </p>
+        </article>
+
+        <article id="build-nav">
+          <h3>Build header nav</h3>
+          <p>
+            Check:
+            <a href="https://getbootstrap.com/docs/5.3/components/navbar/#nav"
+              >Nav</a
+            >
+            to build header nav. Belove is example:
+          </p>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 500px"
+          ><code class="language-markup">
+    &lt;nav class="navbar navbar-expand-lg bg-body-tertiary"&gt;
+      &lt;div class="container-fluid"&gt;
+        &lt;a class="navbar-brand" href="#"&gt;Navbar&lt;/a&gt;
+        &lt;button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        &gt;
+          &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;div class="collapse navbar-collapse" id="navbarSupportedContent"&gt;
+          &lt;ul class="navbar-nav me-auto mb-2 mb-lg-0"&gt;
+            &lt;li class="nav-item"&gt;
+              &lt;a class="nav-link active" aria-current="page" href="#"&gt;Home&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="nav-item"&gt;
+              &lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="nav-item dropdown"&gt;
+              &lt;a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              &gt;
+                Dropdown
+              &lt;/a&gt;
+              &lt;ul class="dropdown-menu"&gt;
+                &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;hr class="dropdown-divider" /&gt;&lt;/li&gt;
+                &lt;li&gt;
+                  &lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li class="nav-item"&gt;
+              &lt;a class="nav-link disabled"&gt;Disabled&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;form class="d-flex" role="search"&gt;
+            &lt;input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            /&gt;
+            &lt;button class="btn btn-outline-success" type="submit"&gt;
+              Search
+            &lt;/button&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+        </code></pre>
+        </article>
+
+        <article id="build-headline-header">
+          <h3>Build headline header</h3>
+          <p>
+            Check:
+            <a
+              href="https://getbootstrap.com/docs/5.3/layout/containers/#responsive-containers"
+              >container</a
+            >
+            to build headline header. Belove is example:
+          </p>
+          <pre style="padding: 0px; font-size: 10px; width: 800px">
+            <code class="language-markup">
+    &lt;div
+      class="container"
+      style="background-image: url('https://picsum.photos/1600/900')"
+    &gt;
+      &lt;div class="container"&gt;
+        &lt;h1 class="display-4"&gt;Welcome to My Landing Page&lt;/h1&gt;
+        &lt;p class="lead"&gt;
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        &lt;/p&gt;
+        &lt;a class="btn btn-primary btn-lg" href="#" role="button"&gt;Learn more&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+            </code>
+          </pre>
+        </article>
+
+        <article id="build-cards">
+          <h3>Build card list</h3>
+          <p>
+            Check:
+            <a href="https://getbootstrap.com/docs/5.3/components/card/">Nav</a>
+            and
+            <a href="https://getbootstrap.com/docs/5.3/layout/grid/">Grid</a>
+            to build Cards. Belove is example:
+          </p>
+          <pre style="padding: 0px; font-size: 10px; width: 800px">
+            <code class="language-markup">
+    &lt;div class="container mt-5"&gt;
+      &lt;div class="row row-cols-3"&gt;
+        &lt;div class="col mt-3"&gt;
+          &lt;div class="card mx-auto"&gt;
+            &lt;img src="../images/300x200.jpg" class="card-img-top" /&gt;
+            &lt;div class="card-body"&gt;
+              &lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;
+              &lt;p class="card-text"&gt;
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              &lt;/p&gt;
+              &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+  
+        &lt;div class="col mt-3"&gt;
+          &lt;div class="card mx-auto"&gt;
+            &lt;img src="../images/300x200.jpg" class="card-img-top" /&gt;
+            &lt;div class="card-body"&gt;
+              &lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;
+              &lt;p class="card-text"&gt;
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              &lt;/p&gt;
+              &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+  
+        &lt;div class="col mt-3"&gt;
+          &lt;div class="card mx-auto"&gt;
+            &lt;img src="../images/300x200.jpg" class="card-img-top" /&gt;
+            &lt;div class="card-body"&gt;
+              &lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;
+              &lt;p class="card-text"&gt;
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              &lt;/p&gt;
+              &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+  
+        &lt;div class="col mt-3"&gt;
+          &lt;div class="card mx-auto"&gt;
+            &lt;img src="../images/300x200.jpg" class="card-img-top" /&gt;
+            &lt;div class="card-body"&gt;
+              &lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;
+              &lt;p class="card-text"&gt;
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              &lt;/p&gt;
+              &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+  
+        &lt;div class="col mt-3"&gt;
+          &lt;div class="card mx-auto"&gt;
+            &lt;img src="../images/300x200.jpg" class="card-img-top" /&gt;
+            &lt;div class="card-body"&gt;
+              &lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;
+              &lt;p class="card-text"&gt;
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              &lt;/p&gt;
+              &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+  
+        &lt;div class="col mt-3"&gt;
+          &lt;div class="card mx-auto"&gt;
+            &lt;img src="../images/300x200.jpg" class="card-img-top" /&gt;
+            &lt;div class="card-body"&gt;
+              &lt;h5 class="card-title"&gt;Card title&lt;/h5&gt;
+              &lt;p class="card-text"&gt;
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              &lt;/p&gt;
+              &lt;a href="#" class="btn btn-primary"&gt;Go somewhere&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+            </code>
+          </pre>
+        </article>
+
+        <article id="build-footer">
+          <h3>Build footer</h3>
+          <p>Example:</p>
+          <pre style="padding: 0px; font-size: 10px; width: 800px">
+            <code class="language-markup">
+    &lt;footer class="bg-light py-4 mt-5"&gt;
+      &lt;div class="container"&gt;
+        &lt;div class="row"&gt;
+          &lt;div class="col-md-4"&gt;
+            &lt;h4&gt;About Us&lt;/h4&gt;
+            &lt;p&gt;
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget
+              nulla sit amet ante consequat auctor. Praesent bibendum eros non
+              erat laoreet, ac ultricies libero tincidunt.
+            &lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class="col-md-4"&gt;
+            &lt;h4&gt;Useful Links&lt;/h4&gt;
+            &lt;ul class="list-unstyled"&gt;
+              &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href="#"&gt;About Us&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href="#"&gt;Contact Us&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div class="col-md-4"&gt;
+            &lt;h4&gt;Contact Us&lt;/h4&gt;
+            &lt;ul class="list-unstyled"&gt;
+              &lt;li&gt;
+                &lt;i class="fa fa-map-marker"&gt;&lt;/i&gt; 123 Main Street, New York, NY
+                10001
+              &lt;/li&gt;
+              &lt;li&gt;&lt;i class="fa fa-phone"&gt;&lt;/i&gt; (123) 456-7890&lt;/li&gt;
+              &lt;li&gt;&lt;i class="fa fa-envelope"&gt;&lt;/i&gt; info@example.com&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="row mt-3"&gt;
+          &lt;div class="col-md-12"&gt;
+            &lt;hr /&gt;
+            &lt;p class="text-center"&gt;
+              Copyright &copy; 2023 My Company | All rights reserved
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+            </code>
+          </pre>
+        </article>
+
+        <article id="awesome-component">
+          <h3>Awesome components</h3>
+          <b>Visit</b>
+          <a href="https://getbootstrap.com/docs/5.3/components"
+            >bootstrap components</a
+          >
+          to explore more awesome component.
+        </article>
+      </section>
+      <footer>
+        <p>&copy; 2023 - Author: Mr Dat. All rights reserved.</p>
+      </footer>
+      <script src="../assets/js/prism.js"></script>
+      <script src="js/table-color.js"></script>
+    </div>
+  </body>
+</html>
