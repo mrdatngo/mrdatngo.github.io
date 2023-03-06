@@ -1,0 +1,12 @@
+#practice-moving-ball-container {
+  width: 200px;
+  height: 200px;
+  background-color: #444;
+}
+
+#practice-moving-ball-container #ball {
+  width: 30px;
+  height: 30px;
+  background-color: aliceblue;
+  border-radius: 100%;
+}
