@@ -27,55 +27,43 @@
           </li>
           <li><a href="#if-for-while">If - For - While</a></li>
           <li><a href="#function">Function</a></li>
-          <li><a href="#font">Font</a></li>
-          <li>
-            <a href="#background">Background</a>
-          </li>
-          <li><a href="#display">Display</a></li>
-          <li><a href="#position">Position</a></li>
-          <li><a href="#overflow">Overflow</a></li>
-          <li><a href="#responsive">Media Responsive</a></li>
-          <li><a href="#2d-transform">2D Transform</a></li>
-          <li><a href="#transition">Transition</a></li>
-          <li><a href="#animation">Animation</a></li>
         </ul>
       </aside>
       <section>
         <article id="what-is">
           <h3>What is Javascript?</h3>
-          <p>
-            JavaScript is a high-level, interpreted programming language that is
-            widely used to create interactive and dynamic web content. It was
-            first introduced in 1995 and has since become an essential component
-            of web development. JavaScript allows developers to add interactive
-            features to websites, such as animations, pop-ups, and form
-            validation, among other things. It is also commonly used in creating
-            web applications, server-side programming, and mobile app
-            development. JavaScript code can be embedded directly into HTML
-            documents or included in separate files and linked to HTML
-            documents. It can be executed on the client-side, using a web
-            browser, or on the server-side, using a web server or a backend
-            framework. JavaScript is often abbreviated as JS and is distinct
-            from Java, despite their similar-sounding names.
-          </p>
-          <img width="400px" src="./images/js_icon.png" alt="" />
+          <div style="display: flex; column-gap: 20px">
+            <img width="100px" src="./images/js_icon.png" alt="" />
+            <ul>
+              <li>
+                JavaScript is a high-level, interpreted programming language
+                that is widely used to create interactive and dynamic web
+                content
+              </li>
+              <li>It was first introduced in 1995</li>
+              <li>
+                One of 3 main language on web programming: <b>HTML</b>,
+                <b>CSS</b>, <b>JavaScript</b>
+              </li>
+              <li>JavaScript is not Java</li>
+            </ul>
+          </div>
         </article>
+        <br />
+        <hr />
 
         <article id="javascript-complier">
           <h3>JS Just-In-Time</h3>
           <ol>
             <li>
-              <b>JavaScript is an interpreted language</b>JavaScript is an
-              interpreted language, which means that it does not need to be
-              compiled before it can be executed. Instead, JavaScript code is
-              executed directly by a JavaScript engine in a web browser or a
-              server-side runtime environment like Node.js
+              <b>JavaScript is an interpreted language</b> which means that it
+              does not need to be compiled before it can be executed.
             </li>
             <li>
-              Traditionally there are <b>two methods</b> for converting source
-              code into a form that can be run on a platform. Static compilation
-              converts the code into a language for a specific platform. An
-              interpreter directly executes the source code.
+              <b>Two methods</b> for converting source code into a form that can
+              be run on a platform. <b>Static compilation</b> converts the code
+              into a language for a specific platform. An
+              <b>interpreter</b> directly executes the source code.
               <br />
               JIT compilation attempts to use the benefits of <b>both</b>.
             </li>
@@ -86,15 +74,14 @@
     console.log("Hello world")
             </code></pre>
             <li>
-              Additionally, there are tools like <b>Babel</b> that can transpile
-              JavaScript code from newer versions of the language to older
-              versions that are more widely supported by browsers and
-              environments. These tools typically use a combination of parsing,
-              transformation, and code generation techniques to modify the code
-              without fully compiling it
+              Tools like <b>Babel</b> that can transpile JavaScript code from
+              newer versions of the language to older versions that are more
+              widely supported by browsers and environments.
             </li>
           </ol>
         </article>
+        <br />
+        <hr />
 
         <article id="set-up-env">
           <h3>Setup environment for Developing</h3>
@@ -136,6 +123,8 @@
             </li>
           </ul>
         </article>
+        <br />
+        <hr />
 
         <article id="data-type">
           <h3>Data types</h3>
@@ -172,6 +161,8 @@
             </li>
           </ol>
         </article>
+        <br />
+        <hr />
 
         <article id="variable-declaration">
           <h3>Variables declaration</h3>
@@ -211,13 +202,114 @@
             <b>name</b> are different
           </p>
         </article>
+        <br />
+        <hr />
 
         <article id="if-for-while">
           <h3>If - For - While instruments</h3>
-          <h4>If -> switch</h4>
-          <ol>
-            <li></li>
-          </ol>
+          <ul>
+            <li>If basic: <b>if ( Condition ) { // instruments }</b></li>
+            <li>
+              If else:
+              <b
+                >if ( Condition ) { // instruments 1 } else { // instruments2 }
+              </b>
+            </li>
+            <li>Switch Case: replace of too many if else - readable</li>
+            <li>
+              for loop:
+              <b
+                >for (statement 1; statement 2; statement 3) { // instruments
+                }</b
+              >: loop until statement 2 wrong; statement 1 is inital values and
+              statement 3 is update value after every loop to reach condition at
+              statement 2
+            </li>
+            <li>
+              while loop: <b>while(condition) {// instruments}</b> loop until
+              condition is false
+            </li>
+            <li>
+              do-while loop: <b>do {// instruments} while(condition) </b> loop
+              until condition is false except the first loop
+            </li>
+            <li>
+              Others: <b>for…in () / for .. of () / forEach(() => {})</b> use in
+              array.
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+              const raining = true
+              if (raining) {
+                console.log("Wet!")
+              }
+              let list = [4, 5, 6];
+              for(let i = 0; i < list.length; i++) {
+                console.log(list[i])
+              }
+              for (let i in list) {
+                console.log(i); // "0", "1", "2"
+              }
+              for (let i of list) {
+                console.log(i); // "4", "5", "6" 
+              }
+              list.forEach((value, index) => {
+                console.log(value, index)
+              })
+          </code></pre>
+          </ul>
+        </article>
+
+        <article id="function">
+          <h3>Function</h3>
+          <ul>
+            <li><b>Function</b> is a collection of instruments</li>
+            <li>
+              <b>Syntax:</b>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+            function nameOfFunction(var1, var2, var3, ...) { // var1, var2, var3 are agruments
+              // Some code
+              [return value;]
+            }
+          </code></pre>
+            </li>
+            <li><b>'return'</b> is used to response data and exit function</li>
+            <li>Usage</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+            [const return value =] nameOfFunction(value1, value2, value3, …)
+      </code></pre>
+            <li>
+              Note:
+              <ol style="font-size: 12px">
+                <li>Use () to invoke function</li>
+                <li>
+                  Javascript objects and arrays follows pass by reference, else
+                  passing by value
+                </li>
+                <li>Function can call itself (recursive)</li>
+              </ol>
+            </li>
+            <li>
+              <b>Function expression</b> and <b>Arrow Function</b> are another
+              declaration of function
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+            // expression function
+            let variableName = function(arguments) { // statements };
+
+            // arrow function (fat arrow function)
+            let  functionName  =  (var1, var2) => {
+              // instruments
+            };	
+      </code></pre>
+            </li>
+          </ul>
         </article>
       </section>
       <footer>

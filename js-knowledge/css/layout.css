@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  color: #444;
+}
+
 #grid-containter {
   display: grid;
   grid-template-areas:
@@ -106,7 +110,7 @@ article {
 }
 
 article h3 {
-  color: blue;
+  color: cornflowerblue;
   padding: 20px;
   font-size: 30px;
 }
@@ -129,4 +133,9 @@ article pre {
   padding: 0px !important;
   font-size: 10px !important;
   width: 800px !important;
+}
+
+ul > li,
+ol > li {
+  margin: 8px;
 }
