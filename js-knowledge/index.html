@@ -29,6 +29,8 @@
           <li><a href="#if-for-while">If - For - While</a></li>
           <li><a href="#function">Function</a></li>
           <li><a href="#practice-moving-ball">Practive with moving ball</a></li>
+          <li><a href="#numbers">Numbers</a></li>
+          <li><a href="#string">String</a></li>
         </ul>
       </aside>
       <section>
@@ -162,6 +164,9 @@
               <b>Symbol</b> - used to create unique identifiers for objects.
             </li>
           </ol>
+          <h4>Note:</h4>
+          <b>typeof([variable])</b> return data type: number, string, boolean,
+          object(null), function, undefined
         </article>
         <br />
         <hr />
@@ -262,6 +267,8 @@
           </code></pre>
           </ul>
         </article>
+        <br />
+        <hr />
 
         <article id="function">
           <h3>Function</h3>
@@ -279,21 +286,24 @@
           </code></pre>
             </li>
             <li><b>'return'</b> is used to response data and exit function</li>
-            <li>Usage</li>
+            <li><b>Usage</b></li>
             <pre
               style="padding: 0px; font-size: 10px; width: 800px"
             ><code class="language-js">
             [const return value =] nameOfFunction(value1, value2, value3, …)
       </code></pre>
             <li>
-              Note:
+              <b>Note</b>:
               <ol style="font-size: 12px">
                 <li>Use () to invoke function</li>
                 <li>
                   Javascript objects and arrays follows pass by reference, else
                   passing by value
                 </li>
-                <li>Function can call itself (recursive)</li>
+                <li>Function can call itself ( <b>recursive</b> )</li>
+                <li>
+                  Function call inside function => <b>Function call Stack</b>
+                </li>
               </ol>
             </li>
             <li>
@@ -311,21 +321,387 @@
             };	
       </code></pre>
             </li>
+            <li>
+              <h4>Closure of function</h4>
+              <ul>
+                <li>
+                  Closure is created when a function is defined inside another
+                  function
+                </li>
+                <li>
+                  Inner function has access to the outer function's variable and
+                  parameters, even the outer function has returned
+                </li>
+                <li>
+                  <b>Usage 1:</b> Allow us to create functions with persistent
+                  state
+                </li>
+                <li><b>Usage 2:</b> Create private variables and methods</li>
+                <li>
+                  Example:
+                  <pre
+                    style="padding: 0px; font-size: 10px; width: 800px"
+                  ><code class="language-js">
+      function outerFunction() {
+        let outerVariable = 'Hello';
+      
+        function innerFunction() {
+          console.log(outerVariable);
+        }
+      
+        return innerFunction;
+      }
+      
+      let closure = outerFunction();
+      closure(); // logs 'Hello'                    
+        </code></pre>
+                </li>
+              </ul>
+            </li>
           </ul>
         </article>
+        <br />
+        <hr />
 
         <article id="practice-moving-ball">
           <h3>Pratice with moving ball</h3>
-          <p>
-            Prerequisite:
-            <ul>
-              <li>Understand HTML/CSS</li>
-              <li>Understand how transition in css work</li>
-            </ul>
-          </p>
+          Prerequisite:
+          <ul>
+            <li>Understand HTML/CSS</li>
+            <li>Understand how transition in css work</li>
+          </ul>
           <div id="practice-moving-ball-container">
             <div id="ball"></div>
           </div>
+          Code:
+          <pre
+            style="padding: 0px; font-size: 10px; width: 800px"
+          ><code class="language-markup">
+    // css
+    #ball-container {
+      background-color: #444;
+    }
+      
+    #ball {
+        background: white;
+        border-radius: 100%;
+    }
+    // html
+    &lt;div id="ball-container"&gt;
+      &lt;div id="ball"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    </code></pre>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 800px"
+          ><code class="language-js">
+    let containerElem = document.querySelector('#ball-container');
+    let ballElem = document.querySelector('#ball');
+    
+    // initital data
+    
+    let screenWidth = 300;
+    let ballWidth = 30;
+    
+    containerElem.style.width = screenWidth + 'px';
+    containerElem.style.height = screenWidth + 'px';
+    ballElem.style.width = ballWidth + 'px';
+    ballElem.style.height = ballWidth + 'px';
+    
+    let posX = 30;
+    let posY = 50;
+    ballElem.style.transform = `translate(${posX}px,${posY}px)`;
+    
+    posX = posX + 2;
+    posY = posY + 2;
+    
+    moving();
+    
+    // 1s <-> 10^7(10^8) unit
+    async function moving() {
+      let vecX = 2;
+      let vecY = 2;
+      while (true) {
+        if (posX + vecX > screenWidth - ballWidth || posX + vecX < 0) {
+          vecX *= -1;
+          nextX = randomVec(5);
+          //   if (vecX > 0) {
+          //     vecX = nextX
+          //   } else {
+          //     vecX = -nextX
+          //   }
+          vecX = (vecX / Math.abs(vecX)) * nextX;
+        }
+        if (posY + vecY > screenWidth - ballWidth || posY + vecY < 0) {
+          nextY = randomVec(5);
+          vecY *= -1;
+          vecY = (vecY / Math.abs(vecY)) * nextY;
+        }
+    
+        posX = posX + vecX; // posX += vecX
+        posY = posY + vecY; // posY += vecY
+    
+        ballElem.style.transform = `translate(${posX}px,${posY}px)`;
+        await sleep(10);
+      }
+    }
+    
+    function randomVec(maxValue) {
+      return Math.floor(Math.random() * (maxValue + 1)) + 1;
+    }
+    
+    async function sleep(ms) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
+    }
+    
+    // moving using setInterval
+    // 1s <-> 10^7(10^8) unit
+    // async function moving() {
+    //   let vecX = 2;
+    //   let vecY = 2;
+    //   setInterval(() => {
+    //     if (posX + vecX > screenWidth - ballWidth || posX + vecX < 0) {
+    //       vecX *= -1;
+    //       nextX = randomVec(5);
+    //       //   if (vecX > 0) {
+    //       //     vecX = nextX
+    //       //   } else {
+    //       //     vecX = -nextX
+    //       //   }
+    //       vecX = (vecX / Math.abs(vecX)) * nextX;
+    //     }
+    //     if (posY + vecY > screenWidth - ballWidth || posY + vecY < 0) {
+    //       nextY = randomVec(5);
+    //       vecY *= -1;
+    //       vecY = (vecY / Math.abs(vecY)) * nextY;
+    //     }
+    
+    //     posX = posX + vecX; // posX += vecX
+    //     posY = posY + vecY; // posY += vecY
+    
+    //     ballElem.style.transform = `translate(${posX}px,${posY}px)`;
+    //   }, 1000);
+    // }            
+    </code></pre>
+        </article>
+        <br />
+        <hr />
+        <article id="numbers">
+          <h3>Numbers</h3>
+          <ul>
+            <li>
+              <b>Convert to Number:</b> Number.parseFloat()/parseFloat(),
+              Number.parseInt()/parseInt(), Number()
+            </li>
+            <li>
+              <b>Convert to String: </b> Ex: var x = 24; var strX = x.toString()
+            </li>
+            <li>
+              <b>Check type of number:</b> Number.isInteger(), Number.isFinite()
+            </li>
+            <li>
+              <b>Check valid number: </b> Number.isNaN()/ isNaN()
+              <ul style="margin-left: 20px">
+                <li>isNaN(NaN); // true</li>
+                <li>isNaN(0 / 0); // true</li>
+                <li>isNaN(undefined); // true</li>
+                <li>isNaN({}); // true</li>
+                <li>isNaN(“1234”); // false</li>
+              </ul>
+            </li>
+            <li>
+              <b>Maths</b>
+              <ul style="margin-left: 20px">
+                <li>
+                  <b>Rounding: </b> Math.round() Math.ceil(), Math.floor()
+                </li>
+                <li><b>Random: </b> Math.random() return [0, 1)</li>
+                <li>
+                  <b>Controlling number: </b> total.toFixed(2) round with 2
+                  decimals
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </article>
+        <hr />
+        <br />
+        <article id="string">
+          <h3>String</h3>
+          <ul>
+            <li>
+              <b>String</b> is zero or more characters written inside quotes.
+            </li>
+            <li>
+              <b>Syntax</b>: 'text', "text", `text [${variable}]`(ES6: Template
+              literals/Template Strings)
+            </li>
+            <li>
+              <b>Another way to declare</b>: var str = String(thing) // also
+              convert to string
+            </li>
+            <li>
+              <p><b>Special characters</b></p>
+              <br />
+              <table class="table-of-font">
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>\n</td>
+                    <td>Newline</td>
+                  </tr>
+                  <tr>
+                    <td>\r</td>
+                    <td>Carriage return</td>
+                  </tr>
+                  <tr>
+                    <td>\t</td>
+                    <td>Tab</td>
+                  </tr>
+                  <tr>
+                    <td>'</td>
+                    <td>Single quote</td>
+                  </tr>
+                  <tr>
+                    <td>"</td>
+                    <td>Double quote</td>
+                  </tr>
+                  <tr>
+                    <td>\</td>
+                    <td>Backslash</td>
+                  </tr>
+                  <tr>
+                    <td>\b</td>
+                    <td>Backspace</td>
+                  </tr>
+                  <tr>
+                    <td>\f</td>
+                    <td>Form feed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li><b></b>: str.length</li>
+            <li>
+              Strings are immutable
+              <ul style="margin-left: 20px">
+                <li>var x = "cat"; x[0] = "d"; // not allow</li>
+                <li>var x = "cat"; x.length = 0 // not allow</li>
+              </ul>
+            </li>
+            <li>
+              <h4>Methods</h4>
+              <table class="table-of-font">
+                <thead>
+                  <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>length</td>
+                    <td>Returns the length of the string.</td>
+                  </tr>
+                  <tr>
+                    <td>charAt()</td>
+                    <td>Returns the character at the specified index.</td>
+                  </tr>
+                  <tr>
+                    <td>concat()</td>
+                    <td>
+                      Concatenates one or more strings to the end of the current
+                      string.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>includes()</td>
+                    <td>
+                      Determines whether a string contains a specified substring
+                      or not.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>indexOf()</td>
+                    <td>
+                      Returns the index of the first occurrence of a specified
+                      character or substring.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>lastIndexOf()</td>
+                    <td>
+                      Returns the index of the last occurrence of a specified
+                      character or substring.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>match()</td>
+                    <td>
+                      Searches a string for a match against a regular
+                      expression.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>replace()</td>
+                    <td>
+                      Returns a new string with some or all matches of a pattern
+                      replaced by a replacement string.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>slice()</td>
+                    <td>
+                      Extracts a section of a string and returns a new string.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>split()</td>
+                    <td>Splits a string into an array of substrings.</td>
+                  </tr>
+                  <tr>
+                    <td>startsWith()</td>
+                    <td>
+                      Determines whether a string begins with the characters of
+                      a specified string.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>substr()</td>
+                    <td>
+                      Returns a portion of a string starting from a specified
+                      position and with a specified length.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>substring()</td>
+                    <td>
+                      Returns a portion of a string between two specified
+                      indices.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>toLowerCase()</td>
+                    <td>Converts all characters in the string to lowercase.</td>
+                  </tr>
+                  <tr>
+                    <td>toUpperCase()</td>
+                    <td>Converts all characters in the string to uppercase.</td>
+                  </tr>
+                  <tr>
+                    <td>trim()</td>
+                    <td>Removes whitespace from both ends of a string.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+          </ul>
         </article>
       </section>
       <footer>
