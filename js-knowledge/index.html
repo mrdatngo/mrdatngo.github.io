@@ -31,6 +31,7 @@
           <li><a href="#practice-moving-ball">Practive with moving ball</a></li>
           <li><a href="#numbers">Numbers</a></li>
           <li><a href="#string">String</a></li>
+          <li><a href="#array">Array</a></li>
         </ul>
       </aside>
       <section>
@@ -362,6 +363,58 @@
         </article>
         <br />
         <hr />
+
+        <article id="object">
+          <h3>Object</h3>
+          <img src="./images/object.png" alt="" />
+          <ul>
+            <li>
+              Declare
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    var car = {
+      name: "Fiat",
+      model: 500,
+      weight: 850,
+      color: "white",
+      start: function() { console.log("Start running"); }
+    };
+    </code></pre>
+            </li>
+            <li>
+              Accessing object properties:
+              <b
+                ><small
+                  >objectName.propertyName or objectName["propertyName"]</small
+                ></b
+              >
+              <p></p>
+            </li>
+            <li>
+              Accessing object methods:
+              <b><small>objectName.methodName() </small></b>
+            </li>
+            <li>
+              For in: <b><small>for (let variable in object) { ... }</small></b>
+            </li>
+            <li>
+              <b>This</b> usage
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    var person = {
+      firstName: "John",
+      lastName: "Doe",
+      id: 5566,
+      fullName: function() {
+            return this.firstName + " " + this.lastName;
+      }
+    };
+    </code></pre>
+            </li>
+          </ul>
+        </article>
 
         <article id="practice-moving-ball">
           <h3>Pratice with moving ball</h3>
@@ -702,6 +755,196 @@
               </table>
             </li>
           </ul>
+        </article>
+        <hr />
+        <br />
+        <article id="array">
+          <h3 style="padding-bottom: 0px">Arrays</h3>
+          <h4>Declarations</h4>
+          <ul style="list-style-type: disclosure-closed">
+            <li>
+              An array is an ordered collection of data. Arrays are used to
+              store multiple values in a single variable.
+            </li>
+            <li>
+              Type of array is object: <b>var a = []; typeof(a) // object</b>
+            </li>
+            <li>
+              Khởi tạo một array (2 cách khởi tạo này là tương đương)
+              <ul style="margin-left: 16px">
+                <li>var fruits = new Array( "apple", "orange", "mango" );</li>
+                <li>var fruits = [ "apple", "orange", "mango" ];</li>
+              </ul>
+            </li>
+            <li>
+              Mảng 2 chiều : var myArray = [[1,2,3] , [4,5,6] , [‘bay’ , ‘tam’ ,
+              ‘chin’]]
+            </li>
+          </ul>
+          <h4>Access Elements</h4>
+          <ul style="list-style-type: disclosure-closed">
+            <li>
+              Access an element of array <b>arrayName[index]</b>, example: var x
+              = arr[0]
+            </li>
+            <b>Noted</b
+            >: the first elemet start with index 0
+            <li>
+              Go through a array: <b>for()</b> or <b>forEach()</b>
+              <ul>
+                <li>
+                  <small
+                    >for(var i = 0; i &lt; arrayName.length; i++){ console.log(
+                    arrayName[i] ) }</small
+                  >
+                </li>
+                <li>
+                  <small
+                    >arrayName.forEach(function (item, index, array) {
+                    console.log(item, index); });</small
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              Check a variable is a array
+              <ul>
+                <li><small>Array.isArray(fruits)</small></li>
+                <li><small>fruits instanceof Array</small></li>
+              </ul>
+            </li>
+          </ul>
+          <h4>Array methods</h4>
+          <table class="table-of-font">
+            <thead>
+              <tr>
+                <th>Array Method</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>push()</code></td>
+                <td>
+                  Adds one or more elements to the end of an array and returns
+                  the new length of the array.
+                </td>
+              </tr>
+              <tr>
+                <td><code>pop()</code></td>
+                <td>
+                  Removes the last element from an array and returns that
+                  element.
+                </td>
+              </tr>
+              <tr>
+                <td><code>shift()</code></td>
+                <td>
+                  Removes the first element from an array and returns that
+                  element.
+                </td>
+              </tr>
+              <tr>
+                <td><code>unshift()</code></td>
+                <td>
+                  Adds one or more elements to the beginning of an array and
+                  returns the new length of the array.
+                </td>
+              </tr>
+              <tr>
+                <td><code>indexOf()</code></td>
+                <td>
+                  Searches an array for a specified element and returns its
+                  position (index) in the array. Returns -1 if the element is
+                  not found.
+                </td>
+              </tr>
+              <tr>
+                <td><code>lastIndexOf()</code></td>
+                <td>
+                  Searches an array for a specified element starting from the
+                  end of the array and returns its position (index) in the
+                  array. Returns -1 if the element is not found.
+                </td>
+              </tr>
+              <tr>
+                <td><code>reverse()</code></td>
+                <td>Reverses the order of the elements in an array.</td>
+              </tr>
+              <tr>
+                <td><code>slice()</code></td>
+                <td>Extracts a section of an array and returns a new array.</td>
+              </tr>
+              <tr>
+                <td><code>splice()</code></td>
+                <td>
+                  Adds or removes elements from an array and returns the removed
+                  elements.
+                </td>
+              </tr>
+              <tr>
+                <td><code>join()</code></td>
+                <td>
+                  Joins all elements of an array into a string. The elements are
+                  separated by a specified separator.
+                </td>
+              </tr>
+              <tr>
+                <td><code>toString()</code></td>
+                <td>Converts an array to a string and returns the result.</td>
+              </tr>
+              <tr>
+                <td><code>find()</code></td>
+                <td>
+                  Returns the value of the first element in an array that
+                  satisfies the provided testing function.
+                </td>
+              </tr>
+              <tr>
+                <td><code>filter()</code></td>
+                <td>
+                  Creates a new array with all elements that pass a test
+                  (provided as a function).
+                </td>
+              </tr>
+              <tr>
+                <td><code>map()</code></td>
+                <td>
+                  Creates a new array with the results of calling a provided
+                  function on every element in the calling array.
+                </td>
+              </tr>
+              <tr>
+                <td><code>reduce()</code></td>
+                <td>
+                  Applies a function against an accumulator and each element in
+                  the array to reduce it to a single value.
+                </td>
+              </tr>
+              <tr>
+                <td><code>concat()</code></td>
+                <td>
+                  Merges two or more arrays, and returns a new array that
+                  contains all the elements of the original arrays.
+                </td>
+              </tr>
+              <tr>
+                <td><code>sort()</code></td>
+                <td>
+                  Sorts the elements of an array in place and returns the sorted
+                  array.
+                </td>
+              </tr>
+              <tr>
+                <td><code>every()</code></td>
+                <td>
+                  Checks if all the elements in an array pass a test (provided
+                  as a function). Returns true if all elements pass the test,
+                  false otherwise.
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </article>
       </section>
       <footer>

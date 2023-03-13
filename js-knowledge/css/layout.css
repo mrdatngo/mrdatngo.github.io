@@ -137,5 +137,9 @@ article pre {
 
 ul > li,
 ol > li {
-  margin: 8px;
+  margin: 6px;
+}
+
+.sticky > li {
+  margin: 0px;
 }
