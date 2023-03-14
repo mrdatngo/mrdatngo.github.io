@@ -17,21 +17,47 @@
       </header>
       <aside>
         <ul class="sticky">
-          <li><a href="#what-is">What is Javascript?</a></li>
-          <li>
-            <a href="#javascript-complier">Javascript Just-In-Time</a>
-          </li>
-          <li><a href="#set-up-env">Set up environment</a></li>
-          <li><a href="#data-type">Data Type</a></li>
-          <li>
-            <a href="#variable-declaration">Variable declaration</a>
-          </li>
-          <li><a href="#if-for-while">If - For - While</a></li>
-          <li><a href="#function">Function</a></li>
-          <li><a href="#practice-moving-ball">Practive with moving ball</a></li>
-          <li><a href="#numbers">Numbers</a></li>
-          <li><a href="#string">String</a></li>
-          <li><a href="#array">Array</a></li>
+          <div>
+            <li><a href="#what-is">What is Javascript?</a></li>
+            <li>
+              <a href="#javascript-complier">Javascript Just-In-Time</a>
+            </li>
+            <li><a href="#set-up-env">Set up environment</a></li>
+            <li><a href="#data-type">Data Type</a></li>
+            <li>
+              <a href="#variable-declaration">Variable declaration</a>
+            </li>
+            <li><a href="#if-for-while">If - For - While</a></li>
+            <hr />
+            <li><a href="#function-basic">Function Basic</a></li>
+            <li><a href="#object">Object</a></li>
+            <li><a href="#numbers">Numbers</a></li>
+            <hr />
+            <li><a href="#function-advance">Function Advance</a></li>
+            <li>
+              <a href="#practice-moving-ball">Practive with moving ball</a>
+            </li>
+            <hr />
+            <li><a href="#string">String</a></li>
+            <li><a href="#array">Array</a></li>
+            <hr />
+            <li><a href="#dom-handle">DOM Handler</a></li>
+            <hr />
+            <li><a href="#practice-calculator">Calculator</a></li>
+            <li><a href="#practice-slide-show">Slide Show</a></li>
+            <hr />
+            <li><a href="#callback">Callback</a></li>
+            <li><a href="#promise">Promise</a></li>
+            <li><a href="#async-await">Async - Await</a></li>
+            <li><a href="#async-await">AJax</a></li>
+            <hr />
+            <li><a href="#class">Class</a></li>
+            <li><a href="#advance">Advance</a></li>
+            <hr />
+            <li><a href="#canvas">Canvas: Graphic Tag</a></li>
+            <hr />
+            <li><a href="#brief">Brief - Try Catch handler - Minxins</a></li>
+          </div>
         </ul>
       </aside>
       <section>
@@ -39,7 +65,7 @@
           <h3>What is Javascript?</h3>
           <div style="display: flex; column-gap: 20px">
             <img width="100px" src="./images/js_icon.png" alt="" />
-            <ul>
+            <ul style="list-style-type: disclosure-closed">
               <li>
                 JavaScript is a high-level, interpreted programming language
                 that is widely used to create interactive and dynamic web
@@ -59,7 +85,7 @@
 
         <article id="javascript-complier">
           <h3>JS Just-In-Time</h3>
-          <ol>
+          <ol style="list-style-type: disclosure-closed">
             <li>
               <b>JavaScript is an interpreted language</b> which means that it
               does not need to be compiled before it can be executed.
@@ -91,7 +117,7 @@
         <article id="set-up-env">
           <h3>Setup environment for Developing</h3>
           <h4>Using nodeJS</h4>
-          <ul>
+          <ul style="list-style-type: disclosure-closed">
             <li>Install nodejs: https://nodejs.org/en/download/</li>
             <li>
               Check installed: <code><b>node --version</b></code>
@@ -106,7 +132,7 @@
             </li>
           </ul>
           <h4>Using Browser Dev Tools</h4>
-          <ul>
+          <ul style="list-style-type: disclosure-closed">
             <li>Install VScode + Live Server</li>
             <li>Create index.js file</li>
             <pre
@@ -138,7 +164,7 @@
             (Dynamic type - the data type of a variable can change during
             runtime)
           </p>
-          <ol>
+          <ol style="list-style-type: disclosure-closed">
             <li><b>Number</b> - used for numeric values.</li>
             <li><b>String</b> - used for text values.</li>
             <li><b>Boolean</b> - used for logical values (true/false).</li>
@@ -151,15 +177,12 @@
               <b>Object</b> - used for more complex data structures, such as
               arrays and functions.
             </li>
-            <li>
-              <b>Symbol</b> - used to create unique identifiers for objects.
-            </li>
           </ol>
           <p>
             Additionally, starting from ECMAScript 2015, JavaScript has two new
             data types:
           </p>
-          <ol start="8">
+          <ol start="8" style="list-style-type: disclosure-closed">
             <li><b>BigInt</b> - used for integers with arbitrary precision.</li>
             <li>
               <b>Symbol</b> - used to create unique identifiers for objects.
@@ -168,6 +191,27 @@
           <h4>Note:</h4>
           <b>typeof([variable])</b> return data type: number, string, boolean,
           object(null), function, undefined
+          <p>Example</p>
+          <div>
+            <pre style="padding: 0px; font-size: 10px; width: 800px">
+              <code class="language-js">
+  // example
+  let count = 0;
+  count = count + 1; // count++; ++count
+  count = count - 1; // count--; --count;
+  count = count + x; // count+=x
+  count = count / 2; // count /= x
+
+  let fullName = "firstName" + "lastName";
+  let total = 1 + "1"; // explain: 11
+
+  console.log("un-declare: ", undeclareVariable); // undefine
+
+  let person = {
+    userame: "John"
+  }</code>
+            </pre>
+          </div>
         </article>
         <br />
         <hr />
@@ -180,13 +224,16 @@
             >, <code><b>let</b></code
             >, and <code><b>const</b></code>
           </p>
-          <pre>
-                <code class="language-js">
-    var data = {};
-    let width = 100;
-    const PI = 3.14;</code>
-              </pre>
-          <ol>
+          <div>
+            <pre style="padding: 0px; font-size: 10px; width: 800px">
+              <code class="language-js">
+  var data = {};
+  let width = 100;
+  const PI = 3.14;</code>
+            </pre>
+          </div>
+
+          <ol style="list-style-type: disclosure-closed">
             <li>
               <b>var</b>: function scope or global scope and can be re-declared
             </li>
@@ -196,7 +243,7 @@
             </li>
           </ol>
           <h4>Variable naming rules:</h4>
-          <ol>
+          <ol style="list-style-type: disclosure-closed">
             <li>
               Variable name can not the same with keyword: <b>var</b>,
               <b>for</b>, <b>if</b>, <b>...</b>
@@ -209,13 +256,22 @@
             >: Variable names are case sensitive, mean <b>Name</b> and
             <b>name</b> are different
           </p>
+
+          <div>
+            <pre style="padding: 0px; font-size: 10px; width: 800px">
+              <code class="language-js">
+                // example
+                const thisIsACamelCaseName;
+                const this_is_snake_case_name;</code>
+            </pre>
+          </div>
         </article>
         <br />
         <hr />
 
         <article id="if-for-while">
           <h3>If - For - While instruments</h3>
-          <ul>
+          <ul style="list-style-type: disclosure-closed">
             <li>If basic: <b>if ( Condition ) { // instruments }</b></li>
             <li>
               If else:
@@ -248,42 +304,64 @@
             <pre
               style="padding: 0px; font-size: 10px; width: 800px"
             ><code class="language-js">
-              const raining = true
-              if (raining) {
-                console.log("Wet!")
-              }
-              let list = [4, 5, 6];
-              for(let i = 0; i < list.length; i++) {
-                console.log(list[i])
-              }
-              for (let i in list) {
-                console.log(i); // "0", "1", "2"
-              }
-              for (let i of list) {
-                console.log(i); // "4", "5", "6" 
-              }
-              list.forEach((value, index) => {
-                console.log(value, index)
-              })
+    const raining = true
+    if (raining) {
+      console.log("Wet!")
+    }
+    let list = [4, 5, 6];
+    for(let i = 0; i < list.length; i++) {
+      console.log(list[i])
+    }
+    for (let i in list) {
+      console.log(i); // "0", "1", "2"
+    }
+    for (let i of list) {
+      console.log(i); // "4", "5", "6" 
+    }
+    list.forEach((value, index) => {
+      console.log(value, index)
+    })
+          </code></pre>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // example with: Given a positive integer, is it a prime number?
+    let isPrime = true
+    if (number <= 1 ) {
+        isPrime = false
+    } else {
+        for (let i = 2; i <= Math.sqrt(number); i++ ) {
+            if (number % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+    }
+
+    if (isPrime) {
+        console.log("YES")
+    } else {
+        console.log("NO")
+    }
           </code></pre>
           </ul>
         </article>
         <br />
         <hr />
 
-        <article id="function">
-          <h3>Function</h3>
-          <ul>
+        <article id="function-basic">
+          <h3>Function Basic</h3>
+          <ul style="list-style-type: disclosure-closed">
             <li><b>Function</b> is a collection of instruments</li>
             <li>
               <b>Syntax:</b>
               <pre
                 style="padding: 0px; font-size: 10px; width: 800px"
               ><code class="language-js">
-            function nameOfFunction(var1, var2, var3, ...) { // var1, var2, var3 are agruments
-              // Some code
-              [return value;]
-            }
+    function nameOfFunction(var1, var2, var3, ...) { // var1, var2, var3 are agruments
+      // Some code
+      [return value;]
+    }
           </code></pre>
             </li>
             <li><b>'return'</b> is used to response data and exit function</li>
@@ -291,74 +369,28 @@
             <pre
               style="padding: 0px; font-size: 10px; width: 800px"
             ><code class="language-js">
-            [const return value =] nameOfFunction(value1, value2, value3, …)
+    [const return value =] nameOfFunction(value1, value2, value3, …)
       </code></pre>
-            <li>
-              <b>Note</b>:
-              <ol style="font-size: 12px">
-                <li>Use () to invoke function</li>
-                <li>
-                  Javascript objects and arrays follows pass by reference, else
-                  passing by value
-                </li>
-                <li>Function can call itself ( <b>recursive</b> )</li>
-                <li>
-                  Function call inside function => <b>Function call Stack</b>
-                </li>
-              </ol>
-            </li>
-            <li>
-              <b>Function expression</b> and <b>Arrow Function</b> are another
-              declaration of function
-              <pre
-                style="padding: 0px; font-size: 10px; width: 800px"
-              ><code class="language-js">
-            // expression function
-            let variableName = function(arguments) { // statements };
-
-            // arrow function (fat arrow function)
-            let  functionName  =  (var1, var2) => {
-              // instruments
-            };	
-      </code></pre>
-            </li>
-            <li>
-              <h4>Closure of function</h4>
-              <ul>
-                <li>
-                  Closure is created when a function is defined inside another
-                  function
-                </li>
-                <li>
-                  Inner function has access to the outer function's variable and
-                  parameters, even the outer function has returned
-                </li>
-                <li>
-                  <b>Usage 1:</b> Allow us to create functions with persistent
-                  state
-                </li>
-                <li><b>Usage 2:</b> Create private variables and methods</li>
-                <li>
-                  Example:
-                  <pre
-                    style="padding: 0px; font-size: 10px; width: 800px"
-                  ><code class="language-js">
-      function outerFunction() {
-        let outerVariable = 'Hello';
-      
-        function innerFunction() {
-          console.log(outerVariable);
-        }
-      
-        return innerFunction;
+            <p>Example:</p>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // example with: Given a positive integer, is it a prime number?
+    function isPrimeNumber(number) {
+      let isPrime = true
+      if (number <= 1 ) {
+          isPrime = false
+      } else {
+          for (let i = 2; i <= Math.sqrt(number); i++ ) {
+              if (number % i == 0) {
+                  isPrime = false;
+                  break;
+              }
+          }
       }
-      
-      let closure = outerFunction();
-      closure(); // logs 'Hello'                    
-        </code></pre>
-                </li>
-              </ul>
-            </li>
+      return isPrime
+    }
+    </code></pre>
           </ul>
         </article>
         <br />
@@ -367,11 +399,11 @@
         <article id="object">
           <h3>Object</h3>
           <img src="./images/object.png" alt="" />
-          <ul>
+          <ul style="list-style-type: disclosure-closed">
             <li>
               Declare
               <pre
-                style="padding: 0px; font-size: 10px; width: 800px"
+                style="padding: 0px; font-size: 10px; width: 600px"
               ><code class="language-js">
     var car = {
       name: "Fiat",
@@ -401,9 +433,9 @@
             <li>
               <b>This</b> usage
               <pre
-                style="padding: 0px; font-size: 10px; width: 800px"
+                style="padding: 0px; font-size: 10px; width: 600px"
               ><code class="language-js">
-    var person = {
+    const person = {
       firstName: "John",
       lastName: "Doe",
       id: 5566,
@@ -413,23 +445,168 @@
     };
     </code></pre>
             </li>
+            <li>Object Destructering, Object.keys()</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    const person = {
+      firstName: "John",
+      lastName: "Doe",
+    };
+    const { firstName, lastName } = person
+    console.log(Object.keys(person)) //["firstName", "lastName"]
+    </code></pre>
+            <li>Spread Operator, Rest Operator</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // spread operator
+    const person = {
+      firstName: "John",
+      lastName: "Doe",
+    };
+    const newPerson = { ...person }
+
+    // rest operator
+    const print(firstParam, secondParam, ...rest) {
+      console.log(firstParam, secondParam, rest)
+    }
+    print("firstParam", "secondParam", "thirdParam")
+    print("firstParam", "secondParam", ...person)
+    </code></pre>
           </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="numbers">
+          <h3>Numbers</h3>
+          <ul style="list-style-type: disclosure-closed">
+            <li>
+              <b>Convert to Number:</b> Number.parseFloat()/parseFloat(),
+              Number.parseInt()/parseInt(), Number()
+            </li>
+            <li>
+              <b>Convert to String: </b> Ex: var x = 24; var strX = x.toString()
+            </li>
+            <li>
+              <b>Check type of number:</b> Number.isInteger(), Number.isFinite()
+            </li>
+            <li>
+              <b>Check valid number: </b> Number.isNaN()/ isNaN()
+              <ul style="margin-left: 20px">
+                <li>isNaN(NaN); // true</li>
+                <li>isNaN(0 / 0); // true</li>
+                <li>isNaN(undefined); // true</li>
+                <li>isNaN({}); // true</li>
+                <li>isNaN(“1234”); // false</li>
+              </ul>
+            </li>
+            <li>
+              <b>Maths</b>
+              <ul style="margin-left: 20px">
+                <li>
+                  <b>Rounding: </b> Math.round() Math.ceil(), Math.floor()
+                </li>
+                <li><b>Random: </b> Math.random() return [0, 1)</li>
+                <li>
+                  <b>Controlling number: </b> total.toFixed(2) round with 2
+                  decimals
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </article>
+        <hr />
+        <br />
+
+        <article id="function-advance">
+          <h3>Function Advances</h3>
+          <ol style="list-style-type: disclosure-closed">
+            <li>Note</li>
+            <ol style="font-size: 12px">
+              <li>Use () to invoke function</li>
+              <li>
+                Javascript objects and arrays follows pass by reference, else
+                passing by value
+              </li>
+              <li>Function can call itself ( <b>recursive</b> )</li>
+              <li>
+                Function call inside function => <b>Function call Stack</b>
+              </li>
+            </ol>
+            <li>
+              <b>Function expression</b> and <b>Arrow Function</b> are another
+              declaration of function
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+            // expression function
+            let variableName = function(arguments) { // statements };
+
+            // arrow function (fat arrow function)
+            let  functionName  =  (var1, var2) => {
+              // instruments
+            };	
+      </code></pre>
+            </li>
+            <li><b>Closure of function</b></li>
+            <ul>
+              <li>
+                Closure is created when a function is defined inside another
+                function
+              </li>
+              <li>
+                Inner function has access to the outer function's variable and
+                parameters, even the outer function has returned
+              </li>
+              <li>
+                <b>Usage 1:</b> Allow us to create functions with persistent
+                state
+              </li>
+              <li><b>Usage 2:</b> Create private variables and methods</li>
+              <li>
+                Example:
+                <pre
+                  style="padding: 0px; font-size: 10px; width: 800px"
+                ><code class="language-js">
+    function outerFunction() {
+      let outerVariable = 'Hello';
+    
+      function innerFunction() {
+        console.log(outerVariable);
+      }
+    
+      return innerFunction;
+    }
+    
+    let closure = outerFunction();
+    closure(); // logs 'Hello'                    
+      </code></pre>
+              </li>
+            </ul>
+          </ol>
         </article>
 
         <article id="practice-moving-ball">
           <h3>Pratice with moving ball</h3>
           Prerequisite:
-          <ul>
+          <ul style="list-style-type: disclosure-closed">
             <li>Understand HTML/CSS</li>
             <li>Understand how transition in css work</li>
           </ul>
-          <div id="practice-moving-ball-container">
-            <div id="ball"></div>
+          <div>
+            <div id="practice-moving-ball-container">
+              <div id="ball"></div>
+            </div>
           </div>
+
           Code:
-          <pre
-            style="padding: 0px; font-size: 10px; width: 800px"
-          ><code class="language-markup">
+          <button class="js-ball-game-code">Show</button>
+          <div style="display: none" id="ball-game-code-container">
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-markup">
     // css
     #ball-container {
       background-color: #444;
@@ -444,9 +621,9 @@
       &lt;div id="ball"&gt;&lt;/div&gt;
     &lt;/div&gt;
     </code></pre>
-          <pre
-            style="padding: 0px; font-size: 10px; width: 800px"
-          ><code class="language-js">
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
     let containerElem = document.querySelector('#ball-container');
     let ballElem = document.querySelector('#ball');
     
@@ -537,52 +714,14 @@
     //   }, 1000);
     // }            
     </code></pre>
+          </div>
         </article>
         <br />
         <hr />
-        <article id="numbers">
-          <h3>Numbers</h3>
-          <ul>
-            <li>
-              <b>Convert to Number:</b> Number.parseFloat()/parseFloat(),
-              Number.parseInt()/parseInt(), Number()
-            </li>
-            <li>
-              <b>Convert to String: </b> Ex: var x = 24; var strX = x.toString()
-            </li>
-            <li>
-              <b>Check type of number:</b> Number.isInteger(), Number.isFinite()
-            </li>
-            <li>
-              <b>Check valid number: </b> Number.isNaN()/ isNaN()
-              <ul style="margin-left: 20px">
-                <li>isNaN(NaN); // true</li>
-                <li>isNaN(0 / 0); // true</li>
-                <li>isNaN(undefined); // true</li>
-                <li>isNaN({}); // true</li>
-                <li>isNaN(“1234”); // false</li>
-              </ul>
-            </li>
-            <li>
-              <b>Maths</b>
-              <ul style="margin-left: 20px">
-                <li>
-                  <b>Rounding: </b> Math.round() Math.ceil(), Math.floor()
-                </li>
-                <li><b>Random: </b> Math.random() return [0, 1)</li>
-                <li>
-                  <b>Controlling number: </b> total.toFixed(2) round with 2
-                  decimals
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </article>
-        <hr />
-        <br />
+
         <article id="string">
           <h3>String</h3>
-          <ul>
+          <ul style="list-style-type: disclosure-closed">
             <li>
               <b>String</b> is zero or more characters written inside quotes.
             </li>
@@ -640,7 +779,6 @@
                 </tbody>
               </table>
             </li>
-            <li><b></b>: str.length</li>
             <li>
               Strings are immutable
               <ul style="margin-left: 20px">
@@ -715,17 +853,6 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>split()</td>
-                    <td>Splits a string into an array of substrings.</td>
-                  </tr>
-                  <tr>
-                    <td>startsWith()</td>
-                    <td>
-                      Determines whether a string begins with the characters of
-                      a specified string.
-                    </td>
-                  </tr>
-                  <tr>
                     <td>substr()</td>
                     <td>
                       Returns a portion of a string starting from a specified
@@ -737,6 +864,17 @@
                     <td>
                       Returns a portion of a string between two specified
                       indices.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>split()</td>
+                    <td>Splits a string into an array of substrings.</td>
+                  </tr>
+                  <tr>
+                    <td>startsWith()</td>
+                    <td>
+                      Determines whether a string begins with the characters of
+                      a specified string.
                     </td>
                   </tr>
                   <tr>
@@ -758,6 +896,7 @@
         </article>
         <hr />
         <br />
+
         <article id="array">
           <h3 style="padding-bottom: 0px">Arrays</h3>
           <h4>Declarations</h4>

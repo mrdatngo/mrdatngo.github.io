@@ -1,3 +1,9 @@
+const btnElem = document.querySelector('.js-ball-game-code');
+btnElem.addEventListener('click', () => {
+  const ballContainerElem = document.querySelector('#ball-game-code-container');
+  ballContainerElem.style.display = 'block';
+});
+
 const ball = document.querySelector('#ball');
 
 if (ball) {
