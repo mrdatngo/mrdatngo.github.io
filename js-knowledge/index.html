@@ -46,7 +46,7 @@
             </li>
             <hr />
             <li><a href="#function-advance">Function Advance</a></li>
-            <li><a href="#practice-slide-show">Slide Show</a></li>
+            <li><a href="#practice-carousel">Carousel</a></li>
             <hr />
             <li><a href="#callback">Callback</a></li>
             <li><a href="#promise">Promise</a></li>
@@ -1076,6 +1076,223 @@
               <li>Bind, apply, for</li>
             </ul>
           </ol>
+        </article>
+
+        <hr />
+        <br />
+        <article id="practice-carousel">
+          <h3>Carousel</h3>
+          <ul>
+            <li>HTML</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-markup">
+    &lt;div class="container"&gt;
+      &lt;div class="slider-container"&gt;
+        &lt;div class="image-wrapper"&gt;
+        &lt;div class="image-shower active"&gt;
+          &lt;img src="./images/img_mountains_wide.jpg" alt="" /&gt;
+        &lt;/div&gt;
+        &lt;div class="image-shower"&gt;
+          &lt;img src="./images/img_nature_wide.jpg" alt="" /&gt;
+        &lt;/div&gt;
+        &lt;div class="image-shower"&gt;
+          &lt;img src="./images/img_snow_wide.jpg" alt="" /&gt;
+        &lt;/div&gt;
+        &lt;div class="arrow-wrapper"&gt;
+          &lt;div class="arrow-left"&gt;&lt;&lt;/div&gt;
+          &lt;div class="arrow-right"&gt;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+        </code></pre>
+            <li>CSS</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .slider-container {
+      width: 800px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    
+    .image-wrapper img {
+      width: 800px;
+    }
+    
+    .image-wrapper {
+      position: relative;
+    }
+    
+    .image-shower {
+      position: absolute;
+      display: none;
+    }
+    
+    .image-shower.active {
+      display: block;
+      position: static;
+    }
+    
+    .image-shower.active-left-to-right {
+      transform: translate(-100%, 0);
+      transition: transform 1s;
+    }
+    
+    .image-shower.active-right-to-left {
+      transform: translate(100%, 0);
+      transition: transform 1s;
+    }
+    
+    .image-shower.next-active-left-to-right {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 100%;
+      transform: translate(-100%, 0);
+      animation: slide-left 1s ease 0s 1;
+    }
+    
+    @keyframes slide-left {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(-100%, 0);
+      }
+    }
+    
+    .image-shower.next-active-right-to-left {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: -100%;
+      animation: slide-right 1s ease 0s 1;
+    }
+    
+    @keyframes slide-right {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(100%, 0);
+      }
+    }
+    
+    /* arrow style */
+    .arrow-wrapper {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+    }
+    
+    .arrow-wrapper .arrow-left {
+      display: inline-block;
+      position: absolute;
+      top: 30%;
+      padding: 30px;
+    }
+    
+    .arrow-wrapper .arrow-left:hover {
+      background-color: black;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+    
+    .arrow-wrapper .arrow-right {
+      display: inline-block;
+      position: absolute;
+      top: 30%;
+      right: 0px;
+      padding: 30px;
+    }
+    
+    .arrow-wrapper .arrow-right:hover {
+      background-color: black;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+              
+        </code></pre>
+            <li>JavaScript</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-js">
+    let activeIndex = 0;
+    let imageShowers = document.querySelectorAll('.image-shower');
+    let total = imageShowers.length;
+
+    let timeout;
+    let interval;
+    let timoutFunction;
+    function start() {
+      interval = setInterval(() => {
+        moveNext(activeIndex, 1);
+      }, 4000);
+    }
+
+    start();
+    let isMoving = false;
+
+    function moveNext(curIndex) {
+      if (isMoving) {
+        return;
+      }
+      isMoving = true;
+      let nextIndex = (curIndex + 1) % total;
+      imageShowers[curIndex].classList.add('active-left-to-right');
+      imageShowers[nextIndex].classList.add('next-active-left-to-right');
+      timeoutFunc = () => {
+        imageShowers[curIndex].classList.remove('active');
+        imageShowers[nextIndex].classList.add('active');
+        imageShowers[curIndex].classList.remove('active-left-to-right');
+        imageShowers[nextIndex].classList.remove('next-active-left-to-right');
+        activeIndex = nextIndex;
+        isMoving = false;
+      };
+      timeout = setTimeout(timeoutFunc, 1000);
+    }
+
+    function moveBack(curIndex) {
+      if (isMoving) {
+        return;
+      }
+      isMoving = true;
+      let nextIndex = (curIndex - 1 + total) % total;
+      imageShowers[curIndex].classList.add('active-right-to-left');
+      imageShowers[nextIndex].classList.add('next-active-right-to-left');
+      timeoutFunc = () => {
+        imageShowers[curIndex].classList.remove('active');
+        imageShowers[nextIndex].classList.add('active');
+        imageShowers[curIndex].classList.remove('active-right-to-left');
+        imageShowers[nextIndex].classList.remove('next-active-right-to-left');
+        activeIndex = nextIndex;
+        isMoving = false;
+      };
+      timeout = setTimeout(timeoutFunc, 1000);
+    }
+
+    let arrowLeft = document.querySelector('.arrow-wrapper .arrow-left');
+    let arrowRight = document.querySelector('.arrow-wrapper .arrow-right');
+    arrowLeft.addEventListener('click', function () {
+      moveNext(activeIndex);
+    });
+
+    arrowRight.addEventListener('click', function () {
+      moveBack(activeIndex);
+    });
+
+        </code></pre>
+          </ul>
         </article>
 
         <article id="practice-moving-ball">

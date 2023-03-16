@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slider-container {
+  width: 800px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.image-wrapper img {
+  width: 800px;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-shower {
+  position: absolute;
+  display: none;
+}
+
+.image-shower.active {
+  display: block;
+  position: static;
+}
+
+.image-shower.active-left-to-right {
+  transform: translate(-100%, 0);
+  transition: transform 1s;
+}
+
+.image-shower.active-right-to-left {
+  transform: translate(100%, 0);
+  transition: transform 1s;
+}
+
+.image-shower.next-active-left-to-right {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 100%;
+  transform: translate(-100%, 0);
+  animation: slide-left 1s ease 0s 1;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+.image-shower.next-active-right-to-left {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: -100%;
+  animation: slide-right 1s ease 0s 1;
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
+/* arrow style */
+.arrow-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+.arrow-wrapper .arrow-left {
+  display: inline-block;
+  position: absolute;
+  top: 30%;
+  padding: 30px;
+}
+
+.arrow-wrapper .arrow-left:hover {
+  background-color: black;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.arrow-wrapper .arrow-right {
+  display: inline-block;
+  position: absolute;
+  top: 30%;
+  right: 0px;
+  padding: 30px;
+}
+
+.arrow-wrapper .arrow-right:hover {
+  background-color: black;
+  opacity: 0.5;
+  cursor: pointer;
+}
