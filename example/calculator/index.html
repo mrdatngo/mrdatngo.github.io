@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="cal-container">
+        <div class="cal-screen">
+          <input type="text" class="screen-input" />
+          <p class="screen-result">Result</p>
+        </div>
+        <div class="cal-num-wrapper">
+          <button class="cal-num cal-btn" cal-value="1">1</button>
+          <button class="cal-num cal-btn" cal-value="2">2</button>
+          <button class="cal-num cal-btn" cal-value="3">3</button>
+          <button class="cal-num cal-btn" cal-value="4">4</button>
+          <button class="cal-num cal-btn" cal-value="5">5</button>
+          <button class="cal-num cal-btn" cal-value="6">6</button>
+          <button class="cal-num cal-btn" cal-value="7">7</button>
+          <button class="cal-num cal-btn" cal-value="8">8</button>
+          <button class="cal-num cal-btn" cal-value="9">9</button>
+        </div>
+        <div class="cal-operator-wrapper">
+          <button class="cal-operator cal-btn" cal-value="+">+</button>
+          <button class="cal-operator cal-btn" cal-value="-">-</button>
+          <button class="cal-operator cal-btn" cal-value="*">*</button>
+          <button class="cal-operator cal-btn" cal-value="/">/</button>
+        </div>
+        <div class="cal-pointer-wrapper">
+          <button class="cal-pointer cal-btn" cal-value=".">.</button>
+        </div>
+        <div class="cal-num-zero">
+          <button class="cal-num cal-btn" cal-value="0">0</button>
+        </div>
+        <div class="cal-equal-btn-wrapper">
+          <button class="cal-equal-btn">=</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

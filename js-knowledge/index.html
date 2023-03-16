@@ -27,36 +27,48 @@
             <li>
               <a href="#variable-declaration">Variable declaration</a>
             </li>
-            <li><a href="#if-for-while">If - For - While</a></li>
+            <li><a href="#if-switch">If - Switch</a></li>
             <hr />
+            <li><a href="#for-while">Loop: for - while</a></li>
             <li><a href="#function-basic">Function Basic</a></li>
             <li><a href="#object">Object</a></li>
             <li><a href="#numbers">Numbers</a></li>
             <hr />
-            <li><a href="#function-advance">Function Advance</a></li>
+            <li><a href="#array">Array</a></li>
+            <li><a href="#string">String</a></li>
+            <hr />
+            <li><a href="#dom-handler">DOM Handler</a></li>
+            <li><a href="#practice-calculator">Calculator</a></li>
+            <hr />
+            <li><a href="#object-advance">Object Advance</a></li>
             <li>
-              <a href="#practice-moving-ball">Practive with moving ball</a>
+              <a href="#example-object-advance">Example Object Advance</a>
             </li>
             <hr />
-            <li><a href="#string">String</a></li>
-            <li><a href="#array">Array</a></li>
-            <hr />
-            <li><a href="#dom-handle">DOM Handler</a></li>
-            <hr />
-            <li><a href="#practice-calculator">Calculator</a></li>
+            <li><a href="#function-advance">Function Advance</a></li>
             <li><a href="#practice-slide-show">Slide Show</a></li>
             <hr />
             <li><a href="#callback">Callback</a></li>
             <li><a href="#promise">Promise</a></li>
             <li><a href="#async-await">Async - Await</a></li>
-            <li><a href="#async-await">AJax</a></li>
+            <li>
+              <a href="#async-await">AJax - Example calling api with aJax</a>
+            </li>
             <hr />
             <li><a href="#class">Class</a></li>
             <li><a href="#advance">Advance</a></li>
             <hr />
             <li><a href="#canvas">Canvas: Graphic Tag</a></li>
             <hr />
-            <li><a href="#brief">Brief - Try Catch handler - Minxins</a></li>
+            <li>
+              <a href="#brief"
+                >Brief - Try Catch handler - Minxins - Solve exercise -
+                setTimeout, setInterval - create a clock</a
+              >
+            </li>
+            <li>
+              <a href="#practice-moving-ball">Practive with moving ball</a>
+            </li>
           </div>
         </ul>
       </aside>
@@ -205,6 +217,13 @@
   let fullName = "firstName" + "lastName";
   let total = 1 + "1"; // explain: 11
 
+  let isRaining = false;
+  if (isRainning) {
+    console.log("Stay at home")
+  } else {
+    console.log("Go out!")
+  }
+
   console.log("un-declare: ", undeclareVariable); // undefine
 
   let person = {
@@ -269,8 +288,8 @@
         <br />
         <hr />
 
-        <article id="if-for-while">
-          <h3>If - For - While instruments</h3>
+        <article id="if-switch">
+          <h3>If - Switch instruments</h3>
           <ul style="list-style-type: disclosure-closed">
             <li>If basic: <b>if ( Condition ) { // instruments }</b></li>
             <li>
@@ -280,6 +299,71 @@
               </b>
             </li>
             <li>Switch Case: replace of too many if else - readable</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    const raining = true
+    if (raining) {
+      console.log("Wet!")
+    }
+    const month = 3;
+    if (month == 1 || month == 2 || month == 3) {
+      console.log("Spring!")
+    } else if (month == 4 || month == 5 || month == 6) {
+      console.log("Summer!")
+    } else if (month == 7 || month == 8 || month == 9) {
+      console.log("Autumn")
+    } else if (month == 10 || month == 11 || month == 12) {
+      console.log("Winter")
+    } else {
+      console.log("Unknown")
+    }
+          </code></pre>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // example switch case
+    const month = 3;
+    switch(month) {
+      case 1:
+      case 2:
+      case 3:
+        console.log("Spring!");
+        break;
+      case 4:
+      case 5:
+      case 6:
+        console.log("Summer");
+        break;
+      case 7:
+      case 8:
+      case 9:
+        console.log("Autumn!");
+        break;
+      case 10:
+      case 11:
+      case 12:
+        console.log("Winter!");
+        break;
+    }
+          </code></pre>
+
+            <li>Note: What is different between <b>==</b> and <b>===</b></li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    console.log("1" === 1); // false
+    console.log("1" == 1) // true
+    // => '===' compare value and type
+      </code></pre>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="for-while">
+          <h3>For - While instruments</h3>
+          <ul style="list-style-type: disclosure-closed">
             <li>
               for loop:
               <b
@@ -304,23 +388,16 @@
             <pre
               style="padding: 0px; font-size: 10px; width: 800px"
             ><code class="language-js">
-    const raining = true
-    if (raining) {
-      console.log("Wet!")
+    for(let i = 0; i < 10; i++) {
+      console.log("i : ", i)
+    } 
+    while(true) {
+      let timestamp = new Date().getTime()
+      if (timestamp % 3 == 0) {
+        break;
+      }
     }
-    let list = [4, 5, 6];
-    for(let i = 0; i < list.length; i++) {
-      console.log(list[i])
-    }
-    for (let i in list) {
-      console.log(i); // "0", "1", "2"
-    }
-    for (let i of list) {
-      console.log(i); // "4", "5", "6" 
-    }
-    list.forEach((value, index) => {
-      console.log(value, index)
-    })
+    // exercise: Given n is a positive integer number, calculate total from 1 to n
           </code></pre>
             <pre
               style="padding: 0px; font-size: 10px; width: 800px"
@@ -445,6 +522,50 @@
     };
     </code></pre>
             </li>
+            <table class="table-of-font">
+              <tbody>
+                <tr>
+                  <td>
+                    In an object method,
+                    <code class="w3-codespan">this</code> refers to the
+                    <b>object</b>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Alone, <code class="w3-codespan">this</code> refers to the
+                    <b>global object</b>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    In a function, <code class="w3-codespan">this</code> refers
+                    to the <b>global object</b>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    In a function, in strict mode,
+                    <code class="w3-codespan">this</code> is
+                    <code class="w3-codespan">undefined</code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    In an event, <code class="w3-codespan">this</code> refers to
+                    the <b>element</b> that received the event.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Methods like <code class="w3-codespan">call()</code>,
+                    <code class="w3-codespan">apply()</code>, and
+                    <code class="w3-codespan">bind()</code> can refer
+                    <code class="w3-codespan">this</code> to <b>any object</b>.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
             <li>Object Destructering, Object.keys()</li>
             <pre
               style="padding: 0px; font-size: 10px; width: 600px"
@@ -474,6 +595,7 @@
     print("firstParam", "secondParam", "thirdParam")
     print("firstParam", "secondParam", ...person)
     </code></pre>
+            <li>Prototype</li>
           </ul>
         </article>
         <br />
@@ -514,383 +636,6 @@
                   decimals
                 </li>
               </ul>
-            </li>
-          </ul>
-        </article>
-        <hr />
-        <br />
-
-        <article id="function-advance">
-          <h3>Function Advances</h3>
-          <ol style="list-style-type: disclosure-closed">
-            <li>Note</li>
-            <ol style="font-size: 12px">
-              <li>Use () to invoke function</li>
-              <li>
-                Javascript objects and arrays follows pass by reference, else
-                passing by value
-              </li>
-              <li>Function can call itself ( <b>recursive</b> )</li>
-              <li>
-                Function call inside function => <b>Function call Stack</b>
-              </li>
-            </ol>
-            <li>
-              <b>Function expression</b> and <b>Arrow Function</b> are another
-              declaration of function
-              <pre
-                style="padding: 0px; font-size: 10px; width: 800px"
-              ><code class="language-js">
-            // expression function
-            let variableName = function(arguments) { // statements };
-
-            // arrow function (fat arrow function)
-            let  functionName  =  (var1, var2) => {
-              // instruments
-            };	
-      </code></pre>
-            </li>
-            <li><b>Closure of function</b></li>
-            <ul>
-              <li>
-                Closure is created when a function is defined inside another
-                function
-              </li>
-              <li>
-                Inner function has access to the outer function's variable and
-                parameters, even the outer function has returned
-              </li>
-              <li>
-                <b>Usage 1:</b> Allow us to create functions with persistent
-                state
-              </li>
-              <li><b>Usage 2:</b> Create private variables and methods</li>
-              <li>
-                Example:
-                <pre
-                  style="padding: 0px; font-size: 10px; width: 800px"
-                ><code class="language-js">
-    function outerFunction() {
-      let outerVariable = 'Hello';
-    
-      function innerFunction() {
-        console.log(outerVariable);
-      }
-    
-      return innerFunction;
-    }
-    
-    let closure = outerFunction();
-    closure(); // logs 'Hello'                    
-      </code></pre>
-              </li>
-            </ul>
-          </ol>
-        </article>
-
-        <article id="practice-moving-ball">
-          <h3>Pratice with moving ball</h3>
-          Prerequisite:
-          <ul style="list-style-type: disclosure-closed">
-            <li>Understand HTML/CSS</li>
-            <li>Understand how transition in css work</li>
-          </ul>
-          <div>
-            <div id="practice-moving-ball-container">
-              <div id="ball"></div>
-            </div>
-          </div>
-
-          Code:
-          <button class="js-ball-game-code">Show</button>
-          <div style="display: none" id="ball-game-code-container">
-            <pre
-              style="padding: 0px; font-size: 10px; width: 800px"
-            ><code class="language-markup">
-    // css
-    #ball-container {
-      background-color: #444;
-    }
-      
-    #ball {
-        background: white;
-        border-radius: 100%;
-    }
-    // html
-    &lt;div id="ball-container"&gt;
-      &lt;div id="ball"&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    </code></pre>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 800px"
-            ><code class="language-js">
-    let containerElem = document.querySelector('#ball-container');
-    let ballElem = document.querySelector('#ball');
-    
-    // initital data
-    
-    let screenWidth = 300;
-    let ballWidth = 30;
-    
-    containerElem.style.width = screenWidth + 'px';
-    containerElem.style.height = screenWidth + 'px';
-    ballElem.style.width = ballWidth + 'px';
-    ballElem.style.height = ballWidth + 'px';
-    
-    let posX = 30;
-    let posY = 50;
-    ballElem.style.transform = `translate(${posX}px,${posY}px)`;
-    
-    posX = posX + 2;
-    posY = posY + 2;
-    
-    moving();
-    
-    // 1s <-> 10^7(10^8) unit
-    async function moving() {
-      let vecX = 2;
-      let vecY = 2;
-      while (true) {
-        if (posX + vecX > screenWidth - ballWidth || posX + vecX < 0) {
-          vecX *= -1;
-          nextX = randomVec(5);
-          //   if (vecX > 0) {
-          //     vecX = nextX
-          //   } else {
-          //     vecX = -nextX
-          //   }
-          vecX = (vecX / Math.abs(vecX)) * nextX;
-        }
-        if (posY + vecY > screenWidth - ballWidth || posY + vecY < 0) {
-          nextY = randomVec(5);
-          vecY *= -1;
-          vecY = (vecY / Math.abs(vecY)) * nextY;
-        }
-    
-        posX = posX + vecX; // posX += vecX
-        posY = posY + vecY; // posY += vecY
-    
-        ballElem.style.transform = `translate(${posX}px,${posY}px)`;
-        await sleep(10);
-      }
-    }
-    
-    function randomVec(maxValue) {
-      return Math.floor(Math.random() * (maxValue + 1)) + 1;
-    }
-    
-    async function sleep(ms) {
-      return new Promise((resolve) => {
-        setTimeout(resolve, ms);
-      });
-    }
-    
-    // moving using setInterval
-    // 1s <-> 10^7(10^8) unit
-    // async function moving() {
-    //   let vecX = 2;
-    //   let vecY = 2;
-    //   setInterval(() => {
-    //     if (posX + vecX > screenWidth - ballWidth || posX + vecX < 0) {
-    //       vecX *= -1;
-    //       nextX = randomVec(5);
-    //       //   if (vecX > 0) {
-    //       //     vecX = nextX
-    //       //   } else {
-    //       //     vecX = -nextX
-    //       //   }
-    //       vecX = (vecX / Math.abs(vecX)) * nextX;
-    //     }
-    //     if (posY + vecY > screenWidth - ballWidth || posY + vecY < 0) {
-    //       nextY = randomVec(5);
-    //       vecY *= -1;
-    //       vecY = (vecY / Math.abs(vecY)) * nextY;
-    //     }
-    
-    //     posX = posX + vecX; // posX += vecX
-    //     posY = posY + vecY; // posY += vecY
-    
-    //     ballElem.style.transform = `translate(${posX}px,${posY}px)`;
-    //   }, 1000);
-    // }            
-    </code></pre>
-          </div>
-        </article>
-        <br />
-        <hr />
-
-        <article id="string">
-          <h3>String</h3>
-          <ul style="list-style-type: disclosure-closed">
-            <li>
-              <b>String</b> is zero or more characters written inside quotes.
-            </li>
-            <li>
-              <b>Syntax</b>: 'text', "text", `text [${variable}]`(ES6: Template
-              literals/Template Strings)
-            </li>
-            <li>
-              <b>Another way to declare</b>: var str = String(thing) // also
-              convert to string
-            </li>
-            <li>
-              <p><b>Special characters</b></p>
-              <br />
-              <table class="table-of-font">
-                <thead>
-                  <tr>
-                    <th>Code</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>\n</td>
-                    <td>Newline</td>
-                  </tr>
-                  <tr>
-                    <td>\r</td>
-                    <td>Carriage return</td>
-                  </tr>
-                  <tr>
-                    <td>\t</td>
-                    <td>Tab</td>
-                  </tr>
-                  <tr>
-                    <td>'</td>
-                    <td>Single quote</td>
-                  </tr>
-                  <tr>
-                    <td>"</td>
-                    <td>Double quote</td>
-                  </tr>
-                  <tr>
-                    <td>\</td>
-                    <td>Backslash</td>
-                  </tr>
-                  <tr>
-                    <td>\b</td>
-                    <td>Backspace</td>
-                  </tr>
-                  <tr>
-                    <td>\f</td>
-                    <td>Form feed</td>
-                  </tr>
-                </tbody>
-              </table>
-            </li>
-            <li>
-              Strings are immutable
-              <ul style="margin-left: 20px">
-                <li>var x = "cat"; x[0] = "d"; // not allow</li>
-                <li>var x = "cat"; x.length = 0 // not allow</li>
-              </ul>
-            </li>
-            <li>
-              <h4>Methods</h4>
-              <table class="table-of-font">
-                <thead>
-                  <tr>
-                    <th>Method Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>length</td>
-                    <td>Returns the length of the string.</td>
-                  </tr>
-                  <tr>
-                    <td>charAt()</td>
-                    <td>Returns the character at the specified index.</td>
-                  </tr>
-                  <tr>
-                    <td>concat()</td>
-                    <td>
-                      Concatenates one or more strings to the end of the current
-                      string.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>includes()</td>
-                    <td>
-                      Determines whether a string contains a specified substring
-                      or not.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>indexOf()</td>
-                    <td>
-                      Returns the index of the first occurrence of a specified
-                      character or substring.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>lastIndexOf()</td>
-                    <td>
-                      Returns the index of the last occurrence of a specified
-                      character or substring.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>match()</td>
-                    <td>
-                      Searches a string for a match against a regular
-                      expression.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>replace()</td>
-                    <td>
-                      Returns a new string with some or all matches of a pattern
-                      replaced by a replacement string.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>slice()</td>
-                    <td>
-                      Extracts a section of a string and returns a new string.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>substr()</td>
-                    <td>
-                      Returns a portion of a string starting from a specified
-                      position and with a specified length.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>substring()</td>
-                    <td>
-                      Returns a portion of a string between two specified
-                      indices.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>split()</td>
-                    <td>Splits a string into an array of substrings.</td>
-                  </tr>
-                  <tr>
-                    <td>startsWith()</td>
-                    <td>
-                      Determines whether a string begins with the characters of
-                      a specified string.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>toLowerCase()</td>
-                    <td>Converts all characters in the string to lowercase.</td>
-                  </tr>
-                  <tr>
-                    <td>toUpperCase()</td>
-                    <td>Converts all characters in the string to uppercase.</td>
-                  </tr>
-                  <tr>
-                    <td>trim()</td>
-                    <td>Removes whitespace from both ends of a string.</td>
-                  </tr>
-                </tbody>
-              </table>
             </li>
           </ul>
         </article>
@@ -1085,12 +830,739 @@
             </tbody>
           </table>
         </article>
+
+        <article id="string">
+          <h3>String</h3>
+          <ul style="list-style-type: disclosure-closed">
+            <li>
+              <b>String</b> is zero or more characters written inside quotes.
+            </li>
+            <li>
+              <b>Syntax</b>: 'text', "text", `text [${variable}]`(ES6: Template
+              literals/Template Strings)
+            </li>
+            <li>
+              <b>Another way to declare</b>: var str = String(thing) // also
+              convert to string
+            </li>
+            <li>
+              <p><b>Special characters</b></p>
+              <br />
+              <table class="table-of-font">
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>\n</td>
+                    <td>Newline</td>
+                  </tr>
+                  <tr>
+                    <td>\r</td>
+                    <td>Carriage return</td>
+                  </tr>
+                  <tr>
+                    <td>\t</td>
+                    <td>Tab</td>
+                  </tr>
+                  <tr>
+                    <td>'</td>
+                    <td>Single quote</td>
+                  </tr>
+                  <tr>
+                    <td>"</td>
+                    <td>Double quote</td>
+                  </tr>
+                  <tr>
+                    <td>\</td>
+                    <td>Backslash</td>
+                  </tr>
+                  <tr>
+                    <td>\b</td>
+                    <td>Backspace</td>
+                  </tr>
+                  <tr>
+                    <td>\f</td>
+                    <td>Form feed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li>
+              Strings are immutable
+              <ul style="margin-left: 20px">
+                <li>var x = "cat"; x[0] = "d"; // not allow</li>
+                <li>var x = "cat"; x.length = 0 // not allow</li>
+              </ul>
+            </li>
+            <li>
+              <h4>Methods</h4>
+              <table class="table-of-font">
+                <thead>
+                  <tr>
+                    <th>Method Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>length</td>
+                    <td>Returns the length of the string.</td>
+                  </tr>
+                  <tr>
+                    <td>charAt()</td>
+                    <td>Returns the character at the specified index.</td>
+                  </tr>
+                  <tr>
+                    <td>concat()</td>
+                    <td>
+                      Concatenates one or more strings to the end of the current
+                      string.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>includes()</td>
+                    <td>
+                      Determines whether a string contains a specified substring
+                      or not.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>indexOf()</td>
+                    <td>
+                      Returns the index of the first occurrence of a specified
+                      character or substring.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>lastIndexOf()</td>
+                    <td>
+                      Returns the index of the last occurrence of a specified
+                      character or substring.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>match()</td>
+                    <td>
+                      Searches a string for a match against a regular
+                      expression.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>replace()</td>
+                    <td>
+                      Returns a new string with some or all matches of a pattern
+                      replaced by a replacement string.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>slice()</td>
+                    <td>
+                      Extracts a section of a string and returns a new string.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>substr()</td>
+                    <td>
+                      Returns a portion of a string starting from a specified
+                      position and with a specified length.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>substring()</td>
+                    <td>
+                      Returns a portion of a string between two specified
+                      indices.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>split()</td>
+                    <td>Splits a string into an array of substrings.</td>
+                  </tr>
+                  <tr>
+                    <td>startsWith()</td>
+                    <td>
+                      Determines whether a string begins with the characters of
+                      a specified string.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>toLowerCase()</td>
+                    <td>Converts all characters in the string to lowercase.</td>
+                  </tr>
+                  <tr>
+                    <td>toUpperCase()</td>
+                    <td>Converts all characters in the string to uppercase.</td>
+                  </tr>
+                  <tr>
+                    <td>trim()</td>
+                    <td>Removes whitespace from both ends of a string.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+          </ul>
+        </article>
+        <hr />
+        <br />
+
+        <article id="function-advance">
+          <h3>Function Advances</h3>
+          <ol style="list-style-type: disclosure-closed">
+            <li>Note</li>
+            <ol style="font-size: 12px">
+              <li>Use () to invoke function</li>
+              <li>
+                Javascript objects and arrays follows pass by reference, else
+                passing by value
+              </li>
+              <li>Function can call itself ( <b>recursive</b> )</li>
+              <li>
+                Function call inside function => <b>Function call Stack</b>
+              </li>
+            </ol>
+            <li>
+              <b>Function expression</b> and <b>Arrow Function</b> are another
+              declaration of function
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+            // expression function
+            let variableName = function(arguments) { // statements };
+
+            // arrow function (fat arrow function)
+            let  functionName  =  (var1, var2) => {
+              // instruments
+            };	
+      </code></pre>
+            </li>
+            <li><b>Closure of function</b></li>
+            <ul>
+              <li>
+                Closure is created when a function is defined inside another
+                function
+              </li>
+              <li>
+                Inner function has access to the outer function's variable and
+                parameters, even the outer function has returned
+              </li>
+              <li>
+                <b>Usage 1:</b> Allow us to create functions with persistent
+                state
+              </li>
+              <li><b>Usage 2:</b> Create private variables and methods</li>
+              <li>
+                Example:
+                <pre
+                  style="padding: 0px; font-size: 10px; width: 800px"
+                ><code class="language-js">
+    function outerFunction() {
+      let outerVariable = 'Hello';
+    
+      function innerFunction() {
+        console.log(outerVariable);
+      }
+    
+      return innerFunction;
+    }
+    
+    let closure = outerFunction();
+    closure(); // logs 'Hello'                    
+      </code></pre>
+              </li>
+              <li>Bind, apply, for</li>
+            </ul>
+          </ol>
+        </article>
+
+        <article id="practice-moving-ball">
+          <h3>Pratice with moving ball</h3>
+          Prerequisite:
+          <ul style="list-style-type: disclosure-closed">
+            <li>Understand HTML/CSS</li>
+            <li>Understand how transition in css work</li>
+          </ul>
+          <div>
+            <div id="practice-moving-ball-container">
+              <div id="ball"></div>
+            </div>
+          </div>
+
+          Code:
+          <button class="js-ball-game-code">Show</button>
+          <div style="display: none" id="ball-game-code-container">
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-markup">
+    // css
+    #ball-container {
+      background-color: #444;
+    }
+      
+    #ball {
+        background: white;
+        border-radius: 100%;
+    }
+    // html
+    &lt;div id="ball-container"&gt;
+      &lt;div id="ball"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    </code></pre>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    let containerElem = document.querySelector('#ball-container');
+    let ballElem = document.querySelector('#ball');
+    
+    // initital data
+    
+    let screenWidth = 300;
+    let ballWidth = 30;
+    
+    containerElem.style.width = screenWidth + 'px';
+    containerElem.style.height = screenWidth + 'px';
+    ballElem.style.width = ballWidth + 'px';
+    ballElem.style.height = ballWidth + 'px';
+    
+    let posX = 30;
+    let posY = 50;
+    ballElem.style.transform = `translate(${posX}px,${posY}px)`;
+    
+    posX = posX + 2;
+    posY = posY + 2;
+    
+    moving();
+    
+    // 1s <-> 10^7(10^8) unit
+    async function moving() {
+      let vecX = 2;
+      let vecY = 2;
+      while (true) {
+        if (posX + vecX > screenWidth - ballWidth || posX + vecX < 0) {
+          vecX *= -1;
+          nextX = randomVec(5);
+          //   if (vecX > 0) {
+          //     vecX = nextX
+          //   } else {
+          //     vecX = -nextX
+          //   }
+          vecX = (vecX / Math.abs(vecX)) * nextX;
+        }
+        if (posY + vecY > screenWidth - ballWidth || posY + vecY < 0) {
+          nextY = randomVec(5);
+          vecY *= -1;
+          vecY = (vecY / Math.abs(vecY)) * nextY;
+        }
+    
+        posX = posX + vecX; // posX += vecX
+        posY = posY + vecY; // posY += vecY
+    
+        ballElem.style.transform = `translate(${posX}px,${posY}px)`;
+        await sleep(10);
+      }
+    }
+    
+    function randomVec(maxValue) {
+      return Math.floor(Math.random() * (maxValue + 1)) + 1;
+    }
+    
+    async function sleep(ms) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
+    }
+    
+    // moving using setInterval
+    // 1s <-> 10^7(10^8) unit
+    // async function moving() {
+    //   let vecX = 2;
+    //   let vecY = 2;
+    //   setInterval(() => {
+    //     if (posX + vecX > screenWidth - ballWidth || posX + vecX < 0) {
+    //       vecX *= -1;
+    //       nextX = randomVec(5);
+    //       //   if (vecX > 0) {
+    //       //     vecX = nextX
+    //       //   } else {
+    //       //     vecX = -nextX
+    //       //   }
+    //       vecX = (vecX / Math.abs(vecX)) * nextX;
+    //     }
+    //     if (posY + vecY > screenWidth - ballWidth || posY + vecY < 0) {
+    //       nextY = randomVec(5);
+    //       vecY *= -1;
+    //       vecY = (vecY / Math.abs(vecY)) * nextY;
+    //     }
+    
+    //     posX = posX + vecX; // posX += vecX
+    //     posY = posY + vecY; // posY += vecY
+    
+    //     ballElem.style.transform = `translate(${posX}px,${posY}px)`;
+    //   }, 1000);
+    // }            
+    </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="dom-handler">
+          <h3>DOM - Document Object Model</h3>
+          <h4>About</h4>
+          <p>
+            The HTML DOM is a standard object model and programming interface
+            for HTML.
+          </p>
+          <p>
+            Helping on operator of a website: change <b>color</b>, <b>size</b>,
+            ..., noti <b>error</b>, event handler: <b>onclick</b>, <b>hover</b>,
+            ...
+          </p>
+          <p>The HTML DOM model is constructed as a tree of Objects</p>
+          <img src="images/dom-tree.gif" alt="" />
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-js">
+    // open browser => console tag
+    document.body.style.backgroundColor = "red";
+            </code></pre>
+          </div>
+          <h4>Function</h4>
+          <p>To done it, DOM defines:</p>
+          <ul>
+            <li>The HTML elements as objects</li>
+            <li>The properties of all HTML elements</li>
+            <li>The methods to access all HTML elements</li>
+            <li>The events for all HTML elements</li>
+          </ul>
+          <h4>How to use</h4>
+          <ul style="list-style-type: disclosure-closed">
+            <li>Finding HTML elements</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    document.getElementById(id);                  // Find an element by element id
+    document.getElementByTagName(name);           // Find elements by tag Name
+    document.getElementByClassName(name);         // Find elements by class name
+    document.querySelector("[css-selector]");     // Find a element like css Selector
+    document.querySelectorAll("[css-selector]");  // Find all elements like css Selector 
+            </code></pre>
+            <li>Changing properties HTML elements</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // property
+    element.innerHTML = new html content; // Change the inner HTML of an element
+    element.attribute = new value; // Change the attribute of an HTML element
+    element.style.property = new style ; // Change the style of an HTML element
+    // note: property follow camel case. example: background-color => backgroundColor
+    // method
+    element.setAttribute(attribute, value); // Change the attribute of an HTML element
+            </code></pre>
+            <li>Add and Remove elements</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // document.createElement("element tag name"); create an HTML element
+    // Ex:
+    const divElem = document.createElement("div");
+    const pElem = document.createElement("p"); // pElem.innerText = "Hello"
+    
+    // element.appendChild(element);  Add an HTML element to document
+    // Ex:
+    divElem.appendChild(pElem);
+
+    // document.removeChild(element); remove an HTML element
+    // Ex:
+    divElem.removeChild(pElem);
+
+    // document.replaceChild(new, old); Replace an HTML element
+    const newPElem = document.createElement(p)
+    divElem.replace(newPElem, pElem)
+    
+    // document.write(text); Write into the HTML output steam
+    document.write("Hello")
+            </code></pre>
+            <li>Events Handlers</li>
+            <button id="js-btn-event-handler" onclick="alert('inline click')">
+              Event Handler
+            </button>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // html
+    &lt;button id="js-btn-event-handler" onclick="alert('inline click')"&gt;
+      Event Handler
+    &lt;/button&gt;
+
+    // javascript
+    const element = document.getElementById("js-btn-event-handler")
+    // Add event handler code to an onclick event
+    element.onclick = function(){ alert("assign click") }; // this will replace inline onclick event
+    
+    element.addEventListener('click', function () {
+      alert('add click');
+    });
+    element.addEventListener('click', function () {
+      alert('add click 2');
+    });
+    
+            </code></pre>
+            <p>Common events</p>
+            <table class="table-of-font">
+              <tbody>
+                <tr>
+                  <th>Event</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>onchange</td>
+                  <td>An HTML element has been changed</td>
+                </tr>
+                <tr>
+                  <td>onclick</td>
+                  <td>The user clicks an HTML element</td>
+                </tr>
+                <tr>
+                  <td>onmouseover</td>
+                  <td>The user moves the mouse over an HTML element</td>
+                </tr>
+                <tr>
+                  <td>onmouseout</td>
+                  <td>The user moves the mouse away from an HTML element</td>
+                </tr>
+                <tr>
+                  <td>onkeydown</td>
+                  <td>The user pushes a keyboard key</td>
+                </tr>
+                <tr>
+                  <td>onload</td>
+                  <td>The browser has finished loading the page</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              Reference
+              <a href="https://www.w3schools.com/js/js_events.asp">here</a> for
+              more
+            </p>
+            <li>Form Handler</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // javascript
+    function validateForm() {
+      let x = document.forms["myForm"]["fname"].value;
+      if (x == "") {
+        alert("Name must be filled out");
+        return false;
+      }
+    }
+
+    // html
+    &lt;form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post"&gt;
+      Name: &lt;input type="text" name="fname"&gt;
+      &lt;input type="submit" value="Submit"&gt;
+    &lt;/form&gt;
+    
+            </code></pre>
+          </ul>
+        </article>
+
+        <article id="practice-calculator">
+          <h3>Calculator</h3>
+          <p>Prerequisite</p>
+          <ol>
+            <li>Understand Dom-handler</li>
+            <li>Javascript basic</li>
+          </ol>
+          <p>Step</p>
+          <ul style="list-style: disclosure-closed">
+            <li>
+              Checkout Calculator result
+              <a href="../example/calculator">Here</a>
+            </li>
+            <li>Html code</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-markup">
+    &lt;div class="container"&gt;
+      &lt;div class="cal-container"&gt;
+        &lt;div class="cal-screen"&gt;
+          &lt;input type="text" class="screen-input" /&gt;
+          &lt;p class="screen-result"&gt;Result&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="cal-num-wrapper"&gt;
+          &lt;button class="cal-num cal-btn" cal-value="1"&gt;1&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="2"&gt;2&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="3"&gt;3&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="4"&gt;4&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="5"&gt;5&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="6"&gt;6&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="7"&gt;7&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="8"&gt;8&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="9"&gt;9&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="cal-operator-wrapper"&gt;
+          &lt;button class="cal-operator cal-btn" cal-value="+"&gt;+&lt;/button&gt;
+          &lt;button class="cal-operator cal-btn" cal-value="-"&gt;-&lt;/button&gt;
+          &lt;button class="cal-operator cal-btn" cal-value="*"&gt;*&lt;/button&gt;
+          &lt;button class="cal-operator cal-btn" cal-value="/"&gt;/&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="cal-pointer-wrapper"&gt;
+          &lt;button class="cal-pointer cal-btn" cal-value="."&gt;.&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="cal-num-zero"&gt;
+          &lt;button class="cal-num cal-btn" cal-value="0"&gt;0&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="cal-equal-btn-wrapper"&gt;
+          &lt;button class="cal-equal-btn"&gt;=&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+          </code></pre>
+            <li>Css code</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-css">
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    
+    [class^='cal'] {
+      /* border: 1px solid black; */
+      min-height: 50px;
+    }
+    
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .cal-container {
+      width: 300px;
+    }
+    
+    .cal-container {
+      display: grid;
+      grid-template-areas:
+        'screen screen screen'
+        'num num operator'
+        'num num operator'
+        'num num pointer'
+        'num-zero equal-btn equal-btn';
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-rows: auto;
+    }
+    
+    .cal-screen {
+      grid-area: screen;
+    }
+    
+    .cal-num-wrapper {
+      grid-area: num;
+    }
+    
+    .cal-operator-wrapper {
+      grid-area: operator;
+    }
+    
+    .cal-num-zero {
+      grid-area: num-zero;
+    }
+    
+    .cal-equal-btn-wrapper {
+      grid-area: equal-btn;
+    }
+    
+    .cal-pointer-wrapper {
+      grid-area: pointer;
+    }
+    
+    .screen-input {
+      height: 50%;
+      width: 100%;
+    }
+    
+    .screen-result {
+      height: 50%;
+      text-align: right;
+    }
+    
+    /* cal-num-wrapper */
+    .cal-num-wrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    
+    .cal-num-wrapper .cal-num {
+      width: 33.33%;
+    }
+    
+    .cal-num-zero .cal-num {
+      width: 100%;
+    }
+    
+    .cal-equal-btn-wrapper .cal-equal-btn {
+      width: 100%;
+    }
+    
+    .cal-operator-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .cal-operator-wrapper .cal-operator {
+      width: 50%;
+    }
+    .cal-pointer-wrapper .cal-pointer {
+      width: 100%;
+    }              
+          </code></pre>
+            <li>Javascript</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-js">
+    const inputElem = document.querySelector('.cal-screen .screen-input');
+    const resultElem = document.querySelector('.cal-screen .screen-result');
+    
+    inputElem.value = '';
+    resultElem.innerText = '';
+    
+    const calBtns = document.querySelectorAll('.cal-btn');
+    
+    calBtns.forEach((calBtn) => {
+      calBtn.addEventListener('click', () => {
+        const value = calBtn.getAttribute('cal-value');
+        inputElem.value += value;
+      });
+    });
+    
+    const equalBtn = document.querySelector(
+      '.cal-equal-btn-wrapper .cal-equal-btn'
+    );
+    equalBtn.addEventListener('click', () => {
+      resultElem.innerText = eval(inputElem.value);
+    });              
+        </code></pre>
+          </ul>
+        </article>
       </section>
       <footer>
         <p>&copy; 2023 - Author: Mr Dat. All rights reserved.</p>
       </footer>
       <script src="../assets/js/prism.js"></script>
       <script src="js/moving-ball.js"></script>
+      <script src="js/event-handler.js"></script>
     </div>
   </body>
 </html>

@@ -110,19 +110,13 @@ article > * {
 
 article h3 {
   color: cornflowerblue;
-  margin: 20px 10px;
-  font-size: 30px;
-}
-
-article h3 {
-  color: cornflowerblue;
-  padding: 20px 0;
+  margin: 20px 10px 10px 10px;
   font-size: 30px;
 }
 
 article h4 {
   color: cornflowerblue;
-  padding: 15px 0;
+  padding: 10px 0;
   font-size: 20px;
 }
 
