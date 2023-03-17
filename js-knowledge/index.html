@@ -41,12 +41,12 @@
             <li><a href="#practice-calculator">Calculator</a></li>
             <hr />
             <li><a href="#object-advance">Object Advance</a></li>
-            <li>
-              <a href="#example-object-advance">Example Object Advance</a>
-            </li>
+            <li><a href="#practice-carousel">Carousel</a></li>
             <hr />
             <li><a href="#function-advance">Function Advance</a></li>
-            <li><a href="#practice-carousel">Carousel</a></li>
+            <li>
+              <a href="#practice-racing-bike">Racing bike</a>
+            </li>
             <hr />
             <li><a href="#callback">Callback</a></li>
             <li><a href="#promise">Promise</a></li>
@@ -507,11 +507,10 @@
             <li>
               For in: <b><small>for (let variable in object) { ... }</small></b>
             </li>
-            <li>
-              <b>This</b> usage
-              <pre
-                style="padding: 0px; font-size: 10px; width: 600px"
-              ><code class="language-js">
+            <li><b>This</b> usage</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
     const person = {
       firstName: "John",
       lastName: "Doe",
@@ -521,81 +520,6 @@
       }
     };
     </code></pre>
-            </li>
-            <table class="table-of-font">
-              <tbody>
-                <tr>
-                  <td>
-                    In an object method,
-                    <code class="w3-codespan">this</code> refers to the
-                    <b>object</b>.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Alone, <code class="w3-codespan">this</code> refers to the
-                    <b>global object</b>.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    In a function, <code class="w3-codespan">this</code> refers
-                    to the <b>global object</b>.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    In a function, in strict mode,
-                    <code class="w3-codespan">this</code> is
-                    <code class="w3-codespan">undefined</code>.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    In an event, <code class="w3-codespan">this</code> refers to
-                    the <b>element</b> that received the event.
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Methods like <code class="w3-codespan">call()</code>,
-                    <code class="w3-codespan">apply()</code>, and
-                    <code class="w3-codespan">bind()</code> can refer
-                    <code class="w3-codespan">this</code> to <b>any object</b>.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <li>Object Destructering, Object.keys()</li>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 600px"
-            ><code class="language-js">
-    const person = {
-      firstName: "John",
-      lastName: "Doe",
-    };
-    const { firstName, lastName } = person
-    console.log(Object.keys(person)) //["firstName", "lastName"]
-    </code></pre>
-            <li>Spread Operator, Rest Operator</li>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 600px"
-            ><code class="language-js">
-    // spread operator
-    const person = {
-      firstName: "John",
-      lastName: "Doe",
-    };
-    const newPerson = { ...person }
-
-    // rest operator
-    const print(firstParam, secondParam, ...rest) {
-      console.log(firstParam, secondParam, rest)
-    }
-    print("firstParam", "secondParam", "thirdParam")
-    print("firstParam", "secondParam", ...person)
-    </code></pre>
-            <li>Prototype</li>
           </ul>
         </article>
         <br />
@@ -1009,80 +933,517 @@
         <hr />
         <br />
 
-        <article id="function-advance">
-          <h3>Function Advances</h3>
-          <ol style="list-style-type: disclosure-closed">
-            <li>Note</li>
-            <ol style="font-size: 12px">
-              <li>Use () to invoke function</li>
-              <li>
-                Javascript objects and arrays follows pass by reference, else
-                passing by value
-              </li>
-              <li>Function can call itself ( <b>recursive</b> )</li>
-              <li>
-                Function call inside function => <b>Function call Stack</b>
-              </li>
-            </ol>
-            <li>
-              <b>Function expression</b> and <b>Arrow Function</b> are another
-              declaration of function
-              <pre
-                style="padding: 0px; font-size: 10px; width: 800px"
-              ><code class="language-js">
-            // expression function
-            let variableName = function(arguments) { // statements };
+        <article id="dom-handler">
+          <h3>DOM - Document Object Model</h3>
+          <h4>About</h4>
+          <p>
+            The HTML DOM is a standard object model and programming interface
+            for HTML.
+          </p>
+          <p>
+            Helping on operator of a website: change <b>color</b>, <b>size</b>,
+            ..., noti <b>error</b>, event handler: <b>onclick</b>, <b>hover</b>,
+            ...
+          </p>
+          <p>The HTML DOM model is constructed as a tree of Objects</p>
+          <img src="images/dom-tree.gif" alt="" />
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-js">
+    // open browser => console tag
+    document.body.style.backgroundColor = "red";
+            </code></pre>
+          </div>
+          <h4>Function</h4>
+          <p>To done it, DOM defines:</p>
+          <ul>
+            <li>The HTML elements as objects</li>
+            <li>The properties of all HTML elements</li>
+            <li>The methods to access all HTML elements</li>
+            <li>The events for all HTML elements</li>
+          </ul>
+          <h4>How to use</h4>
+          <ul style="list-style-type: disclosure-closed">
+            <li>Finding HTML elements</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    document.getElementById(id);                  // Find an element by element id
+    document.getElementByTagName(name);           // Find elements by tag Name
+    document.getElementByClassName(name);         // Find elements by class name
+    document.querySelector("[css-selector]");     // Find a element like css Selector
+    document.querySelectorAll("[css-selector]");  // Find all elements like css Selector 
+            </code></pre>
+            <li>Changing properties HTML elements</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // property
+    element.innerHTML = new html content; // Change the inner HTML of an element
+    element.attribute = new value; // Change the attribute of an HTML element
+    element.style.property = new style ; // Change the style of an HTML element
+    // note: property follow camel case. example: background-color => backgroundColor
+    // method
+    element.setAttribute(attribute, value); // Change the attribute of an HTML element
+            </code></pre>
+            <li>Add and Remove elements</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // document.createElement("element tag name"); create an HTML element
+    // Ex:
+    const divElem = document.createElement("div");
+    const pElem = document.createElement("p"); // pElem.innerText = "Hello"
+    
+    // element.appendChild(element);  Add an HTML element to document
+    // Ex:
+    divElem.appendChild(pElem);
 
-            // arrow function (fat arrow function)
-            let  functionName  =  (var1, var2) => {
-              // instruments
-            };	
-      </code></pre>
-            </li>
-            <li><b>Closure of function</b></li>
-            <ul>
-              <li>
-                Closure is created when a function is defined inside another
-                function
-              </li>
-              <li>
-                Inner function has access to the outer function's variable and
-                parameters, even the outer function has returned
-              </li>
-              <li>
-                <b>Usage 1:</b> Allow us to create functions with persistent
-                state
-              </li>
-              <li><b>Usage 2:</b> Create private variables and methods</li>
-              <li>
-                Example:
-                <pre
-                  style="padding: 0px; font-size: 10px; width: 800px"
-                ><code class="language-js">
-    function outerFunction() {
-      let outerVariable = 'Hello';
+    // document.removeChild(element); remove an HTML element
+    // Ex:
+    divElem.removeChild(pElem);
+
+    // document.replaceChild(new, old); Replace an HTML element
+    const newPElem = document.createElement(p)
+    divElem.replace(newPElem, pElem)
     
-      function innerFunction() {
-        console.log(outerVariable);
+    // document.write(text); Write into the HTML output steam
+    document.write("Hello")
+            </code></pre>
+            <li>Events Handlers</li>
+            <button id="js-btn-event-handler" onclick="alert('inline click')">
+              Event Handler
+            </button>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // html
+    &lt;button id="js-btn-event-handler" onclick="alert('inline click')"&gt;
+      Event Handler
+    &lt;/button&gt;
+
+    // javascript
+    const element = document.getElementById("js-btn-event-handler")
+    // Add event handler code to an onclick event
+    element.onclick = function(){ alert("assign click") }; // this will replace inline onclick event
+    
+    element.addEventListener('click', function () {
+      alert('add click');
+    });
+    element.addEventListener('click', function () {
+      alert('add click 2');
+    });
+    
+            </code></pre>
+            <p>Common events</p>
+            <table class="table-of-font">
+              <tbody>
+                <tr>
+                  <th>Event</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>onchange</td>
+                  <td>An HTML element has been changed</td>
+                </tr>
+                <tr>
+                  <td>onclick</td>
+                  <td>The user clicks an HTML element</td>
+                </tr>
+                <tr>
+                  <td>onmouseover</td>
+                  <td>The user moves the mouse over an HTML element</td>
+                </tr>
+                <tr>
+                  <td>onmouseout</td>
+                  <td>The user moves the mouse away from an HTML element</td>
+                </tr>
+                <tr>
+                  <td>onkeydown</td>
+                  <td>The user pushes a keyboard key</td>
+                </tr>
+                <tr>
+                  <td>onload</td>
+                  <td>The browser has finished loading the page</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              Reference
+              <a href="https://www.w3schools.com/js/js_events.asp">here</a> for
+              more
+            </p>
+            <li>Form Handler</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // javascript
+    function validateForm() {
+      let x = document.forms["myForm"]["fname"].value;
+      if (x == "") {
+        alert("Name must be filled out");
+        return false;
       }
-    
-      return innerFunction;
+    }
+
+    // html
+    &lt;form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post"&gt;
+      Name: &lt;input type="text" name="fname"&gt;
+      &lt;input type="submit" value="Submit"&gt;
+    &lt;/form&gt;
+            </code></pre>
+
+            <li>Class handler</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    const elem = document.getElementById(id)
+    elem.className = ""; // replace class
+    elem.classList.add(className); add a class
+    elem.classList.remove(className); remove a class
+            </code></pre>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="practice-calculator">
+          <h3>Calculator</h3>
+          <p>Prerequisite</p>
+          <ol>
+            <li>Understand Dom-handler</li>
+            <li>Javascript basic</li>
+          </ol>
+          <p>Step</p>
+          <ul style="list-style: disclosure-closed">
+            <li>
+              Checkout Calculator result
+              <a href="../example/calculator">Here</a>
+            </li>
+            <li>Html code</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-markup">
+    &lt;div class="container"&gt;
+      &lt;div class="cal-container"&gt;
+        &lt;div class="cal-screen"&gt;
+          &lt;input type="text" class="screen-input" /&gt;
+          &lt;p class="screen-result"&gt;Result&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="cal-num-wrapper"&gt;
+          &lt;button class="cal-num cal-btn" cal-value="1"&gt;1&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="2"&gt;2&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="3"&gt;3&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="4"&gt;4&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="5"&gt;5&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="6"&gt;6&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="7"&gt;7&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="8"&gt;8&lt;/button&gt;
+          &lt;button class="cal-num cal-btn" cal-value="9"&gt;9&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="cal-operator-wrapper"&gt;
+          &lt;button class="cal-operator cal-btn" cal-value="+"&gt;+&lt;/button&gt;
+          &lt;button class="cal-operator cal-btn" cal-value="-"&gt;-&lt;/button&gt;
+          &lt;button class="cal-operator cal-btn" cal-value="*"&gt;*&lt;/button&gt;
+          &lt;button class="cal-operator cal-btn" cal-value="/"&gt;/&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="cal-pointer-wrapper"&gt;
+          &lt;button class="cal-pointer cal-btn" cal-value="."&gt;.&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="cal-num-zero"&gt;
+          &lt;button class="cal-num cal-btn" cal-value="0"&gt;0&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="cal-equal-btn-wrapper"&gt;
+          &lt;button class="cal-equal-btn"&gt;=&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+          </code></pre>
+            <li>Css code</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-css">
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
     }
     
-    let closure = outerFunction();
-    closure(); // logs 'Hello'                    
-      </code></pre>
-              </li>
-              <li>Bind, apply, for</li>
-            </ul>
-          </ol>
+    [class^='cal'] {
+      /* border: 1px solid black; */
+      min-height: 50px;
+    }
+    
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .cal-container {
+      width: 300px;
+    }
+    
+    .cal-container {
+      display: grid;
+      grid-template-areas:
+        'screen screen screen'
+        'num num operator'
+        'num num operator'
+        'num num pointer'
+        'num-zero equal-btn equal-btn';
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-rows: auto;
+    }
+    
+    .cal-screen {
+      grid-area: screen;
+    }
+    
+    .cal-num-wrapper {
+      grid-area: num;
+    }
+    
+    .cal-operator-wrapper {
+      grid-area: operator;
+    }
+    
+    .cal-num-zero {
+      grid-area: num-zero;
+    }
+    
+    .cal-equal-btn-wrapper {
+      grid-area: equal-btn;
+    }
+    
+    .cal-pointer-wrapper {
+      grid-area: pointer;
+    }
+    
+    .screen-input {
+      height: 50%;
+      width: 100%;
+    }
+    
+    .screen-result {
+      height: 50%;
+      text-align: right;
+    }
+    
+    /* cal-num-wrapper */
+    .cal-num-wrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    
+    .cal-num-wrapper .cal-num {
+      width: 33.33%;
+    }
+    
+    .cal-num-zero .cal-num {
+      width: 100%;
+    }
+    
+    .cal-equal-btn-wrapper .cal-equal-btn {
+      width: 100%;
+    }
+    
+    .cal-operator-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .cal-operator-wrapper .cal-operator {
+      width: 50%;
+    }
+    .cal-pointer-wrapper .cal-pointer {
+      width: 100%;
+    }              
+          </code></pre>
+            <li>Javascript</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 500px"
+            ><code class="language-js">
+    const inputElem = document.querySelector('.cal-screen .screen-input');
+    const resultElem = document.querySelector('.cal-screen .screen-result');
+    
+    inputElem.value = '';
+    resultElem.innerText = '';
+    
+    const calBtns = document.querySelectorAll('.cal-btn');
+    
+    calBtns.forEach((calBtn) => {
+      calBtn.addEventListener('click', () => {
+        const value = calBtn.getAttribute('cal-value');
+        inputElem.value += value;
+      });
+    });
+    
+    const equalBtn = document.querySelector(
+      '.cal-equal-btn-wrapper .cal-equal-btn'
+    );
+    equalBtn.addEventListener('click', () => {
+      resultElem.innerText = eval(inputElem.value);
+    });              
+        </code></pre>
+          </ul>
         </article>
-
         <hr />
         <br />
+
+        <article id="object-advance">
+          <h3>Object Advance</h3>
+          <ul style="list-style-type: disclosure-closed">
+            <li><b>this</b> pointer</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    const person = {
+      firstName: "John",
+      lastName: "Doe",
+      id: 5566,
+      fullName: function() {
+            return this.firstName + " " + this.lastName; // this stand for person
+      }
+    };
+    </code></pre>
+            <table class="table-of-font">
+              <tbody>
+                <tr>
+                  <td>
+                    In an object method,
+                    <code class="w3-codespan">this</code> refers to the
+                    <b>object</b>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Alone, <code class="w3-codespan">this</code> refers to the
+                    <b>global object</b>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    In a function, <code class="w3-codespan">this</code> refers
+                    to the <b>global object</b>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    In a function, in strict mode,
+                    <code class="w3-codespan">this</code> is
+                    <code class="w3-codespan">undefined</code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    In an event, <code class="w3-codespan">this</code> refers to
+                    the <b>element</b> that received the event.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Methods like <code class="w3-codespan">call()</code>,
+                    <code class="w3-codespan">apply()</code>, and
+                    <code class="w3-codespan">bind()</code> can refer
+                    <code class="w3-codespan">this</code> to
+                    <b>any object (Introduce in Function Advance)</b>.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <li>Object Destructering, Object.keys()</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    const person = {
+      firstName: "John",
+      lastName: "Doe",
+    };
+    const { firstName, lastName } = person
+    console.log(Object.keys(person)) //["firstName", "lastName"]
+    </code></pre>
+            <li>Spread Operator, Rest Operator</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // spread operator
+    const person = {
+      firstName: "John",
+      lastName: "Doe",
+    };
+    const newPerson = { ...person }
+
+    // rest operator
+    const print(firstParam, secondParam, ...rest) {
+      console.log(firstParam, secondParam, rest)
+    }
+    print("firstParam", "secondParam", "thirdParam")
+    print("firstParam", "secondParam", ...person)
+    </code></pre>
+            <li>
+              Prototype
+              <ul>
+                <li>
+                  Prototype is an object that is associated with every object
+                  created using a constructor function
+                </li>
+                <li>
+                  It's used as a template or blueprint for creating new objects
+                </li>
+              </ul>
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 600px"
+            ><code class="language-js">
+    // Constructor function for creating person objects
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    
+    // Adding a method to the Person prototype object
+    Person.prototype.sayHello = function() {
+      console.log("Hello, my name is " + this.name);
+    };
+    
+    // Creating a new person object using the Person constructor function
+    var person1 = new Person("Alice", 30);
+    
+    // Calling the sayHello method on the person1 object
+    person1.sayHello(); // Output: "Hello, my name is Alice"
+
+    // Example add more public handy function to an object
+    Array.prototype.add = function(x) { this.push(x) }
+    const arr = []
+    arr.add(5); // working the same add push
+    console.log(arr); // [5]
+
+    String.prototype.strim = function(x) {
+      let result =  this.replace(/^\s+|\s+$/gm,'');
+      result = result.replace(/\s+/gm,' ');
+      return result;
+    }
+    let str = "    This   is need to  full trim     "
+    console.log(str); // 'This is need to full trim'
+
+    // Exercise: add check IsPrime number to Number object. and test: let x = new Number(5); console.log(x.IsPrime());// should be true
+
+  </code></pre>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
         <article id="practice-carousel">
           <h3>Carousel</h3>
           <ul>
+            <li>
+              Checkout result here: <a href="../example/slider/">Carousel</a>
+            </li>
             <li>HTML</li>
             <pre
               style="padding: 0px; font-size: 10px; width: 500px"
@@ -1294,6 +1655,180 @@
         </code></pre>
           </ul>
         </article>
+        <hr />
+        <br />
+
+        <article id="function-advance">
+          <h3>Function Advances</h3>
+          <ol style="list-style-type: disclosure-closed">
+            <li>Note</li>
+            <ol style="font-size: 12px">
+              <li>Use () to invoke function</li>
+              <li>
+                Javascript objects and arrays follows pass by reference, else
+                passing by value
+              </li>
+              <li>Function can call itself ( <b>recursive</b> )</li>
+              <li>
+                Function call inside function => <b>Function call Stack</b>
+              </li>
+            </ol>
+            <li>
+              <b>Function expression</b> and <b>Arrow Function</b> are another
+              declaration of function
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+            // expression function
+            let variableName = function(arguments) { // statements };
+
+            // arrow function (fat arrow function)
+            let  functionName  =  (var1, var2) => {
+              // instruments
+            };	
+      </code></pre>
+            </li>
+            <li><b>Closure of function</b></li>
+            <ul>
+              <li>
+                Closure is created when a function is defined inside another
+                function
+              </li>
+              <li>
+                Inner function has access to the outer function's variable and
+                parameters, even the outer function has returned
+              </li>
+              <li>
+                <b>Usage 1:</b> Allow us to create functions with persistent
+                state
+              </li>
+              <li><b>Usage 2:</b> Create private variables and methods</li>
+              <li>
+                Example:
+                <pre
+                  style="padding: 0px; font-size: 10px; width: 800px"
+                ><code class="language-js">
+    function outerFunction() {
+      let outerVariable = 'Hello';
+    
+      function innerFunction() {
+        console.log(outerVariable);
+      }
+    
+      return innerFunction;
+    }
+    
+    let closure = outerFunction();
+    closure(); // logs 'Hello'                    
+      </code></pre>
+              </li>
+              <li>Bind, apply, call</li>
+            </ul>
+          </ol>
+        </article>
+        <hr />
+        <br />
+
+        <article id="practice-racing-bike">
+          <h3>Pratice <a href="../example/racing-bike/">Racing Bike</a></h3>
+          Prerequisite:
+          <ul style="list-style-type: disclosure-closed">
+            <li>Understand HTML/CSS</li>
+            <li>Understand how translate in css work</li>
+          </ul>
+
+          Code:
+          <div id="ball-game-code-container">
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // CSS
+    .container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .game-container {
+      height: 300px;
+      width: 100%;
+      background-color: aliceblue;
+      background-image: url(./images/way.jpg);
+    }
+    
+    .motobike-wrapper {
+      height: 100%;
+    }
+    
+    .motobike-wrapper img {
+      height: 70%;
+    }
+    
+    // html
+    &lt;div class="container"&gt;
+      &lt;div class="game-container"&gt;
+        &lt;div class="motobike-wrapper"&gt;
+          &lt;img class="bike" src="./images/bike.png" alt="" /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    // Javascript
+    const gameContainer = document.querySelector('.game-container');
+    const motobileWrapper = document.querySelector(
+      '.game-container motobike-wrapper'
+    );
+    const bikeElemen = document.querySelector(
+      '.game-container .motobike-wrapper .bike'
+    );
+
+    function privatePosition() {
+      let position = 0;
+      let getPosition = function () {
+        return position;
+      };
+
+      let addPosition = function (x) {
+        position += x;
+      };
+
+      return { getPosition, addPosition };
+    }
+
+    const { getPosition, addPosition } = privatePosition(); // closure position
+
+    const bike = {
+      getPosition: getPosition,
+      addPosition: addPosition,
+      interval: 0,
+
+      move: function () {
+        this.interval = setInterval(() => {
+          this.addPosition(3);
+          bikeElemen.style.transform = `translate(${this.getPosition()}px, 0)`;
+        }, 20);
+      },
+      stop: function () {
+        clearInterval(this.interval);
+      },
+    };
+
+    bikeElemen.addEventListener('mouseover', function () {
+      bike.move();
+    });
+
+    bikeElemen.addEventListener('mouseout', function () {
+      bike.stop();
+    });
+          
+    </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
 
         <article id="practice-moving-ball">
           <h3>Pratice with moving ball</h3>
@@ -1425,363 +1960,6 @@
         </article>
         <br />
         <hr />
-
-        <article id="dom-handler">
-          <h3>DOM - Document Object Model</h3>
-          <h4>About</h4>
-          <p>
-            The HTML DOM is a standard object model and programming interface
-            for HTML.
-          </p>
-          <p>
-            Helping on operator of a website: change <b>color</b>, <b>size</b>,
-            ..., noti <b>error</b>, event handler: <b>onclick</b>, <b>hover</b>,
-            ...
-          </p>
-          <p>The HTML DOM model is constructed as a tree of Objects</p>
-          <img src="images/dom-tree.gif" alt="" />
-          <div>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 500px"
-            ><code class="language-js">
-    // open browser => console tag
-    document.body.style.backgroundColor = "red";
-            </code></pre>
-          </div>
-          <h4>Function</h4>
-          <p>To done it, DOM defines:</p>
-          <ul>
-            <li>The HTML elements as objects</li>
-            <li>The properties of all HTML elements</li>
-            <li>The methods to access all HTML elements</li>
-            <li>The events for all HTML elements</li>
-          </ul>
-          <h4>How to use</h4>
-          <ul style="list-style-type: disclosure-closed">
-            <li>Finding HTML elements</li>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 600px"
-            ><code class="language-js">
-    document.getElementById(id);                  // Find an element by element id
-    document.getElementByTagName(name);           // Find elements by tag Name
-    document.getElementByClassName(name);         // Find elements by class name
-    document.querySelector("[css-selector]");     // Find a element like css Selector
-    document.querySelectorAll("[css-selector]");  // Find all elements like css Selector 
-            </code></pre>
-            <li>Changing properties HTML elements</li>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 600px"
-            ><code class="language-js">
-    // property
-    element.innerHTML = new html content; // Change the inner HTML of an element
-    element.attribute = new value; // Change the attribute of an HTML element
-    element.style.property = new style ; // Change the style of an HTML element
-    // note: property follow camel case. example: background-color => backgroundColor
-    // method
-    element.setAttribute(attribute, value); // Change the attribute of an HTML element
-            </code></pre>
-            <li>Add and Remove elements</li>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 600px"
-            ><code class="language-js">
-    // document.createElement("element tag name"); create an HTML element
-    // Ex:
-    const divElem = document.createElement("div");
-    const pElem = document.createElement("p"); // pElem.innerText = "Hello"
-    
-    // element.appendChild(element);  Add an HTML element to document
-    // Ex:
-    divElem.appendChild(pElem);
-
-    // document.removeChild(element); remove an HTML element
-    // Ex:
-    divElem.removeChild(pElem);
-
-    // document.replaceChild(new, old); Replace an HTML element
-    const newPElem = document.createElement(p)
-    divElem.replace(newPElem, pElem)
-    
-    // document.write(text); Write into the HTML output steam
-    document.write("Hello")
-            </code></pre>
-            <li>Events Handlers</li>
-            <button id="js-btn-event-handler" onclick="alert('inline click')">
-              Event Handler
-            </button>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 600px"
-            ><code class="language-js">
-    // html
-    &lt;button id="js-btn-event-handler" onclick="alert('inline click')"&gt;
-      Event Handler
-    &lt;/button&gt;
-
-    // javascript
-    const element = document.getElementById("js-btn-event-handler")
-    // Add event handler code to an onclick event
-    element.onclick = function(){ alert("assign click") }; // this will replace inline onclick event
-    
-    element.addEventListener('click', function () {
-      alert('add click');
-    });
-    element.addEventListener('click', function () {
-      alert('add click 2');
-    });
-    
-            </code></pre>
-            <p>Common events</p>
-            <table class="table-of-font">
-              <tbody>
-                <tr>
-                  <th>Event</th>
-                  <th>Description</th>
-                </tr>
-                <tr>
-                  <td>onchange</td>
-                  <td>An HTML element has been changed</td>
-                </tr>
-                <tr>
-                  <td>onclick</td>
-                  <td>The user clicks an HTML element</td>
-                </tr>
-                <tr>
-                  <td>onmouseover</td>
-                  <td>The user moves the mouse over an HTML element</td>
-                </tr>
-                <tr>
-                  <td>onmouseout</td>
-                  <td>The user moves the mouse away from an HTML element</td>
-                </tr>
-                <tr>
-                  <td>onkeydown</td>
-                  <td>The user pushes a keyboard key</td>
-                </tr>
-                <tr>
-                  <td>onload</td>
-                  <td>The browser has finished loading the page</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>
-              Reference
-              <a href="https://www.w3schools.com/js/js_events.asp">here</a> for
-              more
-            </p>
-            <li>Form Handler</li>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 600px"
-            ><code class="language-js">
-    // javascript
-    function validateForm() {
-      let x = document.forms["myForm"]["fname"].value;
-      if (x == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-
-    // html
-    &lt;form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post"&gt;
-      Name: &lt;input type="text" name="fname"&gt;
-      &lt;input type="submit" value="Submit"&gt;
-    &lt;/form&gt;
-            </code></pre>
-
-            <li>Class handler</li>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 600px"
-            ><code class="language-js">
-    const elem = document.getElementById(id)
-    elem.className = ""; // replace class
-    elem.classList.add(className); add a class
-    elem.classList.remove(className); remove a class
-            </code></pre>
-          </ul>
-        </article>
-
-        <article id="practice-calculator">
-          <h3>Calculator</h3>
-          <p>Prerequisite</p>
-          <ol>
-            <li>Understand Dom-handler</li>
-            <li>Javascript basic</li>
-          </ol>
-          <p>Step</p>
-          <ul style="list-style: disclosure-closed">
-            <li>
-              Checkout Calculator result
-              <a href="../example/calculator">Here</a>
-            </li>
-            <li>Html code</li>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 500px"
-            ><code class="language-markup">
-    &lt;div class="container"&gt;
-      &lt;div class="cal-container"&gt;
-        &lt;div class="cal-screen"&gt;
-          &lt;input type="text" class="screen-input" /&gt;
-          &lt;p class="screen-result"&gt;Result&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div class="cal-num-wrapper"&gt;
-          &lt;button class="cal-num cal-btn" cal-value="1"&gt;1&lt;/button&gt;
-          &lt;button class="cal-num cal-btn" cal-value="2"&gt;2&lt;/button&gt;
-          &lt;button class="cal-num cal-btn" cal-value="3"&gt;3&lt;/button&gt;
-          &lt;button class="cal-num cal-btn" cal-value="4"&gt;4&lt;/button&gt;
-          &lt;button class="cal-num cal-btn" cal-value="5"&gt;5&lt;/button&gt;
-          &lt;button class="cal-num cal-btn" cal-value="6"&gt;6&lt;/button&gt;
-          &lt;button class="cal-num cal-btn" cal-value="7"&gt;7&lt;/button&gt;
-          &lt;button class="cal-num cal-btn" cal-value="8"&gt;8&lt;/button&gt;
-          &lt;button class="cal-num cal-btn" cal-value="9"&gt;9&lt;/button&gt;
-        &lt;/div&gt;
-        &lt;div class="cal-operator-wrapper"&gt;
-          &lt;button class="cal-operator cal-btn" cal-value="+"&gt;+&lt;/button&gt;
-          &lt;button class="cal-operator cal-btn" cal-value="-"&gt;-&lt;/button&gt;
-          &lt;button class="cal-operator cal-btn" cal-value="*"&gt;*&lt;/button&gt;
-          &lt;button class="cal-operator cal-btn" cal-value="/"&gt;/&lt;/button&gt;
-        &lt;/div&gt;
-        &lt;div class="cal-pointer-wrapper"&gt;
-          &lt;button class="cal-pointer cal-btn" cal-value="."&gt;.&lt;/button&gt;
-        &lt;/div&gt;
-        &lt;div class="cal-num-zero"&gt;
-          &lt;button class="cal-num cal-btn" cal-value="0"&gt;0&lt;/button&gt;
-        &lt;/div&gt;
-        &lt;div class="cal-equal-btn-wrapper"&gt;
-          &lt;button class="cal-equal-btn"&gt;=&lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-          </code></pre>
-            <li>Css code</li>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 500px"
-            ><code class="language-css">
-    * {
-      margin: 0px;
-      padding: 0px;
-      box-sizing: border-box;
-    }
-    
-    [class^='cal'] {
-      /* border: 1px solid black; */
-      min-height: 50px;
-    }
-    
-    .container {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .cal-container {
-      width: 300px;
-    }
-    
-    .cal-container {
-      display: grid;
-      grid-template-areas:
-        'screen screen screen'
-        'num num operator'
-        'num num operator'
-        'num num pointer'
-        'num-zero equal-btn equal-btn';
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-auto-rows: auto;
-    }
-    
-    .cal-screen {
-      grid-area: screen;
-    }
-    
-    .cal-num-wrapper {
-      grid-area: num;
-    }
-    
-    .cal-operator-wrapper {
-      grid-area: operator;
-    }
-    
-    .cal-num-zero {
-      grid-area: num-zero;
-    }
-    
-    .cal-equal-btn-wrapper {
-      grid-area: equal-btn;
-    }
-    
-    .cal-pointer-wrapper {
-      grid-area: pointer;
-    }
-    
-    .screen-input {
-      height: 50%;
-      width: 100%;
-    }
-    
-    .screen-result {
-      height: 50%;
-      text-align: right;
-    }
-    
-    /* cal-num-wrapper */
-    .cal-num-wrapper {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-    
-    .cal-num-wrapper .cal-num {
-      width: 33.33%;
-    }
-    
-    .cal-num-zero .cal-num {
-      width: 100%;
-    }
-    
-    .cal-equal-btn-wrapper .cal-equal-btn {
-      width: 100%;
-    }
-    
-    .cal-operator-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    
-    .cal-operator-wrapper .cal-operator {
-      width: 50%;
-    }
-    .cal-pointer-wrapper .cal-pointer {
-      width: 100%;
-    }              
-          </code></pre>
-            <li>Javascript</li>
-            <pre
-              style="padding: 0px; font-size: 10px; width: 500px"
-            ><code class="language-js">
-    const inputElem = document.querySelector('.cal-screen .screen-input');
-    const resultElem = document.querySelector('.cal-screen .screen-result');
-    
-    inputElem.value = '';
-    resultElem.innerText = '';
-    
-    const calBtns = document.querySelectorAll('.cal-btn');
-    
-    calBtns.forEach((calBtn) => {
-      calBtn.addEventListener('click', () => {
-        const value = calBtn.getAttribute('cal-value');
-        inputElem.value += value;
-      });
-    });
-    
-    const equalBtn = document.querySelector(
-      '.cal-equal-btn-wrapper .cal-equal-btn'
-    );
-    equalBtn.addEventListener('click', () => {
-      resultElem.innerText = eval(inputElem.value);
-    });              
-        </code></pre>
-          </ul>
-        </article>
       </section>
       <footer>
         <p>&copy; 2023 - Author: Mr Dat. All rights reserved.</p>

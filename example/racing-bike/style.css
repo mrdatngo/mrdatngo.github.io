@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-container {
+  height: 300px;
+  width: 100%;
+  background-color: aliceblue;
+  background-image: url(./images/way.jpg);
+}
+
+.motobike-wrapper {
+  height: 100%;
+}
+
+.motobike-wrapper img {
+  height: 70%;
+}
