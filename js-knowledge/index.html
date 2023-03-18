@@ -52,19 +52,24 @@
             <li><a href="#promise">Promise</a></li>
             <li><a href="#async-await">Async - Await</a></li>
             <li>
-              <a href="#async-await">AJax - Example calling api with aJax</a>
+              <a href="#ajax">AJax - Example calling api with aJax</a>
             </li>
             <hr />
             <li><a href="#class">Class</a></li>
-            <li><a href="#advance">Advance</a></li>
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#try-catch">Try Catch</a></li>
+            <li>
+              <a href="#settimeout-setinterval">Set timeout - set interval</a>
+            </li>
+            <li>
+              <a href="#solve-excercise">Solve Excercise - create a clock</a>
+            </li>
+            <li><a href="#export-import">Export - Import</a></li>
             <hr />
             <li><a href="#canvas">Canvas: Graphic Tag</a></li>
             <hr />
             <li>
-              <a href="#brief"
-                >Brief - Try Catch handler - Minxins - Solve exercise -
-                setTimeout, setInterval - create a clock</a
-              >
+              <a href="#brief">Brief - Minxins</a>
             </li>
             <li>
               <a href="#practice-moving-ball">Practive with moving ball</a>
@@ -1688,6 +1693,53 @@
             };	
       </code></pre>
             </li>
+
+            <li>
+              <b>Bind, apply, call</b>
+
+              <ol>
+                <li>
+                  <b>bind</b> creates a new function that, when called, has this
+                  set to a specified value
+                </li>
+                <pre
+                  style="padding: 0px; font-size: 10px; width: 800px"
+                ><code class="language-js">
+  const person = {
+    name: 'John',
+    age: 30,
+  };
+  
+  function sayHello() {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+  
+  const helloJohn = sayHello.bind(person);
+  helloJohn(); // Output: Hello, my name is John and I am 30 years old                   
+    </code></pre>
+                <li>
+                  <b>apply & call</b> are similar methods to call a function
+                  with a specified this value and arguments passed as an array
+                  or comma-separated list, respectively.
+                </li>
+                <pre
+                  style="padding: 0px; font-size: 10px; width: 800px"
+                ><code class="language-js">
+  const person = {
+    name: 'John',
+    age: 30,
+  };
+  
+  function sayHello(greeting) {
+    console.log(`${greeting}, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+
+  sayHello.apply(person, ['Hi']); // Output: Hi, my name is John and I am 30 years old.
+  sayHello.call(person, 'Hi'); // Output: Hi, my name is John and I am 30 years old.
+          
+    </code></pre>
+              </ol>
+            </li>
             <li><b>Closure of function</b></li>
             <ul>
               <li>
@@ -1722,7 +1774,6 @@
     closure(); // logs 'Hello'                    
       </code></pre>
               </li>
-              <li>Bind, apply, call</li>
             </ul>
           </ol>
         </article>
@@ -1738,7 +1789,7 @@
           </ul>
 
           Code:
-          <div id="ball-game-code-container">
+          <div>
             <pre
               style="padding: 0px; font-size: 10px; width: 800px"
             ><code class="language-js">
@@ -1826,6 +1877,817 @@
           
     </code></pre>
           </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="callback">
+          <h3>Callback</h3>
+          <ul style="list-style-type: disclosure-closed">
+            <li>Definiation</li>
+            <ul>
+              <li>
+                <p>
+                  a <b>callback</b> is a function that is passed as an argument
+                  to another function and is executed
+                </p>
+              </li>
+              <li>
+                <p>
+                  Callbacks are commonly used in event-driven programming and in
+                  situations where data is fetched asynchronously, such as AJAX
+                  calls or setTimeout functions.
+                </p>
+              </li>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+  function fetchData(callback) {
+    // Perform some asynchronous operation, such as fetching data from an API
+    setTimeout(() => {
+      const data = { name: "John", age: 30 };
+  
+      // Call the callback function with the resulting data
+      callback(data);
+    }, 2000); // callback called after 2 seconds
+  }
+  
+  // Define a callback function to be executed when the data is fetched
+  function processResult(data) {
+    console.log(`Name: ${data.name}, Age: ${data.age}`);
+  }
+  
+  // Call the fetchData function and pass the processResult function as a callback
+  fetchData(processResult);
+  console.log("Non-blocking, continue do next instruments")
+</code></pre>
+            </ul>
+            <li>
+              <b>Callback Hell</b>: a large number of nested callbacks are used
+              to handle multiple asynchronous operations, leading to code that
+              is difficult to read, maintain, and debug
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    getData(function(data) {
+      getMoreData(data, function(moreData) {
+          getEvenMoreData(moreData, function(evenMoreData) {
+              // Do something with even more data
+          });
+      });
+    });          
+            </code></pre>
+            <li>
+              <b
+                >Upgrade readable, but still have drawbacks: lower readable and
+                flexible
+              </b>
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    function getData(callback) {
+      console.log("getData")
+      setTimeout(getMoreData, 1000);
+    }
+    
+    function getMoreData(callback) {
+      console.log("getMoreData")
+      setTimeout(getEvenMoreData, 2000);
+    }
+    
+    function getEvenMoreData(callback) {
+      console.log("getEvenMoreData")
+    }
+    
+    getData()         
+            </code></pre>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="promise">
+          <h3>Promise</h3>
+          <ul style="list-style-type: disclosure-closed">
+            <li><b>Definition</b></li>
+            <ul>
+              <li>
+                a Promise is a built-in object that represents a value that may
+                not be available yet, but will be resolved at some point in the
+                future
+              </li>
+              <li>
+                It is a way to handle asynchronous operations, such as fetching
+                data from a server, making HTTP requests, or reading files,
+                without blocking the main thread
+              </li>
+            </ul>
+            <li><b>Status of Promise</b></li>
+            <ul>
+              <li>
+                <b>Pending</b>: the initial state, before the Promise is
+                resolved or rejected
+              </li>
+              <li>
+                <b>Fulfilled</b>: the Promise has been resolved, and a value is
+                available
+              </li>
+              <li>
+                <b>Rejected</b>: the Promise has been rejected, and a reason for
+                the rejection is available
+              </li>
+            </ul>
+            <li><b>Methods of Promise</b></li>
+            <ul>
+              <li>
+                <b>then()</b>: this method is called when the Promise is
+                fulfilled
+              </li>
+              <li>
+                <b>catch()</b>: this method is called when a Promise is
+                rejected.
+              </li>
+            </ul>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    const buyLaptopPlayingGame = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        let passExam = new Date().getTime() % 2 == 0; // random
+        if (passExam) {
+          resolve({ success: true, message: "yes, bought!" })
+        } else {
+          reject({ success: false, message: "no, stupid" })
+        }
+      }, 1000)
+    })
+
+    buyLaptopPlayingGame
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+            </code></pre>
+
+            <li>Promise hell => Promise chain!</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    const api = {
+      getUser: () => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            let success = new Date().getTime() % 10 > 3; // random
+            if (success) {
+              resolve({ success: true, username: "admin"})
+            } else {
+              reject({success: false, message: "something went wrong on getUser"})
+            } 
+          }, 1000)
+        })
+      },
+
+      getPostOfUser: (username) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            let success = username && new Date().getTime() % 10 > 3; // random
+            if (success) {
+              resolve({ success: true, username, post: {postID: 1, title: "Post title", data: "Post data"}})
+            } else {
+              reject({success: false, message: "something went wrong on getPostOfUser"})
+            } 
+          }, 1000)
+        })
+      },
+
+      getCommentOfPost: (postID) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            let success = postID && new Date().getTime() % 10 > 3; // random
+            if (success) {
+              resolve({ success: true, comments: [{username: "dev1"}, {username: "dev2"}]})
+            } else {
+              reject({success: false, message: "something went wrong on getPostOfUser"})
+            } 
+          }, 1000)
+        })
+      }
+
+    }
+    // promise hell
+    api.getUser()
+      .then(({username}) => {
+        api.getPostOfUser(username)
+          .then(({ post }) => {
+            api.getCommentOfPost(post.postID)
+              .then((data) => {
+                console.log(data)
+              })
+              .catch(err => console.log(err))
+          })
+          .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
+
+    // promise chain
+    api
+      .getUser()
+      .then(({ username }) => {
+        return api.getPostOfUser(username);
+      })
+      .then((post) => {
+        return api.getCommentOfPost(post.postID);
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+            </code></pre>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="async-await">
+          <h3>Async - Await</h3>
+          <ul>
+            <li>
+              Async/await is a feature in JavaScript that allows you to write
+              asynchronous code in a synchronous style
+            </li>
+            <li>
+              It was introduced in ECMAScript 2017 and is built on top of
+              Promises.
+            </li>
+          </ul>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 800px"
+          ><code class="language-js">
+  async function fetchData() {
+    try {
+      const { username } = await api.getUser()
+      const { post } = await api.getPostOfUser(username)
+      const data = await api.getCommentOfPost(post.postID)
+      console.log(data)
+    } catch(err) {
+      console.log(err)
+    }
+  }
+  fetchData()      
+        </code></pre>
+        </article>
+        <br />
+        <hr />
+
+        <article id="ajax">
+          <h3>AJAX - Asynchronous JavaScript and XML</h3>
+          <ul style="list-style-type: disclosure-closed">
+            <li><b>Definition</b></li>
+            <ul>
+              <li>
+                AJAX is a technique used in web development to send and receive
+                data from a web server asynchronously without having to reload
+                the entire page
+              </li>
+              <li>
+                AJAX is typically implemented using the XMLHttpRequest (XHR)
+                object
+              </li>
+            </ul>
+            <li><b>Example</b></li>
+            <ul>
+              <li>Install tool: Mock server</li>
+              <li>Run Mock Server</li>
+              <li>Code</li>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // html
+    &lt;div&gt;
+      &lt;p&gt;Coronavirus Cases&lt;/p&gt;
+      &lt;strong class="js-total-cases"&gt;266,264,966&lt;/strong&gt;
+      &lt;p&gt;Deaths&lt;/p&gt;
+      &lt;strong class="js-deaths"&gt;5,273,756&lt;/strong&gt;
+      &lt;p&gt;Recovered&lt;/p&gt;
+      &lt;strong class="js-recovered"&gt;239,883,779&lt;/strong&gt;
+      &lt;hr&gt;
+      &lt;button class="js-btn-refresh"&gt;Refesh&lt;/button&gt;
+    &lt;/div&gt;
+
+    // js
+
+    let totolCaseElem = document.querySelector(".js-total-cases")
+    let deathsElem = document.querySelector(".js-deaths")
+    let recoveredElem = document.querySelector(".js-recovered")
+    let btnRefreshElem = document.querySelector(".js-btn-refresh")
+
+    function getData(apiUrl) {
+      return new Promise(resolve => {
+          const xhttp = new XMLHttpRequest();
+          xhttp.onload = function () {
+              let dataObj = JSON.parse(this.responseText)
+              resolve(dataObj)
+          }
+          xhttp.open("GET", apiUrl);
+          xhttp.send();
+      })
+    }
+
+    // async/await
+    btnRefreshElem.addEventListener("click", async () => {
+        let dataObj = await getData("https://api.covid19api.com/summary")
+        let totalConfirmed = dataObj.Global.TotalConfirmed
+        let totalDeaths = dataObj.Global.TotalDeaths
+        let totalRecovered = dataObj.Global.TotalRecovered
+        totolCaseElem.textContent = totalConfirmed
+        deathsElem.textContent = totalDeaths
+        recoveredElem.textContent = totalRecovered
+    })
+            </code></pre>
+            </ul>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="class">
+          <h3>Class</h3>
+          <h4>Definition</h4>
+          <ul>
+            <li>
+              a <b>class</b> is a blueprint for creating objects that share the
+              same structure and behavior.
+            </li>
+            <li>Example</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+  
+    sayHello() {
+      console.log(`Hello, my name is ${this.name}`);
+    }
+  }
+  const person1 = new Person("Alice", 30);
+  const person2 = new Person("Bob", 25);
+
+  person1.sayHello(); // logs "Hello, my name is Alice"
+  person2.sayHello(); // logs "Hello, my name is Bob"          
+          </code></pre>
+          </ul>
+          <h4>Binding And Arrow function</h4>
+          <ul>
+            <li>
+              <b>Binding</b>: when a methods of function calling in another
+              contact
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  // html
+  &lt;button id="js-binding-btn"&gt;Show name&lt;/button&gt;
+  &lt;div&gt;
+    &lt;title&gt;Name:&lt;/title&gt;
+    &lt;input id="js-binding-input" type="text" /&gt;
+  &lt;/div&gt;
+  // print person name when button clicked
+  const btnElem = document.querySelector('#js-binding-btn');
+  const inputElem = document.querySelector('#js-binding-input');
+
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+
+    sayHello() {
+      console.log(`Hello, my name is ${this.name}`);
+    }
+
+    showName() {
+      inputElem.value = this.name;
+    }
+  }
+  const person = new Person('Alice', 30);
+
+  btnElem.addEventListener('click', person.showName);             // don't work
+  btnElem.addEventListener('click', () => { person.showName() }); // work
+
+  // understanding
+  person.sayHello(); // work
+  let sayHello = person.sayHello
+  sayHello(); // not work
+
+  // binding
+  const btnElem = document.querySelector('#js-binding-btn');
+  const inputElem = document.querySelector('#js-binding-input');
+
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+      this.showName = this.showName.bind(this);
+    }
+
+    showName() {
+      inputElem.value = this.name;
+    }
+  }
+  const person = new Person('Alice', 30);
+
+  btnElem.addEventListener('click', person.showName); // work
+  btnElem.addEventListener('click', () => {
+    person.showName();
+  }); // work
+            </code></pre>
+            <li>
+              <b>Arrow function useful - remove bind in constructor class</b>:
+              automatic bind this of methods to object itself
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  const btnElem = document.querySelector('#js-binding-btn');
+  const inputElem = document.querySelector('#js-binding-input');
+  
+  class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+  
+    showName = () => {
+      inputElem.value = this.name;
+    };
+  }
+  const person = new Person('Alice', 30);
+  
+  btnElem.addEventListener('click', person.showName); // work
+  btnElem.addEventListener('click', () => {
+    person.showName();
+  }); // work 
+          </code></pre>
+          </ul>
+          <h4>OOP in JS</h4>
+          <ul>
+            <li>
+              Abstraction: doesn't have built-in support for abstract classes,
+              but we can emulate abstract classes using a combination of class
+              inheritance and throwing errors.
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  // An abstract class is a class that cannot be instantiated directly
+  // and must be subclassed to create objects
+  class Animal {
+    constructor(name) {
+      if (this.constructor === Animal) {
+        throw new TypeError("Abstract class 'Animal' cannot be instantiated directly.");
+      }
+      this.name = name;
+    }
+    
+    speak() {
+      throw new Error("Abstract method 'speak()' must be implemented by subclass.");
+    }
+  }
+  
+  class Dog extends Animal {
+    speak() {
+      console.log(`${this.name} barks.`);
+    }
+  }
+  
+  const dog = new Dog('Rufus');
+  dog.speak(); // Outputs: "Rufus barks."               
+  const aAnimal = new Animal()
+            </code></pre>
+            <li>
+              Inheritance: class inheritance is achieved using the extends
+              keyword
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      
+      greet() {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+      }
+    }
+    
+    class Employee extends Person {
+      constructor(name, age, position) {
+        super(name, age);
+        this.position = position;
+      }
+      
+      describeJob() {
+        console.log(`I work as a ${this.position}.`);
+      }
+    }
+    
+    const john = new Employee('John', 30, 'developer');
+    john.greet(); // Outputs: "Hello, my name is John and I am 30 years old."
+    john.describeJob(); // Outputs: "I work as a developer."               
+            </code></pre>
+            <li>Encapsulation</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    class Person {
+      constructor(name, age) {
+        let _name = name;
+        let _age = age;
+
+        this.getName = function () {
+          return _name;
+        };
+
+        this.getAge = function () {
+          return _age;
+        };
+
+        this.setName = function (name) {
+          _name = name;
+        };
+
+        this.setAge = function (age) {
+          _age = age;
+        };
+      }
+
+      greet() {
+        console.log(
+          `Hello, my name is ${this.getName()} and I am ${this.getAge()} years old.`
+        );
+      }
+    }
+
+    const john = new Person('John', 30);
+    john.greet(); // Outputs: "Hello, my name is John and I am 30 years old."
+    console.log(john._name); // Outputs: undefined
+    john.setName('Johnny');
+    console.log(john.getName()); // Outputs: "Johnny"
+  
+            </code></pre>
+            <li>Polymorphism</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    class Animal {
+      constructor(name) {
+        this.name = name;
+      }
+      
+      speak() {
+        console.log(`${this.name} makes a noise.`);
+      }
+    }
+    
+    class Dog extends Animal {
+      speak() {
+        console.log(`${this.name} barks.`);
+      }
+    }
+    
+    class Cat extends Animal {
+      speak() {
+        console.log(`${this.name} meows.`);
+      }
+    }
+    
+    const dog = new Dog('Rufus');
+    const cat = new Cat('Whiskers');
+    
+    dog.speak(); // Outputs: "Rufus barks."
+    cat.speak(); // Outputs: "Whiskers meows."          
+            </code></pre>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="arguments">
+          <h3>Arguments</h3>
+          <p>
+            the <b>arguments</b> object is a local variable that is available
+            within all functions and contains an array-like list of the
+            arguments that were passed to the function when it was called
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  function sum() {
+    let result = 0;
+    for (let i = 0; i < arguments.length; i++) {
+      result += arguments[i];
+    }
+    return result;
+  }
+  
+  console.log(sum(1, 2, 3, 4)); // Outputs: 10
+
+  // convert arguments to array
+  function multiplyByTwo() {
+    const argsArray = Array.from(arguments);
+    return argsArray.map(num => num * 2);
+  }
+  
+  console.log(multiplyByTwo(1, 2, 3, 4)); // Outputs: [2, 4, 6, 8]
+          </code></pre>
+          </div>
+        </article>
+
+        <article id="try-catch">
+          <h3>Try Catch</h3>
+          <p><b>try & catch </b> are used for error handling</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    try {
+      // Code that might throw an exception
+      const result = 1 / 0;
+      unexisted.data = 5;
+    } catch (error) {
+      // Code that handles the exception
+      console.log('An error occurred:', error.message);
+    }
+
+    // finally
+    try {
+      // Code that might throw an exception
+      const result = 1 / 0;
+      unexisted.data = 5;
+    } catch (error) {
+      // Code that handles the exception
+      console.log('An error occurred:', error.message);
+    } finally {
+      // Code that always executes
+      console.log('This code always executes.');
+    }
+          </code></pre>
+          </div>
+        </article>
+
+        <article id="settimeout-setinterval">
+          <h3>setTimeout - setInterval</h3>
+          <ul>
+            <li>
+              <b>setTimeout</b>: executes a function once after a specified
+              delay
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  setTimeout(() => {
+    console.log('Delayed log!');
+  }, 1000);              
+            </code></pre>
+            <li>
+              <b>setInterval</b>: executes a function repeatedly at a specified
+              interval
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  let count = 0;
+
+  const intervalId = setInterval(() => {
+    count++;
+    console.log(`Count: ${count}`);
+  }, 1000);            
+          </code></pre>
+          </ul>
+        </article>
+
+        <article id="solve-excercise">
+          <h3>A Clock</h3>
+          <p>Hint: Using setInterval</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  // a timer
+  // Set the duration of the timer (in seconds)
+  let duration = 60;
+  
+  // Set an interval to update the timer every second
+  let timerInterval = setInterval(updateTimer, 1000);
+  
+  // Define the function to update the timer
+  function updateTimer() {
+    // Decrement the duration by 1 second
+    duration--;
+  
+    // Convert the remaining time to minutes and seconds
+    let minutes = Math.floor(duration / 60);
+    let seconds = duration % 60;
+  
+    // Format the timer as text
+    let timerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  
+    // Display the timer on the page (replace "timer" with the ID of your timer element)
+    document.getElementById('timer').textContent = timerText;
+  
+    // Stop the timer when the duration reaches zero
+    if (duration == 0) {
+      clearInterval(timerInterval);
+      alert("Time's up!");
+    }
+  }
+
+  // a clock
+  // Set an interval to update the clock every second
+  let clockInterval = setInterval(updateClock, 1000);
+  
+  // Define the function to update the clock
+  function updateClock() {
+    // Get the current date and time
+    let now = new Date();
+  
+    // Extract the hours, minutes, and seconds from the current time
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+  
+    // Convert the hours to 12-hour format and determine whether it's AM or PM
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+  
+    // Format the time as text
+    let timeText = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${ampm}`;
+  
+    // Display the time on the page (replace "clock" with the ID of your clock element)
+    document.getElementById('clock').textContent = timeText;
+  }
+</code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="export-import">
+          <h3>Export - Import</h3>
+          <p>
+            Export and import are used to share code between different
+            JavaScript modules
+          </p>
+          <ul style="list-style-type: disclosure-closed">
+            <li>Export: <b>export</b> and <b>export default</b></li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  // module.js
+  export let message = "Hello, world!";
+  export function sayHello(name) {
+    console.log(`Hello, ${name}!`);
+  }
+  export default function() {
+    console.log("This is the default function");
+  }               
+            </code></pre>
+            <li><b>import</b> and import using <b>*</b></li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  // main.js
+  import { message, sayHello } from './module.js';
+  import myDefaultFunction from './module.js';
+  
+  console.log(message); // outputs "Hello, world!"
+  sayHello("John"); // outputs "Hello, John!"
+  myDefaultFunction(); // outputs "This is the default function" 
+  
+  
+  // main.js
+  import * as myModule from './module.js';
+
+  console.log(myModule.message); // outputs "Hello, world!"
+  myModule.sayHello("Jane"); // outputs "Hello, Jane!"
+  myModule.default(); // outputs "This is the default function"
+            </code></pre>
+            Note using type module when import:
+            <p style="color: red">
+              `&lt;script type="module" src="main.js"&gt;&lt;/script&gt;`
+            </p>
+          </ul>
         </article>
         <br />
         <hr />
@@ -1960,6 +2822,166 @@
         </article>
         <br />
         <hr />
+
+        <article id="canvas">
+          <h3>Canvas</h3>
+          <p>
+            The canvas element provides a drawable region for graphics and
+            animations
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  &lt;canvas id="myCanvas" width="500" height="500"&gt;&lt;/canvas&gt;
+          </code></pre>
+          </div>
+          <h4>Canvas handler</h4>
+          <canvas id="myCanvas" width="500" height="500"></canvas>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Draw a line
+    ctx.beginPath();
+    ctx.moveTo(100, 100);
+    ctx.lineTo(400, 400);
+    ctx.stroke();
+    
+    // Draw a rectangle
+    ctx.fillStyle = 'red';
+    ctx.fillRect(50, 50, 100, 100);
+    
+    // Draw a circle
+    ctx.fillStyle = 'blue';
+    ctx.beginPath();
+    ctx.arc(250, 250, 50, 0, 2 * Math.PI);
+    ctx.fill();
+
+    // Draw text
+    ctx.font = '30px Arial';
+    ctx.fillStyle = 'green';
+    ctx.fillText('Hello, world!', 50, 400);
+    
+    // Draw a image
+    
+    const img = new Image();
+    img.onload = function () {
+      ctx.drawImage(img, 0, 0, 200, 200); // Draw the image at point (0,0)
+    };
+    img.src = './images/player.png'; // Replace 'your-image.jpg' with the path to your image file
+          </code></pre>
+          </div>
+          <h3>Treasure finding game</h3>
+          <p>Check result <a href="../example/treasure-game/">here</a></p>
+          <p>Hint</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-markup">
+    // index.html
+    &lt;canvas id="game" width="500" height="500"&gt;&lt;/canvas&gt;
+    &lt;script type="module" src="index.js"&gt;&lt;/script&gt;       
+        </code></pre>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // player.js
+    let screenWidth = 500;
+    let screenHeight = 500;
+    class Player {
+      constructor(ctx, img, x, y, width, height) {
+        this.ctx = ctx;
+        this.img = img;
+        this.x = x ? x : 0;
+        this.y = y ? y : 0;
+        this.width = width ? width : 100;
+        this.height = height ? height : 100;
+        this.step = 10;
+      }
+
+      draw() {
+        this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+      }
+
+      moveRight = () => {
+        if (this.x + this.step <= screenWidth - this.width) {
+          this.x += this.step;
+        }
+      };
+
+      moveLeft = () => {
+        if (this.x - this.step >= 0) {
+          this.x -= this.step;
+        }
+      };
+
+      moveUp = () => {
+        this.y -= this.step;
+      };
+
+      moveDown = () => {
+        this.y += this.step;
+      };
+    }
+
+    export default Player;
+  </code></pre>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // index.js
+    import Player from './player.js';
+
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    var img = document.createElement('img');
+    img.src = './images/player.png';
+
+    function fillBackground() {
+      ctx.fillStyle = '#e6e3e3';
+      ctx.fillRect(0, 0, 500, 500);
+    }
+
+    let player = new Player(ctx, img, 100, 50);
+    window.onload = function () {
+      setInterval(() => {
+        // fps (frame per second!)
+        fillBackground();
+        player.draw();
+      }, 10);
+    };
+
+    function initEventHandler() {
+      document.addEventListener('keydown', (event) => {
+        let key = event.key;
+        switch (key) {
+          case 'ArrowRight':
+            player.moveRight();
+            break;
+          case 'ArrowLeft':
+            player.moveLeft();
+            break;
+          case 'ArrowUp':
+            player.moveUp();
+            break;
+          case 'ArrowDown':
+            player.moveDown();
+            break;
+        }
+      });
+    }
+
+    initEventHandler();
+
+  </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
       </section>
       <footer>
         <p>&copy; 2023 - Author: Mr Dat. All rights reserved.</p>
@@ -1967,6 +2989,7 @@
       <script src="../assets/js/prism.js"></script>
       <script src="js/moving-ball.js"></script>
       <script src="js/event-handler.js"></script>
+      <script src="js/canvas.js"></script>
     </div>
   </body>
 </html>
