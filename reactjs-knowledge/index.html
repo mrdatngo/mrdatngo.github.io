@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReactJS Tutorial</title>
+    <link rel="stylesheet" href="../assets/css/prism.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" type="image/png" href="./images/react-icon.png" />
+  </head>
+  <body>
+    <div id="grid-containter">
+      <aside>
+        <ul class="sticky">
+          <div>
+            <li><a href="#what-is">What is ReactJS?</a></li>
+            <li>
+              <a href="#react-js-helloworld">ReactJS Hello World</a>
+            </li>
+            <li><a href="#jsx-babel">JSX - Babel</a></li>
+            <li><a href="#your-first-component">Your first component</a></li>
+            <li>
+              <a href="#alittlebit-history"
+                >A little bit history - Class component</a
+              >
+            </li>
+            <li><a href="#vite-framework">Vite Framework</a></li>
+            <hr />
+            <li>
+              <a href="#understanding-vite-structure-react"
+                >Understanding Vite Structure React</a
+              >
+            </li>
+            <li>
+              <a href="#project-structure-overview"
+                >Project structure overview</a
+              >
+            </li>
+            <li>
+              <a href="#import-export-component"
+                >Importing Exporting Components</a
+              >
+            </li>
+            <li><a href="#markup-with-jsx">Markup with JSX</a></li>
+            <li>
+              <a href="#curly-braces">JavaScript in JSX with Curly Braces</a>
+            </li>
+            <hr />
+            <li><a href="#passing-props">Passing Props to a Component</a></li>
+            <li><a href="#conditional-rendering">Conditional Rendering</a></li>
+            <hr />
+            <li><a href="#dom-handler">DOM Handler</a></li>
+            <li><a href="#practice-calculator">Calculator</a></li>
+            <hr />
+            <li><a href="#object-advance">Object Advance</a></li>
+            <li><a href="#practice-carousel">Carousel</a></li>
+            <hr />
+            <li><a href="#function-advance">Function Advance</a></li>
+            <li>
+              <a href="#practice-racing-bike">Racing bike</a>
+            </li>
+            <hr />
+            <li><a href="#callback">Callback</a></li>
+            <li><a href="#promise">Promise</a></li>
+            <li><a href="#async-await">Async - Await</a></li>
+            <li>
+              <a href="#ajax">AJax - Example calling api with aJax</a>
+            </li>
+            <hr />
+            <li><a href="#class">Class</a></li>
+            <li><a href="#arguments">Arguments</a></li>
+            <li><a href="#try-catch">Try Catch</a></li>
+            <li>
+              <a href="#settimeout-setinterval">Set timeout - set interval</a>
+            </li>
+            <li>
+              <a href="#solve-excercise">Solve Excercise - create a clock</a>
+            </li>
+            <li><a href="#export-import">Export - Import</a></li>
+            <hr />
+            <li><a href="#canvas">Canvas: Graphic Tag</a></li>
+            <hr />
+            <li>
+              <a href="#practice-moving-ball">Practive with moving ball</a>
+            </li>
+          </div>
+        </ul>
+      </aside>
+      <section>
+        <article id="what-is">
+          <h3>What is ReactJS?</h3>
+          <div style="display: flex; column-gap: 20px">
+            <img
+              width="100px"
+              height="100px"
+              src="./images/react-icon.png"
+              alt=""
+            />
+            <ul style="list-style-type: disclosure-closed">
+              <li>
+                ReactJS (or simply React) is an open-source JavaScript library
+                used for building user interfaces (UIs) or UI components
+              </li>
+              <li>
+                Developed by Facebook and is now maintained by both Facebook and
+                a community of individual developers and companies
+              </li>
+              <li>
+                React allows developers to create reusable UI components that
+                can be composed together to build complex, interactive web
+                applications
+              </li>
+              <li>
+                Uses a declarative syntax and a virtual DOM (Document Object
+                Model) to efficiently update the UI in response to changes in
+                data or user actions
+              </li>
+              <li>
+                React is often used in combination with other libraries and
+                frameworks, such as Redux for managing application state, React
+                Router for handling client-side routing
+              </li>
+              <li>
+                Becoming one of the most popular frontend technologies for
+                building modern web applications
+              </li>
+            </ul>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="react-js-helloworld">
+          <h3>ReactJS Hello world</h3>
+          <ol style="list-style-type: disclosure-closed">
+            <li>Pure ReactJS</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-markup">
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta charset="UTF-8" /&gt;
+        &lt;title&gt;Hello, World!&lt;/title&gt;
+        &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.14.0/umd/react.development.js"&gt;&lt;/script&gt;
+        &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.14.0/umd/react-dom.development.js"&gt;&lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div id="app"&gt;&lt;/div&gt;
+        &lt;script src="index.js"&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+          </code></pre>
+
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-markup">
+    // React.createElement(type, [props], [...children]);
+    var element = React.createElement('h1', null, 'Hell world');
+    ReactDOM.render(element, document.getElementById('app'));              
+          </code></pre>
+
+            <li><b>JSX - Babel</b></li>
+            <p></p>
+            <p></p>
+          </ol>
+        </article>
+
+        <article id="jsx-babel">
+          <h3>JSX - Babel</h3>
+          <ol style="list-style-type: disclosure-closed">
+            <li>
+              <b>JSX (Javascript XML)</b>: is a syntax extension used in React
+              that allows developers to write HTML-like code within their
+              JavaScript code
+            </li>
+            <li>
+              <b>Understanding</b>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 500px"
+              ><code class="language-js">
+    // jsx syntax
+    const element = <h1>Hello, world!</h1>;
+            </code></pre>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 500px"
+              ><code class="language-js">
+  // after transformed
+  const element = React.createElement("h1", null, "Hello, world!");
+          </code></pre>
+            </li>
+            <li>
+              <b>Babel</b> - a transformed library, checkout
+              <a href="https://babeljs.io/">here</a> for official documents
+            </li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-markup">
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;meta charset="UTF-8" /&gt;
+      &lt;title&gt;Hello, World!&lt;/title&gt;
+      &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.14.0/umd/react.development.js"&gt;&lt;/script&gt;
+      &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.14.0/umd/react-dom.development.js"&gt;&lt;/script&gt;
+      &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id="app"&gt;&lt;/div&gt;
+      &lt;script type="text/babel" src="index.js"&gt;&lt;/script&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+      </code></pre>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+  var element = (
+    &lt;div&gt;
+      &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+  ReactDOM.render(element, document.getElementById('app'));                       
+      </code></pre>
+          </ol>
+        </article>
+        <br />
+        <hr />
+
+        <article id="your-first-component">
+          <h3>Your first component</h3>
+          <p>
+            On the web, HTML lets us create rich structured documents with its
+            built-in set of tags
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    &lt;article&gt;
+      &lt;h1&gt;My First Component&lt;/h1&gt;
+      &lt;ol&gt;
+        &lt;li&gt;Components: UI Building Blocks&lt;/li&gt;
+        &lt;li&gt;Defining a Component&lt;/li&gt;
+        &lt;li&gt;Using a Component&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/article&gt;                    
+      </code></pre>
+          </div>
+          <p>
+            React lets you combine your markup, CSS, and JavaScript into custom
+            “components”, reusable UI elements for your app
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    function TableOfContents() {
+      return (
+        &lt;article&gt;
+          &lt;h1&gt;My First Component&lt;/h1&gt;
+          &lt;ol&gt;
+            &lt;li&gt;Components: UI Building Blocks&lt;/li&gt;
+            &lt;li&gt;Defining a Component&lt;/li&gt;
+            &lt;li&gt;Using a Component&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/article&gt;
+      );
+    }                 
+      </code></pre>
+            <p>Now we can use this element</p>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">    
+    function App() {
+      return (
+        &lt;div&gt;
+          &lt;header&gt;Header&lt;/header&gt;
+          &lt;nav&gt;Sidebar&lt;/nav&gt;
+          &lt;section&gt;
+            &lt;TableOfContents /&gt;
+          &lt;/section&gt;
+          &lt;footer&gt;Footer&lt;/footer&gt;
+        &lt;/div&gt;
+      );
+    }
+    ReactDOM.render(&lt;App /&gt;, document.getElementById('app'));                
+  </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="alittlebit-history">
+          <h3>A litte bit History - Class component</h3>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    class TableOfContents extends React.Component {
+      render() {
+        return (
+          &lt;article&gt;
+            &lt;h1&gt;My First Component&lt;/h1&gt;
+            &lt;ol&gt;
+              &lt;li&gt;Components: UI Building Blocks&lt;/li&gt;
+              &lt;li&gt;Defining a Component&lt;/li&gt;
+              &lt;li&gt;Using a Component&lt;/li&gt;
+            &lt;/ol&gt;
+          &lt;/article&gt;
+        );
+      }
+    }
+    // still working - but developers should only use Function Component
+    // there are no longer mention class component on React official documents  
+      </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="vite-framework">
+          <h3>Vite framework</h3>
+          <ul>
+            <li>
+              The outdate of CRA:
+              <a
+                href="https://www.crocoder.dev/blog/create-react-app-is-dead-what-are-the-alternatives/"
+                >https://www.crocoder.dev/blog/create-react-app-is-dead-what-are-the-alternatives/</a
+              >
+            </li>
+            <li>
+              Vite official:
+              <a href="https://vitejs.dev/">https://vitejs.dev/</a>
+            </li>
+            <li>Tools needed: <b>node</b>, <b>yarn</b>, <b>vs-code</b></li>
+            <li>
+              Install yarn here:
+              <a
+                href="https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable"
+                >https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable</a
+              >
+            </li>
+          </ul>
+          <h4>Hello world</h4>
+          <ul>
+            <li>Init: <b>yarn create vite</b></li>
+            <li>Project name: … <b>hello-world</b></li>
+            <li>Select a framework: <b>› React</b></li>
+            <li>Select a variant: <b>› JavaScript</b></li>
+            <li>Terminal: <b>cd hello-world</b></li>
+            <li>Terminal: <b>yarn install</b></li>
+            <li>Terminal run: <b>yarn dev</b></li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="understanding-vite-structure-react">
+          <h3>Understanding Vite Structure React</h3>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    project/
+    ├── node_modules/
+    ├── public/
+    │   ├── vite.svg
+    ├── src/
+    │   ├── assets
+    │       ├── react.svg
+    │   ├── App.css
+    │   ├── App.jsx
+    │   ├── index.css
+    │   └── main.jsx
+    ├── .gitignore
+    ├── index.html
+    ├── vite.config.js
+    ├── package.json
+    ├── yarn.lock
+    └── README.md             
+        </code></pre>
+          </div>
+          <div
+            class="markdown prose w-full break-words dark:prose-invert light"
+          >
+            <p>
+              Let's go through each file and folder to understand their purpose:
+            </p>
+            <ul>
+              <li>
+                <p>
+                  <code>node_modules/</code>: This folder contains all the
+                  dependencies installed via npm or yarn.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <code>public/</code>: This folder contains static assets such
+                  as <code>index.html</code>, <code>favicon.ico</code>, and
+                  <code>manifest.json</code>. <code>index.html</code> is the
+                  entry point to the application, where we add a
+                  <code>div</code> element with an ID of <code>root</code> that
+                  will be used to render our React app.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <code>src/</code>: This folder contains the source code of the
+                  React application. <code>index.jsx</code> is the entry point
+                  of the React app, which renders the
+                  <code>App</code> component. <code>App.jsx</code> is the main
+                  component of the application. <code>index.css</code> and
+                  <code>App.css</code> contain the styles for the application.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <code>.gitignore</code>: This file tells Git which files and
+                  directories to ignore when committing changes.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <code>package.json</code>: This file contains the
+                  configuration and dependencies for the project, as well as
+                  scripts for running various tasks (such as starting the
+                  development server or building the application for
+                  production).
+                </p>
+              </li>
+              <li>
+                <p>
+                  <code>README.md</code>: This file contains information about
+                  the project and how to use it.
+                </p>
+              </li>
+            </ul>
+          </div>
+          <b>Note: <code>app start at 'main.jsx'</code></b>
+          <p>Update App.jsx</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import './App.css';
+
+    function App() {
+      return (
+        &lt;div className='App'&gt;
+          &lt;p&gt;Hello world&lt;/p&gt;
+        &lt;/div&gt;
+      );
+    }
+    export default App;      
+        </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="#project-structure-overview">
+          <h3>Project structure overview</h3>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    project/
+    ├── node_modules/
+    ├── public/
+    │   ├── vite.svg
+    ├── src/
+    │   ├── apis
+    │   ├── assets
+    │       ├── react.svg
+    │   ├── redux
+    │   ├── routers
+    │   ├── utils
+    │   ├── views
+    │   ├── App.css
+    │   ├── App.jsx
+    │   ├── index.css
+    │   └── main.jsx
+    ├── .gitignore
+    ├── index.html
+    ├── vite.config.js
+    ├── package.json
+    ├── yarn.lock
+    └── README.md             
+        </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article id="import-export-component">
+          <h3>Importing Exporting Components</h3>
+          <ul>
+            <li>Create folder 'views' inside 'src' folder</li>
+            <li>Create folder 'components' inside 'src' folder</li>
+            <li>Create file 'TableOfContents.jsx' inside components</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+      // TableOfContents.jsx
+      export default function TableOfContents() {
+        return (
+          &lt;article&gt;
+            &lt;h1&gt;My First Component&lt;/h1&gt;
+            &lt;ol&gt;
+              &lt;li&gt;Components: UI Building Blocks&lt;/li&gt;
+              &lt;li&gt;Defining a Component&lt;/li&gt;
+              &lt;li&gt;Using a Component&lt;/li&gt;
+            &lt;/ol&gt;
+          &lt;/article&gt;
+        );
+      }                  
+            </code></pre>
+            </div>
+            <li>Update 'index.css'</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }       
+    </code></pre>
+            </div>
+            <li>Update 'app.css'</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    header {
+      height: 100px;
+      background-color: antiquewhite;
+    }
+    
+    nav {
+      height: 100%;
+      background-color: azure;
+    }
+    footer {
+      height: 100px;
+      background-color: antiquewhite;
+    }         
+    </code></pre>
+            </div>
+            <li>Update 'App.jsx'</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    import TableOfContents from './views/components/TableOfContents';
+    import './App.css';
+    
+    function App() {
+      return (
+        &lt;div&gt;
+          &lt;header&gt;Header&lt;/header&gt;
+          &lt;nav&gt;Sidebar&lt;/nav&gt;
+          &lt;section&gt;
+            &lt;TableOfContents /&gt;
+          &lt;/section&gt;
+          &lt;footer&gt;Footer&lt;/footer&gt;
+        &lt;/div&gt;
+      );
+    }
+    
+    export default App;
+          </code></pre>
+            </div>
+            <li>Import export syntax</li>
+            <table class="table-of-font">
+              <thead>
+                <tr>
+                  <th>Syntax</th>
+                  <th>Export statement</th>
+                  <th>Import statement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Default</td>
+                  <td>
+                    <code
+                      class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                      >export default function Button() {}</code
+                    >
+                  </td>
+                  <td>
+                    <code
+                      class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                      >import Button from './button.js';</code
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>Named</td>
+                  <td>
+                    <code
+                      class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                      >export function Button() {}</code
+                    >
+                  </td>
+                  <td>
+                    <code
+                      class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                      >import { Button } from './button.js';</code
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </ul>
+        </article>
+        <br />
+        <hr />
+        <article id="markup-with-jsx">
+          <h3>Markup with JSX</h3>
+          <h4>Rules of JSX</h4>
+          <ul>
+            <li>Return a single root element</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    &lt;div&gt;
+      &lt;h1&gt;Hedy Lamarr's Todos&lt;/h1&gt;
+      &lt;img 
+        src="https://i.imgur.com/yXOvdOSs.jpg" 
+        alt="Hedy Lamarr" 
+        class="photo"
+      &gt;
+      &lt;ul&gt;
+        ...
+      &lt;/ul&gt;
+    &lt;/div&gt;
+          </code></pre>
+            </div>
+            <b style="color: red">Note</b
+            >:
+            <p class="whitespace-pre-wrap my-4">
+              If you don’t want to add an extra
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >&lt;div&gt;</code
+              >
+              to your markup, you can write
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >&lt;&gt;</code
+              >
+              and
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >&lt;/&gt;</code
+              >
+              instead (fragment).
+            </p>
+            <li>Close all the tags</li>
+            <p class="whitespace-pre-wrap my-4">
+              JSX requires tags to be explicitly closed: self-closing tags like
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >&lt;img&gt;</code
+              >
+              must become
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >&lt;img /&gt;</code
+              >, and wrapping tags like
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >&lt;li&gt;oranges</code
+              >
+              must be written as
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >&lt;li&gt;oranges&lt;/li&gt;</code
+              >.
+            </p>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-markup">
+    &lt;&gt;
+      &lt;img 
+        src="https://i.imgur.com/yXOvdOSs.jpg" 
+        alt="Hedy Lamarr" 
+        class="photo"
+        /&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Invent new traffic lights&lt;/li&gt;
+        &lt;li&gt;Rehearse a movie scene&lt;/li&gt;
+        &lt;li&gt;Improve the spectrum technology&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/&gt;
+          </code></pre>
+            </div>
+            <li>camelCase all most of the things!</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-markup">
+    &lt;img 
+      src="https://i.imgur.com/yXOvdOSs.jpg" 
+      alt="Hedy Lamarr" 
+      className="photo"
+    /&gt;
+          </code></pre>
+            </div>
+          </ul>
+          <b
+            >Use
+            <b><a href="https://transform.tools/html-to-jsx">Converter</a></b>
+            if needed</b
+          >
+        </article>
+        <br />
+        <hr />
+        <article id="curly-braces">
+          <h3>JavaScript in JSX with Curly Braces</h3>
+          <ul>
+            <li>Passing strings with quotes</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import imgData from '../../assets/react.svg';    
+      
+    export default function TableOfContents() {
+      const title = 'My First Component';
+      return (
+        &lt;article&gt;
+          &lt;h1&gt;{title}&lt;/h1&gt;
+          &lt;img src={imgData} alt='React Icon' /&gt;
+          &lt;ol&gt;
+            &lt;li&gt;Components: UI Building Blocks&lt;/li&gt;
+            &lt;li&gt;Defining a Component&lt;/li&gt;
+            &lt;li&gt;Using a Component&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/article&gt;
+      );
+    }                        
+          </code></pre>
+            <li>Function call</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+      import imgData from '../../assets/react.svg';    
+
+      export default function TableOfContents() {
+      const title = 'My First Component';
+    
+      const today = new Date();
+      function formatDate(date) {
+        return new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date);
+      }
+    
+      return (
+        &lt;article&gt;
+          &lt;h1&gt;{title}&lt;/h1&gt;
+          &lt;img src={imgData} alt='React Icon' /&gt;
+          &lt;ol&gt;
+            &lt;li&gt;Today is {formatDate(today)}&lt;/li&gt;
+            &lt;li&gt;Components: UI Building Blocks&lt;/li&gt;
+            &lt;li&gt;Defining a Component&lt;/li&gt;
+            &lt;li&gt;Using a Component&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/article&gt;
+      );
+    }
+          </code></pre>
+            <li>Where to use curly-braces</li>
+            <ol class="ml-6 my-3 list-decimal">
+              <li class="leading-relaxed mb-1">
+                <strong class="font-bold">As text</strong> directly inside a JSX
+                tag:
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >&lt;h1&gt;{name}'s To Do List&lt;/h1&gt;</code
+                >
+                works, but
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >&lt;{tag}&gt;Gregorio Y. Zara's To Do
+                  List&lt;/{tag}&gt;</code
+                >
+                will not.
+              </li>
+              <li class="leading-relaxed mb-1">
+                <strong class="font-bold">As attributes</strong> immediately
+                following the
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >=</code
+                >
+                sign:
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >src={avatar}</code
+                >
+                will read the
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >avatar</code
+                >
+                variable, but
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >src="{avatar}"</code
+                >
+                will pass the string
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >"{avatar}"</code
+                >.
+              </li>
+              <li><b>Result</b> of function called</li>
+            </ol>
+            <li>Using double curlies: <b>CSS</b> and other objects in JSX</li>
+            <small>Just a object inside JSX curlies brace</small>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import imgData from '../../assets/react.svg';
+
+    export default function TableOfContents() {
+      const title = 'My First Component';
+      const today = new Date();
+
+      const blocks = {
+        components: 'UI Building Blocks',
+      };
+
+      function formatDate(date) {
+        return new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date);
+      }
+
+      return (
+        &lt;article&gt;
+          &lt;h1 style={{ color: 'green', backgroundColor: 'grey' }}&gt;{title}&lt;/h1&gt;
+          &lt;img src={imgData} alt='React Icon' /&gt;
+          &lt;ol&gt;
+            &lt;li&gt;Today is {formatDate(today)}&lt;/li&gt;
+            &lt;li&gt;Components: {blocks.components}&lt;/li&gt;
+            &lt;li&gt;Defining a Component&lt;/li&gt;
+            &lt;li&gt;Using a Component&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/article&gt;
+      );
+    }
+          </code></pre>
+            <div style="background-color: antiquewhite">
+              Note:
+              <p class="whitespace-pre-wrap my-4">
+                Inline
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >style</code
+                >
+                properties are written in camelCase. For example, HTML
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >&lt;ul style="background-color: black"&gt;</code
+                >
+                would be written as
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >&lt;ul style={{ backgroundColor: 'black' }}&gt;</code
+                >
+                in your component.
+              </p>
+            </div>
+          </ul>
+          <p>Recap</p>
+          <ul class="ml-6 my-3 list-disc">
+            <li class="leading-relaxed mb-1">
+              JSX attributes inside quotes are passed as strings.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Curly braces let you bring JavaScript logic and variables into
+              your markup.
+            </li>
+            <li class="leading-relaxed mb-1">
+              They work inside the JSX tag content or immediately after
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >=</code
+              >
+              in attributes.
+            </li>
+            <li class="leading-relaxed mb-1">
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >{{</code
+              >
+              and
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >}}</code
+              >
+              is not special syntax: it’s a JavaScript object tucked inside JSX
+              curly braces.
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+        <article id="passing-props">
+          <h3>Passing Props to a Component</h3>
+          <ul>
+            <li>
+              React components using <i>props</i> to communicate with each other
+            </li>
+            <li>
+              Every parent component can pass some information to its child
+              components by giving them props
+            </li>
+            <li>
+              Props might reminding of HTML attributes, but we can pass any
+              JavaScript value through them, including objects, arrays, and
+              functions.
+            </li>
+          </ul>
+          <h4>Target</h4>
+          <ul class="ml-6 my-3 list-disc">
+            <li class="leading-relaxed mb-1">
+              How to pass props to a component
+            </li>
+            <li class="leading-relaxed mb-1">
+              How to read props from a component
+            </li>
+            <li class="leading-relaxed mb-1">
+              How to specify default values for props
+            </li>
+            <li class="leading-relaxed mb-1">
+              How to pass some JSX to a component
+            </li>
+            <li class="leading-relaxed mb-1">How props change over time</li>
+          </ul>
+          <h4>Familiar Props</h4>
+          <div>
+            Props are the information that you pass to a JSX tag. For example,
+            <b>className</b>, <b>src</b>, <b>alt</b>, <b>width</b>, and
+            <b>height</b> are some of the props you can pass to an &lt;img&gt;:
+
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // create Profile.jsx inside src/views/components
+    /* 
+    replace src/App.jsx the content &lt;header&gt;Header&lt;/header&gt; to &lt;header&gt; &lt;Profile /&gt; &lt;/header&gt;
+    and import: import Profile from './views/components/Profile';
+    */
+    function Avatar() {
+      return (
+        &lt;img
+          className='avatar'
+          src='https://i.imgur.com/1bX5QH6.jpg'
+          alt='Lin Lanying'
+          width={100}
+          height={100}
+        /&gt;
+      );
+    }
+    
+    export default function Profile() {
+      return &lt;Avatar /&gt;;
+    }              
+          </code></pre>
+          </div>
+
+          <h4>Passing props to a component</h4>
+          <ol>
+            <li>Step 1: Pass props to the child component</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    export default function Profile() {
+      return (
+        &lt;Avatar
+          person={{ name: 'Lin Lanying', imageId: '1bX5QH6' }}
+          size={100}
+        /&gt;
+      );
+    }
+            </code></pre>
+            <li>Step 2: Read props inside the child component</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    function Avatar({ person, size }) {
+      // person and size are available here
+    }
+            </code></pre>
+            <p>Create 'imageHelper.js' inside 'utils' folder</p>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    export function getImageUrl(person, size = 's') {
+      return 'https://i.imgur.com/' + person.imageId + size + '.jpg';
+    }              
+            </code></pre>
+            Update 'Profile.jsx'
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { getImageUrl } from '../../utils/imageHelper';
+
+    function Avatar({ person, size }) {
+      return (
+        &lt;img
+          className='avatar'
+          src={getImageUrl(person)}
+          alt={person.name}
+          width={size}
+          height={size}
+        /&gt;
+      );
+    }
+    
+    export default function Profile() {
+      return (
+        &lt;div&gt;
+          &lt;Avatar
+            size={100}
+            person={{
+              name: 'Katsuko Saruhashi',
+              imageId: 'YfeOqp2',
+            }}
+          /&gt;
+          &lt;Avatar
+            size={80}
+            person={{
+              name: 'Aklilu Lemma',
+              imageId: 'OKS67lh',
+            }}
+          /&gt;
+          &lt;Avatar
+            size={50}
+            person={{
+              name: 'Lin Lanying',
+              imageId: '1bX5QH6',
+            }}
+          /&gt;
+        &lt;/div&gt;
+      );
+    }                          
+            </code></pre>
+          </ol>
+          <h4>Specifying a default value for a prop</h4>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 800px"
+          ><code class="language-js">
+    function Avatar({ person, size = 100 }) {
+      // ...
+    }
+          </code></pre>
+          <h4>Forwarding props with the JSX spread syntax</h4>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 800px"
+          ><code class="language-js">
+    function Profile(props) {
+      return (
+        &lt;div className="card"&gt;
+          &lt;Avatar {...props} /&gt;
+        &lt;/div&gt;
+      );
+    }
+          </code></pre>
+          <h4>Passing JSX as children</h4>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 800px"
+          ><code class="language-js">
+    // Profile.jsx
+    import { getImageUrl } from '../../utils/imageHelper';
+
+    function Avatar({ person, size }) {
+      return (
+        &lt;img
+          className='avatar'
+          src={getImageUrl(person)}
+          alt={person.name}
+          width={size}
+          height={size}
+        /&gt;
+      );
+    }
+    
+    function Card({ children }) {
+      return &lt;div className='card'&gt;{children}&lt;/div&gt;;
+    }
+    
+    export default function Profile() {
+      return (
+        &lt;div&gt;
+          &lt;Card&gt;
+            &lt;Avatar
+              size={100}
+              person={{
+                name: 'Katsuko Saruhashi',
+                imageId: 'YfeOqp2',
+              }}
+            /&gt;
+            &lt;Avatar
+              size={80}
+              person={{
+                name: 'Aklilu Lemma',
+                imageId: 'OKS67lh',
+              }}
+            /&gt;
+            &lt;Avatar
+              size={50}
+              person={{
+                name: 'Lin Lanying',
+                imageId: '1bX5QH6',
+              }}
+            /&gt;
+          &lt;/Card&gt;
+        &lt;/div&gt;
+      );
+    }            
+          </code></pre>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 800px"
+          ><code class="language-css">
+    // app.css
+    header {
+      background-color: antiquewhite;
+    }
+    
+    nav {
+      height: 100%;
+      background-color: azure;
+    }
+    footer {
+      height: 100px;
+      background-color: antiquewhite;
+    }
+    
+    .avatar {
+      margin: 20px;
+      border-radius: 50%;
+    }
+    
+    .card {
+      width: fit-content;
+      margin: 5px;
+      padding: 5px;
+      text-align: center;
+      border: 1px solid black;
+      border-radius: 20px;
+    }    
+          </code></pre>
+          <h4>How props change over time</h4>
+          <ul>
+            <li>Props are not always static</li>
+            <li>
+              Props are immutable—a term from computer science meaning
+              “unchangeable”
+            </li>
+            <li>Don’t try to “change props”</li>
+          </ul>
+          <p>Recap:</p>
+          <ul class="ml-6 my-3 list-disc">
+            <li class="leading-relaxed mb-1">
+              To pass props, add them to the JSX, just like you would with HTML
+              attributes.
+            </li>
+            <li class="leading-relaxed mb-1">
+              To read props, use the
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >function Avatar({ person, size })</code
+              >
+              destructuring syntax.
+            </li>
+            <li class="leading-relaxed mb-1">
+              You can specify a default value like
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >size = 100</code
+              >, which is used for missing and
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >undefined</code
+              >
+              props.
+            </li>
+            <li class="leading-relaxed mb-1">
+              You can forward all props with
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >&lt;Avatar {...props} /&gt;</code
+              >
+              JSX spread syntax, but don’t overuse it!
+            </li>
+            <li class="leading-relaxed mb-1">
+              Nested JSX like
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >&lt;Card&gt;&lt;Avatar /&gt;&lt;/Card&gt;</code
+              >
+              will appear as
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >Card</code
+              >
+              component’s
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >children</code
+              >
+              prop.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Props are read-only snapshots in time: every render receives a new
+              version of props.
+            </li>
+            <li class="leading-relaxed mb-1">
+              You can’t change props. When you need interactivity, you’ll need
+              to set state.
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+        <article id="conditional-rendering">
+          <h3>Conditional Rendering</h3>
+          <ul>
+            <li>Prepare</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // src/views/components/PackingList.jsx
+    function Item({ name, isPacked }) {
+      return &lt;li className='item'&gt;{name}&lt;/li&gt;;
+    }
+    
+    export default function PackingList() {
+      return (
+        &lt;section&gt;
+          &lt;h1&gt;Sally Ride's Packing List&lt;/h1&gt;
+          &lt;ul&gt;
+            &lt;Item isPacked={true} name='Space suit' /&gt;
+            &lt;Item isPacked={true} name='Helmet with a golden leaf' /&gt;
+            &lt;Item isPacked={false} name='Photo of Tam' /&gt;
+          &lt;/ul&gt;
+        &lt;/section&gt;
+      );
+    } 
+    
+    // src/App.jsx
+    import TableOfContents from './views/components/TableOfContents';
+    import './App.css';
+    import Profile from './views/components/Profile';
+    import PackingList from './views/components/PackingList';
+
+    function App() {
+      return (
+        &lt;div&gt;
+          &lt;header&gt;
+            &lt;Profile /&gt;
+          &lt;/header&gt;
+          &lt;nav&gt;Sidebar&lt;/nav&gt;
+          &lt;section&gt;
+            &lt;TableOfContents /&gt;
+            &lt;PackingList /&gt;
+          &lt;/section&gt;
+          &lt;footer&gt;Footer&lt;/footer&gt;
+        &lt;/div&gt;
+      );
+    }
+          </code></pre>
+            <li>Conditionally returning JSX</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // we can update Item in src/views/components/PackingList.jsx:
+    if (isPacked) {
+      return &lt;li className="item"&gt;{name} ✔&lt;/li&gt;;
+    }
+    return &lt;li className="item"&gt;{name}&lt;/li&gt;;
+          </code></pre>
+            <li>Conditionally returning nothing with <b>null</b></li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    if (isPacked) {
+      return null;
+    }
+    return &lt;li className="item"&gt;{name}&lt;/li&gt;;
+          </code></pre>
+            <li>Conditional (ternary) operator (? :)</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    return (
+      &lt;li className="item"&gt;
+        {isPacked ? name + ' ✔' : name}
+      &lt;/li&gt;
+    );
+          </code></pre>
+            <li>Logical AND operator (&&)</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    return (
+      &lt;li className="item"&gt;
+        {name} {isPacked && '✔'}
+      &lt;/li&gt;
+    );
+          </code></pre>
+            <li>Conditionally assigning JSX to a variable</li>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    function Item({ name, isPacked }) {
+      let itemContent = name;
+      if (isPacked) {
+        itemContent = name + " ✔";
+      }
+      return (
+        &lt;li className="item"&gt;
+          {itemContent}
+        &lt;/li&gt;
+      );
+    }
+          </code></pre>
+          </ul>
+          <p>Recap</p>
+          <ul class="ml-6 my-3 list-disc">
+            <li class="leading-relaxed mb-1">
+              In React, you control branching logic with JavaScript.
+            </li>
+            <li class="leading-relaxed mb-1">
+              You can return a JSX expression conditionally with an
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >if</code
+              >
+              statement.
+            </li>
+            <li class="leading-relaxed mb-1">
+              You can conditionally save some JSX to a variable and then include
+              it inside other JSX by using the curly braces.
+            </li>
+            <li class="leading-relaxed mb-1">
+              In JSX,
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >{cond ? &lt;A /&gt; : &lt;B /&gt;}</code
+              >
+              means
+              <em
+                >“if
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >cond</code
+                >, render
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >&lt;A /&gt;</code
+                >, otherwise
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >&lt;B /&gt;</code
+                >”</em
+              >.
+            </li>
+            <li class="leading-relaxed mb-1">
+              In JSX,
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >{cond &amp;&amp; &lt;A /&gt;}</code
+              >
+              means
+              <em
+                >“if
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >cond</code
+                >, render
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >&lt;A /&gt;</code
+                >, otherwise nothing”</em
+              >.
+            </li>
+            <li class="leading-relaxed mb-1">
+              The shortcuts are common, but you don’t have to use them if you
+              prefer plain
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >if</code
+              >.
+            </li>
+          </ul>
+        </article>
+      </section>
+      <footer>
+        <p>&copy; 2023 - Author: Mr Dat. All rights reserved.</p>
+      </footer>
+      <script src="../assets/js/prism.js"></script>
+    </div>
+  </body>
+</html>

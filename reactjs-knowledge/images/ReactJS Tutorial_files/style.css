@@ -1,0 +1,30 @@
+.table-of-color {
+  width: 100%;
+  text-align: center;
+  border-collapse: separate;
+  border: 0.1px solid gray;
+  border-radius: 10px;
+}
+
+.table-of-color th,
+.table-of-color td {
+  border: 1px solid #d9d9e3;
+  padding: 5px;
+}
+
+.table-of-font {
+  border-collapse: separate;
+  border: 0.1px solid gray;
+  border-radius: 10px;
+}
+
+.table-of-font th,
+.table-of-font td {
+  border: 1px solid #d9d9e3;
+  padding: 5px;
+}
+
+.table-of-font tr td:first-child {
+  background-color: antiquewhite;
+  text-align: center;
+}
