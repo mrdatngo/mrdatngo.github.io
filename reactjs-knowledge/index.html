@@ -51,7 +51,7 @@
             <li><a href="#passing-props">Passing Props to a Component</a></li>
             <li><a href="#conditional-rendering">Conditional Rendering</a></li>
             <hr />
-            <li><a href="#dom-handler">DOM Handler</a></li>
+            <li><a href="#render-list">Render list</a></li>
             <li><a href="#practice-calculator">Calculator</a></li>
             <hr />
             <li><a href="#object-advance">Object Advance</a></li>
@@ -460,7 +460,7 @@
         <br />
         <hr />
 
-        <article id="#project-structure-overview">
+        <article id="project-structure-overview">
           <h3>Project structure overview</h3>
           <div>
             <pre
@@ -1399,6 +1399,98 @@
                 class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
                 >if</code
               >.
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+        <article id="render-list">
+          <h3>Render list</h3>
+          <pre
+            style="padding: 0px; font-size: 10px; width: 800px"
+          ><code class="language-js">
+    import { getImageUrl } from '../../utils/imageHelper';
+
+    const people = [
+      {
+        id: 0, // Used in JSX as a key
+        name: 'Creola Katherine Johnson',
+        profession: 'mathematician',
+        accomplishment: 'spaceflight calculations',
+        imageId: 'MK3eW3A',
+      },
+      {
+        id: 1, // Used in JSX as a key
+        name: 'Mario José Molina-Pasquel Henríquez',
+        profession: 'chemist',
+        accomplishment: 'discovery of Arctic ozone hole',
+        imageId: 'mynHUSa',
+      },
+      {
+        id: 2, // Used in JSX as a key
+        name: 'Mohammad Abdus Salam',
+        profession: 'physicist',
+        accomplishment: 'electromagnetism theory',
+        imageId: 'bE7W1ji',
+      },
+      {
+        id: 3, // Used in JSX as a key
+        name: 'Percy Lavon Julian',
+        profession: 'chemist',
+        accomplishment:
+          'pioneering cortisone drugs, steroids and birth control pills',
+        imageId: 'IOjWm71',
+      },
+      {
+        id: 4, // Used in JSX as a key
+        name: 'Subrahmanyan Chandrasekhar',
+        profession: 'astrophysicist',
+        accomplishment: 'white dwarf star mass calculations',
+        imageId: 'lrWQx8l',
+      },
+    ];
+
+    export default function RenderList() {
+      const listItems = people.map((person) =&gt; (
+        &lt;li key={person.id}&gt;
+          &lt;img src={getImageUrl(person)} alt={person.name} /&gt;
+          &lt;p&gt;
+            &lt;b&gt;{person.name}&lt;/b&gt;
+            {' ' + person.profession + ' '}
+            known for {person.accomplishment}
+          &lt;/p&gt;
+        &lt;/li&gt;
+      ));
+      return &lt;ul&gt;{listItems}&lt;/ul&gt;;
+    }
+          </code></pre>
+          <p>Note</p>
+          <ul>
+            <li>
+              Keys must be unique among siblings. However, it’s okay to use the
+              same keys for JSX nodes in different arrays.
+            </li>
+            <li>
+              Keys must not change or that defeats their purpose! Don’t generate
+              them while rendering.
+            </li>
+          </ul>
+          <h4>Why does React need keys?</h4>
+          <ul>
+            <li>
+              Imagine that files on your desktop didn’t have names. Instead,
+              you’d refer to them by their order — the first file, the second
+              file, and so on. You could get used to it, but once you delete a
+              file, it would get confusing. The second file would become the
+              first file, the third file would be the second file, and so on.
+            </li>
+            <li>
+              File names in a folder and JSX keys in an array serve a similar
+              purpose. They let us uniquely identify an item between its
+              siblings. A well-chosen key provides more information than the
+              position within the array. Even if the position changes due to
+              reordering, the key lets React identify the item throughout its
+              lifetime.
             </li>
           </ul>
         </article>
