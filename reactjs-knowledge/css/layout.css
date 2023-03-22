@@ -78,7 +78,7 @@ ul.sticky {
   padding: 20px;
 }
 
-#grid-containter aside ul li a::before {
+#grid-containter > aside > ul > div > li a::before {
   counter-increment: step;
   content: 'Part ' counter(step) ': ';
 }

@@ -15,76 +15,145 @@
       <aside>
         <ul class="sticky">
           <div>
-            <li><a href="#what-is">What is ReactJS?</a></li>
-            <li>
-              <a href="#react-js-helloworld">ReactJS Hello World</a>
-            </li>
-            <li><a href="#jsx-babel">JSX - Babel</a></li>
-            <li><a href="#your-first-component">Your first component</a></li>
-            <li>
-              <a href="#alittlebit-history"
-                >A little bit history - Class component</a
-              >
-            </li>
-            <li><a href="#vite-framework">Vite Framework</a></li>
-            <hr />
-            <li>
-              <a href="#understanding-vite-structure-react"
-                >Understanding Vite Structure React</a
-              >
-            </li>
-            <li>
-              <a href="#project-structure-overview"
-                >Project structure overview</a
-              >
-            </li>
-            <li>
-              <a href="#import-export-component"
-                >Importing Exporting Components</a
-              >
-            </li>
-            <li><a href="#markup-with-jsx">Markup with JSX</a></li>
-            <li>
-              <a href="#curly-braces">JavaScript in JSX with Curly Braces</a>
-            </li>
-            <hr />
-            <li><a href="#passing-props">Passing Props to a Component</a></li>
-            <li><a href="#conditional-rendering">Conditional Rendering</a></li>
-            <hr />
-            <li><a href="#render-list">Render list</a></li>
-            <li><a href="#practice-calculator">Calculator</a></li>
-            <hr />
-            <li><a href="#object-advance">Object Advance</a></li>
-            <li><a href="#practice-carousel">Carousel</a></li>
-            <hr />
-            <li><a href="#function-advance">Function Advance</a></li>
-            <li>
-              <a href="#practice-racing-bike">Racing bike</a>
-            </li>
-            <hr />
-            <li><a href="#callback">Callback</a></li>
-            <li><a href="#promise">Promise</a></li>
-            <li><a href="#async-await">Async - Await</a></li>
-            <li>
-              <a href="#ajax">AJax - Example calling api with aJax</a>
-            </li>
-            <hr />
-            <li><a href="#class">Class</a></li>
-            <li><a href="#arguments">Arguments</a></li>
-            <li><a href="#try-catch">Try Catch</a></li>
-            <li>
-              <a href="#settimeout-setinterval">Set timeout - set interval</a>
-            </li>
-            <li>
-              <a href="#solve-excercise">Solve Excercise - create a clock</a>
-            </li>
-            <li><a href="#export-import">Export - Import</a></li>
-            <hr />
-            <li><a href="#canvas">Canvas: Graphic Tag</a></li>
-            <hr />
-            <li>
-              <a href="#practice-moving-ball">Practive with moving ball</a>
-            </li>
+            <li menu-name="main-menu-1"><a href="">Introduction</a></li>
+            <div sub-menu-name="main-menu-1" style="display: none">
+              <ol>
+                <li><a href="#what-is">What is ReactJS?</a></li>
+                <li>
+                  <a href="#react-js-helloworld">ReactJS Hello World</a>
+                </li>
+                <li><a href="#jsx-babel">JSX - Babel</a></li>
+                <li>
+                  <a href="#your-first-component">Your first component</a>
+                </li>
+                <li>
+                  <a href="#alittlebit-history"
+                    >A little bit history - Class component</a
+                  >
+                </li>
+                <li><a href="#vite-framework">Vite Framework</a></li>
+                <li>
+                  <a href="#understanding-vite-structure-react"
+                    >Understanding Vite Structure React</a
+                  >
+                </li>
+                <li>
+                  <a href="#project-structure-overview"
+                    >Project structure overview</a
+                  >
+                </li>
+                <li>
+                  <a href="#import-export-component"
+                    >Importing Exporting Components</a
+                  >
+                </li>
+              </ol>
+            </div>
+            <li menu-name="main-menu-2"><a href="">Describe UI</a></li>
+            <div sub-menu-name="main-menu-2" style="display: none">
+              <ol>
+                <li><a href="#markup-with-jsx">Markup with JSX</a></li>
+                <li>
+                  <a href="#curly-braces"
+                    >JavaScript in JSX with Curly Braces</a
+                  >
+                </li>
+                <li>
+                  <a href="#passing-props">Passing Props to a Component</a>
+                </li>
+                <li>
+                  <a href="#conditional-rendering">Conditional Rendering</a>
+                </li>
+                <li><a href="#render-list">Render list</a></li>
+                <li>
+                  <a href="#keeping-component-pure">Keeping component pure</a>
+                </li>
+              </ol>
+            </div>
+            <li menu-name="main-menu-3"><a href="">Adding Interactivity</a></li>
+            <div sub-menu-name="main-menu-3" style="display: none">
+              <ol>
+                <li>
+                  <a href="#responding-to-events">Responding to events</a>
+                </li>
+                <li><a href="#state">State</a></li>
+                <li><a href="#render-and-commit">Render and Commit</a></li>
+                <li>
+                  <a href="#state-as-snapshot">State as Snapshot</a>
+                </li>
+                <li>
+                  <a href="#series-of-state-update">Series of State update</a>
+                </li>
+                <li>
+                  <a href="#updating-object-in-state"
+                    >Updating object in state</a
+                  >
+                </li>
+                <li><a href="#updating-array-state">Update array State</a></li>
+              </ol>
+            </div>
+            <li menu-name="main-menu-4"><a href="">Manage State</a></li>
+            <div sub-menu-name="main-menu-4" style="display: none">
+              <ol>
+                <li>
+                  <a href="#input-with-state">Input with State</a>
+                </li>
+                <li>
+                  <a href="#sharing-state">Sharing state between Components</a>
+                </li>
+                <li>
+                  <a href="#preserving-setting-state"
+                    >Preserving and Setting state</a
+                  >
+                </li>
+                <li>
+                  <a href="#use-reducer">Extract State Logic into a Reducer</a>
+                </li>
+                <li><a href="context">Passing data deeply with context</a></li>
+                <li>
+                  <a href="#reducer-and-context"
+                    >Scaling Up with Reducer and Context</a
+                  >
+                </li>
+              </ol>
+            </div>
+            <li menu-name="main-menu-5"><a href="">Outside of React</a></li>
+            <div sub-menu-name="main-menu-5" style="display: none">
+              <ol>
+                <li>
+                  <a href="#use-ref">Referencing values with refs</a>
+                </li>
+                <li>
+                  <a href="#manipulating-with-ref"
+                    >Manipulating DOM with refs</a
+                  >
+                </li>
+                <li>
+                  <a href="#syncc-with-effect">Synchronizing with Effects</a>
+                </li>
+                <li>
+                  <a href="#no-need-effect">Might Not Need An Effect</a>
+                </li>
+                <li>
+                  <a href="#lifecycle-of-effect"
+                    >Lifecycle of reactive effects</a
+                  >
+                </li>
+                <li>
+                  <a href="#separating-events-from-effect"
+                    >Separating events from Effects</a
+                  >
+                </li>
+                <li>
+                  <a href="#removing-effect-dep"
+                    >Removing Effect dependencies</a
+                  >
+                </li>
+                <li>
+                  <a href="#custom-hook">Custom Hooks</a>
+                </li>
+              </ol>
+            </div>
           </div>
         </ul>
       </aside>
@@ -130,7 +199,6 @@
           </div>
         </article>
         <br />
-        <hr />
 
         <article id="react-js-helloworld">
           <h3>ReactJS Hello world</h3>
@@ -877,7 +945,7 @@
               </p>
             </div>
           </ul>
-          <p>Recap</p>
+          <h4>Recap</h4>
           <ul class="ml-6 my-3 list-disc">
             <li class="leading-relaxed mb-1">
               JSX attributes inside quotes are passed as strings.
@@ -1166,7 +1234,7 @@
             </li>
             <li>Don’t try to “change props”</li>
           </ul>
-          <p>Recap:</p>
+          <h4>Recap:</h4>
           <ul class="ml-6 my-3 list-disc">
             <li class="leading-relaxed mb-1">
               To pass props, add them to the JSX, just like you would with HTML
@@ -1333,7 +1401,7 @@
     }
           </code></pre>
           </ul>
-          <p>Recap</p>
+          <h4>Recap</h4>
           <ul class="ml-6 my-3 list-disc">
             <li class="leading-relaxed mb-1">
               In React, you control branching logic with JavaScript.
@@ -1406,9 +1474,10 @@
         <hr />
         <article id="render-list">
           <h3>Render list</h3>
-          <pre
-            style="padding: 0px; font-size: 10px; width: 800px"
-          ><code class="language-js">
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
     import { getImageUrl } from '../../utils/imageHelper';
 
     const people = [
@@ -1464,6 +1533,7 @@
       return &lt;ul&gt;{listItems}&lt;/ul&gt;;
     }
           </code></pre>
+          </div>
           <p>Note</p>
           <ul>
             <li>
@@ -1494,11 +1564,2371 @@
             </li>
           </ul>
         </article>
+        <br />
+        <hr />
+        <article id="keeping-component-pure">
+          <h3>Keeping Component Pure</h3>
+          <div>
+            <ul class="ml-6 my-3 list-disc">
+              <li class="leading-relaxed mb-1">
+                A component must be pure, meaning:
+                <ul class="ml-6 my-3 list-disc">
+                  <li class="leading-relaxed mb-1">
+                    <strong class="font-bold"
+                      >It minds its own business.</strong
+                    >
+                    It should not change any objects or variables that existed
+                    before rendering.
+                  </li>
+                  <li class="leading-relaxed mb-1">
+                    <strong class="font-bold">Same inputs, same output.</strong>
+                    Given the same inputs, a component should always return the
+                    same JSX.
+                  </li>
+                </ul>
+              </li>
+              <li class="leading-relaxed mb-1">
+                Rendering can happen at any time, so components should not
+                depend on each others’ rendering sequence.
+              </li>
+              <li class="leading-relaxed mb-1">
+                You should not mutate any of the inputs that your components use
+                for rendering. That includes props, state, and context. To
+                update the screen,
+                <a
+                  class="inline text-link dark:text-link-dark border-b border-link border-opacity-0 hover:border-opacity-100 duration-100 ease-in transition leading-normal"
+                  href="/learn/state-a-components-memory"
+                  >“set” state</a
+                >
+                instead of mutating preexisting objects.
+              </li>
+              <li class="leading-relaxed mb-1">
+                Strive to express your component’s logic in the JSX you return.
+                When you need to “change things”, you’ll usually want to do it
+                in an event handler. As a last resort, you can
+                <code
+                  class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                  >useEffect</code
+                >.
+              </li>
+              <li class="leading-relaxed mb-1">
+                Writing pure functions takes a bit of practice, but it unlocks
+                the power of React’s paradigm.
+              </li>
+            </ul>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <div>
+          <article style="background-color: antiquewhite">
+            <h3>Adding Interactivity</h3>
+            <ul>
+              <li>How to handle user-initiated events</li>
+              <li>How to make components “remember” information with state</li>
+              <li>How React updates the UI in two phases</li>
+              <li>Why state doesn’t update right after you change it</li>
+              <li>How to queue multiple state updates</li>
+              <li>How to update an object in state</li>
+              <li>How to update an array in state</li>
+            </ul>
+          </article>
+        </div>
+
+        <article id="responding-to-events">
+          <h4>Responding to events</h4>
+          <ul>
+            <li>Different ways to write an event handler</li>
+            <li>How to pass event handling logic from a parent component</li>
+            <li>How events propagate and how to stop them</li>
+          </ul>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // src/views/components/EventHandler.jsx
+    export function ButtonWrapper() {
+      function handleClick() {
+        alert('You clicked me!');
+      }
+    
+      return (
+        &lt;&gt;
+          &lt;button onClick={handleClick}&gt;Click me&lt;/button&gt;
+          &lt;button
+            onClick={function handleClick() {
+              alert('You clicked me!');
+            }}
+          &gt;
+            Click me
+          &lt;/button&gt;
+          &lt;button
+            onClick={() =&gt; {
+              alert('You clicked me!');
+            }}
+          &gt;
+            Click me
+          &lt;/button&gt;
+        &lt;/&gt;
+      );
+    }
+    
+    function ButtonReadingProp({ message, children }) {
+      return &lt;button onClick={() =&gt; alert(message)}&gt;{children}&lt;/button&gt;;
+    }
+    
+    function ButtonNamingEvent({ onClick, children }) {
+      return &lt;button onClick={onClick}&gt;{children}&lt;/button&gt;;
+    }
+    
+    function ButtonStopPropagate({ onClick, children }) {
+      return (
+        &lt;button
+          onClick={(e) =&gt; {
+            e.stopPropagation();
+            onClick();
+          }}
+        &gt;
+          {children}
+        &lt;/button&gt;
+      );
+    }
+    
+    // Preventing default behavior
+    export function Signup() {
+      return (
+        &lt;form
+          onSubmit={(e) =&gt; {
+            e.preventDefault();
+            alert('Submitting!');
+          }}
+        &gt;
+          &lt;input /&gt;
+          &lt;button&gt;Send&lt;/button&gt;
+        &lt;/form&gt;
+      );
+    }
+    
+    export function Toolbar({ onPlayMovie }) {
+      return (
+        &lt;&gt;
+          {/* different ways to add events handler */}
+          &lt;ButtonWrapper /&gt;
+    
+          {/* Reading props in event handlers */}
+          &lt;ButtonReadingProp message='This is a message as prop!'&gt;
+            Reading Props
+          &lt;/ButtonReadingProp&gt;
+    
+          {/* Naming event handler props */}
+          &lt;ButtonNamingEvent onClick={onPlayMovie}&gt;Play Movie&lt;/ButtonNamingEvent&gt;
+    
+          &lt;div
+            onClick={() =&gt; {
+              alert('Event propagation! You clicked on the toolbar!');
+            }}
+          &gt;
+            {/* Stop Propagation */}
+            &lt;ButtonStopPropagate onClick={onPlayMovie}&gt;
+              Play Movie
+            &lt;/ButtonStopPropagate&gt;
+          &lt;/div&gt;
+    
+          {/* Prevent by default */}
+          &lt;Signup /&gt;
+        &lt;/&gt;
+      );
+    }
+    
+    export default function EventHandler() {
+      const onPlayMovie = () =&gt; {
+        alert('Playing!!!!');
+      };
+      return &lt;Toolbar onPlayMovie={onPlayMovie} /&gt;;
+    }
+              
+      </code></pre>
+          </div>
+          <ul class="ml-6 my-3 list-disc">
+            <li class="leading-relaxed mb-1">
+              You can handle events by passing a function as a prop to an
+              element like
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >&lt;button&gt;</code
+              >.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Event handlers must be passed,
+              <strong class="font-bold">not called!</strong>
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >onClick={handleClick}</code
+              >, not
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >onClick={handleClick()}</code
+              >.
+            </li>
+            <li class="leading-relaxed mb-1">
+              You can define an event handler function separately or inline.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Event handlers are defined inside a component, so they can access
+              props.
+            </li>
+            <li class="leading-relaxed mb-1">
+              You can declare an event handler in a parent and pass it as a prop
+              to a child.
+            </li>
+            <li class="leading-relaxed mb-1">
+              You can define your own event handler props with
+              application-specific names.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Events propagate upwards. Call
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >e.stopPropagation()</code
+              >
+              on the first argument to prevent that.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Events may have unwanted default browser behavior. Call
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >e.preventDefault()</code
+              >
+              to prevent that.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Explicitly calling an event handler prop from a child handler is a
+              good alternative to propagation.
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="state">
+          <h3>State: A Component's Memory</h3>
+          <p>
+            Components often need to change what’s on the screen as a result of
+            an interaction
+          </p>
+          <ul>
+            <li>Typing into the form should update the input field</li>
+            <li>
+              Clicking “next” on an image carousel should change which image is
+              displayed
+            </li>
+            <li>Clicking “buy” should put a product in the shopping cart</li>
+          </ul>
+          <p>
+            Components need to “remember” things: the current input value, the
+            current image, the shopping cart
+          </p>
+          <p>
+            <b
+              >In React, this kind of component-specific memory is called
+              state.</b
+            >
+          </p>
+          <h4>When a regular variable isn’t enough</h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // src/assets/data/sculptures.js
+    export const sculptureList = [
+      {
+        name: 'Homenaje a la Neurocirugía',
+        artist: 'Marta Colvin Andrade',
+        description:
+          'Although Colvin is predominantly known for abstract themes that allude to pre-Hispanic symbols, this gigantic sculpture, an homage to neurosurgery, is one of her most recognizable public art pieces.',
+        url: 'https://i.imgur.com/Mx7dA2Y.jpg',
+        alt: 'A bronze statue of two crossed hands delicately holding a human brain in their fingertips.',
+      },
+      {
+        name: 'Floralis Genérica',
+        artist: 'Eduardo Catalano',
+        description:
+          'This enormous (75 ft. or 23m) silver flower is located in Buenos Aires. It is designed to move, closing its petals in the evening or when strong winds blow and opening them in the morning.',
+        url: 'https://i.imgur.com/ZF6s192m.jpg',
+        alt: 'A gigantic metallic flower sculpture with reflective mirror-like petals and strong stamens.',
+      },
+      {
+        name: 'Eternal Presence',
+        artist: 'John Woodrow Wilson',
+        description:
+          'Wilson was known for his preoccupation with equality, social justice, as well as the essential and spiritual qualities of humankind. This massive (7ft. or 2,13m) bronze represents what he described as "a symbolic Black presence infused with a sense of universal humanity."',
+        url: 'https://i.imgur.com/aTtVpES.jpg',
+        alt: 'The sculpture depicting a human head seems ever-present and solemn. It radiates calm and serenity.',
+      },
+      {
+        name: 'Moai',
+        artist: 'Unknown Artist',
+        description:
+          'Located on the Easter Island, there are 1,000 moai, or extant monumental statues, created by the early Rapa Nui people, which some believe represented deified ancestors.',
+        url: 'https://i.imgur.com/RCwLEoQm.jpg',
+        alt: 'Three monumental stone busts with the heads that are disproportionately large with somber faces.',
+      },
+    ];
+          </code></pre>
+          </div>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { sculptureList } from '../../assets/data/sculptures';
+
+    export function Gallery() {
+      let index = 0;
+
+      function handleClick() {
+        index = index + 1;
+      }
+
+      let sculpture = sculptureList[index];
+      return (
+        &lt;&gt;
+          &lt;button onClick={handleClick}&gt;Next&lt;/button&gt;
+          &lt;h2&gt;
+            &lt;i&gt;{sculpture.name} &lt;/i&gt;
+            by {sculpture.artist}
+          &lt;/h2&gt;
+          &lt;h3&gt;
+            ({index + 1} of {sculptureList.length})
+          &lt;/h3&gt;
+          &lt;img src={sculpture.url} alt={sculpture.alt} /&gt;
+          &lt;p&gt;{sculpture.description}&lt;/p&gt;
+        &lt;/&gt;
+      );
+    }
+
+    export default function StateComponent() {
+      return (
+        &lt;&gt;
+          &lt;Gallery /&gt;
+        &lt;/&gt;
+      );
+    }
+          </code></pre>
+          </div>
+          <p>Understanding</p>
+          <ol>
+            <li>Local variables don’t persist between renders</li>
+            <li>Changes to local variables won’t trigger renders</li>
+          </ol>
+          <p>So, we need</p>
+          <ol>
+            <li>Retain the data between renders.</li>
+            <li>
+              Trigger React to render the component with new data
+              (re-rendering).
+            </li>
+          </ol>
+          <p>Solution: <b>useState</b></p>
+          <ol>
+            <li>A state variable to retain the data between renders.</li>
+            <li>
+              A state setter function to update the variable and trigger React
+              to render the component again
+            </li>
+          </ol>
+          <h4>Adding a state variable</h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState } from 'react';
+
+    import { sculptureList } from '../../assets/data/sculptures';
+
+    export function Gallery() {
+      const [index, setIndex] = useState(0);
+
+      function handleClick() {
+        setIndex(index + 1);
+      }
+
+      let sculpture = sculptureList[index];
+      return (
+        &lt;&gt;
+          &lt;button onClick={handleClick}&gt;Next&lt;/button&gt;
+          &lt;h2&gt;
+            &lt;i&gt;{sculpture.name} &lt;/i&gt;
+            by {sculpture.artist}
+          &lt;/h2&gt;
+          &lt;h3&gt;
+            ({index + 1} of {sculptureList.length})
+          &lt;/h3&gt;
+          &lt;img src={sculpture.url} alt={sculpture.alt} /&gt;
+          &lt;p&gt;{sculpture.description}&lt;/p&gt;
+        &lt;/&gt;
+      );
+    }
+
+    export default function StateComponent() {
+      return (
+        &lt;&gt;
+          &lt;Gallery /&gt;
+          &lt;Gallery /&gt;
+        &lt;/&gt;
+      );
+    }
+          </code></pre>
+          </div>
+          <h4>Hooks</h4>
+          <ul>
+            <li>
+              In React, useState, as well as any other function starting with
+              ”use”, is called a Hook.
+            </li>
+            <li>
+              Hooks are special functions that are only available while React is
+              rendering
+            </li>
+            <li>
+              When you call useState, you are telling React that you want this
+              component to remember something
+            </li>
+            <li>A component can have multiple state</li>
+            <li>State is isolated and private</li>
+          </ul>
+          <h4>Recap:</h4>
+          <ul class="ml-6 my-3 list-disc">
+            <li class="leading-relaxed mb-1">
+              Use a state variable when a component needs to “remember” some
+              information between renders.
+            </li>
+            <li class="leading-relaxed mb-1">
+              State variables are declared by calling the
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >useState</code
+              >
+              Hook.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Hooks are special functions that start with
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >use</code
+              >. They let you “hook into” React features like state.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Hooks might remind you of imports: they need to be called
+              unconditionally. Calling Hooks, including
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >useState</code
+              >, is only valid at the top level of a component or another Hook.
+            </li>
+            <li class="leading-relaxed mb-1">
+              The
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >useState</code
+              >
+              Hook returns a pair of values: the current state and the function
+              to update it.
+            </li>
+            <li class="leading-relaxed mb-1">
+              You can have more than one state variable. Internally, React
+              matches them up by their order.
+            </li>
+            <li class="leading-relaxed mb-1">
+              State is private to the component. If you render it in two places,
+              each copy gets its own state.
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+        <article id="render-and-commit">
+          <h3>Render and Commit</h3>
+          <ul>
+            <li>Any screen update in a React app happens in three steps</li>
+            <ol>
+              <li>Trigger</li>
+              <li>Render</li>
+              <li>Commit</li>
+            </ol>
+            <li>You can use Strict Mode to find mistakes in your components</li>
+            <li>
+              React does not touch the DOM if the rendering result is the same
+              as last time
+            </li>
+          </ul>
+          <p>
+            Note: check
+            <a href="https://react.dev/learn/render-and-commit"
+              >here for more detail</a
+            >
+          </p>
+        </article>
+        <br />
+        <hr />
+        <article id="state-as-snapshot">
+          <h3>State as Snapshot</h3>
+          <ul>
+            <li>
+              State variables might look like regular JavaScript variables that
+              you can read and write to
+            </li>
+            <li>However, state behaves more like a snapshot</li>
+            <li>
+              Setting it does not change the state variable you already have,
+              but instead triggers a re-render
+            </li>
+          </ul>
+          <h4>Rendering takes a snapshot in time</h4>
+          <p>When React re-renders a component:</p>
+          <ol>
+            <li>React calls your function again.</li>
+            <li>Your function returns a new JSX snapshot.</li>
+            <li>
+              React then updates the screen to match the snapshot you’ve
+              returned.
+            </li>
+          </ol>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState } from 'react';
+
+    export function Form() {
+      const [isSent, setIsSent] = useState(false);
+      const [message, setMessage] = useState('Hi!');
+      if (isSent) {
+        return &lt;h1&gt;Your message is on its way!&lt;/h1&gt;;
+      }
+      return (
+        &lt;form
+          onSubmit={(e) =&gt; {
+            e.preventDefault();
+            setIsSent(true);
+            sendMessage(message);
+          }}
+        &gt;
+          &lt;textarea
+            placeholder='Message'
+            value={message}
+            onChange={(e) =&gt; setMessage(e.target.value)}
+          /&gt;
+          &lt;button type='submit'&gt;Send&lt;/button&gt;
+        &lt;/form&gt;
+      );
+    }
+    
+    export default function StateAsSnapshot() {
+      return (
+        &lt;&gt;
+          &lt;Form /&gt;
+        &lt;/&gt;
+      );
+    }  
+          </code></pre>
+          </div>
+          <img width="100%" src="images/state_as_snapshot.png" alt="" />
+          <h4>Setting state only changes it for the next render</h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    &lt;button onClick={() =&gt; {
+      setNumber(number + 1);
+      setNumber(number + 1);
+      setNumber(number + 1);
+      alert(number + 1);
+    }}&gt;+3&lt;/button&gt;
+          </code></pre>
+          </div>
+          <ol class="ml-6 my-3 list-decimal">
+            <li class="leading-relaxed mb-1">
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >setNumber(number + 1)</code
+              >:
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >number</code
+              >
+              is
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >0</code
+              >
+              so
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >setNumber(0 + 1)</code
+              >.
+              <ul class="ml-6 my-3 list-disc">
+                <li class="leading-relaxed mb-1">
+                  React prepares to change
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >number</code
+                  >
+                  to
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >1</code
+                  >
+                  on the next render.
+                </li>
+              </ul>
+            </li>
+            <li class="leading-relaxed mb-1">
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >setNumber(number + 1)</code
+              >:
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >number</code
+              >
+              is
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >0</code
+              >
+              so
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >setNumber(0 + 1)</code
+              >.
+              <ul class="ml-6 my-3 list-disc">
+                <li class="leading-relaxed mb-1">
+                  React prepares to change
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >number</code
+                  >
+                  to
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >1</code
+                  >
+                  on the next render.
+                </li>
+              </ul>
+            </li>
+            <li class="leading-relaxed mb-1">
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >setNumber(number + 1)</code
+              >:
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >number</code
+              >
+              is
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >0</code
+              >
+              so
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >setNumber(0 + 1)</code
+              >.
+              <ul class="ml-6 my-3 list-disc">
+                <li class="leading-relaxed mb-1">
+                  React prepares to change
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >number</code
+                  >
+                  to
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >1</code
+                  >
+                  on the next render.
+                </li>
+              </ul>
+            </li>
+          </ol>
+          <h4>State over time</h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    &lt;button onClick={() =&gt; {
+      setNumber(number + 5);
+      setTimeout(() =&gt; {
+        alert(number);
+      }, 3000);
+    }}&gt;+5&lt;/button&gt;
+          </code></pre>
+            <h4>A state variable’s value never changes within a render</h4>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState } from 'react';
+
+    export default function Form() {
+      const [to, setTo] = useState('Alice');
+      const [message, setMessage] = useState('Hello');
+    
+      function handleSubmit(e) {
+        e.preventDefault();
+        setTimeout(() =&gt; {
+          alert(`You said ${message} to ${to}`);
+        }, 5000);
+      }
+    
+      return (
+        &lt;form onSubmit={handleSubmit}&gt;
+          &lt;label&gt;
+            To:{' '}
+            &lt;select
+              value={to}
+              onChange={e =&gt; setTo(e.target.value)}&gt;
+              &lt;option value="Alice"&gt;Alice&lt;/option&gt;
+              &lt;option value="Bob"&gt;Bob&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/label&gt;
+          &lt;textarea
+            placeholder="Message"
+            value={message}
+            onChange={e =&gt; setMessage(e.target.value)}
+          /&gt;
+          &lt;button type="submit"&gt;Send&lt;/button&gt;
+        &lt;/form&gt;
+      );
+    }              
+          </code></pre>
+          </div>
+          <h4>Recap</h4>
+          <ul class="ml-6 my-3 list-disc">
+            <li class="leading-relaxed mb-1">
+              Setting state requests a new render.
+            </li>
+            <li class="leading-relaxed mb-1">
+              React stores state outside of your component, as if on a shelf.
+            </li>
+            <li class="leading-relaxed mb-1">
+              When you call
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >useState</code
+              >, React gives you a snapshot of the state
+              <em>for that render</em>.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Variables and event handlers don’t “survive” re-renders. Every
+              render has its own event handlers.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Every render (and functions inside it) will always “see” the
+              snapshot of the state that React gave to <em>that</em> render.
+            </li>
+            <li class="leading-relaxed mb-1">
+              You can mentally substitute state in event handlers, similarly to
+              how you think about the rendered JSX.
+            </li>
+            <li class="leading-relaxed mb-1">
+              Event handlers created in the past have the state values from the
+              render in which they were created.
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+        <article id="series-of-state-update">
+          <h3>Series of state update</h3>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState } from 'react';
+
+    export function Counter() {
+      const [number, setNumber] = useState(0);
+
+      return (
+        &lt;&gt;
+          &lt;h1&gt;{number}&lt;/h1&gt;
+          &lt;button
+            onClick={() =&gt; {
+              setNumber(number + 5);
+              setNumber((n) =&gt; n + 1);
+              setNumber((n) =&gt; n + 1);
+              setNumber((n) =&gt; n + 1);
+              setNumber(42);
+              // batching on re-render before commit to DOM
+            }}
+          &gt;
+            Increase the number
+          &lt;/button&gt;
+        &lt;/&gt;
+      );
+    }
+
+    export default function SeriesOfStateUpdate() {
+      return (
+        &lt;&gt;
+          &lt;Counter /&gt;
+        &lt;/&gt;
+      );
+    }
+          </code></pre>
+          </div>
+          <h4>Brief</h4>
+          <ul class="ml-6 my-3 list-disc">
+            <li class="leading-relaxed mb-1">
+              Setting state does not change the variable in the existing render,
+              but it requests a new render.
+            </li>
+            <li class="leading-relaxed mb-1">
+              React processes state updates after event handlers have finished
+              running. This is called batching.
+            </li>
+            <li class="leading-relaxed mb-1">
+              To update some state multiple times in one event, you can use
+              <code
+                class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                >setNumber(n =&gt; n + 1)</code
+              >
+              updater function.
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+        <article id="updating-object-in-state">
+          <h3>Updating Objects in State</h3>
+          <h4>What’s a mutation?</h4>
+          <p>
+            So far you’ve been working with numbers, strings, and booleans.
+            These kinds of JavaScript values are “immutable”, meaning
+            unchangeable or “read-only”. You can trigger a re-render to replace
+            a value:
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    const [x, setX] = useState(0);
+    </code></pre>
+          </div>
+          <h4>Treat state as read-only</h4>
+          <p>
+            In other words, you should treat any JavaScript object that you put
+            into state as read-only
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState } from 'react';
+
+    export function MovingDot() {
+      const [position, setPosition] = useState({
+        x: 0,
+        y: 0,
+      });
+      return (
+        &lt;div
+          // don't work
+          //   onPointerMove={(e) =&gt; {
+          //     position.x = e.clientX;
+          //     position.y = e.clientY;
+          //   }}
+          onPointerMove={(e) =&gt; {
+            setPosition({
+              x: e.clientX,
+              y: e.clientY,
+            });
+          }}
+          style={{
+            position: 'relative',
+            width: '100vw',
+            height: '100vh',
+          }}
+        &gt;
+          &lt;div
+            style={{
+              position: 'absolute',
+              backgroundColor: 'red',
+              borderRadius: '50%',
+              transform: `translate(${position.x}px, ${position.y}px)`,
+              left: -10,
+              top: -10,
+              width: 20,
+              height: 20,
+            }}
+          /&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    export default function UpdatingObjectState() {
+      return (
+        &lt;&gt;
+          &lt;MovingDot /&gt;
+        &lt;/&gt;
+      );
+    }
+          </code></pre>
+          </div>
+          <h4>Updating object and a nested object as spread operator</h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    setPerson({
+      ...person, // Copy other fields
+      artwork: { // but replace the artwork
+        ...person.artwork, // with the same one
+        city: 'New Delhi' // but in New Delhi!
+      }
+    });
+          </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article id="updating-array-state">
+          <h3>Updating arrays in state</h3>
+          <p>In JavaScript, arrays are just another kind of object</p>
+          <p>
+            Like with objects, you should treat arrays in React state as
+            read-only.
+          </p>
+          <table class="table-of-font">
+            <thead>
+              <tr>
+                <th></th>
+                <th>avoid (mutates the array)</th>
+                <th>prefer (returns a new array)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>adding</td>
+                <td>
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >push</code
+                  >,
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >unshift</code
+                  >
+                </td>
+                <td>
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >concat</code
+                  >,
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >[...arr]</code
+                  >
+                  spread syntax
+                </td>
+              </tr>
+              <tr>
+                <td>removing</td>
+                <td>
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >pop</code
+                  >,
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >shift</code
+                  >,
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >splice</code
+                  >
+                </td>
+                <td>
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >filter</code
+                  >,
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >slice</code
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>replacing</td>
+                <td>
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >splice</code
+                  >,
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >arr[i] = ...</code
+                  >
+                  assignment
+                </td>
+                <td>
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >map</code
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>sorting</td>
+                <td>
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >reverse</code
+                  >,
+                  <code
+                    class="inline text-code text-secondary dark:text-secondary-dark px-1 rounded-md no-underline bg-gray-30 bg-opacity-10 py-px"
+                    >sort</code
+                  >
+                </td>
+                <td>copy the array first</td>
+              </tr>
+            </tbody>
+          </table>
+          <h4>Adding to an array</h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    setArtists( // Replace the state
+      [ // with a new array
+        ...artists, // that contains all the old items
+        { id: nextId++, name: name } // and one new item at the end
+      ]
+    );
+          </code></pre>
+          </div>
+          <h4>Remove to an array</h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    setArtists(
+      artists.filter(a => a.id !== artist.id)
+    );
+          </code></pre>
+          </div>
+        </article>
+
+        <br />
+        <hr />
+        <article id="input-with-state">
+          <h3>Input with State</h3>
+          <h4>Imperative UI programming</h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      disable(textarea);
+      disable(button);
+      show(loadingMessage);
+      hide(errorMessage);
+      try {
+        await submitForm(textarea.value);
+        show(successMessage);
+        hide(form);
+      } catch (err) {
+        show(errorMessage);
+        errorMessage.textContent = err.message;
+      } finally {
+        hide(loadingMessage);
+        enable(textarea);
+        enable(button);
+      }
+    }
+    
+    function handleTextareaChange() {
+      if (textarea.value.length === 0) {
+        disable(button);
+      } else {
+        enable(button);
+      }
+    }
+    
+    function hide(el) {
+      el.style.display = 'none';
+    }
+    
+    function show(el) {
+      el.style.display = '';
+    }
+    
+    function enable(el) {
+      el.disabled = false;
+    }
+    
+    function disable(el) {
+      el.disabled = true;
+    }
+    
+    function submitForm(answer) {
+      // Pretend it's hitting the network.
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (answer.toLowerCase() == 'istanbul') {
+            resolve();
+          } else {
+            reject(new Error('Good guess but a wrong answer. Try again!'));
+          }
+        }, 1500);
+      });
+    }
+    
+    let form = document.getElementById('form');
+    let textarea = document.getElementById('textarea');
+    let button = document.getElementById('button');
+    let loadingMessage = document.getElementById('loading');
+    let errorMessage = document.getElementById('error');
+    let successMessage = document.getElementById('success');
+    form.onsubmit = handleFormSubmit;
+    textarea.oninput = handleTextareaChange;
+          </code></pre>
+          </div>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-markup">
+    &lt;form id="form"&gt;
+      &lt;h2&gt;City quiz&lt;/h2&gt;
+      &lt;p&gt;
+        What city is located on two continents?
+      &lt;/p&gt;
+      &lt;textarea id="textarea"&gt;&lt;/textarea&gt;
+      &lt;br /&gt;
+      &lt;button id="button" disabled&gt;Submit&lt;/button&gt;
+      &lt;p id="loading" style="display: none"&gt;Loading...&lt;/p&gt;
+      &lt;p id="error" style="display: none; color: red;"&gt;&lt;/p&gt;
+    &lt;/form&gt;
+    &lt;h1 id="success" style="display: none"&gt;That's right!&lt;/h1&gt;
+
+    &lt;style&gt;
+    * { box-sizing: border-box; }
+    body { font-family: sans-serif; margin: 20px; padding: 0; }
+    &lt;/style&gt;
+
+          </code></pre>
+          </div>
+          <h4>Declarartive UI programming</h4>
+          <ol>
+            <li>
+              Identify your component’s different visual states(empty, typing,
+              submitting, success, error)
+            </li>
+            <li>Determine what triggers those state changes</li>
+            <li>Represent the state in memory with <b>useState</b></li>
+            <li>Connect the event handlers to set state</li>
+          </ol>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState } from 'react';
+
+    export default function InputWithState() {
+      const [answer, setAnswer] = useState('');
+      const [error, setError] = useState(null);
+      const [status, setStatus] = useState('typing');
+
+      if (status === 'success') {
+        return &lt;h1&gt;That's right!&lt;/h1&gt;;
+      }
+
+      async function handleSubmit(e) {
+        e.preventDefault();
+        setStatus('submitting');
+        try {
+          await submitForm(answer);
+          setStatus('success');
+        } catch (err) {
+          setStatus('typing');
+          setError(err);
+        }
+      }
+
+      function handleTextareaChange(e) {
+        setAnswer(e.target.value);
+      }
+
+      return (
+        &lt;&gt;
+          &lt;h2&gt;City quiz&lt;/h2&gt;
+          &lt;p&gt;
+            In which city is there a billboard that turns air into drinkable water?
+          &lt;/p&gt;
+          &lt;form onSubmit={handleSubmit}&gt;
+            &lt;textarea
+              value={answer}
+              onChange={handleTextareaChange}
+              disabled={status === 'submitting'}
+            /&gt;
+            &lt;br /&gt;
+            &lt;button disabled={answer.length === 0 || status === 'submitting'}&gt;
+              Submit
+            &lt;/button&gt;
+            {error !== null && &lt;p className='Error'&gt;{error.message}&lt;/p&gt;}
+          &lt;/form&gt;
+        &lt;/&gt;
+      );
+    }
+
+    function submitForm(answer) {
+      // Pretend it's hitting the network.
+      return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+          let shouldError = answer.toLowerCase() !== 'lima';
+          if (shouldError) {
+            reject(new Error('Good guess but a wrong answer. Try again!'));
+          } else {
+            resolve();
+          }
+        }, 1500);
+      });
+    }
+          </code></pre>
+            <h4>Note</h4>
+            <ul class="ml-6 my-3 list-disc">
+              <li class="leading-relaxed mb-1">
+                If two state variables always update together, consider merging
+                them into one.
+              </li>
+              <li class="leading-relaxed mb-1">
+                Choose your state variables carefully to avoid creating
+                “impossible” states.
+              </li>
+              <li class="leading-relaxed mb-1">
+                Structure your state in a way that reduces the chances that
+                you’ll make a mistake updating it.
+              </li>
+              <li class="leading-relaxed mb-1">
+                Avoid redundant and duplicate state so that you don’t need to
+                keep it in sync.
+              </li>
+              <li class="leading-relaxed mb-1">
+                Don’t put props <em>into</em> state unless you specifically want
+                to prevent updates.
+              </li>
+              <li class="leading-relaxed mb-1">
+                For UI patterns like selection, keep ID or index in state
+                instead of the object itself.
+              </li>
+              <li class="leading-relaxed mb-1">
+                If updating deeply nested state is complicated, try flattening
+                it.
+              </li>
+            </ul>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article id="sharing-state">
+          <h3>Sharing state between Components</h3>
+          <img width="70%" src="./images/sharing_state.png" alt="" />
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // separate state
+    import { useState } from 'react';
+
+    function Panel({ title, children }) {
+      const [isActive, setIsActive] = useState(false);
+      return (
+        &lt;section className='panel'&gt;
+          &lt;h3&gt;{title}&lt;/h3&gt;
+          {isActive ? (
+            &lt;p&gt;{children}&lt;/p&gt;
+          ) : (
+            &lt;button onClick={() =&gt; setIsActive(true)}&gt;Show&lt;/button&gt;
+          )}
+        &lt;/section&gt;
+      );
+    }
+
+    export default function Accordion() {
+      return (
+        &lt;&gt;
+          &lt;h2&gt;Almaty, Kazakhstan&lt;/h2&gt;
+          &lt;Panel title='About'&gt;
+            With a population of about 2 million, Almaty is Kazakhstan's largest
+            city. From 1929 to 1997, it was its capital city.
+          &lt;/Panel&gt;
+          &lt;Panel title='Etymology'&gt;
+            The name comes from &lt;span lang='kk-KZ'&gt;алма&lt;/span&gt;, the Kazakh word for
+            "apple" and is often translated as "full of apples". In fact, the region
+            surrounding Almaty is thought to be the ancestral home of the apple, and
+            the wild &lt;i lang='la'&gt;Malus sieversii&lt;/i&gt; is considered a likely
+            candidate for the ancestor of the modern domestic apple.
+          &lt;/Panel&gt;
+        &lt;/&gt;
+      );
+    }
+
+    // move activeIndex up
+    import { useState } from 'react';
+
+    export default function Accordion() {
+      const [activeIndex, setActiveIndex] = useState(0);
+      return (
+        &lt;&gt;
+          &lt;h2&gt;Almaty, Kazakhstan&lt;/h2&gt;
+          &lt;Panel
+            title='About'
+            isActive={activeIndex === 0}
+            onShow={() =&gt; setActiveIndex(0)}
+          &gt;
+            With a population of about 2 million, Almaty is Kazakhstan's largest
+            city. From 1929 to 1997, it was its capital city.
+          &lt;/Panel&gt;
+          &lt;Panel
+            title='Etymology'
+            isActive={activeIndex === 1}
+            onShow={() =&gt; setActiveIndex(1)}
+          &gt;
+            The name comes from &lt;span lang='kk-KZ'&gt;алма&lt;/span&gt;, the Kazakh word for
+            "apple" and is often translated as "full of apples". In fact, the region
+            surrounding Almaty is thought to be the ancestral home of the apple, and
+            the wild &lt;i lang='la'&gt;Malus sieversii&lt;/i&gt; is considered a likely
+            candidate for the ancestor of the modern domestic apple.
+          &lt;/Panel&gt;
+        &lt;/&gt;
+      );
+    }
+
+    function Panel({ title, children, isActive, onShow }) {
+      return (
+        &lt;section className='panel'&gt;
+          &lt;h3&gt;{title}&lt;/h3&gt;
+          {isActive ? &lt;p&gt;{children}&lt;/p&gt; : &lt;button onClick={onShow}&gt;Show&lt;/button&gt;}
+        &lt;/section&gt;
+      );
+    }
+          </code></pre>
+          </div>
+          <p>Note:</p>
+          <ul>
+            <li>
+              A single source of truth for each state: For each unique piece of
+              state, you will choose the component that “owns” it
+            </li>
+            <li>
+              It’s useful to consider components as “controlled” (driven by
+              props) or “uncontrolled” (driven by state)
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+        <article id="preserving-setting-state">
+          <h3>Preserving and Resetting State</h3>
+          <p>
+            Check out at
+            <a href="https://react.dev/learn/preserving-and-resetting-state"
+              >official document
+            </a>
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState } from 'react';
+
+    export function Chat({ contact }) {
+      const [text, setText] = useState('');
+      return (
+        &lt;section className='chat'&gt;
+          &lt;textarea
+            value={text}
+            placeholder={'Chat to ' + contact.name}
+            onChange={(e) =&gt; setText(e.target.value)}
+          /&gt;
+          &lt;br /&gt;
+          &lt;button&gt;Send to {contact.email}&lt;/button&gt;
+        &lt;/section&gt;
+      );
+    }
+
+    export function ContactList({ selectedContact, contacts, onSelect }) {
+      return (
+        &lt;section className='contact-list'&gt;
+          &lt;ul&gt;
+            {contacts.map((contact) =&gt; (
+              &lt;li key={contact.email}&gt;
+                &lt;button
+                  onClick={() =&gt; {
+                    onSelect(contact);
+                  }}
+                &gt;
+                  {contact.name}
+                &lt;/button&gt;
+              &lt;/li&gt;
+            ))}
+          &lt;/ul&gt;
+        &lt;/section&gt;
+      );
+    }
+
+    export default function Messenger() {
+      const [to, setTo] = useState(contacts[0]);
+      return (
+        &lt;div&gt;
+          &lt;ContactList
+            contacts={contacts}
+            selectedContact={to}
+            onSelect={(contact) =&gt; setTo(contact)}
+          /&gt;
+          &lt;Chat contact={to} /&gt;
+          &lt;Chat key={to.email} contact={to} /&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    const contacts = [
+      { name: 'Taylor', email: 'taylor@mail.com' },
+      { name: 'Alice', email: 'alice@mail.com' },
+      { name: 'Bob', email: 'bob@mail.com' },
+    ];
+        </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article id="use-reducer">
+          <h3>Extract State Logic into a Reducer</h3>
+          <p>
+            Check out at
+            <a
+              href="https://react.dev/learn/extracting-state-logic-into-a-reducer"
+              >official document
+            </a>
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useReducer } from 'react';
+    import { useState } from 'react';
+
+    function TaskList({ tasks, onChangeTask, onDeleteTask }) {
+      return (
+        &lt;ul&gt;
+          {tasks.map((task) =&gt; (
+            &lt;li key={task.id}&gt;
+              &lt;Task
+                task={task}
+                onChangeTask={onChangeTask}
+                onDeleteTask={onDeleteTask}
+              /&gt;
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      );
+    }
+
+    function Task({ task, onChangeTask, onDeleteTask }) {
+      const [isEditing, setIsEditing] = useState(false);
+      let taskContent;
+      if (isEditing) {
+        taskContent = (
+          &lt;&gt;
+            &lt;input
+              value={task.text}
+              onChange={(e) =&gt; {
+                onChangeTask({ ...task, text: e.target.value });
+              }}
+            /&gt;
+            &lt;button
+              onClick={() =&gt; {
+                setIsEditing(false);
+              }}
+            &gt;
+              Save
+            &lt;/button&gt;
+          &lt;/&gt;
+        );
+      } else {
+        taskContent = (
+          &lt;&gt;
+            {task.text}
+            &lt;button onClick={() =&gt; setIsEditing(true)}&gt;Edit&lt;/button&gt;
+          &lt;/&gt;
+        );
+      }
+      return (
+        &lt;label&gt;
+          &lt;input type='checkbox' checked={task.done} onChange={(e) =&gt; {}} /&gt;
+          {taskContent}
+          &lt;button
+            onClick={() =&gt; {
+              onDeleteTask(task.id);
+            }}
+          &gt;
+            Delete
+          &lt;/button&gt;
+        &lt;/label&gt;
+      );
+    }
+
+    function AddTask({ onAddTask }) {
+      const [text, setText] = useState('');
+      return (
+        &lt;&gt;
+          &lt;input
+            placeholder='Add task'
+            value={text}
+            onChange={(e) =&gt; setText(e.target.value)}
+          /&gt;
+          &lt;button
+            onClick={() =&gt; {
+              setText('');
+              onAddTask(text);
+            }}
+          &gt;
+            Add
+          &lt;/button&gt;
+        &lt;/&gt;
+      );
+    }
+
+    export default function TaskApp() {
+      const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+
+      function handleAddTask(text) {
+        dispatch({
+          type: 'added',
+          id: nextId++,
+          text: text,
+        });
+      }
+
+      function handleChangeTask(task) {
+        dispatch({
+          type: 'changed',
+          task: task,
+        });
+      }
+
+      function handleDeleteTask(taskId) {
+        dispatch({
+          type: 'deleted',
+          id: taskId,
+        });
+      }
+
+      return (
+        &lt;&gt;
+          &lt;h1&gt;Prague itinerary&lt;/h1&gt;
+          &lt;AddTask onAddTask={handleAddTask} /&gt;
+          &lt;TaskList
+            tasks={tasks}
+            onChangeTask={handleChangeTask}
+            onDeleteTask={handleDeleteTask}
+          /&gt;
+        &lt;/&gt;
+      );
+    }
+
+    function tasksReducer(tasks, action) {
+      switch (action.type) {
+        case 'added': {
+          return [
+            ...tasks,
+            {
+              id: action.id,
+              text: action.text,
+              done: false,
+            },
+          ];
+        }
+        case 'changed': {
+          return tasks.map((t) =&gt; {
+            if (t.id === action.task.id) {
+              return action.task;
+            } else {
+              return t;
+            }
+          });
+        }
+        case 'deleted': {
+          return tasks.filter((t) =&gt; t.id !== action.id);
+        }
+        default: {
+          throw Error('Unknown action: ' + action.type);
+        }
+      }
+    }
+
+    let nextId = 3;
+    const initialTasks = [
+      { id: 0, text: 'Visit Kafka Museum', done: true },
+      { id: 1, text: 'Watch a puppet show', done: false },
+      { id: 2, text: 'Lennon Wall pic', done: false },
+    ];
+          </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article id="context">
+          <h3>Passing data deeply with context</h3>
+          <p>
+            Check out at
+            <a href="https://react.dev/learn/passing-data-deeply-with-context"
+              >official document
+            </a>
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { createContext, useContext } from 'react';
+
+    const LevelContext = createContext(0);
+
+    function Heading({ children }) {
+      const level = useContext(LevelContext);
+      switch (level) {
+        case 0:
+          throw Error('Heading must be inside a Section!');
+        case 1:
+          return &lt;h1&gt;{children}&lt;/h1&gt;;
+        case 2:
+          return &lt;h2&gt;{children}&lt;/h2&gt;;
+        case 3:
+          return &lt;h3&gt;{children}&lt;/h3&gt;;
+        case 4:
+          return &lt;h4&gt;{children}&lt;/h4&gt;;
+        case 5:
+          return &lt;h5&gt;{children}&lt;/h5&gt;;
+        case 6:
+          return &lt;h6&gt;{children}&lt;/h6&gt;;
+        default:
+          throw Error('Unknown level: ' + level);
+      }
+    }
+
+    function Section({ children }) {
+      const level = useContext(LevelContext);
+      return (
+        &lt;section className='section'&gt;
+          &lt;LevelContext.Provider value={level + 1}&gt;
+            {children}
+          &lt;/LevelContext.Provider&gt;
+        &lt;/section&gt;
+      );
+    }
+
+    export default function ReactContext() {
+      return (
+        &lt;Section&gt;
+          &lt;Heading&gt;Title&lt;/Heading&gt;
+          &lt;Section&gt;
+            &lt;Heading&gt;Heading&lt;/Heading&gt;
+            &lt;Heading&gt;Heading&lt;/Heading&gt;
+            &lt;Heading&gt;Heading&lt;/Heading&gt;
+            &lt;Section&gt;
+              &lt;Heading&gt;Sub-heading&lt;/Heading&gt;
+              &lt;Heading&gt;Sub-heading&lt;/Heading&gt;
+              &lt;Heading&gt;Sub-heading&lt;/Heading&gt;
+              &lt;Section&gt;
+                &lt;Heading&gt;Sub-sub-heading&lt;/Heading&gt;
+                &lt;Heading&gt;Sub-sub-heading&lt;/Heading&gt;
+                &lt;Heading&gt;Sub-sub-heading&lt;/Heading&gt;
+              &lt;/Section&gt;
+            &lt;/Section&gt;
+          &lt;/Section&gt;
+        &lt;/Section&gt;
+      );
+    }
+          </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article id="reducer-and-context">
+          <h3>Scaling Up with Reducer and Context</h3>
+          <p>
+            Check out at
+            <a
+              href="https://react.dev/learn/scaling-up-with-reducer-and-context"
+              >official document
+            </a>
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { createContext, useState, useContext, useReducer } from 'react';
+
+    const TasksContext = createContext(null);
+    const TasksDispatchContext = createContext(null);
+
+    function useTasks() {
+      return useContext(TasksContext);
+    }
+
+    function useTasksDispatch() {
+      return useContext(TasksDispatchContext);
+    }
+
+    function tasksReducer(tasks, action) {
+      switch (action.type) {
+        case 'added': {
+          return [
+            ...tasks,
+            {
+              id: action.id,
+              text: action.text,
+              done: false,
+            },
+          ];
+        }
+        case 'changed': {
+          return tasks.map((t) =&gt; {
+            if (t.id === action.task.id) {
+              return action.task;
+            } else {
+              return t;
+            }
+          });
+        }
+        case 'deleted': {
+          return tasks.filter((t) =&gt; t.id !== action.id);
+        }
+        default: {
+          throw Error('Unknown action: ' + action.type);
+        }
+      }
+    }
+
+    function TaskList() {
+      const tasks = useTasks();
+      return (
+        &lt;ul&gt;
+          {tasks.map((task) =&gt; (
+            &lt;li key={task.id}&gt;
+              &lt;Task task={task} /&gt;
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      );
+    }
+
+    function Task({ task }) {
+      const [isEditing, setIsEditing] = useState(false);
+      const dispatch = useTasksDispatch();
+      let taskContent;
+      if (isEditing) {
+        taskContent = (
+          &lt;&gt;
+            &lt;input
+              value={task.text}
+              onChange={(e) =&gt; {
+                dispatch({
+                  type: 'changed',
+                  task: {
+                    ...task,
+                    text: e.target.value,
+                  },
+                });
+              }}
+            /&gt;
+            &lt;button onClick={() =&gt; setIsEditing(false)}&gt;Save&lt;/button&gt;
+          &lt;/&gt;
+        );
+      } else {
+        taskContent = (
+          &lt;&gt;
+            {task.text}
+            &lt;button onClick={() =&gt; setIsEditing(true)}&gt;Edit&lt;/button&gt;
+          &lt;/&gt;
+        );
+      }
+      return (
+        &lt;label&gt;
+          &lt;input
+            type='checkbox'
+            checked={task.done}
+            onChange={(e) =&gt; {
+              dispatch({
+                type: 'changed',
+                task: {
+                  ...task,
+                  done: e.target.checked,
+                },
+              });
+            }}
+          /&gt;
+          {taskContent}
+          &lt;button
+            onClick={() =&gt; {
+              dispatch({
+                type: 'deleted',
+                id: task.id,
+              });
+            }}
+          &gt;
+            Delete
+          &lt;/button&gt;
+        &lt;/label&gt;
+      );
+    }
+
+    function AddTask({ onAddTask }) {
+      const [text, setText] = useState('');
+      const dispatch = useTasksDispatch();
+      return (
+        &lt;&gt;
+          &lt;input
+            placeholder='Add task'
+            value={text}
+            onChange={(e) =&gt; setText(e.target.value)}
+          /&gt;
+          &lt;button
+            onClick={() =&gt; {
+              setText('');
+              dispatch({
+                type: 'added',
+                id: nextId++,
+                text: text,
+              });
+            }}
+          &gt;
+            Add
+          &lt;/button&gt;
+        &lt;/&gt;
+      );
+    }
+    let nextId = 3;
+
+    export function TasksProvider({ children }) {
+      const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+
+      return (
+        &lt;TasksContext.Provider value={tasks}&gt;
+          &lt;TasksDispatchContext.Provider value={dispatch}&gt;
+            {children}
+          &lt;/TasksDispatchContext.Provider&gt;
+        &lt;/TasksContext.Provider&gt;
+      );
+    }
+
+    const initialTasks = [
+      { id: 0, text: 'Philosopher’s Path', done: true },
+      { id: 1, text: 'Visit the temple', done: false },
+      { id: 2, text: 'Drink matcha', done: false },
+    ];
+
+    export default function TaskAppScalingUp() {
+      return (
+        &lt;TasksProvider&gt;
+          &lt;h1&gt;Day off in Kyoto&lt;/h1&gt;
+          &lt;AddTask /&gt;
+          &lt;TaskList /&gt;
+        &lt;/TasksProvider&gt;
+      );
+    }
+          </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <br />
+        <hr />
+        <article id="use-ref">
+          <h3>Referencing values with refs</h3>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    function Counter() {
+      let ref = useRef(0);
+    
+      function handleClick() {
+        ref.current = ref.current + 1;
+        alert('You clicked ' + ref.current + ' times!');
+      }
+    
+      return (
+        &lt;button onClick={handleClick}&gt;
+          Click me!
+        &lt;/button&gt;
+      );
+    }         
+          </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article>
+          <h3>Manipulating the DOM with refs</h3>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useRef } from 'react';
+
+    export default function Form() {
+      const inputRef = useRef(null);
+    
+      function handleClick() {
+        inputRef.current.focus();
+      }
+    
+      return (
+        &lt;&gt;
+          &lt;input ref={inputRef} /&gt;
+          &lt;button onClick={handleClick}&gt;
+            Focus the input
+          &lt;/button&gt;
+        &lt;/&gt;
+      );
+    }
+          </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article id="">
+          <h3>Synchronizing with Effects</h3>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState, useRef, useEffect } from 'react';
+
+    function VideoPlayer({ src, isPlaying }) {
+      const ref = useRef(null);
+
+      useEffect(() =&gt; {
+        if (isPlaying) {
+          ref.current.play();
+        } else {
+          ref.current.pause();
+        }
+      }, [isPlaying]);
+
+      return &lt;video ref={ref} src={src} loop playsInline /&gt;;
+    }
+
+    export default function App() {
+      const [isPlaying, setIsPlaying] = useState(false);
+      return (
+        &lt;&gt;
+          &lt;button onClick={() =&gt; setIsPlaying(!isPlaying)}&gt;
+            {isPlaying ? 'Pause' : 'Play'}
+          &lt;/button&gt;
+          &lt;VideoPlayer
+            isPlaying={isPlaying}
+            src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+          /&gt;
+        &lt;/&gt;
+      );
+    }
+          </code></pre>
+          </div>
+          <p>Clean up</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState, useEffect } from 'react';
+    import { createConnection } from './chat.js';
+
+    export default function ChatRoom() {
+      useEffect(() =&gt; {
+        const connection = createConnection();
+        connection.connect();
+        return () =&gt; connection.disconnect();
+      }, []);
+      return &lt;h1&gt;Welcome to the chat!&lt;/h1&gt;;
+    }
+
+    // chat.js
+    export function createConnection() {
+      // A real implementation would actually connect to the server
+      return {
+        connect() {
+          console.log('✅ Connecting...');
+        },
+        disconnect() {
+          console.log('❌ Disconnected.');
+        }
+      };
+    }  
+          </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article>
+          <h3>You Might Not Need An Effect</h3>
+          <p>
+            Check out
+            <a href="https://react.dev/learn/you-might-not-need-an-effect"
+              >for more</a
+            >
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    function Form() {
+      const [firstName, setFirstName] = useState('Taylor');
+      const [lastName, setLastName] = useState('Swift');
+    
+      // 🔴 Avoid: redundant state and unnecessary Effect
+      const [fullName, setFullName] = useState('');
+      useEffect(() => {
+        setFullName(firstName + ' ' + lastName);
+      }, [firstName, lastName]);
+      // ...
+    }
+          </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article>
+          <h3>Lifecycle of reactive effects</h3>
+          <p>
+            Effects have a different lifecycle from components. Components may
+            mount, update, or unmount. An Effect can only do two things: to
+            start synchronizing something, and later to stop synchronizing it.
+            This cycle can happen multiple times if your Effect depends on props
+            and state that change over time.
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState, useEffect } from 'react';
+    import { createConnection } from './chat.js';
+
+    const serverUrl = 'https://localhost:1234';
+
+    function ChatRoom({ roomId }) {
+      useEffect(() =&gt; {
+        const connection = createConnection(serverUrl, roomId);
+        connection.connect();
+        return () =&gt; connection.disconnect();
+      }, [roomId]);
+
+      return &lt;h1&gt;Welcome to the {roomId} room!&lt;/h1&gt;;
+    }
+
+    export default function App() {
+      const [roomId, setRoomId] = useState('general');
+      return (
+        &lt;&gt;
+          &lt;label&gt;
+            Choose the chat room:{' '}
+            &lt;select
+              value={roomId}
+              onChange={e =&gt; setRoomId(e.target.value)}
+            &gt;
+              &lt;option value="general"&gt;general&lt;/option&gt;
+              &lt;option value="travel"&gt;travel&lt;/option&gt;
+              &lt;option value="music"&gt;music&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/label&gt;
+          &lt;hr /&gt;
+          &lt;ChatRoom roomId={roomId} /&gt;
+        &lt;/&gt;
+      );
+    }
+
+    // chat.js
+    export function createConnection(serverUrl, roomId) {
+      // A real implementation would actually connect to the server
+      return {
+        connect() {
+          console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+        },
+        disconnect() {
+          console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+        }
+      };
+    }    
+          </code></pre>
+          </div>
+        </article>
+        <hr />
+        <br />
+        <article>
+          <h3>Separating events from Effects</h3>
+          <p></p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState, useEffect } from 'react';
+    import { experimental_useEffectEvent as useEffectEvent } from 'react';
+    import { createConnection, sendMessage } from './chat.js';
+    import { showNotification } from './notifications.js';
+
+    const serverUrl = 'https://localhost:1234';
+
+    function ChatRoom({ roomId, theme }) {
+      const onConnected = useEffectEvent(() =&gt; {
+        showNotification('Connected!', theme);
+      });
+
+      useEffect(() =&gt; {
+        const connection = createConnection(serverUrl, roomId);
+        connection.on('connected', () =&gt; {
+          onConnected();
+        });
+        connection.connect();
+        return () =&gt; connection.disconnect();
+      }, [roomId]);
+
+      return &lt;h1&gt;Welcome to the {roomId} room!&lt;/h1&gt;
+    }
+
+    export default function App() {
+      const [roomId, setRoomId] = useState('general');
+      const [isDark, setIsDark] = useState(false);
+      return (
+        &lt;&gt;
+          &lt;label&gt;
+            Choose the chat room:{' '}
+            &lt;select
+              value={roomId}
+              onChange={e =&gt; setRoomId(e.target.value)}
+            &gt;
+              &lt;option value="general"&gt;general&lt;/option&gt;
+              &lt;option value="travel"&gt;travel&lt;/option&gt;
+              &lt;option value="music"&gt;music&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/label&gt;
+          &lt;label&gt;
+            &lt;input
+              type="checkbox"
+              checked={isDark}
+              onChange={e =&gt; setIsDark(e.target.checked)}
+            /&gt;
+            Use dark theme
+          &lt;/label&gt;
+          &lt;hr /&gt;
+          &lt;ChatRoom
+            roomId={roomId}
+            theme={isDark ? 'dark' : 'light'} 
+          /&gt;
+        &lt;/&gt;
+      );
+    }
+
+    // chat.js
+    export function createConnection(serverUrl, roomId) {
+        // A real implementation would actually connect to the server
+        let connectedCallback;
+        let timeout;
+        return {
+          connect() {
+            timeout = setTimeout(() =&gt; {
+              if (connectedCallback) {
+                connectedCallback();
+              }
+            }, 100);
+          },
+          on(event, callback) {
+            if (connectedCallback) {
+              throw Error('Cannot add the handler twice.');
+            }
+            if (event !== 'connected') {
+              throw Error('Only "connected" event is supported.');
+            }
+            connectedCallback = callback;
+          },
+          disconnect() {
+            clearTimeout(timeout);
+          }
+        };
+      }
+      
+          </code></pre>
+          </div>
+        </article>
+        <hr />
+        <br />
+        <article>
+          <h3>Removing Effect dependencies</h3>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { useState, useEffect } from 'react';
+    import { createConnection } from './chat.js';
+
+    const serverUrl = 'https://localhost:1234';
+
+    function ChatRoom({ roomId }) {
+      const [message, setMessage] = useState('');
+
+    //   const options = {
+    //     serverUrl: serverUrl,
+    //     roomId: roomId
+    //   };
+    // =&gt; Move creation of the options object inside the Effect
+
+      useEffect(() =&gt; {
+        const options = {
+          serverUrl: serverUrl,
+          roomId: roomId
+        }
+        const connection = createConnection(options);
+        connection.connect();
+        return () =&gt; connection.disconnect();
+      }, [options]);
+
+      return (
+        &lt;&gt;
+          &lt;h1&gt;Welcome to the {roomId} room!&lt;/h1&gt;
+          &lt;input value={message} onChange={e =&gt; setMessage(e.target.value)} /&gt;
+        &lt;/&gt;
+      );
+    }
+
+    export default function App() {
+      const [roomId, setRoomId] = useState('general');
+      return (
+        &lt;&gt;
+          &lt;label&gt;
+            Choose the chat room:{' '}
+            &lt;select
+              value={roomId}
+              onChange={e =&gt; setRoomId(e.target.value)}
+            &gt;
+              &lt;option value="general"&gt;general&lt;/option&gt;
+              &lt;option value="travel"&gt;travel&lt;/option&gt;
+              &lt;option value="music"&gt;music&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/label&gt;
+          &lt;hr /&gt;
+          &lt;ChatRoom roomId={roomId} /&gt;
+        &lt;/&gt;
+      );
+    }
+
+
+    // chat.js
+    export function createConnection({ serverUrl, roomId }) {
+        // A real implementation would actually connect to the server
+        return {
+          connect() {
+            console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+          },
+          disconnect() {
+            console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+          }
+        };
+      }
+          </code></pre>
+          </div>
+        </article>
+        <article>
+          <h3>Custom Hooks</h3>
+          <p>
+            React comes with built-in Hooks like useState, useContext, and
+            useEffect.Sometimes, you’ll wish that there was a Hook for some more
+            specific purpose: for example, to fetch data, to keep track of
+            whether the user is online, or to connect to a chat room. To do
+            this, you can create your own Hooks for your application’s needs
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    import { usePointerPosition } from './usePointerPosition.js';
+    import { useDelayedValue } from './useDelayedValue.js';
+
+    export default function Canvas() {
+      const pos1 = usePointerPosition();
+      const pos2 = useDelayedValue(pos1, 100);
+      const pos3 = useDelayedValue(pos2, 200);
+      const pos4 = useDelayedValue(pos3, 100);
+      const pos5 = useDelayedValue(pos3, 50);
+      return (
+        &lt;&gt;
+          &lt;Dot position={pos1} opacity={1} /&gt;
+          &lt;Dot position={pos2} opacity={0.8} /&gt;
+          &lt;Dot position={pos3} opacity={0.6} /&gt;
+          &lt;Dot position={pos4} opacity={0.4} /&gt;
+          &lt;Dot position={pos5} opacity={0.2} /&gt;
+        &lt;/&gt;
+      );
+    }
+
+    function Dot({ position, opacity }) {
+      return (
+        &lt;div style={{
+          position: 'absolute',
+          backgroundColor: 'pink',
+          borderRadius: '50%',
+          opacity,
+          transform: `translate(${position.x}px, ${position.y}px)`,
+          pointerEvents: 'none',
+          left: -20,
+          top: -20,
+          width: 40,
+          height: 40,
+        }} /&gt;
+      );
+    }
+
+    // usePointerPosition.js
+    import { useState, useEffect } from 'react';
+
+    export function usePointerPosition() {
+      const [position, setPosition] = useState({ x: 0, y: 0 });
+      useEffect(() =&gt; {
+        function handleMove(e) {
+          setPosition({ x: e.clientX, y: e.clientY });
+        }
+        window.addEventListener('pointermove', handleMove);
+        return () =&gt; window.removeEventListener('pointermove', handleMove);
+      }, []);
+      return position;
+    }
+
+    // useDelayedValue.js
+    import { useState, useEffect } from 'react';
+
+    export function useDelayedValue(value, delay) {
+      const [delayedValue, setDelayedValue] = useState(value);
+
+      useEffect(() =&gt; {
+        setTimeout(() =&gt; {
+          setDelayedValue(value);
+        }, delay);
+      }, [value, delay]);
+
+      return delayedValue;
+    }
+          </code></pre>
+          </div>
+        </article>
       </section>
       <footer>
         <p>&copy; 2023 - Author: Mr Dat. All rights reserved.</p>
       </footer>
       <script src="../assets/js/prism.js"></script>
+      <script src="./js/menu.js"></script>
     </div>
   </body>
 </html>
