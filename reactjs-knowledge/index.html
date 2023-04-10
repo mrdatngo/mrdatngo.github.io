@@ -129,7 +129,7 @@
                   >
                 </li>
                 <li>
-                  <a href="#syncc-with-effect">Synchronizing with Effects</a>
+                  <a href="#sync-with-effect">Synchronizing with Effects</a>
                 </li>
                 <li>
                   <a href="#no-need-effect">Might Not Need An Effect</a>
@@ -151,6 +151,63 @@
                 </li>
                 <li>
                   <a href="#custom-hook">Custom Hooks</a>
+                </li>
+              </ol>
+            </div>
+
+            <li menu-name="main-menu-6"><a href="">Build a dashboard</a></li>
+            <div sub-menu-name="main-menu-6" style="display: none">
+              <ol>
+                <li>
+                  <a href="#create-vite-react">Create Vite React</a>
+                </li>
+                <li>
+                  <a href="#build-structure">Build structure</a>
+                </li>
+                <li>
+                  <a href="#react-router-dom">React router dom</a>
+                </li>
+                <li>
+                  <a href="#react-router-dom">Private router</a>
+                </li>
+                <li>
+                  <a href="#authen-workflow">Authen Workflow</a>
+                </li>
+                <li>
+                  <a href="#local-storage">Local storage</a>
+                </li>
+                <li>
+                  <a href="#redux">Redux</a>
+                </li>
+                <li>
+                  <a href="#defaut-layout">Layout</a>
+                </li>
+                <li>
+                  <a href="#login-page">Build Login</a>
+                </li>
+                <li>
+                  <a href="#redux-toolkit">Redux Toolkit</a>
+                </li>
+                <li>
+                  <a href="#debounce">Debounce</a>
+                </li>
+                <li>
+                  <a href="#typescript">TypeScript</a>
+                </li>
+                <li>
+                  <a href="#style">Style Component - Scss</a>
+                </li>
+                <li>
+                  <a href="#lazy-loading">Lazy loading</a>
+                </li>
+                <li>
+                  <a href="#axios">Axios</a>
+                </li>
+                <li>
+                  <a href="#student-list">Student list</a>
+                </li>
+                <li>
+                  <a href="#error-bounding">Error Bounding</a>
                 </li>
               </ol>
             </div>
@@ -3474,7 +3531,7 @@
         </article>
         <br />
         <hr />
-        <article>
+        <article id="manipulating-with-ref">
           <h3>Manipulating the DOM with refs</h3>
           <div>
             <pre
@@ -3503,7 +3560,7 @@
         </article>
         <br />
         <hr />
-        <article id="">
+        <article id="sync-with-effect">
           <h3>Synchronizing with Effects</h3>
           <div>
             <pre
@@ -3575,7 +3632,7 @@
         </article>
         <br />
         <hr />
-        <article>
+        <article id="no-need-effect">
           <h3>You Might Not Need An Effect</h3>
           <p>
             Check out
@@ -3603,7 +3660,7 @@
         </article>
         <br />
         <hr />
-        <article>
+        <article id="lifecycle-of-effect">
           <h3>Lifecycle of reactive effects</h3>
           <p>
             Effects have a different lifecycle from components. Components may
@@ -3669,7 +3726,7 @@
         </article>
         <hr />
         <br />
-        <article>
+        <article id="separating-events-from-effect">
           <h3>Separating events from Effects</h3>
           <p></p>
           <div>
@@ -3766,7 +3823,7 @@
         </article>
         <hr />
         <br />
-        <article>
+        <article id="removing-effect-dep">
           <h3>Removing Effect dependencies</h3>
           <div>
             <pre
@@ -3841,7 +3898,9 @@
           </code></pre>
           </div>
         </article>
-        <article>
+        <br />
+        <hr />
+        <article id="custom-hook">
           <h3>Custom Hooks</h3>
           <p>
             React comes with built-in Hooks like useState, useContext, and
@@ -3921,6 +3980,50 @@
       return delayedValue;
     }
           </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article id="create-vite-react">
+          <h3>Create vite react</h3>
+          <div>
+            <ul>
+              <li>Init: <b>yarn create vite</b></li>
+              <li>Project name: … <b>hello-world</b></li>
+              <li>Select a framework: <b>› React</b></li>
+              <li>Select a variant: <b>› JavaScript</b></li>
+              <li>Terminal: <b>cd hello-world</b></li>
+              <li>Terminal: <b>yarn install</b></li>
+              <li>Terminal run: <b>yarn dev</b></li>
+            </ul>
+          </div>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    project/
+    ├── node_modules/
+    ├── public/
+    │   ├── vite.svg
+    ├── src/
+    │   ├── apis
+    │   ├── assets
+    │       ├── react.svg
+    │   ├── redux
+    │   ├── routers
+    │   ├── utils
+    │   ├── views
+    │   ├── App.css
+    │   ├── App.jsx
+    │   ├── index.css
+    │   └── main.jsx
+    ├── .gitignore
+    ├── index.html
+    ├── vite.config.js
+    ├── package.json
+    ├── yarn.lock
+    └── README.md             
+        </code></pre>
           </div>
         </article>
       </section>
