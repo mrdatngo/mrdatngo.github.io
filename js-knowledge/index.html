@@ -68,6 +68,9 @@
             <li>
               <a href="#practice-moving-ball">Practive with moving ball</a>
             </li>
+            <li>
+              <a href="#typescript"> Typescript </a>
+            </li>
           </div>
         </ul>
       </aside>
@@ -2976,6 +2979,315 @@
         </article>
         <br />
         <hr />
+
+        <article id="typescript">
+          <h3>Typescript - A Static Type Checker</h3>
+          <p>
+            Typescript: is a superset of JavaScript, which means that it extends
+            JavaScript by adding new features and syntax while still being
+            compatible with existing JavaScript code.
+          </p>
+          <h4>Build enviroinment local: using babel for transform TS to JS</h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-markup">
+    // index.html
+    &lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+      &lt;head&gt;
+        &lt;meta charset="UTF-8" /&gt;
+        &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+        &lt;title&gt;Document&lt;/title&gt;
+        &lt;script
+          src="https://cdnjs.cloudflare.com/ajax/libs/typescript/5.0.4/typescript.min.js"
+          integrity="sha512-UM9Tcv0/UIt9ZI0jwMMZsnPOpqbBi5sAD706aQyzNk3RVYVRZJVMEgVuIdcKCMiawdaJ/VF4XliB7p6oHtMTVQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        &gt;&lt;/script&gt;
+        &lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;script type="text/babel" src="./index.ts"&gt;&lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+        </code></pre>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">       
+    // index.ts
+    function greet(person: string, date: Date) {
+      console.log(`Hello ${person}, today is ${date.toDateString()}!`);
+    }
+    greet('abc', new Date());
+  </code></pre>
+          </div>
+          <h4>Documents follow by official TS:</h4>
+          <a
+            href="https://www.typescriptlang.org/docs/handbook/2/basic-types.html"
+            >https://www.typescriptlang.org/</a
+          >
+          <h4>Brief</h4>
+          <p>Several problems from programming</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">      
+    /* Some reasons */
+    // Accessing the property 'toLowerCase'
+    // on 'message' and then calling it
+    message.toLowerCase();
+    // Calling 'message'
+    message();
+
+    /*
+        Is 'message' callable?
+        Does it have a property called 'toLowerCase' on it?
+        If it does, is 'toLowerCase' even callable?
+        If both of these values are 'callable', what do they 'return'?
+    */
+
+    /* Some things we concern */
+    let message = 'hello';
+    message();
+    // This expression is not callable.
+    //  Type 'String' has no call signatures.
+
+    const user = {
+      name: 'Daniel',
+      age: 26,
+    };
+
+    user.location;
+    // Property 'location' does not exist on type '{ name: string; age: number; }'.
+
+    const announcement = 'Hello World!';
+
+    // How quickly can you spot the typos?
+    announcement.toLocaleLowercase();
+    announcement.toLocalLowerCase();
+
+    // We probably meant to write this...
+    announcement.toLocaleLowerCase();
+
+    function flipCoin() {
+      // Meant to be Math.random()
+      return Math.random &lt; 0.5;
+      //Operator '&lt;' cannot be applied to types '() =&gt; number' and 'number'.
+    }
+
+    // basic logic error
+    const value = Math.random() &lt; 0.5 ? 'a' : 'b';
+    if (value !== 'a') {
+      // ...
+    } else if (value === 'b') {
+      // This comparison appears to be unintentional because the types '"a"' and '"b"' have no overlap.
+      // Oops, unreachable
+    }
+        </code></pre>
+          </div>
+          <p>Types</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // The primitives: string, number, and boolean
+    /* 
+      'string' represents string values like "Hello, world"
+      'number' is for numbers like 42. JavaScript does not have a special runtime value for integers, so there’s no equivalent to int or float - everything is simply number
+      'boolean' is for the two values true and false
+    */
+
+    /* Array */
+    let numbers: number[] = [1, 2, 3];
+    // let numbers: Array&lt;number&gt; = [1, 2, 3];
+    let names: string[] = ['John', 'Marry'];
+
+    /* any */
+    let obj: any = { x: 0 };
+    // None of the following lines of code will throw compiler errors.
+    // Using `any` disables all further type checking, and it is assumed
+    // you know the environment better than TypeScript.
+    obj.foo();
+    obj();
+    obj.bar = 100;
+    obj = 'hello';
+    const n: number = obj;
+
+    /* Type Annotations on Variables */
+    let myName: string = 'Alice';
+    let myName2 = 'Alice'; // automatically infer the types: myName2 type string
+
+    /* Function */
+    function total(number1: number, number2: number): number {
+      return number1 + number2;
+    }
+    console.log(total(3, 5));
+
+
+    /* Object Type */
+    // The parameter's type annotation is an object type
+    function printCoord(pt: { x: number; y: number }) {
+      console.log("The coordinate's x value is " + pt.x);
+      console.log("The coordinate's y value is " + pt.y);
+    }
+    printCoord({ x: 3, y: 7 });
+
+
+    /* Optional Properties */
+    function printName(obj: { first: string; last?: string }) {
+      // ...
+    }
+    // Both OK
+    printName({ first: "Bob" });
+    printName({ first: "Alice", last: "Alisson" });
+
+    // notice: check type for optional properties
+    function printName(obj: { first: string; last?: string }) {
+      // Error - might crash if 'obj.last' wasn't provided!
+      console.log(obj.last.toUpperCase());
+    'obj.last' is possibly 'undefined'.
+      if (obj.last !== undefined) {
+        // OK
+        console.log(obj.last.toUpperCase());
+      }
+    
+      // A safe alternative using modern JavaScript syntax:
+      console.log(obj.last?.toUpperCase());
+    }
+
+    /* Union Types */
+    function printId(id: number | string) {
+      console.log("Your ID is: " + id);
+    }
+    // OK
+    printId(101);
+    // OK
+    printId("202");
+    // Error
+    printId({ myID: 22342 });
+    // Argument of type '{ myID: number; }' is not assignable to parameter of type 'string | number'.
+
+    /* Type Alisas */
+    type Point = {
+      x: number;
+      y: number;
+    };
+    
+    // Exactly the same as the earlier example
+    function printCoord(pt: Point) {
+      console.log("The coordinate's x value is " + pt.x);
+      console.log("The coordinate's y value is " + pt.y);
+    }
+    
+    printCoord({ x: 100, y: 100 });
+
+    /* Interface: An interface declaration is another way to name an object type */
+    interface Point {
+      x: number;
+      y: number;
+    }
+    
+    function printCoord(pt: Point) {
+      console.log("The coordinate's x value is " + pt.x);
+      console.log("The coordinate's y value is " + pt.y);
+    }
+    
+    printCoord({ x: 100, y: 100 });
+
+
+    /* Different between Interface and Type(Alisas) */
+    // note: using almost the same, just tiny difference
+
+    // interface: Extending an interface
+    interface Animal {
+      name: string
+    }
+
+    interface Bear extends Animal {
+      honey: boolean
+    }
+
+    const bear = getBear() 
+    bear.name
+    bear.honey
+
+    // Type: Extending a type via intersections
+    type Animal = {
+      name: string
+    }
+
+    type Bear = Animal & { 
+      honey: boolean 
+    }
+
+    const bear = getBear();
+    bear.name;
+    bear.honey;
+
+    /* Type Assertions */
+    // the type of a value that TypeScript can’t know about
+    const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
+    const myCanvas = &lt;HTMLCanvasElement&gt;document.getElementById("main_canvas");
+
+    /* Literal Types */
+    let x: "hello" = "hello";
+    // OK
+    x = "hello";
+    // ...
+    x = "howdy";
+    // Type '"howdy"' is not assignable to type '"hello"'.
+
+    function printText(s: string, alignment: "left" | "right" | "center") {
+      // ...
+    }
+    printText("Hello, world", "left");
+    printText("G'day, mate", "centre");
+    // Argument of type '"centre"' is not assignable to parameter of type '"left" | "right" | "center"'.
+
+
+    // type of guards
+    /*
+      "string"
+      "number"
+      "bigint"
+      "boolean"
+      "symbol"
+      "undefined"
+      "object"
+      "function"
+    */
+
+    /* Generic Function */
+    function firstElement&lt;Type&gt;(arr: Type[]): Type | undefined {
+      return arr[0];
+    }
+    // s is of type 'string'
+    const s = firstElement(["a", "b", "c"]);
+    // n is of type 'number'
+    const n = firstElement([1, 2, 3]);
+    // u is of type undefined
+    const u = firstElement([]);
+
+    // constraint
+    function longest&lt;Type extends { length: number }&gt;(a: Type, b: Type) {
+      if (a.length &gt;= b.length) {
+        return a;
+      } else {
+        return b;
+      }
+    }
+    // longerArray is of type 'number[]'
+    const longerArray = longest([1, 2], [1, 2, 3]);
+    // longerString is of type 'alice' | 'bob'
+    const longerString = longest("alice", "bob");
+    // Error! Numbers don't have a 'length' property
+    const notOK = longest(10, 100);
+    // Argument of type 'number' is not assignable to parameter of type '{ length: number; }'.
+        </code></pre>
+          </div>
+        </article>
       </section>
       <footer>
         <p>&copy; 2023 - Author: Mr Dat. All rights reserved.</p>
