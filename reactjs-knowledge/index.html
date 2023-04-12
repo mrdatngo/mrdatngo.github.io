@@ -109,7 +109,7 @@
                 <li>
                   <a href="#use-reducer">Extract State Logic into a Reducer</a>
                 </li>
-                <li><a href="context">Passing data deeply with context</a></li>
+                <li><a href="#context">Passing data deeply with context</a></li>
                 <li>
                   <a href="#reducer-and-context"
                     >Scaling Up with Reducer and Context</a
@@ -159,16 +159,24 @@
             <div sub-menu-name="main-menu-6" style="display: none">
               <ol>
                 <li>
-                  <a href="#create-vite-react">Create Vite React</a>
+                  <a href="#create-vite-react"
+                    >Create Vite React & Build structure</a
+                  >
                 </li>
                 <li>
-                  <a href="#build-structure">Build structure</a>
+                  <a href="#create-vite-react">TypeScript</a>
                 </li>
                 <li>
-                  <a href="#react-router-dom">React router dom</a>
+                  <a href="#react-router-dom">Simple React router dom</a>
+                </li>
+                <li>
+                  <a href="#authen-workflow">Antd Design</a>
                 </li>
                 <li>
                   <a href="#react-router-dom">Private router</a>
+                </li>
+                <li>
+                  <a href="#authen-workflow">Mocking Api</a>
                 </li>
                 <li>
                   <a href="#authen-workflow">Authen Workflow</a>
@@ -178,6 +186,9 @@
                 </li>
                 <li>
                   <a href="#redux">Redux</a>
+                </li>
+                <li>
+                  <a href="#react-router-dom">Simple React router dom</a>
                 </li>
                 <li>
                   <a href="#defaut-layout">Layout</a>
@@ -3989,40 +4000,176 @@
           <div>
             <ul>
               <li>Init: <b>yarn create vite</b></li>
-              <li>Project name: … <b>hello-world</b></li>
+              <li>Project name: … <b>frontend-app</b></li>
               <li>Select a framework: <b>› React</b></li>
               <li>Select a variant: <b>› JavaScript</b></li>
-              <li>Terminal: <b>cd hello-world</b></li>
+              <li>Terminal: <b>cd frontend-app</b></li>
               <li>Terminal: <b>yarn install</b></li>
               <li>Terminal run: <b>yarn dev</b></li>
             </ul>
           </div>
+          <h4>Build project follow structure</h4>
           <div>
             <pre
               style="padding: 0px; font-size: 10px; width: 800px"
             ><code class="language-js">
     project/
-    ├── node_modules/
-    ├── public/
+    ├── node_modules/               all dependencies
+    ├── public/                     all file will public when run/deploy
     │   ├── vite.svg
-    ├── src/
-    │   ├── apis
-    │   ├── assets
+    ├── src/                        source
+    │   ├── apis                    contain all calling apis
+    │   ├── assets                  contain images, i18n,...
     │       ├── react.svg
-    │   ├── redux
-    │   ├── routers
-    │   ├── utils
-    │   ├── views
-    │   ├── App.css
+    │   ├── redux                   contain redux
+    │   ├── routers                 main routers for navigation
+    │   ├── utils                   contain function/variable use throughout the app
+    │   ├── views                   contain all component
+    │   ├── App.css                 will be deleted
     │   ├── App.jsx
     │   ├── index.css
-    │   └── main.jsx
+    │   └── main.jsx                entry point
     ├── .gitignore
-    ├── index.html
+    ├── index.html                  single page application for this index.html
     ├── vite.config.js
     ├── package.json
     ├── yarn.lock
     └── README.md             
+        </code></pre>
+          </div>
+          <div>Update these things</div>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    // index.css
+    .text-center {
+      text-align: center;
+    }
+
+    // App.jsx
+    function App() {
+      return (
+        &lt;div&gt;
+          &lt;p className='text-center'&gt;Hello world&lt;/p&gt;
+        &lt;/div&gt;
+      );
+    }
+    
+    export default App;    
+        </code></pre>
+          </div>
+          <p>
+            <b>Now we should see Hello world stand on the center of screen</b>
+          </p>
+        </article>
+        <br />
+        <hr />
+        <article>
+          <h3>Simple react router dom (v6)</h3>
+          <p>
+            React Router enables "client side routing". Check
+            <a href="https://reactrouter.com/">https://reactrouter.com/</a>
+          </p>
+          <div>
+            <p>Install to project</p>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">    
+    yarn add react-router-dom            
+        </code></pre>
+          </div>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">      
+    // src/App.jsx
+    import {
+      createBrowserRouter,
+      Link,
+      Outlet,
+      RouterProvider,
+      useParams,
+    } from 'react-router-dom';
+    import Login from './pages/login/LoginPage';
+    
+    function Home() {
+      return (
+        &lt;&gt;
+          &lt;div id='sidebar'&gt;
+            &lt;h1&gt;React Router Contacts&lt;/h1&gt;
+            &lt;nav&gt;
+              &lt;ul&gt;
+                &lt;li&gt;
+                  &lt;Link to={`contacts/1`}&gt;Your Name&lt;/Link&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;Link to={`contacts/2`}&gt;Your Friend&lt;/Link&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/nav&gt;
+          &lt;/div&gt;
+          &lt;div id='detail'&gt;
+            &lt;Outlet /&gt;
+          &lt;/div&gt;
+        &lt;/&gt;
+      );
+    }
+    
+    function Contact() {
+      const { contactId } = useParams();
+      return &lt;&gt;ContactID: {contactId}&lt;/&gt;;
+    }
+    
+    const router = createBrowserRouter([
+      {
+        path: '/login',
+        element: &lt;Login /&gt;,
+        errorElement: 'Page not found',
+      },
+      {
+        path: '/',
+        element: &lt;Home /&gt;,
+        errorElement: 'Page not found',
+        children: [
+          {
+            path: 'contacts/:contactId',
+            element: &lt;Contact /&gt;,
+          },
+        ],
+      },
+    ]);
+    
+    export default function App() {
+      return &lt;RouterProvider router={router} /&gt;;
+    }
+  
+    // src/pages/login/LoginPage.jsx
+    export default function Login() {
+      return (
+        &lt;div&gt;
+          &lt;h3&gt;Login&lt;/h3&gt;
+          &lt;p&gt;This is login page&lt;/p&gt;
+        &lt;/div&gt;
+      );
+    }
+        </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article>
+          <h3>Ant Design</h3>
+          <p>
+            Ant Design is a strong UI-Kit, checkout:
+            <a href="https://ant.design/">https://ant.design/</a>
+          </p>
+          Installing package:
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">      
+    yarn add antd 
         </code></pre>
           </div>
         </article>
