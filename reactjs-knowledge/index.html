@@ -164,31 +164,31 @@
                   >
                 </li>
                 <li>
-                  <a href="#create-vite-react">TypeScript</a>
-                </li>
-                <li>
                   <a href="#react-router-dom">Simple React router dom</a>
                 </li>
                 <li>
-                  <a href="#authen-workflow">Antd Design</a>
+                  <a href="#antd">Antd Design</a>
                 </li>
                 <li>
-                  <a href="#react-router-dom">Private router</a>
+                  <a href="#routers">Set up routers And DefaultLayout</a>
                 </li>
                 <li>
-                  <a href="#authen-workflow">Mocking Api</a>
-                </li>
-                <li>
-                  <a href="#authen-workflow">Authen Workflow</a>
+                  <a href="#mock-api">Mock Apis</a>
                 </li>
                 <li>
                   <a href="#local-storage">Local storage</a>
                 </li>
                 <li>
-                  <a href="#redux">Redux</a>
+                  <a href="#authen-workflow">Authen Workflow</a>
                 </li>
                 <li>
-                  <a href="#react-router-dom">Simple React router dom</a>
+                  <a href="#login">Login</a>
+                </li>
+                <li>
+                  <a href="#state-problem">State data problem</a>
+                </li>
+                <li>
+                  <a href="#redux">Redux</a>
                 </li>
                 <li>
                   <a href="#defaut-layout">Layout</a>
@@ -4002,7 +4002,7 @@
               <li>Init: <b>yarn create vite</b></li>
               <li>Project name: … <b>frontend-app</b></li>
               <li>Select a framework: <b>› React</b></li>
-              <li>Select a variant: <b>› JavaScript</b></li>
+              <li>Select a variant: <b>› TypeScript</b></li>
               <li>Terminal: <b>cd frontend-app</b></li>
               <li>Terminal: <b>yarn install</b></li>
               <li>Terminal run: <b>yarn dev</b></li>
@@ -4026,9 +4026,9 @@
     │   ├── utils                   contain function/variable use throughout the app
     │   ├── views                   contain all component
     │   ├── App.css                 will be deleted
-    │   ├── App.jsx
+    │   ├── App.tsx
     │   ├── index.css
-    │   └── main.jsx                entry point
+    │   └── main.tsx                entry point
     ├── .gitignore
     ├── index.html                  single page application for this index.html
     ├── vite.config.js
@@ -4047,7 +4047,7 @@
       text-align: center;
     }
 
-    // App.jsx
+    // App.tsx
     function App() {
       return (
         &lt;div&gt;
@@ -4065,7 +4065,7 @@
         </article>
         <br />
         <hr />
-        <article>
+        <article id="react-router-dom">
           <h3>Simple react router dom (v6)</h3>
           <p>
             React Router enables "client side routing". Check
@@ -4083,7 +4083,7 @@
             <pre
               style="padding: 0px; font-size: 10px; width: 800px"
             ><code class="language-js">      
-    // src/App.jsx
+    // src/App.tsx
     import {
       createBrowserRouter,
       Link,
@@ -4158,18 +4158,988 @@
         </article>
         <br />
         <hr />
-        <article>
+        <article id="antd">
           <h3>Ant Design</h3>
           <p>
             Ant Design is a strong UI-Kit, checkout:
             <a href="https://ant.design/">https://ant.design/</a>
           </p>
-          Installing package:
+          <p>Install 'antd' package</p>
           <div>
             <pre
               style="padding: 0px; font-size: 10px; width: 800px"
             ><code class="language-js">      
     yarn add antd 
+        </code></pre>
+          </div>
+          <h4>
+            Login page: using Form and Space:
+            <a href="https://ant.design/components/space">Space</a> and
+            <a href="https://ant.design/components/form">Form</a>
+          </h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">           
+    // src/pages/login/style.css
+    .login-container {
+      width: 100%;
+      height: 100vh;
+      justify-content: center;
+      align-self: center;
+    }
+    
+    // src/pages/login/LoginPage.tsx
+    import React from 'react';
+    import { Button, Card, Checkbox, Form, Input, Space } from 'antd';
+    
+    import './style.css';
+    
+    const onFinish = (values: any) =&gt; {
+      console.log('Success:', values);
+    };
+    
+    const onFinishFailed = (errorInfo: any) =&gt; {
+      console.log('Failed:', errorInfo);
+    };
+    
+    const LoginPage: React.FC = () =&gt; {
+      return (
+        &lt;Space direction='horizontal' className='login-container'&gt;
+          &lt;Card
+            title='Login'
+            extra={&lt;a href='#'&gt;Register&lt;/a&gt;}
+            style={{ width: 500 }}
+          &gt;
+            &lt;Form
+              name='basic'
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 16 }}
+              style={{ maxWidth: 600 }}
+              initialValues={{ remember: true }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              autoComplete='off'
+            &gt;
+              &lt;Form.Item
+                label='Username'
+                name='username'
+                rules={[{ required: true, message: 'Please input your username!' }]}
+              &gt;
+                &lt;Input /&gt;
+              &lt;/Form.Item&gt;
+    
+              &lt;Form.Item
+                label='Password'
+                name='password'
+                rules={[{ required: true, message: 'Please input your password!' }]}
+              &gt;
+                &lt;Input.Password /&gt;
+              &lt;/Form.Item&gt;
+    
+              &lt;Form.Item
+                name='remember'
+                valuePropName='checked'
+                wrapperCol={{ offset: 8, span: 16 }}
+              &gt;
+                &lt;Checkbox&gt;Remember me&lt;/Checkbox&gt;
+              &lt;/Form.Item&gt;
+    
+              &lt;Form.Item wrapperCol={{ offset: 8, span: 16 }}&gt;
+                &lt;Button type='primary' htmlType='submit'&gt;
+                  Submit
+                &lt;/Button&gt;
+              &lt;/Form.Item&gt;
+            &lt;/Form&gt;
+          &lt;/Card&gt;
+        &lt;/Space&gt;
+      );
+    };
+    
+    export default LoginPage;
+        </code></pre>
+          </div>
+          <h4>Page404</h4>
+          <p>
+            Checkout: <a href="https://ant.design/components/result">result</a>
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">    
+    // src/pages/result/Page404.tsx
+    import React from 'react';
+    import { Button, Result } from 'antd';
+    import { useNavigate } from 'react-router-dom';
+
+    const Page404: React.FC = () =&gt; {
+      const navigate = useNavigate();
+
+      const backHome = function () {
+        navigate('/');
+      };
+      return (
+        &lt;Result
+          status='403'
+          title='403'
+          subTitle='Sorry, you are not authorized to access this page.'
+          extra={
+            &lt;Button onClick={backHome} type='primary'&gt;
+              Back Home
+            &lt;/Button&gt;
+          }
+        /&gt;
+      );
+    };
+
+    export default Page404;   
+        </code></pre>
+          </div>
+          <h4>DefaultLayout</h4>
+          <p>
+            Checkout: <a href="https://ant.design/components/layout">Layout</a>
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">     
+    // src/layout/DefaultLayout.tsx
+    import React, { useState } from 'react';
+    import {
+      DesktopOutlined,
+      FileOutlined,
+      PieChartOutlined,
+      TeamOutlined,
+      UserOutlined,
+    } from '@ant-design/icons';
+    import type { MenuProps } from 'antd';
+    import { Breadcrumb, Layout, Menu, theme } from 'antd';
+
+    const { Header, Content, Footer, Sider } = Layout;
+
+    type MenuItem = Required&lt;MenuProps&gt;['items'][number];
+
+    function getItem(
+      label: React.ReactNode,
+      key: React.Key,
+      icon?: React.ReactNode,
+      children?: MenuItem[]
+    ): MenuItem {
+      return {
+        key,
+        icon,
+        children,
+        label,
+      } as MenuItem;
+    }
+
+    const items: MenuItem[] = [
+      getItem('Option 1', '1', &lt;PieChartOutlined /&gt;),
+      getItem('Option 2', '2', &lt;DesktopOutlined /&gt;),
+      getItem('User', 'sub1', &lt;UserOutlined /&gt;, [
+        getItem('Tom', '3'),
+        getItem('Bill', '4'),
+        getItem('Alex', '5'),
+      ]),
+      getItem('Team', 'sub2', &lt;TeamOutlined /&gt;, [
+        getItem('Team 1', '6'),
+        getItem('Team 2', '8'),
+      ]),
+      getItem('Files', '9', &lt;FileOutlined /&gt;),
+    ];
+
+    const DefaultLayout: React.FC = () =&gt; {
+      const [collapsed, setCollapsed] = useState(false);
+      const {
+        token: { colorBgContainer },
+      } = theme.useToken();
+
+      return (
+        &lt;Layout style={{ minHeight: '100vh' }}&gt;
+          &lt;Sider
+            collapsible
+            collapsed={collapsed}
+            onCollapse={(value) =&gt; setCollapsed(value)}
+          &gt;
+            &lt;div
+              style={{
+                height: 32,
+                margin: 16,
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            /&gt;
+            &lt;Menu
+              theme='dark'
+              defaultSelectedKeys={['1']}
+              mode='inline'
+              items={items}
+            /&gt;
+          &lt;/Sider&gt;
+          &lt;Layout className='site-layout'&gt;
+            &lt;Header style={{ padding: 0, background: colorBgContainer }} /&gt;
+            &lt;Content style={{ margin: '0 16px' }}&gt;
+              &lt;Breadcrumb style={{ margin: '16px 0' }}&gt;
+                &lt;Breadcrumb.Item&gt;User&lt;/Breadcrumb.Item&gt;
+                &lt;Breadcrumb.Item&gt;Bill&lt;/Breadcrumb.Item&gt;
+              &lt;/Breadcrumb&gt;
+              &lt;div
+                style={{
+                  padding: 24,
+                  minHeight: 360,
+                  background: colorBgContainer,
+                }}
+              &gt;
+                Bill is a cat.
+              &lt;/div&gt;
+            &lt;/Content&gt;
+            &lt;Footer style={{ textAlign: 'center' }}&gt;
+              Ant Design ©2023 Created by Ant UED
+            &lt;/Footer&gt;
+          &lt;/Layout&gt;
+        &lt;/Layout&gt;
+      );
+    };
+
+    export default DefaultLayout;
+      
+        </code></pre>
+          </div>
+          <h4>Update App and Main</h4>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">   
+    // src/App.tsx
+    import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+    import DefaultLayout from './layout/DefaultLayout';
+    import Login from './pages/login/LoginPage';
+    import Page404 from './pages/result/Page404';
+
+    const router = createBrowserRouter([
+      {
+        path: '/login',
+        element: &lt;Login /&gt;,
+        errorElement: 'Page not found',
+      },
+      {
+        path: '/*',
+        element: &lt;DefaultLayout /&gt;,
+        errorElement: &lt;Page404 /&gt;,
+      },
+    ]);
+
+    export default function App() {
+      return &lt;RouterProvider router={router} /&gt;;
+    }
+
+    // src/main.tsx
+    import React from 'react';
+    import ReactDOM from 'react-dom/client';
+
+    import App from './App';
+    import 'antd/dist/reset.css';
+    import './index.css';
+
+    ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+      &lt;React.StrictMode&gt;
+        &lt;App /&gt;
+      &lt;/React.StrictMode&gt;
+    );
+    
+        </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+        <article id="routers">
+          <h3>Setup routers and DefaultLayout</h3>
+          <p>Target: Need a way to have center routers</p>
+          <h4>Build app-components</h4>
+          <ul>
+            <li>Account detail</li>
+
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/app-components/account-profile/profile-detail/ProfileDetail.tsx
+    import { Button, Space, Switch, Tag, Typography } from 'antd';
+
+    const { Text } = Typography;
+
+    const onChange = (checked: boolean) =&gt; {
+      console.log(`switch to ${checked}`);
+    };
+
+    const ProfileDetail: React.FC = () =&gt; {
+      return (
+        &lt;&gt;
+          &lt;Space size={24} direction='vertical'&gt;
+            &lt;Space&gt;
+              &lt;Text type='secondary'&gt;Username&lt;/Text&gt;
+              &lt;Text strong&gt;admin&lt;/Text&gt;
+            &lt;/Space&gt;
+            &lt;Space&gt;
+              &lt;Text type='secondary'&gt;Status&lt;/Text&gt;
+              &lt;Text strong&gt;
+                &lt;Switch defaultChecked onChange={onChange} /&gt;
+              &lt;/Text&gt;
+            &lt;/Space&gt;
+            &lt;Space&gt;
+              &lt;Text type='secondary'&gt;Password: ***&lt;/Text&gt;
+              &lt;Text strong&gt;
+                &lt;Button type='primary'&gt;Change password&lt;/Button&gt;
+              &lt;/Text&gt;
+            &lt;/Space&gt;
+            &lt;Space&gt;
+              &lt;Text type='secondary'&gt;
+                Two Factor Authentication: &lt;Tag color='red'&gt;red&lt;/Tag&gt;
+                &lt;Tag color='green'&gt;green&lt;/Tag&gt;
+              &lt;/Text&gt;
+              &lt;Text strong&gt;
+                &lt;Button type='primary'&gt;Enable/Disable&lt;/Button&gt;
+              &lt;/Text&gt;
+            &lt;/Space&gt;
+          &lt;/Space&gt;
+        &lt;/&gt;
+      );
+    };
+
+    export default ProfileDetail;
+
+
+    // src/app-components/account-profile/AccountProfile.tsx
+    import { UserOutlined } from '@ant-design/icons';
+    import { Avatar, Badge, Space, Tabs, TabsProps, Typography } from 'antd';
+    import React from 'react';
+    import ProfileDetail from './profile-detail/ProfileDetail';
+
+    const { Text } = Typography;
+
+    const onChange = (key: string) =&gt; {
+      console.log(key);
+    };
+
+    const items: TabsProps['items'] = [
+      {
+        key: '1',
+        label: `Detail`,
+        children: &lt;ProfileDetail /&gt;,
+      },
+      {
+        key: '2',
+        label: `Login Logs`,
+        children: `Login logs`,
+      },
+    ];
+
+    const AccountProfile: React.FC = () =&gt; {
+      return (
+        &lt;&gt;
+          &lt;Space size={24}&gt;
+            &lt;Badge dot&gt;
+              &lt;Avatar shape='square' icon={&lt;UserOutlined /&gt;} /&gt;
+            &lt;/Badge&gt;
+            &lt;Space direction='vertical'&gt;
+              &lt;Text strong&gt;mrdatngo@gmail.com&lt;/Text&gt;
+              &lt;Text&gt;Adminitrator&lt;/Text&gt;
+            &lt;/Space&gt;
+          &lt;/Space&gt;
+          &lt;Tabs defaultActiveKey='1' items={items} onChange={onChange} /&gt;
+        &lt;/&gt;
+      );
+    };
+
+    export default AccountProfile;
+        </code></pre>
+            </div>
+            <li>User List</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/app-components/users-management/ListUser.tsx    
+    import React from 'react';
+    import { Space, Table, Tag } from 'antd';
+
+    const { Column, ColumnGroup } = Table;
+
+    interface DataType {
+      key: React.Key;
+      firstName: string;
+      lastName: string;
+      age: number;
+      address: string;
+      tags: string[];
+    }
+
+    const data: DataType[] = [
+      {
+        key: '1',
+        firstName: 'John',
+        lastName: 'Brown',
+        age: 32,
+        address: 'New York No. 1 Lake Park',
+        tags: ['nice', 'developer'],
+      },
+      {
+        key: '2',
+        firstName: 'Jim',
+        lastName: 'Green',
+        age: 42,
+        address: 'London No. 1 Lake Park',
+        tags: ['loser'],
+      },
+    ];
+
+    const ListUser: React.FC = () =&gt; (
+      &lt;Table dataSource={data}&gt;
+        &lt;ColumnGroup title='Name'&gt;
+          &lt;Column title='First Name' dataIndex='firstName' key='firstName' /&gt;
+          &lt;Column title='Last Name' dataIndex='lastName' key='lastName' /&gt;
+        &lt;/ColumnGroup&gt;
+        &lt;Column title='Age' dataIndex='age' key='age' /&gt;
+        &lt;Column title='Address' dataIndex='address' key='address' /&gt;
+        &lt;Column
+          title='Tags'
+          dataIndex='tags'
+          key='tags'
+          render={(tags: string[]) =&gt; (
+            &lt;&gt;
+              {tags.map((tag) =&gt; (
+                &lt;Tag color='blue' key={tag}&gt;
+                  {tag}
+                &lt;/Tag&gt;
+              ))}
+            &lt;/&gt;
+          )}
+        /&gt;
+        &lt;Column
+          title='Action'
+          key='action'
+          render={(_: any, record: DataType) =&gt; (
+            &lt;Space size='middle'&gt;
+              &lt;a&gt;Invite {record.lastName}&lt;/a&gt;
+              &lt;a&gt;Delete&lt;/a&gt;
+            &lt;/Space&gt;
+          )}
+        /&gt;
+      &lt;/Table&gt;
+    );
+
+    export default ListUser;
+ 
+        </code></pre>
+            </div>
+            <li>Add router.tsx</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    import { TeamOutlined, UserOutlined } from '@ant-design/icons';
+    import { MenuProps } from 'antd';
+    import { RouteObject } from 'react-router-dom';
+    import Profile from '../app-components/account-profile/AccountProfile';
+    import ListUser from '../app-components/users-management/ListUser';
+    import DefaultLayout from '../layout/DefaultLayout';
+    import LoginPage from '../pages/login/LoginPage';
+    import Page404 from '../pages/result/Page404';
+
+    interface IRoute {
+      path: string;
+      title: string;
+      icon?: any;
+      children?: IRoute[];
+      component?: any;
+    }
+
+    const navRoutes: IRoute[] = [
+      {
+        path: 'user',
+        title: 'Users',
+        icon: &lt;TeamOutlined /&gt;,
+        children: [
+          {
+            path: '/create',
+            title: 'Create User',
+            component: 'Create User',
+          },
+          {
+            path: '/list',
+            title: 'List Users',
+            component: &lt;ListUser /&gt;,
+          },
+        ],
+      },
+      {
+        path: 'account',
+        title: 'Account',
+        icon: &lt;UserOutlined /&gt;,
+        children: [
+          {
+            path: 'account/profile',
+            title: 'Profile',
+            component: &lt;Profile /&gt;,
+          },
+        ],
+      },
+    ];
+
+    const getRoutes = function (rawRoutes: IRoute[]): RouteObject[] {
+      const routes: RouteObject[] = [];
+      for (let i = 0; i &lt; rawRoutes.length; i++) {
+        let rawRoute = rawRoutes[i];
+        if (!rawRoute.children) {
+          routes.push({
+            path: rawRoute.path,
+            element: rawRoute.component,
+          });
+        } else {
+          routes.push(...getRoutes(rawRoute.children));
+        }
+      }
+      return routes;
+    };
+    const navRouters = getRoutes(navRoutes);
+
+    const browserRouters: RouteObject[] = [
+      {
+        path: '/login',
+        element: &lt;LoginPage /&gt;,
+        errorElement: 'Page not found',
+      },
+      {
+        path: '/',
+        element: &lt;DefaultLayout /&gt;,
+        errorElement: &lt;Page404 /&gt;,
+        children: navRouters,
+      },
+    ];
+
+    type MenuItem = Required&lt;MenuProps&gt;['items'][number];
+
+    function getItem(
+      label: React.ReactNode,
+      key: React.Key,
+      icon?: React.ReactNode,
+      children?: MenuItem[]
+    ): MenuItem {
+      return {
+        key,
+        icon,
+        children,
+        label,
+      } as MenuItem;
+    }
+
+    function GetMenu(routes: IRoute[]): MenuItem[] {
+      const items: MenuItem[] = [];
+      routes.map((route) =&gt; {
+        if (!route.children) {
+          items.push(getItem(route.title, route.path, route.icon));
+        } else {
+          const children = GetMenu(route.children);
+          items.push(getItem(route.title, route.path, route.icon, children));
+        }
+      });
+      return items;
+    }
+
+    export { navRoutes, GetMenu };
+    export type { IRoute };
+    export default browserRouters;
+        </code></pre>
+            </div>
+            <li>Update DefaultLayout</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/layout/DefaultLayout.tsx
+    import React, { useEffect, useState } from 'react';
+    import type { MenuProps } from 'antd';
+    import { Breadcrumb, Layout, Menu, theme } from 'antd';
+    import { Outlet, useNavigate } from 'react-router-dom';
+
+    import { navRoutes as routes, GetMenu } from '../routers/router';
+
+    const { Content, Footer, Sider } = Layout;
+
+    type MenuItem = Required&lt;MenuProps&gt;['items'][number];
+
+    const DefaultLayout: React.FC = () =&gt; {
+      const [items, setItems] = useState&lt;MenuItem[]&gt;([]);
+      const navigate = useNavigate();
+
+      useEffect(() =&gt; {
+        const items = GetMenu(routes);
+        console.log(items);
+        setItems(items);
+      }, []);
+
+      const [collapsed, setCollapsed] = useState(false);
+      const {
+        token: { colorBgContainer },
+      } = theme.useToken();
+
+      const onClick: MenuProps['onClick'] = (e) =&gt; {
+        console.log(e);
+        navigate(e.keyPath[0]);
+      };
+
+      return (
+        &lt;Layout style={{ minHeight: '100vh' }}&gt;
+          &lt;Sider
+            collapsible
+            collapsed={collapsed}
+            onCollapse={(value) =&gt; setCollapsed(value)}
+          &gt;
+            &lt;div
+              style={{
+                height: 32,
+                margin: 16,
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            &gt;
+              LOGO
+            &lt;/div&gt;
+            &lt;Menu
+              onClick={onClick}
+              theme='dark'
+              defaultSelectedKeys={[location.pathname]}
+              mode='inline'
+              items={items}
+            /&gt;
+          &lt;/Sider&gt;
+          &lt;Layout className='site-layout'&gt;
+            &lt;Content style={{ margin: '0 16px' }}&gt;
+              &lt;Breadcrumb style={{ margin: '16px 0' }}&gt;
+                &lt;Breadcrumb.Item&gt;User&lt;/Breadcrumb.Item&gt;
+                &lt;Breadcrumb.Item&gt;Bill&lt;/Breadcrumb.Item&gt;
+              &lt;/Breadcrumb&gt;
+              &lt;div
+                style={{
+                  padding: 24,
+                  minHeight: 360,
+                  background: colorBgContainer,
+                }}
+              &gt;
+                &lt;Outlet /&gt;
+              &lt;/div&gt;
+            &lt;/Content&gt;
+            &lt;Footer style={{ textAlign: 'center' }}&gt;
+              Ant Design ©2023 Created by Ant UED
+            &lt;/Footer&gt;
+          &lt;/Layout&gt;
+        &lt;/Layout&gt;
+      );
+    };
+
+    export default DefaultLayout;
+        </code></pre>
+            </div>
+          </ul>
+        </article>
+        <br />
+        <hr />
+        <article id="mock-api">
+          <h3>Mock Api: Using Json Server</h3>
+          <p>
+            Check out at:
+            <a href="https://mock-server-api-one.vercel.app/"></a>
+          </p>
+          <ul>
+            <li>POST: {host}/api/v1/login</li>
+            <li>GET: {host}/api/v1/account/detail</li>
+            <li>GET: {host}/api/v1/users</li>
+          </ul>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">
+    //login
+    {
+      "username": "admin@gmail.com",
+      "password": "123456"
+    }
+
+    //account/detail
+    {
+      "username": "John",
+      "email": "john@gmail.com",
+      "active": true
+    }
+
+    // users
+    {
+      [
+        {
+          "id": 1,
+          "first_name": "Ngo",
+          "last_name": "Dat",
+          "age": 20,
+          "address": "HCM, VN",
+          "active": true
+        }
+      ]
+    }
+    /*
+    Method:
+    GET /users
+    GET /users/1
+    POST /users
+    PUT /users/1
+    PATCH /users/1
+    DELETE /users/1
+
+    Filter:
+    GET /users?title=json-server&author=typicode
+    GET /users?id=1&id=2
+
+    Paging:
+    GET /users?\_page=7
+    GET /users?\_page=7&\_limit=20
+
+    Sort:
+    GET /users?\_sort=views&\_order=asc
+    GET /users/1/comments?\_sort=votes&\_order=asc
+    */
+        </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="local-storage">
+          <h3>Local Storage</h3>
+          <p>
+            <b>localStorage</b> is a built-in feature in modern web browsers
+            that allows web developers to store key-value pairs locally in a
+            user's browser
+          </p>
+          <ul>
+            <li>
+              The localStorage object stores data with no expiration date. The
+              data will not be deleted when the browser is closed, and will be
+              available the next day, week, or year.
+            </li>
+            <li>The localStorage property is read-only</li>
+            <li>The localStorage is different to sessionStorage</li>
+            <li>Usage</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">      
+    // Syntax for SAVING data to localStorage:
+    localStorage.setItem("key", "value");
+    // Syntax for READING data from localStorage:
+    const value = localStorage.getItem("key");
+    // Syntax for REMOVING data from localStorage:
+    localStorage.removeItem("key");
+ 
+        </code></pre>
+            </div>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="authen-workflow">
+          <h3>Authentication Workflow Understand</h3>
+          <p>
+            Token is a secure and convenient way to verify the identity of a
+            user without having to transmit sensitive information like passwords
+            with every request
+          </p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">  
+        Client                                    Server
+          |
+          |--------login(username, password)------->|
+          |<----------{ token: "123e4567-...." }----|
+        Store token to                              |
+        LocalStorage                                |
+          |
+          |
+          |---------call student api (token)------>(Verify token)
+          |<-----------student list-----------------|
+        </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="login">
+          <h3>Login implementation</h3>
+          <ul>
+            <li>Define types</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/types/account.ts
+    interface IAccountInfo {
+      username: string;
+    }
+    
+    export type { IAccountInfo };    
+        </code></pre>
+            </div>
+            <li>Define helper localStorage</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/helpers/storage.ts
+    import { IAccountInfo } from '../types/account';
+
+    const TOKEN_KEY = 'token';
+    const USER_INFO_KEY = 'user';
+
+    const saveToken = (token: string) => {
+      localStorage.setItem(TOKEN_KEY, token);
+    };
+
+    const getToken = (): string | null => {
+      return localStorage.getItem(TOKEN_KEY);
+    };
+
+    const clearToken = () => {
+      localStorage.removeItem(TOKEN_KEY);
+    };
+
+    const saveUserInfo = (userInfo: IAccountInfo) => {
+      localStorage.setItem(USER_INFO_KEY, JSON.stringify(userInfo));
+    };
+
+    const getUserInfo = (): IAccountInfo | null => {
+      const userStr = localStorage.getItem(USER_INFO_KEY);
+      if (typeof userStr === 'string') {
+        const userInfo = JSON.parse(userStr) as IAccountInfo;
+        return userInfo;
+      }
+      return null;
+    };
+
+    const IsLoggedIn = (): boolean => {
+      const token = getToken();
+      return token != '' && token != null;
+    };
+
+    export { saveToken, getToken, saveUserInfo, getUserInfo, IsLoggedIn };
+        </code></pre>
+            </div>
+            <li>Api handler</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    //src/apis/index.ts
+    export const BASE_URL = 'https://mock-server-api-one.vercel.app';
+  
+    // src/apis/auth/index.ts
+    import axios from 'axios';
+    import { BASE_URL } from '..';
+
+    interface ILoginParam {
+      username: string;
+      password: string;
+    }
+
+    interface ILoginResponse {
+      username: string;
+      token: string;
+    }
+
+    const login = (param: ILoginParam) => {
+      const loginParam = {
+        username: param.username,
+        password: param.password,
+      };
+      return axios.post(`${BASE_URL}/api/v1/login`, loginParam).then((res) => {
+        const loginRes: ILoginResponse = {
+          username: res.data.username,
+          token: res.data.token,
+        };
+        return loginRes;
+      });
+    };
+
+    export type { ILoginParam, ILoginResponse };
+
+    export { login };
+
+        </code></pre>
+            </div>
+            <li>Update LoginPage</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/pages/login/LoginPage.tsx
+    import React from 'react';
+    import { Button, Card, Checkbox, Form, Input, notification, Space } from 'antd';
+    import { useNavigate } from 'react-router-dom';
+
+    import { login } from '../../apis/auth';
+    import { saveToken, saveUserInfo } from '../../helpers/storage';
+    import './style.css';
+
+    const LoginPage: React.FC = () =&gt; {
+      const navigate = useNavigate();
+
+      const onFinish = (values: any) =&gt; {
+        login({
+          username: values.username,
+          password: values.password,
+        })
+          .then((data) => {
+            saveToken(data.token);
+            saveUserInfo({
+              username: data.username,
+            });
+            notification.success({
+              message: 'Login',
+              description: 'Successful!',
+            });
+            navigate('/');
+          })
+          .catch((err) => {
+            console.log(err);
+            let errMessage = 'Something went wrong!';
+            if (err.message) {
+              errMessage = err.message;
+            }
+            if (err.response?.data?.message) {
+              errMessage = err.response.data.message;
+            }
+            notification.error({
+              message: 'Login',
+              description: errMessage,
+            });
+          });
+      };
+
+      const onFinishFailed = (errorInfo: any) =&gt; {
+        console.log('Failed:', errorInfo);
+      };
+      return (....other code)
+    }    
+        </code></pre>
+            </div>
+          </ul>
+        </article>
+        <article id="user-list">
+          <h3>User List implementation</h3>
+          <p>Note: need to run api by Live Server on guide above</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">  
+    // install axios     
+    yarn add axios
         </code></pre>
           </div>
         </article>
