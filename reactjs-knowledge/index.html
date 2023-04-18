@@ -185,40 +185,44 @@
                   <a href="#login">Login</a>
                 </li>
                 <li>
+                  <a href="#user-list">User List</a>
+                </li>
+                <li>
+                  <a href="#account-infor">Account Info</a>
+                </li>
+                <li>
+                  <a href="#body-header">Body header</a>
+                </li>
+                <li>
                   <a href="#state-problem">State data problem</a>
                 </li>
                 <li>
                   <a href="#redux">Redux</a>
                 </li>
                 <li>
-                  <a href="#defaut-layout">Layout</a>
-                </li>
-                <li>
-                  <a href="#login-page">Build Login</a>
-                </li>
-                <li>
                   <a href="#redux-toolkit">Redux Toolkit</a>
                 </li>
                 <li>
-                  <a href="#debounce">Debounce</a>
+                  <a href="#auth-state-redux"
+                    >Move 'State User Info' From UserDetail To Redux</a
+                  >
                 </li>
                 <li>
-                  <a href="#typescript">TypeScript</a>
-                </li>
-                <li>
-                  <a href="#style">Style Component - Scss</a>
+                  <a href="#list-users-to-redux"
+                    >List Users to Redux & Debounce</a
+                  >
                 </li>
                 <li>
                   <a href="#lazy-loading">Lazy loading</a>
                 </li>
                 <li>
-                  <a href="#axios">Axios</a>
+                  <a href="#error-boundary">Error Boundary</a>
                 </li>
                 <li>
-                  <a href="#student-list">Student list</a>
+                  <a href="#style">Style Component - Scss</a>
                 </li>
                 <li>
-                  <a href="#error-bounding">Error Bounding</a>
+                  <a href="#i18n">I18n</a>
                 </li>
               </ol>
             </div>
@@ -5131,6 +5135,9 @@
             </div>
           </ul>
         </article>
+        <br />
+        <hr />
+
         <article id="user-list">
           <h3>User List implementation</h3>
           <p>Note: need to run api by Live Server on guide above</p>
@@ -5142,6 +5149,2228 @@
     yarn add axios
         </code></pre>
           </div>
+          <ul>
+            <li>List User</li>
+            <li>Create User</li>
+          </ul>
+          <div>
+            <p>Set up apis</p>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/apis/index.ts
+    import axios from 'axios';
+    import { clearToken, clearUserInfo, getToken } from '../helpers/storage';
+
+    axios.interceptors.request.use(
+      (config) => {
+        const token = getToken();
+        if (token) {
+          config.headers['Authorization'] = 'Bearer ' + token;
+        }
+        return config;
+      },
+      (err) => {
+        Promise.reject(err);
+      }
+    );
+
+    axios.interceptors.response.use(undefined, (err) => {
+      console.log(err.response);
+      if (
+        err.response &&
+        err.response.status === 401 &&
+        err.config?.url?.includes('account/detail')
+      ) {
+        clearUserInfo();
+        clearToken();
+        window.location.href = '/login';
+      }
+    });
+
+    export const getQueryParams = (params: any): string => {
+      const searchParams = new URLSearchParams();
+      Object.keys(params).forEach((key) => {
+        params[key] && searchParams.append(key, params[key]);
+      });
+      return searchParams.toString();
+    };
+    export const BASE_URL = 'https://mock-server-api-one.vercel.app';
+
+
+    // src/apis/users/index.ts
+    import axios from 'axios';
+    import { BASE_URL, getQueryParams } from '..';
+    import { IAddress, ListUser } from '../../types/users';
+    
+    interface IGetListUserParam {
+      searchKey: string;
+    }
+    
+    interface IGetListUserRes {
+      list: ListUser;
+      status: boolean;
+      message?: string;
+    }
+    
+    const fetchUsers = (params: IGetListUserParam) => {
+      return axios
+        .get(
+          `${BASE_URL}/api/v1/users?${getQueryParams({
+            name_like: params.searchKey,
+          })}`
+        )
+        .then((res) => {
+          const resData: IGetListUserRes = {
+            list: res?.data,
+            status: true,
+          };
+          return resData;
+        });
+    };
+    
+    interface ICreateUserParam {
+      email: string;
+      name: string;
+      dateOfBirth: string;
+      gender: string;
+      address: IAddress;
+    }
+    
+    interface ICreateUserRes {
+      list: ListUser;
+      status: boolean;
+      message?: string;
+    }
+    
+    const createAUser = (params: ICreateUserParam) => {
+      return axios.post(`${BASE_URL}/api/v1/users`, params).then((res) => {
+        const resData: ICreateUserRes = {
+          list: res.data,
+          status: true,
+        };
+        return resData;
+      });
+    };
+    
+    export type { IGetListUserParam, IGetListUserRes };
+    
+    export { fetchUsers, createAUser };    
+        </code></pre>
+            </div>
+            <p>Types</p>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/types
+    interface IAddress {
+      province: string;
+      street: string;
+    }
+
+    interface IUserInfo {
+      id: number;
+      email: string;
+      name: string;
+      dateOfBirth: string;
+      gender: string;
+      address: IAddress;
+      active: boolean;
+    }
+
+    type ListUser = IUserInfo[];
+
+    export type { IUserInfo, ListUser, IAddress };
+        </code></pre>
+            </div>
+            <p>Create User</p>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/app-components/users-management/create-user/CreateUser.tsx
+    import {
+      Form,
+      Input,
+      Button,
+      DatePicker,
+      Select,
+      Space,
+      notification,
+    } from 'antd';
+    import { createAUser } from '../../../apis/users';
+    
+    const { Option } = Select;
+    
+    const layout = {
+      labelCol: {
+        span: 8,
+      },
+      wrapperCol: {
+        span: 16,
+      },
+    };
+    const tailLayout = {
+      wrapperCol: {
+        offset: 8,
+        span: 16,
+      },
+    };
+    
+    const CreateUser = () =&gt; {
+      const onFinish = (values: any) =&gt; {
+        createAUser({
+          address: values.address,
+          dateOfBirth: values.dateOfBirth,
+          email: values.email,
+          name: values.name,
+          gender: values.gender,
+        })
+          .then((res) =&gt; {
+            if (res.status) {
+              notification.success({
+                message: 'Create user',
+                description: 'Successful!',
+              });
+            }
+          })
+          .catch((err) =&gt; {
+            notification.error({
+              message: 'Create user',
+              description: 'Something went wrong!',
+            });
+          });
+      };
+    
+      const onFinishFailed = (errorInfo: any) =&gt; {
+        console.log('Failed:', errorInfo);
+      };
+    
+      return (
+        &lt;Form
+          {...layout}
+          name='basic'
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+        &gt;
+          &lt;Form.Item
+            name='email'
+            label='E-mail'
+            rules={[
+              {
+                type: 'email',
+                message: 'The input is not valid E-mail!',
+              },
+              {
+                required: true,
+                message: 'Please input your E-mail!',
+              },
+            ]}
+          &gt;
+            &lt;Input /&gt;
+          &lt;/Form.Item&gt;
+          &lt;Form.Item
+            label='Name'
+            name='name'
+            rules={[
+              {
+                required: true,
+                message: 'Please input your name!',
+              },
+            ]}
+          &gt;
+            &lt;Input /&gt;
+          &lt;/Form.Item&gt;
+    
+          &lt;Form.Item
+            label='DateOfBirth'
+            name='dateOfBirth'
+            rules={[
+              { required: true, message: 'Please input your date of birth!' },
+            ]}
+          &gt;
+            &lt;DatePicker format={'YYYY-MM-DD'} /&gt;
+          &lt;/Form.Item&gt;
+    
+          &lt;Form.Item
+            name='gender'
+            label='Gender'
+            rules={[{ required: true, message: 'Please select gender!' }]}
+          &gt;
+            &lt;Select placeholder='select your gender'&gt;
+              &lt;Option value='male'&gt;Male&lt;/Option&gt;
+              &lt;Option value='female'&gt;Female&lt;/Option&gt;
+              &lt;Option value='other'&gt;Other&lt;/Option&gt;
+            &lt;/Select&gt;
+          &lt;/Form.Item&gt;
+    
+          &lt;Form.Item label='Address'&gt;
+            &lt;Space.Compact&gt;
+              &lt;Form.Item
+                name={['address', 'province']}
+                noStyle
+                rules={[{ required: true, message: 'Province is required' }]}
+              &gt;
+                &lt;Select placeholder='Select province'&gt;
+                  &lt;Option value='HN'&gt;Ha Noi&lt;/Option&gt;
+                  &lt;Option value='HCM'&gt;Tp. Ho Chi Minh&lt;/Option&gt;
+                &lt;/Select&gt;
+              &lt;/Form.Item&gt;
+              &lt;Form.Item
+                name={['address', 'street']}
+                noStyle
+                rules={[{ required: true, message: 'Street is required' }]}
+              &gt;
+                &lt;Input style={{ width: '50%' }} placeholder='Input street' /&gt;
+              &lt;/Form.Item&gt;
+            &lt;/Space.Compact&gt;
+          &lt;/Form.Item&gt;
+    
+          &lt;Form.Item {...tailLayout}&gt;
+            &lt;Button type='primary' htmlType='submit'&gt;
+              Submit
+            &lt;/Button&gt;
+          &lt;/Form.Item&gt;
+        &lt;/Form&gt;
+      );
+    };
+    
+    export default CreateUser;
+        </code></pre>
+            </div>
+            <p>List User</p>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/app-components/users-management/list-user/useGetListUser.tsx
+    import { useEffect, useState } from 'react';
+    import { fetchUsers } from '../../../apis/users';
+    import { IUserInfo } from '../../../types/users';
+    
+    export default function useGetListUser(): [
+      boolean,
+      IUserInfo[],
+      (searchKey: string) =&gt; void
+    ] {
+      const [listUser, setListUser] = useState&lt;IUserInfo[]&gt;([]);
+      const [loading, setLoading] = useState&lt;boolean&gt;(false);
+    
+      const getUsers = (searchKey: string) =&gt; {
+        setLoading(true);
+        fetchUsers({ searchKey })
+          .then((data) =&gt; {
+            setListUser(data.list);
+          })
+          .finally(() =&gt; {
+            setLoading(false);
+          });
+      };
+    
+      useEffect(() =&gt; {
+        getUsers('');
+      }, []);
+    
+      const onSearch = (searchKey: string) =&gt; {
+        getUsers(searchKey);
+      };
+    
+      return [loading, listUser, onSearch];
+    }
+    
+    (src/app-components/users-management/ListUser.tsx move to new one)
+    // src/app-components/users-management/list-user/ListUser.tsx
+    import React from 'react';
+    import { Input, Space, Table, Tag } from 'antd';
+    import { IUserInfo } from '../../../types/users';
+    import useGetListUser from './useGetListUser';
+
+    const { Search } = Input;
+    const { Column } = Table;
+
+    const ListUser: React.FC = () =&gt; {
+      const [loading, listUser, onSearch] = useGetListUser();
+
+      const onChange = (event: React.ChangeEvent&lt;HTMLInputElement&gt; | undefined) =&gt; {
+        if (event) {
+          onSearch(event.target.value);
+        }
+      };
+
+      return (
+        &lt;Space direction='vertical' style={{ width: '100%' }}&gt;
+          &lt;Search
+            placeholder='Search by first name'
+            onSearch={onSearch}
+            onChange={onChange}
+            style={{ width: 200 }}
+          /&gt;
+          &lt;Table loading={loading} rowKey='id' dataSource={listUser}&gt;
+            &lt;Column title='Email' dataIndex='email' key='email' /&gt;
+            &lt;Column title='Name' dataIndex='name' key='name' /&gt;
+            &lt;Column
+              title='Date of birth'
+              dataIndex='dateOfBirth'
+              key='dateOfBirth'
+            /&gt;
+            &lt;Column
+              title='Address'
+              key='address'
+              render={(_: any, record: IUserInfo) =&gt; (
+                &lt;&gt;{record.address?.street + ' ' + record.address?.province}&lt;/&gt;
+              )}
+            /&gt;
+            &lt;Column
+              title='Action'
+              key='action'
+              render={(_: any, record: IUserInfo) =&gt; (
+                &lt;Space size='middle'&gt;
+                  &lt;a&gt;Edit {record.name}&lt;/a&gt;
+                  &lt;a&gt;Delete&lt;/a&gt;
+                &lt;/Space&gt;
+              )}
+            /&gt;
+          &lt;/Table&gt;
+        &lt;/Space&gt;
+      );
+    };
+
+    export default ListUser;
+        </code></pre>
+            </div>
+          </div>
+          <p>Update router</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">  
+    // src/routers/router.tsx
+    ...code above      
+    const navRoutes: IRoute[] = [
+    {
+      path: 'user',
+      title: 'Users',
+      icon: &lt;TeamOutlined /&gt;,
+      children: [
+        {
+          path: 'users/create',
+          title: 'Create User',
+          component: &lt;CreateUser /&gt;,
+        },
+        {
+          path: 'users/list',
+          title: 'List Users',
+          component: &lt;ListUser /&gt;,
+        },
+      ],
+    },
+    {
+      path: 'account',
+      title: 'Account',
+      icon: &lt;UserOutlined /&gt;,
+      children: [
+        {
+          path: 'account/profile',
+          title: 'Profile',
+          component: &lt;Profile /&gt;,
+        },
+      ],
+    },
+  ];
+  ...code below    
+      </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="account-infor">
+          <h3>Account Info for Account Detail Component</h3>
+          <p>Update storage.ts</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">  
+    // src/helpers/storage.ts
+    import { IAccountInfo } from '../types/account';
+
+    const TOKEN_KEY = 'token';
+    const USER_INFO_KEY = 'user';
+    
+    const saveToken = (token: string) => {
+      localStorage.setItem(TOKEN_KEY, token);
+    };
+    
+    const getToken = (): string | null => {
+      return localStorage.getItem(TOKEN_KEY);
+    };
+    
+    const clearToken = () => {
+      localStorage.removeItem(TOKEN_KEY);
+    };
+    
+    const saveUserInfo = (userInfo: IAccountInfo) => {
+      localStorage.setItem(USER_INFO_KEY, JSON.stringify(userInfo));
+    };
+    
+    const getUserInfo = (): IAccountInfo | null => {
+      const userStr = localStorage.getItem(USER_INFO_KEY);
+      if (typeof userStr === 'string') {
+        const userInfo = JSON.parse(userStr) as IAccountInfo;
+        return userInfo;
+      }
+      return null;
+    };
+    
+    const clearUserInfo = () => {
+      localStorage.removeItem(USER_INFO_KEY);
+    };
+    
+    const IsLoggedIn = (): boolean => {
+      const token = getToken();
+      return token != '' && token != null;
+    };
+    
+    export {
+      saveToken,
+      getToken,
+      clearToken,
+      saveUserInfo,
+      getUserInfo,
+      clearUserInfo,
+      IsLoggedIn,
+    };
+        </code></pre>
+          </div>
+          <p>Update apis</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">  
+    // src/apis/auth/index.ts
+    {...code...}
+    import { IAccountInfo } from '../../types/account';
+    {...code...}
+    const getAccountInfo = () => {
+      return axios.get(`${BASE_URL}/api/v1/account/detail`).then((res) => {
+        const resData: IAccountInfo = res.data as IAccountInfo;
+        return resData;
+      });
+    };
+    
+    export type { ILoginParam, ILoginResponse };
+    
+    export { login, getAccountInfo };
+    // src/apis/index.ts
+        </code></pre>
+          </div>
+          <p>Types</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">  
+    // src/types/account.ts
+    interface IAccountInfo {
+      role: string;
+      email: string;
+      username: string;
+      active: boolean;
+    }
+    
+    export type { IAccountInfo };
+        </code></pre>
+          </div>
+          <p>Account detail</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js"> 
+    // src/app-components/account-profile/profile-detail/ProfileDetail.tsx
+    import { Button, Space, Switch, Tag, Typography } from 'antd';
+    import { IAccountInfo } from '../../../types/account';
+    
+    const { Text } = Typography;
+    
+    const onChange = (checked: boolean) =&gt; {
+      console.log(`switch to ${checked}`);
+    };
+    
+    const ProfileDetail: React.FC&lt;{ account: IAccountInfo | undefined }&gt; = ({
+      account,
+    }) =&gt; {
+      return (
+        &lt;&gt;
+          &lt;Space size={24} direction='vertical'&gt;
+            &lt;Space&gt;
+              &lt;Text type='secondary'&gt;Username&lt;/Text&gt;
+              &lt;Text strong&gt;{account?.username}&lt;/Text&gt;
+            &lt;/Space&gt;
+            &lt;Space&gt;
+              &lt;Text type='secondary'&gt;Status&lt;/Text&gt;
+              &lt;Text strong&gt;
+                &lt;Switch checked={account?.active} onChange={onChange} /&gt;
+              &lt;/Text&gt;
+            &lt;/Space&gt;
+            &lt;Space&gt;
+              &lt;Text type='secondary'&gt;Password: ***&lt;/Text&gt;
+              &lt;Text strong&gt;
+                &lt;Button type='primary'&gt;Change password&lt;/Button&gt;
+              &lt;/Text&gt;
+            &lt;/Space&gt;
+            &lt;Space&gt;
+              &lt;Text type='secondary'&gt;
+                Two Factor Authentication: &lt;Tag color='red'&gt;red&lt;/Tag&gt;
+                &lt;Tag color='green'&gt;green&lt;/Tag&gt;
+              &lt;/Text&gt;
+              &lt;Text strong&gt;
+                &lt;Button type='primary'&gt;Enable/Disable&lt;/Button&gt;
+              &lt;/Text&gt;
+            &lt;/Space&gt;
+          &lt;/Space&gt;
+        &lt;/&gt;
+      );
+    };
+    
+    export default ProfileDetail;
+              
+    // src/app-components/account-profile/AccountProfile.tsx
+    import { UserOutlined } from '@ant-design/icons';
+    import { Avatar, Badge, Space, Tabs, TabsProps, Typography } from 'antd';
+    import React, { useEffect, useState } from 'react';
+    import { getAccountInfo } from '../../apis/auth';
+    import { IAccountInfo } from '../../types/account';
+    import ProfileDetail from './profile-detail/ProfileDetail';
+
+    const { Text } = Typography;
+
+    const AccountProfile: React.FC = () =&gt; {
+      const [account, setAccount] = useState&lt;IAccountInfo&gt;();
+      const [tabItems, setTabItems] = useState&lt;TabsProps['items']&gt;();
+
+      useEffect(() =&gt; {
+        getAccountInfo().then((acc) =&gt; {
+          setAccount(acc);
+        });
+      }, []);
+
+      useEffect(() =&gt; {
+        const items: TabsProps['items'] = [
+          {
+            key: '1',
+            label: `Detail`,
+            children: &lt;ProfileDetail account={account} /&gt;,
+          },
+          {
+            key: '2',
+            label: `Login Logs`,
+            children: `Login logs`,
+          },
+        ];
+        setTabItems(items);
+      }, [account]);
+
+      const onChange = (key: string) =&gt; {
+        console.log(key);
+      };
+
+      return (
+        &lt;&gt;
+          &lt;Space size={24}&gt;
+            &lt;Badge dot&gt;
+              &lt;Avatar shape='square' icon={&lt;UserOutlined /&gt;} /&gt;
+            &lt;/Badge&gt;
+            &lt;Space direction='vertical'&gt;
+              &lt;Text strong&gt;{account?.email}&lt;/Text&gt;
+              &lt;Text&gt;{account?.role}&lt;/Text&gt;
+            &lt;/Space&gt;
+          &lt;/Space&gt;
+          &lt;Tabs defaultActiveKey='1' items={tabItems} onChange={onChange} /&gt;
+        &lt;/&gt;
+      );
+    };
+
+    export default AccountProfile;
+
+    // note: update by remove this below lines in src/pages/login/LoginPage.tsx
+    /*
+    -        saveUserInfo({
+    -          username: data.username,
+    -        });
+    /*
+        </code></pre>
+          </div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="body-header">
+          <h3>Body header: Breadcrumb And Account Actions</h3>
+          <p>Assets: add avatar img and english svg</p>
+          <ul>
+            <li>src/assets/icons/usa.svg</li>
+            <li>src/assets/imgs/avatar.png</li>
+          </ul>
+          <p>Updater router</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js">  
+    // src/routers/router.tsx
+    {...code...}
+    const navRoutes: IRoute[] = [
+    {
+      path: 'user',
+      title: 'Users',
+      icon: &lt;TeamOutlined /&gt;,
+      children: [
+        {
+          path: '/users/create',
+          title: 'Create User',
+          component: &lt;CreateUser /&gt;,
+        },
+        {
+          path: '/users/list',
+          title: 'List Users',
+          component: &lt;ListUser /&gt;,
+        },
+      ],
+    },
+    {
+      path: 'account',
+      title: 'Account',
+      icon: &lt;UserOutlined /&gt;,
+      children: [
+        {
+          path: '/account/profile',
+          title: 'Profile',
+          component: &lt;Profile /&gt;,
+        },
+      ],
+    },
+  ];
+  {...code...}
+  
+        </code></pre>
+          </div>
+          <p>Update DefaultLayout</p>
+          <div>
+            <pre
+              style="padding: 0px; font-size: 10px; width: 800px"
+            ><code class="language-js"> 
+    // src/layout/DefaultLayout.tsx  
+    import React, { useEffect, useState } from 'react';
+    import { Button, Dropdown, MenuProps, Space, Typography } from 'antd';
+    import { Breadcrumb, Layout, Menu, theme } from 'antd';
+    import { Outlet, useNavigate } from 'react-router-dom';
+    import { Header } from 'antd/es/layout/layout';
+    import { LogoutOutlined } from '@ant-design/icons';
+    
+    import { navRoutes as routes, GetMenu } from '../routers/router';
+    import avt from '../assets/imgs/avatar.png';
+    import usa from '../assets/icons/usa.svg';
+    
+    const { Content, Footer, Sider } = Layout;
+    
+    type MenuItem = Required&lt;MenuProps&gt;['items'][number];
+    
+    const DefaultLayout: React.FC = () =&gt; {
+      const [items, setItems] = useState&lt;MenuItem[]&gt;([]);
+      const navigate = useNavigate();
+    
+      const onLogout = () =&gt; {
+        console.log('logout');
+      };
+    
+      const userInfo = {
+        loading: false,
+        name: 'admin',
+      };
+    
+      const breadcrumbs = location.pathname
+        .split('/')
+        .filter((b) =&gt; b !== '' && b !== '/');
+    
+      const headerDropdownitems: MenuProps['items'] = [
+        {
+          key: '0',
+          label: userInfo.name,
+        },
+        {
+          key: '1',
+          label: (
+            &lt;Button
+              style={{ float: 'right', marginBottom: '10px' }}
+              type='primary'
+              icon={&lt;LogoutOutlined /&gt;}
+              onClick={onLogout}
+            &gt;
+              Logout
+            &lt;/Button&gt;
+          ),
+        },
+      ];
+    
+      useEffect(() =&gt; {
+        const items = GetMenu(routes);
+        console.log(items);
+        setItems(items);
+      }, []);
+    
+      const [collapsed, setCollapsed] = useState(false);
+      const {
+        token: { colorBgContainer },
+      } = theme.useToken();
+    
+      const onClick: MenuProps['onClick'] = (e) =&gt; {
+        navigate(e.keyPath[0]);
+      };
+    
+      return (
+        &lt;Layout style={{ minHeight: '100vh' }}&gt;
+          &lt;Sider
+            collapsible
+            collapsed={collapsed}
+            onCollapse={(value) =&gt; setCollapsed(value)}
+          &gt;
+            &lt;div
+              style={{
+                height: 32,
+                margin: 16,
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            &gt;
+              LOGO
+            &lt;/div&gt;
+            &lt;Menu
+              onClick={onClick}
+              theme='dark'
+              defaultSelectedKeys={[location.pathname]}
+              mode='inline'
+              items={items}
+            /&gt;
+          &lt;/Sider&gt;
+          &lt;Layout className='site-layout'&gt;
+            &lt;Content style={{ margin: '0 16px' }}&gt;
+              &lt;Header style={{ paddingLeft: '16px', background: colorBgContainer }}&gt;
+                &lt;Space style={{ display: 'flex', justifyContent: 'space-between' }}&gt;
+                  &lt;Breadcrumb style={{ margin: '16px 0' }}&gt;
+                    {breadcrumbs &&
+                      breadcrumbs.map((breadcrumb, index) =&gt; (
+                        &lt;Breadcrumb.Item key={index}&gt;{breadcrumb}&lt;/Breadcrumb.Item&gt;
+                      ))}
+                  &lt;/Breadcrumb&gt;
+                  &lt;div style={{ display: 'flex' }}&gt;
+                    &lt;div style={{ margin: '8px' }}&gt;
+                      &lt;img src={usa} alt='lg' style={{ width: '32px' }} /&gt;
+                    &lt;/div&gt;
+                    &lt;div style={{ margin: '8px' }}&gt;
+                      &lt;Dropdown
+                        menu={{ items: headerDropdownitems }}
+                        placement='bottomRight'
+                        arrow
+                      &gt;
+                        &lt;img src={avt} alt='avatar' style={{ width: '32px' }} /&gt;
+                      &lt;/Dropdown&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/Space&gt;
+              &lt;/Header&gt;
+              &lt;div
+                style={{
+                  padding: 24,
+                  minHeight: 360,
+                  background: colorBgContainer,
+                }}
+              &gt;
+                &lt;Outlet /&gt;
+              &lt;/div&gt;
+            &lt;/Content&gt;
+            &lt;Footer style={{ textAlign: 'center' }}&gt;
+              Ant Design ©2023 Created by Ant UED
+            &lt;/Footer&gt;
+          &lt;/Layout&gt;
+        &lt;/Layout&gt;
+      );
+    };
+    
+    export default DefaultLayout;
+              
+        </code></pre>
+          </div>
+          <h4 style="color: red">
+            A Problem raising: How to get user name to show on dropdown account
+            action on top right corner
+          </h4>
+        </article>
+        <br />
+        <hr />
+
+        <article id="state-problem">
+          <h3>State data problem</h3>
+          <p>
+            It really hard to pass data from component to other component with a
+            complex level hierachy
+          </p>
+          <div>
+            <img src="./images/lift_state_up.png" alt="" />
+          </div>
+          <div></div>
+        </article>
+        <br />
+        <hr />
+
+        <article id="redux">
+          <h3>Redux</h3>
+          <ul>
+            <li>
+              Redux is a state management library for JavaScript applications,
+              most commonly used with React
+            </li>
+            <li>
+              It provides a predictable state container, which helps manage the
+              state of an application in a centralized and predictable way
+            </li>
+            <li>
+              Redux maintains the entire state of an application in a single
+              object called the store, and any changes to this state are made
+              through actions.
+            </li>
+            <li>Include: getState(), dispatch(), subscribe()</li>
+          </ul>
+          <div>
+            <img src="./images/redux.png" alt="" />
+          </div>
+          <br />
+          <p>Redux Digram</p>
+          <div>
+            <img src="./images/redux_diagram.png" alt="" />
+          </div>
+          <p>
+            Redux Flow:
+            <a
+              href="https://topdev.vn/blog/wp-content/uploads/2019/05/redux-workflows.gif"
+              >https://topdev.vn/blog/wp-content/uploads/2019/05/redux-workflows.gif</a
+            >
+          </p>
+          <img src="./images/redux_flow.png" alt="" />
+        </article>
+        <hr />
+        <br />
+
+        <article id="redux-toolkit">
+          <h3>Redux Toolkit</h3>
+          <ul>
+            <li>Install</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    yarn add @reduxjs/toolkit react-redux @types/node
+        </code></pre>
+            </div>
+            <li>Set up 'baseUrl'</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // tsconfig.ts
+    {code}  
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+    {code}
+
+    // vite.config.ts
+    import { defineConfig } from 'vite';
+    import react from '@vitejs/plugin-react';
+    import path from 'path';
+
+    // https://vitejs.dev/config/
+    export default defineConfig({
+      plugins: [react()],
+      resolve: {
+        alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+      },
+    });
+
+        </code></pre>
+            </div>
+            <li>Store</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/_redux/features/counter.ts
+    import { createAsyncThunk, createSlice, Dispatch } from '@reduxjs/toolkit';
+    import type { PayloadAction } from '@reduxjs/toolkit';
+    
+    export interface CounterState {
+      status: string;
+      value: number;
+    }
+    
+    const initialState: CounterState = {
+      value: 0,
+      status: '',
+    };
+    
+    export const counterSlice = createSlice({
+      name: 'counter',
+      initialState,
+      reducers: {
+        increment: (state) =&gt; {
+          state.value += 1;
+        },
+        decrement: (state) =&gt; {
+          state.value -= 1;
+        },
+        incrementByAmount: (state, action: PayloadAction&lt;number&gt;) =&gt; {
+          state.value += action.payload;
+        },
+      },
+      extraReducers: (builder) =&gt; {
+        builder
+          .addCase(incrementAsync.pending, (state) =&gt; {
+            state.status = 'loading';
+          })
+          .addCase(incrementAsync.fulfilled, (state, action) =&gt; {
+            state.status = 'idle';
+            state.value += action.payload;
+          })
+          .addCase(incrementAsync.rejected, (state) =&gt; {
+            state.status = 'failed';
+          });
+      },
+    });
+    
+    export const incrementAsync = createAsyncThunk(
+      'counter/fetchCount',
+      async () =&gt; {
+        const num: number = await new Promise((resolve) =&gt; {
+          setTimeout(() =&gt; {
+            resolve(1);
+          }, 1000);
+        });
+        return num;
+      }
+    );
+    
+    // Action creators are generated for each case reducer function
+    export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+    
+    export default counterSlice.reducer;
+    
+    // src/_redux/store.ts
+    import { configureStore, compose } from '@reduxjs/toolkit';
+    import counterReducer from './features/counter';
+    
+    export const store = configureStore({
+      reducer: {
+        counter: counterReducer,
+      },
+    });
+    
+    // Infer the `RootState` and `AppDispatch` types from the store itself
+    export type RootState = ReturnType&lt;typeof store.getState&gt;;
+    export type AppDispatch = typeof store.dispatch;
+    
+    // SRC/_redux/hooks.ts
+    import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+    import type { RootState, AppDispatch } from './store';
+    
+    // Use throughout your app instead of plain `useDispatch` and `useSelector`
+    export const useAppDispatch: () =&gt; AppDispatch = useDispatch;
+    export const useAppSelector: TypedUseSelectorHook&lt;RootState&gt; = useSelector;
+        </code></pre>
+            </div>
+            <li>Counter component</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/app-components/counter/Counter.tsx
+    import { useSelector } from 'react-redux';
+    import { RootState } from '@/_redux/store';
+    import {
+      decrement,
+      increment,
+      incrementAsync,
+    } from '@/_redux/features/counter';
+    import { useAppDispatch } from '@/_redux/hooks';
+    
+    export function Counter() {
+      const count = useSelector((state: RootState) =&gt; state.counter.value);
+      const status = useSelector((state: RootState) =&gt; state.counter.status);
+      const dispatch = useAppDispatch();
+    
+      return (
+        &lt;div&gt;
+          &lt;div&gt;
+            &lt;button
+              aria-label='Increment value'
+              onClick={() =&gt; dispatch(increment())}
+            &gt;
+              Increment
+            &lt;/button&gt;
+            &lt;button
+              aria-label='Increment value'
+              onClick={() =&gt; dispatch(incrementAsync())}
+            &gt;
+              Increment Async
+            &lt;/button&gt;
+            {status === 'loading' ? 'loading' : &lt;span&gt;{count}&lt;/span&gt;}
+            &lt;button
+              aria-label='Decrement value'
+              onClick={() =&gt; dispatch(decrement())}
+            &gt;
+              Decrement
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      );
+    }                
+        </code></pre>
+            </div>
+            <li>Router & Store</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/main.tsx
+    ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+      &lt;React.StrictMode&gt;
+        &lt;Provider store={store}&gt;
+          &lt;App /&gt;
+        &lt;/Provider&gt;
+      &lt;/React.StrictMode&gt;
+    );
+
+    // src/routers/router.tsx
+    {...code...}
+      {
+        path: 'counter',
+        title: 'Counter',
+        icon: &lt;UserOutlined /&gt;,
+        component: &lt;Counter /&gt;,
+      },
+    ];
+        </code></pre>
+            </div>
+            <li>
+              Install Extension redux devtools:
+              <a
+                href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi"
+                >Redux Dev Tool</a
+              >
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="auth-state-redux">
+          <h3>Move 'State User Info' From UserDetail To Redux</h3>
+          <ul>
+            <li>auth feature</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/_redux/features/auth.ts
+    import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+    import { IAccountInfo } from '@/types/account';
+    import { getAccountInfo } from '@/apis/auth';
+    import { useAppSelector } from '../hooks';
+    import { RootState } from '../store';
+    
+    export interface AuthState {
+      account: {
+        loading: boolean;
+        accountData: IAccountInfo | undefined;
+      };
+    }
+    
+    const initialState: AuthState = {
+      account: {
+        loading: false,
+        accountData: undefined,
+      },
+    };
+    
+    export const authSlice = createSlice({
+      name: 'auth',
+      initialState,
+      reducers: {},
+      extraReducers: (builder) =&gt; {
+        builder
+          .addCase(getAccountInfoAction.pending, (state) =&gt; {
+            state.account.loading = true;
+          })
+          .addCase(getAccountInfoAction.fulfilled, (state, action) =&gt; {
+            state.account.loading = false;
+            state.account.accountData = action.payload;
+          })
+          .addCase(getAccountInfoAction.rejected, (state) =&gt; {
+            state.account.loading = false;
+            state.account.accountData = undefined;
+          });
+      },
+    });
+    
+    export const getAccountInfoAction = createAsyncThunk(
+      'auth/fetchAccount',
+      async () =&gt; {
+        const acc = await getAccountInfo();
+        return acc;
+      }
+    );
+    
+    export default authSlice.reducer;
+    
+    export const accountSelector = () =&gt;
+      useAppSelector((state: RootState) =&gt; state.auth.account);              
+        </code></pre>
+            </div>
+            <li>Update 'Store'</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/_redux/store
+    -import { configureStore, compose } from '@reduxjs/toolkit';
+    +import { configureStore } from '@reduxjs/toolkit';
+      import counterReducer from './features/counter';
+    +import authReducer from './features/auth';
+      
+      export const store = configureStore({
+        reducer: {
+          counter: counterReducer,
+    +    auth: authReducer,
+        },
+      });
+        </code></pre>
+            </div>
+            <li>Account Profile</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/app-components/account-profile/AccountProfile.tsx
+    +import { accountSelector } from '@/_redux/features/auth';
+    import { UserOutlined } from '@ant-design/icons';
+    -import { Avatar, Badge, Space, Tabs, TabsProps, Typography } from 'antd';
+    +import {
+    +  Avatar,
+    +  Badge,
+    +  Skeleton,
+    +  Space,
+    +  Tabs,
+    +  TabsProps,
+    +  Typography,
+    +} from 'antd';
+    import React, { useEffect, useState } from 'react';
+    -import { getAccountInfo } from '../../apis/auth';
+    -import { IAccountInfo } from '../../types/account';
+    +
+    import ProfileDetail from './profile-detail/ProfileDetail';
+    
+    const { Text } = Typography;
+    
+    const AccountProfile: React.FC = () =&gt; {
+    -  const [account, setAccount] = useState&lt;IAccountInfo&gt;();
+    +  const { loading, accountData: account } = accountSelector();
+      const [tabItems, setTabItems] = useState&lt;TabsProps['items']&gt;();
+    
+      useEffect(() =&gt; {
+    -    getAccountInfo().then((acc) =&gt; {
+    -      setAccount(acc);
+    -    });
+    -  }, []);
+    +    const profileDetailComp = loading ? (
+    +      &lt;Skeleton /&gt;
+    +    ) : (
+    +      &lt;ProfileDetail account={account} /&gt;
+    +    );
+    
+    -  useEffect(() =&gt; {
+        const items: TabsProps['items'] = [
+          {
+            key: '1',
+            label: `Detail`,
+    -        children: &lt;ProfileDetail account={account} /&gt;,
+    +        children: profileDetailComp,
+          },
+          {
+            key: '2',
+    @@ -31,7 +39,7 @@ const AccountProfile: React.FC = () =&gt; {
+          },
+        ];
+        setTabItems(items);
+    -  }, [account]);
+    +  }, [loading, account]);
+    
+      const onChange = (key: string) =&gt; {
+        console.log(key);
+        </code></pre>
+            </div>
+            <li>Default layout</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/layout/DefaultLayout.tsx
+    import React, { useEffect, useState } from 'react';
+    -import { Button, Dropdown, MenuProps, Space, Typography } from 'antd';
+    +import { Button, Dropdown, MenuProps, Space } from 'antd';
+      import { Breadcrumb, Layout, Menu, theme } from 'antd';
+      import { Outlet, useNavigate } from 'react-router-dom';
+      import { Header } from 'antd/es/layout/layout';
+      import { LogoutOutlined } from '@ant-design/icons';
+      
+    +import { accountSelector, getAccountInfoAction } from '@/_redux/features/auth';
+      import { navRoutes as routes, GetMenu } from '../routers/router';
+    +
+      import avt from '../assets/imgs/avatar.png';
+      import usa from '../assets/icons/usa.svg';
+    +import { useAppDispatch } from '@/_redux/hooks';
+      
+      const { Content, Footer, Sider } = Layout;
+      
+    @@ -15,17 +18,18 @@ type MenuItem = Required&lt;MenuProps&gt;['items'][number];
+      
+      const DefaultLayout: React.FC = () =&gt; {
+        const [items, setItems] = useState&lt;MenuItem[]&gt;([]);
+    +  const { accountData: account } = accountSelector();
+        const navigate = useNavigate();
+    +  const dispatch = useAppDispatch();
+    +
+    +  useEffect(() =&gt; {
+    +    dispatch(getAccountInfoAction());
+    +  }, []);
+      
+        const onLogout = () =&gt; {
+          console.log('logout');
+        };
+      
+    -  const userInfo = {
+    -    loading: false,
+    -    name: 'admin',
+    -  };
+    -
+        const breadcrumbs = location.pathname
+          .split('/')
+          .filter((b) =&gt; b !== '' && b !== '/');
+    @@ -33,7 +37,7 @@ const DefaultLayout: React.FC = () =&gt; {
+        const headerDropdownitems: MenuProps['items'] = [
+          {
+            key: '0',
+    -      label: userInfo.name,
+    +      label: account?.username,
+          },
+          {
+            key: '1',
+        </code></pre>
+            </div>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="list-users-to-redux">
+          <h3>List Users to Redux & Debounce</h3>
+          <ul>
+            <li>Store</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/_redux/features/user.ts
+    import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+    import { ListUser } from '@/types/users';
+    import { fetchUsers, IGetListUserParam, IGetListUserRes } from '@/apis/users';
+    import { useAppSelector } from '../hooks';
+    import { RootState } from '../store';
+    
+    export interface UsersState {
+      users: {
+        loading: boolean;
+        list: ListUser | undefined;
+      };
+    }
+    
+    const initialState: UsersState = {
+      users: {
+        loading: false,
+        list: undefined,
+      },
+    };
+    // continue here tomorrow
+    export const userSlice = createSlice({
+      name: 'auth',
+      initialState,
+      reducers: {},
+      extraReducers: (builder) =&gt; {
+        builder
+          .addCase(getUsersAction.pending, (state) =&gt; {
+            state.users.loading = true;
+          })
+          .addCase(getUsersAction.fulfilled, (state, action) =&gt; {
+            state.users.loading = false;
+            state.users.list = action.payload.list;
+          })
+          .addCase(getUsersAction.rejected, (state) =&gt; {
+            state.users.loading = false;
+            state.users.list = undefined;
+          });
+      },
+    });
+    
+    export const getUsersAction = createAsyncThunk(
+      'auth/fetchUsers',
+      async (params: IGetListUserParam) =&gt; {
+        const res: IGetListUserRes = await fetchUsers(params);
+        return res;
+      }
+    );
+    
+    export default userSlice.reducer;
+    
+    export const usersListSelector = () =&gt;
+      useAppSelector((state: RootState) =&gt; state.user.users);
+    
+    
+    // src/_redux/store.ts
+    import { configureStore } from '@reduxjs/toolkit';
+    import counterReducer from './features/counter';
+    import authReducer from './features/auth';
+    +import userReducer from './features/user';
+    
+    export const store = configureStore({
+      reducer: {
+        counter: counterReducer,
+        auth: authReducer,
+    +    user: userReducer,
+      },
+    });
+        </code></pre>
+            </div>
+            <li>useGetListUser</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/app-components/users-management/list-user/useGetListUser.ts
+    -import { useEffect, useState } from 'react';
+    -import { fetchUsers } from '../../../apis/users';
+    +import { getUsersAction, usersListSelector } from '@/_redux/features/user';
+    +import { useAppDispatch } from '@/_redux/hooks';
+    +import { useEffect } from 'react';
+      import { IUserInfo } from '../../../types/users';
+      
+      export default function useGetListUser(): [
+        boolean,
+    -  IUserInfo[],
+    +  IUserInfo[] | undefined,
+        (searchKey: string) =&gt; void
+      ] {
+    -  const [listUser, setListUser] = useState&lt;IUserInfo[]&gt;([]);
+    -  const [loading, setLoading] = useState&lt;boolean&gt;(false);
+    +  const { loading, list: listUser } = usersListSelector();
+    +  const dispatch = useAppDispatch();
+      
+        const getUsers = (searchKey: string) =&gt; {
+    -    setLoading(true);
+    -    fetchUsers({ searchKey })
+    -      .then((data) =&gt; {
+    -        setListUser(data.list);
+    -      })
+    -      .finally(() =&gt; {
+    -        setLoading(false);
+    -      });
+    +    dispatch(getUsersAction({ searchKey }));
+        };
+      
+        useEffect(() =&gt; {
+          {...code...}
+        </code></pre>
+            </div>
+            <li>ListUser</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/app-components/users-management/list-user/ListUser.tsx
+    -import React from 'react';
+    -import { Input, Space, Table, Tag } from 'antd';
+    +import React, { useEffect, useState } from 'react';
+    +import { Input, Space, Table } from 'antd';
+      import { IUserInfo } from '../../../types/users';
+      import useGetListUser from './useGetListUser';
+    +import useDebounce from '@/hooks/debounce';
+      
+      const { Search } = Input;
+      const { Column } = Table;
+      
+      const ListUser: React.FC = () =&gt; {
+    +  const [search, setSearch] = useState&lt;string&gt;('');
+    +  const debouncedSearch = useDebounce&lt;string&gt;(search);
+        const [loading, listUser, onSearch] = useGetListUser();
+      
+        const onChange = (event: React.ChangeEvent&lt;HTMLInputElement&gt; | undefined) =&gt; {
+    +    let value = '';
+          if (event) {
+    -      onSearch(event.target.value);
+    +      value = event.target.value;
+          }
+    +    setSearch(value);
+        };
+      
+    +  useEffect(() =&gt; {
+    +    onSearch(search);
+    +  }, [debouncedSearch]);
+    +
+        return (
+          &lt;Space direction='vertical' style={{ width: '100%' }}&gt;
+            &lt;Search
+            {...code...}
+        </code></pre>
+            </div>
+            <li>
+              <div>
+                <pre
+                  style="padding: 0px; font-size: 10px; width: 800px"
+                ><code class="language-js">
+    // src/hooks/debounce.ts
+    import { useEffect, useState } from 'react';
+
+    function useDebounce&lt;T&gt;(value: T, delay?: number): T {
+      const [debouncedValue, setDebouncedValue] = useState&lt;T&gt;(value);
+    
+      useEffect(() =&gt; {
+        const timer = setTimeout(() =&gt; setDebouncedValue(value), delay || 500);
+    
+        return () =&gt; {
+          clearTimeout(timer);
+        };
+      }, [value, delay]);
+    
+      return debouncedValue;
+    }
+    
+    export default useDebounce;              
+        </code></pre>
+              </div>
+            </li>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="lazy-loading">
+          <h3>Lazy Loading</h3>
+          <ul>
+            <li>
+              Document:
+              <a
+                href="https://react.dev/reference/react/lazy#suspense-for-code-splitting"
+                >Lazy loading</a
+              >
+            </li>
+            <li>Update router</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">
+    // src/routers/router.tsx
+    +import { lazy } from 'react';
+    import { TeamOutlined, UserOutlined } from '@ant-design/icons';
+    import { MenuProps } from 'antd';
+    import { RouteObject } from 'react-router-dom';
+    import Profile from '../app-components/account-profile/AccountProfile';
+    import { Counter } from '../app-components/counter/Counter';
+    -import CreateUser from '../app-components/users-management/create-user/CreateUser';
+    -import ListUser from '../app-components/users-management/list-user/ListUser';
+    -import DefaultLayout from '../layout/DefaultLayout';
+    -import LoginPage from '../pages/login/LoginPage';
+    import Page404 from '../pages/result/Page404';
+    +import DefaultLayout from '../layout/DefaultLayout';
+    
+    +const LoginPage = lazy(() =&gt; import('../pages/login/LoginPage'));
+    +const CreateUser = lazy(
+    +  () =&gt; import('../app-components/users-management/create-user/CreateUser')
+    +);
+    +const ListUser = lazy(
+    +  () =&gt; import('../app-components/users-management/list-user/ListUser')
+    +);
+    interface IRoute {
+      path: string;
+      title: string;
+      {...code...}
+        </code></pre>
+            </div>
+            <li>Update App.tsx</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/App.tsx
+    import { Suspense } from 'react';
+    import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+    import browserRouters from './routers/router';
+    
+    const routers = createBrowserRouter(browserRouters);
+    
+    export default function App() {
+      return (
+        &lt;Suspense fallback={'loading...'}&gt;
+          &lt;RouterProvider router={routers} /&gt;;
+        &lt;/Suspense&gt;
+      );
+    }           
+        </code></pre>
+            </div>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="error-boundary">
+          <h3>Error boundary</h3>
+          <ul>
+            <li>
+              Check out:
+              <a
+                href="https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary"
+                >Error boundary</a
+              >
+            </li>
+            <li>
+              Install
+              <a href="https://github.com/bvaughn/react-error-boundary"
+                >https://github.com/bvaughn/react-error-boundary</a
+              >
+            </li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    yarn add react-error-boundary
+        </code></pre>
+            </div>
+            <li></li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/layout/DefaultLayout.tsx
+    import avt from '../assets/imgs/avatar.png';
+    import usa from '../assets/icons/usa.svg';
+    import { useAppDispatch } from '@/_redux/hooks';
+    +import { ErrorBoundary } from 'react-error-boundary';
+    
+    const { Content, Footer, Sider } = Layout;
+    
+    @@ -126,7 +127,9 @@ const DefaultLayout: React.FC = () =&gt; {
+                  background: colorBgContainer,
+                }}
+              &gt;
+    -            &lt;Outlet /&gt;
+    +            &lt;ErrorBoundary fallback={&lt;div&gt;Something went wrong&lt;/div&gt;}&gt;
+    +              &lt;Outlet /&gt;
+    +            &lt;/ErrorBoundary&gt;
+              &lt;/div&gt;
+            &lt;/Content&gt;
+            &lt;Footer style={{ textAlign: 'center' }}&gt;
+            {...code...}
+        </code></pre>
+            </div>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="style">
+          <h3>Scss</h3>
+          <ul>
+            <li>
+              Docs:
+              <a
+                href="https://vitejs.dev/guide/features.html#css-pre-processors"
+                >Vite Css Pre-processors</a
+              >
+            </li>
+            <li>Install</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+yarn add sass
+        </code></pre>
+            </div>
+            <li>Update</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // rename src/index.css src/index.scss
+    // src/main.tsx
+    import App from './App';
+    import 'antd/dist/reset.css';
+   -import './index.css';
+   +import './index.scss';
+   {coding...}
+
+   // src/layout/DefaultLayout.tsx
+      &lt;/ErrorBoundary&gt;
+    &lt;/div&gt;
+    &lt;/Content&gt;
+    -        &lt;Footer style={{ textAlign: 'center' }}&gt;
+    +        &lt;Footer className='text-center'&gt;
+    Ant Design ©2023 Created by Ant UED
+    &lt;/Footer&gt;
+    &lt;/Layout&gt;
+        </code></pre>
+            </div>
+          </ul>
+        </article>
+        <br />
+        <hr />
+
+        <article id="i18n">
+          <h3>i18n</h3>
+          <ul>
+            <li>Update to have 'basename': {baseUrl}/bo/*</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // package.json
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    +  "homepage": "/bo",
+    "scripts": {
+      "dev": "vite",
+      { other config }
+
+
+    // src/App.tsx
+    @@ -2,7 +2,7 @@ import { Suspense } from 'react';
+    import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+    import browserRouters from './routers/router';
+    
+    -const routers = createBrowserRouter(browserRouters);
+    +const routers = createBrowserRouter(browserRouters, { basename: '/bo' });
+    
+    export default function App() {
+      return (  
+
+
+
+    // src/apis/index.ts
+      ) {
+        clearUserInfo();
+        clearToken();
+    -    window.location.href = '/login';
+    +    window.location.href = '/bo/login';
+      }
+    });
+        </code></pre>
+            </div>
+            <li>Install i18n packages:</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    yarn add i18next react-i18next i18next-browser-languagedetector i18next-http-backend 
+        </code></pre>
+            </div>
+            <li>i18n setup</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/i18n.ts
+    import i18n from 'i18next';
+    import { initReactI18next } from 'react-i18next';
+    import LanguageDetector from 'i18next-browser-languagedetector';
+    import HttpApi from 'i18next-http-backend';
+
+    declare module 'i18next' {
+      interface CustomTypeOptions {
+        returnNull: false;
+      }
+    }
+
+    i18n
+      .use(initReactI18next)
+      .use(LanguageDetector)
+      .use(HttpApi)
+      .init({
+        interpolation: {
+          escapeValue: false,
+        },
+        supportedLngs: ['en', 'vi'],
+        fallbackLng: 'en',
+        detection: {
+          order: ['cookie', 'htmlTag', 'localStorage', 'path', 'subdomain'],
+          caches: ['cookie'],
+        },
+        backend: {
+          loadPath: '/public/assets/translations/{{lng}}/translation.json',
+        },
+      });
+
+    export default i18n;
+
+    // src/main.tsx
+    import { Provider } from 'react-redux';
+ 
+    +import './i18n';
+     import App from './App';
+     import 'antd/dist/reset.css';
+        </code></pre>
+            </div>
+            <li>Add translation file</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // public/assets/translations/en/translation.json
+    {
+      "Create User": "Create User",
+      "Users": "Users",
+      "List User": "List User",
+      "Register": "Register",
+      "Account": "Account",
+      "Profile": "Profile",
+      "E-mail": "E-mail",
+      "Successful": "Successful",
+      "Something went wrong!": "Something went wrong!",
+      "The input is not valid E-mail!": "The input is not valid E-mail!",
+      "Please input your E-mail!": "Please input your E-mail!",
+      "Please input your name!": "Please input your name!",
+      "Name": "Name",
+      "Date Of Birth": "Date Of Birth",
+      "Please input your date of birth!": "Please input your date of birth!",
+      "Gender": "Gender",
+      "Please select gender!": "Please select gender!",
+      "Select your gender": "Select your gender",
+      "Address": "Address",
+      "Province is required": "Province is required",
+      "Select province": "Select province",
+      "Street is required": "Street is required",
+      "Input street": "Input street",
+      "Submit": "Submit"
+    }
+              
+    // public/assets/translations/vi/translation.json
+    {
+      "Create User": "Tạo người dùng",
+      "Users": "Người dùng",
+      "List User": "Danh sách người dùng",
+      "Register": "Đăng ký",
+      "Account": "Tài khoản",
+      "Profile": "Thông tin tài khoản",
+      "E-mail": "E-mail",
+      "Successful": "Thành công",
+      "Something went wrong!": "Có lỗi phát sinh!",
+      "The input is not valid E-mail!": "Email không đúng!",
+      "Please input your E-mail!": "Nhập email!",
+      "Name": "Tên",
+      "Please input your name!": "Nhập tên!",
+      "Date Of Birth": "Ngày sinh",
+      "Please input your date of birth!": "Vui lòng nhập ngày sinh!",
+      "Gender": "Giới tính",
+      "Please select gender!": "Chọn giới tính!",
+      "Select your gender": "Chọn giới tính!",
+      "Address": "Địa chỉ",
+      "Province is required": "Thành phố là bắt buộc",
+      "Select province": "Chọn thành phố",
+      "Street is required": "Số Đường là bắt buộc",
+      "Input street": "Nhập đường",
+      "Submit": "Xong"
+    }
+
+    // add: src/assets/icons/vn.png
+        </code></pre>
+            </div>
+            <li>Upldate</li>
+            <div>
+              <pre
+                style="padding: 0px; font-size: 10px; width: 800px"
+              ><code class="language-js">  
+    // src/app-components/users-management/create-user/CreateUser.tsx
+    import {
+        Form,
+        Input,
+        Button,
+        DatePicker,
+        Select,
+        Space,
+        notification,
+      } from 'antd';
+      import { useTranslation } from 'react-i18next';
+      import { createAUser } from '../../../apis/users';
+      
+      const { Option } = Select;
+      
+      const layout = {
+        labelCol: {
+          span: 8,
+        },
+        wrapperCol: {
+          span: 16,
+        },
+      };
+      const tailLayout = {
+        wrapperCol: {
+          offset: 8,
+          span: 16,
+        },
+      };
+      
+      const CreateUser = () =&gt; {
+        const { t } = useTranslation();
+      
+        const onFinish = (values: any) =&gt; {
+          createAUser({
+            address: values.address,
+            dateOfBirth: values.dateOfBirth,
+            email: values.email,
+            name: values.name,
+            gender: values.gender,
+          })
+            .then((res) =&gt; {
+              if (res.status) {
+                notification.success({
+                  message: t('Create user'),
+                  description: t('Successful'),
+                });
+              }
+            })
+            .catch((err) =&gt; {
+              notification.error({
+                message: t('Create user'),
+                description: t('Something went wrong'),
+              });
+            });
+        };
+      
+        const onFinishFailed = (errorInfo: any) =&gt; {
+          console.log('Failed:', errorInfo);
+        };
+      
+        return (
+          &lt;Form
+            {...layout}
+            name='basic'
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+          &gt;
+            &lt;Form.Item
+              name='email'
+              label={t('E-mail')}
+              rules={[
+                {
+                  type: 'email',
+                  message: t('The input is not valid E-mail!'),
+                },
+                {
+                  required: true,
+                  message: t('Please input your E-mail!'),
+                },
+              ]}
+            &gt;
+              &lt;Input /&gt;
+            &lt;/Form.Item&gt;
+            &lt;Form.Item
+              label={t('Name')}
+              name='name'
+              rules={[
+                {
+                  required: true,
+                  message: t('Please input your name!'),
+                },
+              ]}
+            &gt;
+              &lt;Input /&gt;
+            &lt;/Form.Item&gt;
+      
+            &lt;Form.Item
+              label={t('Date Of Birth')}
+              name='dateOfBirth'
+              rules={[
+                { required: true, message: t('Please input your date of birth!') },
+              ]}
+            &gt;
+              &lt;DatePicker format={'YYYY-MM-DD'} /&gt;
+            &lt;/Form.Item&gt;
+      
+            &lt;Form.Item
+              name='gender'
+              label={t('Gender')}
+              rules={[{ required: true, message: t('Please select gender!') }]}
+            &gt;
+              &lt;Select placeholder={t('Select your gender')}&gt;
+                &lt;Option value='male'&gt;Male&lt;/Option&gt;
+                &lt;Option value='female'&gt;Female&lt;/Option&gt;
+                &lt;Option value='other'&gt;Other&lt;/Option&gt;
+              &lt;/Select&gt;
+            &lt;/Form.Item&gt;
+      
+            &lt;Form.Item label={t('Address')}&gt;
+              &lt;Space.Compact&gt;
+                &lt;Form.Item
+                  name={['address', 'province']}
+                  noStyle
+                  rules={[{ required: true, message: t('Province is required') }]}
+                &gt;
+                  &lt;Select placeholder={t('Select province')}&gt;
+                    &lt;Option value='HN'&gt;Ha Noi&lt;/Option&gt;
+                    &lt;Option value='HCM'&gt;Tp. Ho Chi Minh&lt;/Option&gt;
+                  &lt;/Select&gt;
+                &lt;/Form.Item&gt;
+                &lt;Form.Item
+                  name={['address', 'street']}
+                  noStyle
+                  rules={[{ required: true, message: t('Street is required') }]}
+                &gt;
+                  &lt;Input placeholder={t('Input street')} /&gt;
+                &lt;/Form.Item&gt;
+              &lt;/Space.Compact&gt;
+            &lt;/Form.Item&gt;
+      
+            &lt;Form.Item {...tailLayout}&gt;
+              &lt;Button type='primary' htmlType='submit'&gt;
+                {t('Submit')}
+              &lt;/Button&gt;
+            &lt;/Form.Item&gt;
+          &lt;/Form&gt;
+        );
+      };
+      
+      export default CreateUser;
+    
+      
+    // src/layout/DefaultLayout.tsx
+    
+    import React, { useEffect, useState } from 'react';
+    import { Button, Dropdown, MenuProps, Space } from 'antd';
+    import { Breadcrumb, Layout, Menu, theme } from 'antd';
+    import { Outlet, useNavigate } from 'react-router-dom';
+    import { Header } from 'antd/es/layout/layout';
+    import { LogoutOutlined } from '@ant-design/icons';
+    
+    import { accountSelector, getAccountInfoAction } from '@/_redux/features/auth';
+    import { navRoutes as routes, GetMenu, IRoute } from '../routers/router';
+    
+    import avt from '../assets/imgs/avatar.png';
+    import usa from '../assets/icons/usa.svg';
+    import vn from '../assets/icons/vn.png';
+    import { useAppDispatch } from '@/_redux/hooks';
+    import { ErrorBoundary } from 'react-error-boundary';
+    import { useTranslation } from 'react-i18next';
+    
+    const { Content, Footer, Sider } = Layout;
+    
+    type MenuItem = Required&lt;MenuProps&gt;['items'][number];
+    
+    const DefaultLayout: React.FC = () =&gt; {
+      const { t, i18n } = useTranslation();
+      const [items, setItems] = useState&lt;MenuItem[]&gt;([]);
+      const { accountData: account } = accountSelector();
+      const [collapsed, setCollapsed] = useState(false);
+    
+      const navigate = useNavigate();
+      const dispatch = useAppDispatch();
+    
+      useEffect(() =&gt; {
+        dispatch(getAccountInfoAction());
+      }, []);
+    
+      const onLogout = () =&gt; {
+        console.log('logout');
+      };
+    
+      const breadcrumbs = location.pathname
+        .split('/')
+        .filter((b) =&gt; b !== '' && b !== '/');
+    
+      const headerDropdownitems: MenuProps['items'] = [
+        {
+          key: '0',
+          label: account?.username,
+        },
+        {
+          key: '1',
+          label: (
+            &lt;Button
+              style={{ float: 'right', marginBottom: '10px' }}
+              type='primary'
+              icon={&lt;LogoutOutlined /&gt;}
+              onClick={onLogout}
+            &gt;
+              Logout
+            &lt;/Button&gt;
+          ),
+        },
+      ];
+    
+      const changeLanguage = (lng: string) =&gt; {
+        i18n.changeLanguage(lng);
+      };
+    
+      const lngDropdownitems: MenuProps['items'] = [
+        {
+          key: '0',
+          label: (
+            &lt;img
+              src={usa}
+              alt='lg'
+              style={{ width: '32px' }}
+              onClick={() =&gt; changeLanguage('en')}
+            /&gt;
+          ),
+        },
+        {
+          key: '1',
+          label: (
+            &lt;img
+              src={vn}
+              alt='lg'
+              style={{ width: '32px' }}
+              onClick={() =&gt; changeLanguage('vi')}
+            /&gt;
+          ),
+        },
+      ];
+    
+      const translateRouters = (
+        routers: Array&lt;IRoute&gt; | undefined
+      ): Array&lt;IRoute&gt; | undefined =&gt; {
+        if (!routers || routers.length &lt;= 0) {
+          return undefined;
+        }
+    
+        return routers.map((item) =&gt; ({
+          ...item,
+          title: t(item.title),
+          children: translateRouters(item.children),
+        }));
+      };
+    
+      useEffect(() =&gt; {
+        const items = GetMenu(translateRouters(routes) || []);
+        setItems(items);
+      }, [t]);
+    
+      const {
+        token: { colorBgContainer },
+      } = theme.useToken();
+    
+      const onClick: MenuProps['onClick'] = (e) =&gt; {
+        navigate(e.keyPath[0]);
+      };
+    
+      return (
+        &lt;Layout style={{ minHeight: '100vh' }}&gt;
+          &lt;Sider
+            collapsible
+            collapsed={collapsed}
+            onCollapse={(value) =&gt; setCollapsed(value)}
+          &gt;
+            &lt;div
+              style={{
+                height: 32,
+                margin: 16,
+                background: 'rgba(255, 255, 255, 0.2)',
+              }}
+            &gt;
+              LOGO
+            &lt;/div&gt;
+            &lt;Menu
+              onClick={onClick}
+              theme='dark'
+              defaultSelectedKeys={[location.pathname]}
+              mode='inline'
+              items={items}
+            /&gt;
+          &lt;/Sider&gt;
+          &lt;Layout className='site-layout'&gt;
+            &lt;Content style={{ margin: '0 16px' }}&gt;
+              &lt;Header style={{ paddingLeft: '16px', background: colorBgContainer }}&gt;
+                &lt;Space style={{ display: 'flex', justifyContent: 'space-between' }}&gt;
+                  &lt;Breadcrumb style={{ margin: '16px 0' }}&gt;
+                    {breadcrumbs &&
+                      breadcrumbs.map((breadcrumb, index) =&gt; (
+                        &lt;Breadcrumb.Item key={index}&gt;{breadcrumb}&lt;/Breadcrumb.Item&gt;
+                      ))}
+                  &lt;/Breadcrumb&gt;
+                  &lt;div style={{ display: 'flex' }}&gt;
+                    &lt;div style={{ margin: '8px' }}&gt;
+                      &lt;Dropdown
+                        menu={{ items: lngDropdownitems }}
+                        placement='bottomRight'
+                        arrow
+                      &gt;
+                        &lt;img src={usa} alt='lg' style={{ width: '32px' }} /&gt;
+                      &lt;/Dropdown&gt;
+                    &lt;/div&gt;
+                    &lt;div style={{ margin: '8px' }}&gt;
+                      &lt;Dropdown
+                        menu={{ items: headerDropdownitems }}
+                        placement='bottomRight'
+                        arrow
+                      &gt;
+                        &lt;img src={avt} alt='avatar' style={{ width: '32px' }} /&gt;
+                      &lt;/Dropdown&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/Space&gt;
+              &lt;/Header&gt;
+              &lt;div
+                style={{
+                  padding: 24,
+                  minHeight: 360,
+                  background: colorBgContainer,
+                }}
+              &gt;
+                &lt;ErrorBoundary fallback={&lt;div&gt;Something went wrong&lt;/div&gt;}&gt;
+                  &lt;Outlet /&gt;
+                &lt;/ErrorBoundary&gt;
+              &lt;/div&gt;
+            &lt;/Content&gt;
+            &lt;Footer className='text-center'&gt;
+              Ant Design ©2023 Created by Ant UED
+            &lt;/Footer&gt;
+          &lt;/Layout&gt;
+        &lt;/Layout&gt;
+      );
+    };
+    
+    export default DefaultLayout;
+        </code></pre>
+            </div>
+            <li>
+              Checkout:
+              <a href="https://github.com/mrdatngo/vite-react-ts-template"
+                >https://github.com/mrdatngo/vite-react-ts-template</a
+              >
+              to get assets if needed
+            </li>
+          </ul>
         </article>
       </section>
       <footer>
